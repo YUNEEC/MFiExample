@@ -1,0 +1,6 @@
+framework module YuneecMFiDataTransfer {
+  umbrella header "YuneecMFiDataTransfer.h"
+
+  export *
+  module * { export * }
+}

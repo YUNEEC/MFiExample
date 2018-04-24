@@ -8,7 +8,14 @@
 
 #import "ViewController.h"
 
+#import "MFiConnectionStateAdapter.h"
+#import <YuneecDataTransferManager/YuneecDataTransferConnectionState.h>
+
+
 @interface ViewController ()
+
+@property (assign, nonatomic) YuneecDataTransferConnectionType      connectionType;
+@property (weak, nonatomic) IBOutlet UITextField *mfiStatus;
 
 @end
 
@@ -16,9 +23,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
-    NSLog(@"Hello world");
-    
+    self.mfiStatus.text = @"View loaded";
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handleConnectionStateNotification:)
+                                                 name:kMFiConnectionStateNotification
+                                               object:nil];
+
     // TODO: connect MFi
     
     // TODO: subscribe to mavlink
@@ -32,6 +42,25 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)handleConnectionStateNotification:(NSNotification*) notification {
+    NSDictionary *userInfo = notification.userInfo;
+    BOOL connected = [userInfo[@"MFiConnectionState"] boolValue];
+    YuneecDataTransferConnectionType connectionType = [userInfo[@"MFiConnectionType"] integerValue];
+    
+    if (connected) {
+        if (connectionType == YuneecDataTransferConnectionTypeWifi) {
+            NSLog(@"Wifi connected");
+        }
+        else {
+            // No need to loop send data for MFi connection
+            NSLog(@"MFi connected");
+        }
+    }
+    else {
+        NSLog(@"Nothing connected");
+    }
 }
 
 
