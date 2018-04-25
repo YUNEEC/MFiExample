@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0825E9E12090BF5D0041B911 /* YuneecWifiDataTransfer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 08A2BBD4208FCF39005EBAAC /* YuneecWifiDataTransfer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0825E9E22090BF5D0041B911 /* YuneecMFiDataTransfer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 08A2BBD1208FCF39005EBAAC /* YuneecMFiDataTransfer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0825E9E32090BF5D0041B911 /* BaseFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 08A2BBCC208FCF39005EBAAC /* BaseFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0825E9E42090BF5D0041B911 /* MediaBase.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 08A2BBBF208FCF39005EBAAC /* MediaBase.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0825E9E52090BF5D0041B911 /* FFMpegDemuxer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 08A2BBB6208FCF39005EBAAC /* FFMpegDemuxer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0825E9E62090BF5D0041B911 /* FFMpegLowDelayDemuxer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 08A2BBB3208FCF39005EBAAC /* FFMpegLowDelayDemuxer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0825E9E82090C05F0041B911 /* CocoaAsyncSocket.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0825E9E72090C05F0041B911 /* CocoaAsyncSocket.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		08B00DC8208F98A500762EE3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 08B00DC7208F98A500762EE3 /* AppDelegate.m */; };
 		08B00DCB208F98A500762EE3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 08B00DCA208F98A500762EE3 /* ViewController.m */; };
 		08B00DCE208F98A500762EE3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08B00DCC208F98A500762EE3 /* Main.storyboard */; };
@@ -14,24 +21,24 @@
 		08B00DD3208F98A700762EE3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08B00DD1208F98A700762EE3 /* LaunchScreen.storyboard */; };
 		08B00DD6208F98A700762EE3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 08B00DD5208F98A700762EE3 /* main.m */; };
 		08B00DE0208FB7DB00762EE3 /* MFiConnectionStateAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 08B00DDF208FB7DA00762EE3 /* MFiConnectionStateAdapter.m */; };
-		08B00E0F208FC17100762EE3 /* YuneecDataTransferManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08B00E0A208FC16700762EE3 /* YuneecDataTransferManager.framework */; };
-		08B00E10208FC17100762EE3 /* YuneecDataTransferManager.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 08B00E0A208FC16700762EE3 /* YuneecDataTransferManager.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		08B00E11208FC17100762EE3 /* YuneecMFiDataTransfer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08B00E09208FC16600762EE3 /* YuneecMFiDataTransfer.framework */; };
-		08B00E12208FC17100762EE3 /* YuneecMFiDataTransfer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 08B00E09208FC16600762EE3 /* YuneecMFiDataTransfer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		08B00E13208FC17100762EE3 /* YuneecWifiDataTransfer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08B00E0B208FC16700762EE3 /* YuneecWifiDataTransfer.framework */; };
-		08B00E14208FC17100762EE3 /* YuneecWifiDataTransfer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 08B00E0B208FC16700762EE3 /* YuneecWifiDataTransfer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		08B608532090BDC4002A440A /* YuneecDataTransferManager.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 08A2BBB0208FCF1A005EBAAC /* YuneecDataTransferManager.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		08B00E15208FC17100762EE3 /* Embed Frameworks */ = {
+		08434940208FC53500554C4D /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				08B00E10208FC17100762EE3 /* YuneecDataTransferManager.framework in Embed Frameworks */,
-				08B00E12208FC17100762EE3 /* YuneecMFiDataTransfer.framework in Embed Frameworks */,
-				08B00E14208FC17100762EE3 /* YuneecWifiDataTransfer.framework in Embed Frameworks */,
+				0825E9E82090C05F0041B911 /* CocoaAsyncSocket.framework in Embed Frameworks */,
+				0825E9E12090BF5D0041B911 /* YuneecWifiDataTransfer.framework in Embed Frameworks */,
+				0825E9E22090BF5D0041B911 /* YuneecMFiDataTransfer.framework in Embed Frameworks */,
+				0825E9E32090BF5D0041B911 /* BaseFramework.framework in Embed Frameworks */,
+				0825E9E42090BF5D0041B911 /* MediaBase.framework in Embed Frameworks */,
+				0825E9E52090BF5D0041B911 /* FFMpegDemuxer.framework in Embed Frameworks */,
+				0825E9E62090BF5D0041B911 /* FFMpegLowDelayDemuxer.framework in Embed Frameworks */,
+				08B608532090BDC4002A440A /* YuneecDataTransferManager.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -39,6 +46,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0825E9E72090C05F0041B911 /* CocoaAsyncSocket.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaAsyncSocket.framework; path = Carthage/Build/iOS/CocoaAsyncSocket.framework; sourceTree = "<group>"; };
+		08A2BBB0208FCF1A005EBAAC /* YuneecDataTransferManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = YuneecDataTransferManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		08A2BBB3208FCF39005EBAAC /* FFMpegLowDelayDemuxer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FFMpegLowDelayDemuxer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		08A2BBB6208FCF39005EBAAC /* FFMpegDemuxer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FFMpegDemuxer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		08A2BBB9208FCF39005EBAAC /* FFMpegDecoder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FFMpegDecoder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		08A2BBBC208FCF39005EBAAC /* FFMpegLowDelayDecoder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FFMpegLowDelayDecoder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		08A2BBBF208FCF39005EBAAC /* MediaBase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MediaBase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		08A2BBCC208FCF39005EBAAC /* BaseFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BaseFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		08A2BBD1208FCF39005EBAAC /* YuneecMFiDataTransfer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = YuneecMFiDataTransfer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		08A2BBD4208FCF39005EBAAC /* YuneecWifiDataTransfer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = YuneecWifiDataTransfer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		08B00DC3208F98A500762EE3 /* MFiExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MFiExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		08B00DC6208F98A500762EE3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		08B00DC7208F98A500762EE3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -51,9 +68,6 @@
 		08B00DD5208F98A700762EE3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		08B00DDE208FB7DA00762EE3 /* MFiConnectionStateAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFiConnectionStateAdapter.h; sourceTree = "<group>"; };
 		08B00DDF208FB7DA00762EE3 /* MFiConnectionStateAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFiConnectionStateAdapter.m; sourceTree = "<group>"; };
-		08B00E09208FC16600762EE3 /* YuneecMFiDataTransfer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YuneecMFiDataTransfer.framework; path = "../../Library/Developer/Xcode/DerivedData/OB-cmoxlomqhqdercdtshbswjjkweun/Build/Products/Debug-iphoneos/YuneecMFiDataTransfer.framework"; sourceTree = "<group>"; };
-		08B00E0A208FC16700762EE3 /* YuneecDataTransferManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YuneecDataTransferManager.framework; path = "../../Library/Developer/Xcode/DerivedData/OB-cmoxlomqhqdercdtshbswjjkweun/Build/Products/Debug-iphoneos/YuneecDataTransferManager.framework"; sourceTree = "<group>"; };
-		08B00E0B208FC16700762EE3 /* YuneecWifiDataTransfer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YuneecWifiDataTransfer.framework; path = "../../Library/Developer/Xcode/DerivedData/OB-cmoxlomqhqdercdtshbswjjkweun/Build/Products/Debug-iphoneos/YuneecWifiDataTransfer.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,9 +75,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				08B00E0F208FC17100762EE3 /* YuneecDataTransferManager.framework in Frameworks */,
-				08B00E11208FC17100762EE3 /* YuneecMFiDataTransfer.framework in Frameworks */,
-				08B00E13208FC17100762EE3 /* YuneecWifiDataTransfer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,9 +84,16 @@
 		08B00DBA208F98A500762EE3 = {
 			isa = PBXGroup;
 			children = (
-				08B00E0A208FC16700762EE3 /* YuneecDataTransferManager.framework */,
-				08B00E09208FC16600762EE3 /* YuneecMFiDataTransfer.framework */,
-				08B00E0B208FC16700762EE3 /* YuneecWifiDataTransfer.framework */,
+				0825E9E72090C05F0041B911 /* CocoaAsyncSocket.framework */,
+				08A2BBD4208FCF39005EBAAC /* YuneecWifiDataTransfer.framework */,
+				08A2BBD1208FCF39005EBAAC /* YuneecMFiDataTransfer.framework */,
+				08A2BBCC208FCF39005EBAAC /* BaseFramework.framework */,
+				08A2BBBF208FCF39005EBAAC /* MediaBase.framework */,
+				08A2BBBC208FCF39005EBAAC /* FFMpegLowDelayDecoder.framework */,
+				08A2BBB9208FCF39005EBAAC /* FFMpegDecoder.framework */,
+				08A2BBB6208FCF39005EBAAC /* FFMpegDemuxer.framework */,
+				08A2BBB3208FCF39005EBAAC /* FFMpegLowDelayDemuxer.framework */,
+				08A2BBB0208FCF1A005EBAAC /* YuneecDataTransferManager.framework */,
 				08B00DC5208F98A500762EE3 /* MFiExample */,
 				08B00DC4208F98A500762EE3 /* Products */,
 				08B00DE1208FBA8C00762EE3 /* Frameworks */,
@@ -125,7 +143,7 @@
 				08B00DBF208F98A500762EE3 /* Sources */,
 				08B00DC0208F98A500762EE3 /* Frameworks */,
 				08B00DC1208F98A500762EE3 /* Resources */,
-				08B00E15208FC17100762EE3 /* Embed Frameworks */,
+				08434940208FC53500554C4D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -329,6 +347,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PYYYV2LXJ2;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -339,9 +358,13 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+					"@rpath",
+					"@loader_path",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = yuneec.MFiExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -350,6 +373,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PYYYV2LXJ2;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -360,9 +384,13 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+					"@rpath",
+					"@loader_path",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = yuneec.MFiExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

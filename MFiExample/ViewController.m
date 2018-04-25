@@ -29,6 +29,13 @@
                                                  name:kMFiConnectionStateNotification
                                                object:nil];
 
+    [[MFiConnectionStateAdapter sharedInstance] startMonitorConnectionState];
+    
+    [NSTimer scheduledTimerWithTimeInterval:1.0f
+                                     target:self selector:@selector(checkConnection:) userInfo:nil repeats:YES];
+    
+    NSLog(@"done with creating adapter");
+    
     // TODO: connect MFi
     
     // TODO: subscribe to mavlink
@@ -36,6 +43,16 @@
     // TODO: printf mavlink
     
     // TODO: forward mavlink via UDP on localhost
+}
+
+- (void) checkConnection:(NSTimer *)timer
+{
+    NSLog(@"Ran timer.");
+    if ([[MFiConnectionStateAdapter sharedInstance] getMFiConnectionState]) {
+        self.mfiStatus.text = @"MFi connected much";
+    } else {
+        self.mfiStatus.text = @"MFi not connected not so much";
+    }
 }
 
 
@@ -51,15 +68,15 @@
     
     if (connected) {
         if (connectionType == YuneecDataTransferConnectionTypeWifi) {
-            NSLog(@"Wifi connected");
+            self.mfiStatus.text = @"Wifi connected";
         }
         else {
             // No need to loop send data for MFi connection
-            NSLog(@"MFi connected");
+            self.mfiStatus.text = @"MFi connected";
         }
     }
     else {
-        NSLog(@"Nothing connected");
+        self.mfiStatus.text = @"Nothing connected";
     }
 }
 

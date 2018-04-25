@@ -77,6 +77,7 @@ NSString * const kMFiConnectionStateNotification = @"kMFiConnectionStateNotifica
 
 - (void)startMonitorConnectionState {
     [self.connectionState startMonitorConnectionState];
+    NSLog(@"connectionState started");
 }
 
 - (void)stopMonitorConnectionState {
@@ -93,8 +94,8 @@ NSString * const kMFiConnectionStateNotification = @"kMFiConnectionStateNotifica
 }
 
 - (NSDictionary *)getConnectionStatus {
-    NSDictionary* userInfo = @{@"OBConnectionState": @(self.connected),
-                               @"OBConnectionType": @(self.connectionType),
+    NSDictionary* userInfo = @{@"MFiConnectionState": @(self.connected),
+                               @"MFiConnectionType": @(self.connectionType),
                                @"BackgroundState": @(self.bIsBackground),
                                @"DroneMonitorLost":@(self.bDroneMonitorLost)};
     return userInfo;
@@ -132,6 +133,7 @@ NSString * const kMFiConnectionStateNotification = @"kMFiConnectionStateNotifica
     if (_connectionState == nil) {
         _connectionState = [[YuneecDataTransferConnectionState alloc] init];
         _connectionState.connectionDelegate = self;
+        NSLog(@"YuneecDataTransferConnectionState initialized");
     }
     return _connectionState;
 }

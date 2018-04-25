@@ -5,7 +5,6 @@
 //  Created by tbago on 2017/9/8.
 //  Copyright © 2017年 yuneec. All rights reserved.
 //
-
 #import <Foundation/Foundation.h>
 
 extern NSString * const kMFiConnectionStateNotification;
