@@ -1,6 +1,0 @@
-framework module YuneecDataTransferManager {
-  umbrella header "YuneecDataTransferManager.h"
-
-  export *
-  module * { export * }
-}

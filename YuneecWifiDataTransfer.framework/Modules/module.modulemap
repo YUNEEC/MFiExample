@@ -1,6 +1,0 @@
-framework module YuneecWifiDataTransfer {
-  umbrella header "YuneecWifiDataTransfer.h"
-
-  export *
-  module * { export * }
-}
