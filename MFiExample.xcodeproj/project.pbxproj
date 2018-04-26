@@ -354,6 +354,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
+				HEADER_SEARCH_PATHS = /Users/julianoes/src/c_library_v2_yuneec/;
 				INFOPLIST_FILE = MFiExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -380,6 +381,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
+				HEADER_SEARCH_PATHS = /Users/julianoes/src/c_library_v2_yuneec/;
 				INFOPLIST_FILE = MFiExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
