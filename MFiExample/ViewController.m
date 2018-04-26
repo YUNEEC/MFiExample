@@ -16,6 +16,7 @@
 
 @property (assign, nonatomic) YuneecDataTransferConnectionType      connectionType;
 @property (weak, nonatomic) IBOutlet UITextField *mfiStatus;
+@property (weak, nonatomic) IBOutlet UITextView *mfiStatusFull;
 
 @end
 
@@ -49,9 +50,9 @@
 {
     NSLog(@"Ran timer.");
     if ([[MFiConnectionStateAdapter sharedInstance] getMFiConnectionState]) {
-        self.mfiStatus.text = @"MFi connected much";
+        //self.mfiStatus.text = @"MFi connected much";
     } else {
-        self.mfiStatus.text = @"MFi not connected not so much";
+        //self.mfiStatus.text = @"MFi not connected not so much";
     }
 }
 
@@ -66,6 +67,7 @@
     BOOL connected = [userInfo[@"MFiConnectionState"] boolValue];
     YuneecDataTransferConnectionType connectionType = [userInfo[@"MFiConnectionType"] integerValue];
     
+    [self.mfiStatusFull setText:[NSString stringWithFormat:@"%@", userInfo]];
     if (connected) {
         if (connectionType == YuneecDataTransferConnectionTypeWifi) {
             self.mfiStatus.text = @"Wifi connected";

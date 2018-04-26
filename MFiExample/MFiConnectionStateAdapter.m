@@ -17,7 +17,7 @@
 
 @implementation MFiConnectionStateAdapter
 
-NSString * const kMFiConnectionStateNotification = @"kMFiConnectionStateNotification";
+NSString * const kMFiConnectionStateNotification = @"MFiConnectionStateNotification";
 
 #pragma mark - init
 
