@@ -140,7 +140,9 @@ NSString * const kMFiConnectionStateNotification = @"MFiConnectionStateNotificat
         [[NSNotificationCenter defaultCenter] postNotificationName:kMFiConnectionStateNotification object:nil userInfo:userInfo];
     }
     else {
-        dispatch_sync(dispatch_get_main_queue(), ^{
+        // This used to be dispatch_sync but would hang when the MFi session tries
+        // to close when the USB cable is removed.
+        dispatch_async(dispatch_get_main_queue(), ^{
             [[NSNotificationCenter defaultCenter] postNotificationName:kMFiConnectionStateNotification object:nil userInfo:userInfo];
         });
     }
@@ -164,10 +166,6 @@ didReceiveFlyingControllerData:(NSData *) data {
 }
 
 - (void)sendHeartbeatPackage {
-    // Don't send if not connected (anymore).
-    if (self.connectionType != 0) {
-        return;
-    }
     mavlink_message_t       message;
     mavlink_heartbeat_t     heartbeat;
     
