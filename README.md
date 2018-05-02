@@ -21,3 +21,4 @@ This should be a minimal example app on how to connect wia MFi to the ST10C and 
 4. Try to build the project.
    If you get errors that CocoaAsyncSocket.framework can't be found, search for
    it in your home folder and drag it into "Embedded Binaries" of the `YuneecMFiExample`.
+   Select "Copy if needed".
