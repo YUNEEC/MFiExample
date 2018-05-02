@@ -1,0 +1,3 @@
+[submodule "MFiAdapter"]
+	path = MFiAdapter
+	url = git@github.com:YUNEEC/MFiAdapter.git
