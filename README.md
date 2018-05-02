@@ -4,19 +4,20 @@ This should be a minimal example app on how to connect wia MFi to the ST10C and 
 
 ## Instructions
 
-1. Create an XCode workspace.
-2. Add the MFiExampleto it.
-3. Drag the framework projects that can be found in the Yuneec-App repository:
-   - FFMpegLowDelayDemuxer
-   - FFmpegDemuxer
-   - FFmpegLowDelayDecoder
-   - FFmpegDecoder
-   - MediaBase
-   - BaseFramework
-   - YuneecDataTransferManager
-   - YuneecMFiDataTransfer
-   - YuneecWifiDataTransfer
-4. Add the products of all frameworks pulled in above to "Embedded Binaries" of MFiExample.
-5. Run `carthage update`
-6. Add `Carthage/Build/iOS/CocoaAsyncSocket.framework` also to "Embedded Binaries" of MFiExample.
+1. Get the repository:
+   ```
+   git clone git@github.com:YUNEEC/MFiExample.git
+   cd MFiExample
+   git submodule update --init --recursive
+   ```
 
+
+2. Install CocoaPods:
+   ```
+   pod install
+   ```
+3. Open the workspace MFiExample.xcworkspace in XCode 9.2.
+
+4. Try to build the project.
+   If you get errors that CocoaAsyncSocket.framework can't be found, search for
+   it in your home folder and drag it into "Embedded Binaries" of the `YuneecMFiExample`.
