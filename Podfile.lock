@@ -1,20 +1,16 @@
 PODS:
   - CocoaAsyncSocket (7.6.3)
-  - DroneCore-Swift (0.0.2)
 
 DEPENDENCIES:
   - CocoaAsyncSocket
-  - DroneCore-Swift
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - CocoaAsyncSocket
-    - DroneCore-Swift
 
 SPEC CHECKSUMS:
   CocoaAsyncSocket: eafaa68a7e0ec99ead0a7b35015e0bf25d2c8987
-  DroneCore-Swift: 5a9ff1a5326e4945759e67087ce938c525f66336
 
-PODFILE CHECKSUM: dfa078595cfbfd7850f42668e3fa90bc7ff86225
+PODFILE CHECKSUM: 039c0c83276b7865a40e634ed21acacf8f2fb1c9
 
 COCOAPODS: 1.5.0

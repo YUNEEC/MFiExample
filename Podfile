@@ -9,7 +9,6 @@ end
 
 target :'YuneecMFiExample' do
     project 'YuneecMFiExample'
-    pod 'DroneCore-Swift'
     common_pods
 end
 

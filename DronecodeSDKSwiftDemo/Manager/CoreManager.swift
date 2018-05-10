@@ -9,6 +9,7 @@
 import Foundation
 import Dronecode_SDK_Swift
 import MFiAdapter
+import RxSwift
 
 class CoreManager {
     
@@ -52,8 +53,12 @@ class CoreManager {
         return sharedCoreManager
     }
     
-    public func start() -> Void{
-        core.connect()
+    public func start() -> Void {
+        _ = core.connect().subscribe(onCompleted: {
+            print("Core connected")
+        }) { (error) in
+            print("Failed connect to core with error: \(error.localizedDescription)")
+        }
     }
     
 

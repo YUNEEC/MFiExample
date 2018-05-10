@@ -32,15 +32,19 @@ class TelemetryViewController: UIViewController, UITableViewDataSource, UITableV
         
         // Start System
         CoreManager.shared().start()
-        
+
         // Telemetry entries
-        telemetry_entries = TelemetryEntries()
+        // FIXME: we need this sleep because we can't subscribe in telemetry
+        //        before telemetry is initialized.
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            self.telemetry_entries = TelemetryEntries()
+        }
+        
         timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector:  #selector(updateView), userInfo: nil, repeats: true)
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
-
     }
     
     // MARK: - TableView
@@ -59,13 +63,16 @@ class TelemetryViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return telemetry_entries!.entries.count
+        if let entriesCount = telemetry_entries?.entries.count {
+            return entriesCount
+        }
+        return 0
     }
 
      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TelemetryCell", for: indexPath)
         
-        let count_entries : Int = (telemetry_entries?.entries.count)!
+        let count_entries : Int = (telemetry_entries?.entries.count) ?? 0
         if (count_entries > 0) {
             if let entry = telemetry_entries?.entries[indexPath.row] {
                 cell.textLabel?.text = entry.value;

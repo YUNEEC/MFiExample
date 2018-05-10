@@ -28,24 +28,38 @@
 		081F7919209A0522003B84C7 /* BaseFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 08626F2C2098FD0500C3101E /* BaseFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		081F791A209A0522003B84C7 /* MFiAdapter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08626F2F2098FD0500C3101E /* MFiAdapter.framework */; };
 		081F791B209A0522003B84C7 /* MFiAdapter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 08626F2F2098FD0500C3101E /* MFiAdapter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		08248B95209A13FF001D0B22 /* Pods_YuneecMFiDataTransfer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08248B94209A13FF001D0B22 /* Pods_YuneecMFiDataTransfer.framework */; };
-		08248B96209A13FF001D0B22 /* Pods_YuneecMFiDataTransfer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 08248B94209A13FF001D0B22 /* Pods_YuneecMFiDataTransfer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		08248B97209A13FF001D0B22 /* Pods_YuneecMFiExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B58AE5A9AEE1A6FBCBD5E122 /* Pods_YuneecMFiExample.framework */; };
-		08248B98209A13FF001D0B22 /* Pods_YuneecMFiExample.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B58AE5A9AEE1A6FBCBD5E122 /* Pods_YuneecMFiExample.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		08248B9A209A13FF001D0B22 /* Pods_YuneecWifiDataTransfer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08248B99209A13FF001D0B22 /* Pods_YuneecWifiDataTransfer.framework */; };
-		08248B9B209A13FF001D0B22 /* Pods_YuneecWifiDataTransfer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 08248B99209A13FF001D0B22 /* Pods_YuneecWifiDataTransfer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		08248B96209A13FF001D0B22 /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		08248B98209A13FF001D0B22 /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		08248B9B209A13FF001D0B22 /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		08248BA3209A1557001D0B22 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08248BA2209A1557001D0B22 /* CFNetwork.framework */; };
 		08248BA5209A155E001D0B22 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08248BA4209A155E001D0B22 /* Foundation.framework */; };
 		08248BA7209A1565001D0B22 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08248BA6209A1565001D0B22 /* Security.framework */; };
 		08248BDB209A243B001D0B22 /* CocoaAsyncSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08248BDA209A243B001D0B22 /* CocoaAsyncSocket.framework */; };
 		08248BDC209A243B001D0B22 /* CocoaAsyncSocket.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 08248BDA209A243B001D0B22 /* CocoaAsyncSocket.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		084B0D3B5BCBB014E70587C3 /* Pods_YuneecMFiExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B58AE5A9AEE1A6FBCBD5E122 /* Pods_YuneecMFiExample.framework */; };
 		08626F0B2098F48000C3101E /* ST10CViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08626F0A2098F48000C3101E /* ST10CViewController.swift */; };
 		088356592099F5BB000417D3 /* MediaBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08626F212098FD0500C3101E /* MediaBase.framework */; };
 		0883565B2099F5BB000417D3 /* FFMpegDemuxer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08626F242098FD0500C3101E /* FFMpegDemuxer.framework */; };
 		0883565D2099F5BB000417D3 /* FFMpegLowDelayDemuxer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08626F272098FD0500C3101E /* FFMpegLowDelayDemuxer.framework */; };
 		0883565F2099F5BB000417D3 /* BaseFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08626F2C2098FD0500C3101E /* BaseFramework.framework */; };
 		088356612099F5BB000417D3 /* MFiAdapter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08626F2F2098FD0500C3101E /* MFiAdapter.framework */; };
+		08D3A05520A2370A0046B175 /* Dronecode_SDK_Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08D3A04C20A2370A0046B175 /* Dronecode_SDK_Swift.framework */; };
+		08D3A05620A2370A0046B175 /* Dronecode_SDK_Swift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 08D3A04C20A2370A0046B175 /* Dronecode_SDK_Swift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		08D3A05720A2370A0046B175 /* gRPC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08D3A04D20A2370A0046B175 /* gRPC.framework */; };
+		08D3A05820A2370A0046B175 /* gRPC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 08D3A04D20A2370A0046B175 /* gRPC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		08D3A05920A2370A0046B175 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08D3A04E20A2370A0046B175 /* RxSwift.framework */; };
+		08D3A05A20A2370A0046B175 /* RxSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 08D3A04E20A2370A0046B175 /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		08D3A05B20A2370A0046B175 /* Czlib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08D3A04F20A2370A0046B175 /* Czlib.framework */; };
+		08D3A05C20A2370A0046B175 /* Czlib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 08D3A04F20A2370A0046B175 /* Czlib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		08D3A05D20A2370A0046B175 /* BoringSSL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08D3A05020A2370A0046B175 /* BoringSSL.framework */; };
+		08D3A05E20A2370A0046B175 /* BoringSSL.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 08D3A05020A2370A0046B175 /* BoringSSL.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		08D3A05F20A2370A0046B175 /* CgRPC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08D3A05120A2370A0046B175 /* CgRPC.framework */; };
+		08D3A06020A2370A0046B175 /* CgRPC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 08D3A05120A2370A0046B175 /* CgRPC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		08D3A06120A2370A0046B175 /* backend.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08D3A05220A2370A0046B175 /* backend.framework */; };
+		08D3A06220A2370A0046B175 /* backend.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 08D3A05220A2370A0046B175 /* backend.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		08D3A06320A2370A0046B175 /* SwiftProtobuf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08D3A05320A2370A0046B175 /* SwiftProtobuf.framework */; };
+		08D3A06420A2370A0046B175 /* SwiftProtobuf.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 08D3A05320A2370A0046B175 /* SwiftProtobuf.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		08D3A06520A2370A0046B175 /* SwiftProtobufPluginLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08D3A05420A2370A0046B175 /* SwiftProtobufPluginLibrary.framework */; };
+		08D3A06620A2370A0046B175 /* SwiftProtobufPluginLibrary.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 08D3A05420A2370A0046B175 /* SwiftProtobufPluginLibrary.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2C0648C72091DC06002BD970 /* ExampleMission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0648C62091DC06002BD970 /* ExampleMission.swift */; };
 		2C0648CE2091FCC6002BD970 /* DroneState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0648CD2091FCC6002BD970 /* DroneState.swift */; };
 		2C0648D1209214DB002BD970 /* DroneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0648CF209214DB002BD970 /* DroneView.swift */; };
@@ -61,6 +75,7 @@
 		2CCEB7992089F2510086AA37 /* CoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCEB7982089F2510086AA37 /* CoreManager.swift */; };
 		2CDBF021207652340064C8A5 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDBF020207652340064C8A5 /* MapViewController.swift */; };
 		2CFF7271207750AF0060D31B /* ActionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFF7270207750AF0060D31B /* ActionsViewController.swift */; };
+		61F399981CC2D8826073CCB6 /* Pods_YuneecMFiExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67F5D7E439748F5235ECEA52 /* Pods_YuneecMFiExample.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,10 +95,15 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				08248B98209A13FF001D0B22 /* Pods_YuneecMFiExample.framework in Embed Frameworks */,
-				08248B9B209A13FF001D0B22 /* Pods_YuneecWifiDataTransfer.framework in Embed Frameworks */,
-				08248B96209A13FF001D0B22 /* Pods_YuneecMFiDataTransfer.framework in Embed Frameworks */,
+				08248B98209A13FF001D0B22 /* (null) in Embed Frameworks */,
+				08248B9B209A13FF001D0B22 /* (null) in Embed Frameworks */,
+				08D3A06220A2370A0046B175 /* backend.framework in Embed Frameworks */,
+				08248B96209A13FF001D0B22 /* (null) in Embed Frameworks */,
 				081F7911209A0522003B84C7 /* YuneecDataTransferManager.framework in Embed Frameworks */,
+				08D3A05E20A2370A0046B175 /* BoringSSL.framework in Embed Frameworks */,
+				08D3A05820A2370A0046B175 /* gRPC.framework in Embed Frameworks */,
+				08D3A06020A2370A0046B175 /* CgRPC.framework in Embed Frameworks */,
+				08D3A05A20A2370A0046B175 /* RxSwift.framework in Embed Frameworks */,
 				081F7915209A0522003B84C7 /* FFMpegDemuxer.framework in Embed Frameworks */,
 				081F790F209A0522003B84C7 /* YuneecWifiDataTransfer.framework in Embed Frameworks */,
 				08248BDC209A243B001D0B22 /* CocoaAsyncSocket.framework in Embed Frameworks */,
@@ -91,7 +111,11 @@
 				081F790D209A0522003B84C7 /* YuneecMFiDataTransfer.framework in Embed Frameworks */,
 				081F791B209A0522003B84C7 /* MFiAdapter.framework in Embed Frameworks */,
 				081F7919209A0522003B84C7 /* BaseFramework.framework in Embed Frameworks */,
+				08D3A05620A2370A0046B175 /* Dronecode_SDK_Swift.framework in Embed Frameworks */,
+				08D3A06420A2370A0046B175 /* SwiftProtobuf.framework in Embed Frameworks */,
 				081F7917209A0522003B84C7 /* FFMpegLowDelayDemuxer.framework in Embed Frameworks */,
+				08D3A06620A2370A0046B175 /* SwiftProtobufPluginLibrary.framework in Embed Frameworks */,
+				08D3A05C20A2370A0046B175 /* Czlib.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -105,9 +129,6 @@
 		081F7906209A01AF003B84C7 /* FFMpegLowDelayDemuxer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FFMpegLowDelayDemuxer.framework; path = "../../Library/Developer/Xcode/DerivedData/MFiExample-bcibciyloqwtqtfxyegkctrxgdzb/Build/Products/Debug-iphoneos/FFMpegLowDelayDemuxer.framework"; sourceTree = "<group>"; };
 		081F7908209A01B3003B84C7 /* FFMpegDemuxer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FFMpegDemuxer.framework; path = "../../Library/Developer/Xcode/DerivedData/MFiExample-bcibciyloqwtqtfxyegkctrxgdzb/Build/Products/Debug-iphoneos/FFMpegDemuxer.framework"; sourceTree = "<group>"; };
 		081F790A209A01CC003B84C7 /* YuneecWifiDataTransfer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YuneecWifiDataTransfer.framework; path = "../../Library/Developer/Xcode/DerivedData/MFiExample-bcibciyloqwtqtfxyegkctrxgdzb/Build/Products/Debug-iphoneos/YuneecWifiDataTransfer.framework"; sourceTree = "<group>"; };
-		08248B91209A13E9001D0B22 /* Pods_MFiAdapter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_MFiAdapter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		08248B94209A13FF001D0B22 /* Pods_YuneecMFiDataTransfer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_YuneecMFiDataTransfer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		08248B99209A13FF001D0B22 /* Pods_YuneecWifiDataTransfer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_YuneecWifiDataTransfer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		08248BA2209A1557001D0B22 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		08248BA4209A155E001D0B22 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		08248BA6209A1565001D0B22 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -123,7 +144,15 @@
 		08626F272098FD0500C3101E /* FFMpegLowDelayDemuxer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FFMpegLowDelayDemuxer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		08626F2C2098FD0500C3101E /* BaseFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BaseFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		08626F2F2098FD0500C3101E /* MFiAdapter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MFiAdapter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		0A1B33127B432CD871F789A1 /* Pods-YuneecMFiExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YuneecMFiExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YuneecMFiExample/Pods-YuneecMFiExample.debug.xcconfig"; sourceTree = "<group>"; };
+		08D3A04C20A2370A0046B175 /* Dronecode_SDK_Swift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Dronecode_SDK_Swift.framework; path = frameworks/Dronecode_SDK_Swift.framework; sourceTree = "<group>"; };
+		08D3A04D20A2370A0046B175 /* gRPC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = gRPC.framework; path = frameworks/gRPC.framework; sourceTree = "<group>"; };
+		08D3A04E20A2370A0046B175 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = frameworks/RxSwift.framework; sourceTree = "<group>"; };
+		08D3A04F20A2370A0046B175 /* Czlib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Czlib.framework; path = frameworks/Czlib.framework; sourceTree = "<group>"; };
+		08D3A05020A2370A0046B175 /* BoringSSL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BoringSSL.framework; path = frameworks/BoringSSL.framework; sourceTree = "<group>"; };
+		08D3A05120A2370A0046B175 /* CgRPC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CgRPC.framework; path = frameworks/CgRPC.framework; sourceTree = "<group>"; };
+		08D3A05220A2370A0046B175 /* backend.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = backend.framework; path = frameworks/backend.framework; sourceTree = "<group>"; };
+		08D3A05320A2370A0046B175 /* SwiftProtobuf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftProtobuf.framework; path = frameworks/SwiftProtobuf.framework; sourceTree = "<group>"; };
+		08D3A05420A2370A0046B175 /* SwiftProtobufPluginLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftProtobufPluginLibrary.framework; path = frameworks/SwiftProtobufPluginLibrary.framework; sourceTree = "<group>"; };
 		2C0648C62091DC06002BD970 /* ExampleMission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleMission.swift; sourceTree = "<group>"; };
 		2C0648CD2091FCC6002BD970 /* DroneState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DroneState.swift; sourceTree = "<group>"; };
 		2C0648CF209214DB002BD970 /* DroneView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DroneView.swift; path = DronecodeSDKSwiftDemo/Views/DroneView.swift; sourceTree = SOURCE_ROOT; };
@@ -143,8 +172,9 @@
 		2CCEB7982089F2510086AA37 /* CoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreManager.swift; sourceTree = "<group>"; };
 		2CDBF020207652340064C8A5 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		2CFF7270207750AF0060D31B /* ActionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionsViewController.swift; sourceTree = "<group>"; };
-		B58AE5A9AEE1A6FBCBD5E122 /* Pods_YuneecMFiExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YuneecMFiExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EA012A38391C9DEA9F22A602 /* Pods-YuneecMFiExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YuneecMFiExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-YuneecMFiExample/Pods-YuneecMFiExample.release.xcconfig"; sourceTree = "<group>"; };
+		4ED239A37B3125018BB65E69 /* Pods-YuneecMFiExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YuneecMFiExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-YuneecMFiExample/Pods-YuneecMFiExample.release.xcconfig"; sourceTree = "<group>"; };
+		67F5D7E439748F5235ECEA52 /* Pods_YuneecMFiExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YuneecMFiExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		841FD3A1D3B50BCDDCF2A6AB /* Pods-YuneecMFiExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YuneecMFiExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YuneecMFiExample/Pods-YuneecMFiExample.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,31 +183,37 @@
 			buildActionMask = 2147483647;
 			files = (
 				08248BA7209A1565001D0B22 /* Security.framework in Frameworks */,
+				08D3A05520A2370A0046B175 /* Dronecode_SDK_Swift.framework in Frameworks */,
+				08D3A06520A2370A0046B175 /* SwiftProtobufPluginLibrary.framework in Frameworks */,
+				08D3A05720A2370A0046B175 /* gRPC.framework in Frameworks */,
 				08248BA5209A155E001D0B22 /* Foundation.framework in Frameworks */,
 				08248BA3209A1557001D0B22 /* CFNetwork.framework in Frameworks */,
 				081F78E22099F8AD003B84C7 /* YuneecDataTransferManager.framework in Frameworks */,
+				08D3A05920A2370A0046B175 /* RxSwift.framework in Frameworks */,
 				081F791A209A0522003B84C7 /* MFiAdapter.framework in Frameworks */,
 				081F790C209A0522003B84C7 /* YuneecMFiDataTransfer.framework in Frameworks */,
 				088356592099F5BB000417D3 /* MediaBase.framework in Frameworks */,
 				0883565D2099F5BB000417D3 /* FFMpegLowDelayDemuxer.framework in Frameworks */,
 				08248BDB209A243B001D0B22 /* CocoaAsyncSocket.framework in Frameworks */,
 				081F78FA2099FB69003B84C7 /* YuneecWifiDataTransfer.framework in Frameworks */,
+				08D3A06120A2370A0046B175 /* backend.framework in Frameworks */,
 				081F790E209A0522003B84C7 /* YuneecWifiDataTransfer.framework in Frameworks */,
-				08248B95209A13FF001D0B22 /* Pods_YuneecMFiDataTransfer.framework in Frameworks */,
+				08D3A06320A2370A0046B175 /* SwiftProtobuf.framework in Frameworks */,
 				081F7916209A0522003B84C7 /* FFMpegLowDelayDemuxer.framework in Frameworks */,
 				081F78FC2099FB86003B84C7 /* YuneecWifiDataTransfer.framework in Frameworks */,
-				08248B97209A13FF001D0B22 /* Pods_YuneecMFiExample.framework in Frameworks */,
+				08D3A05F20A2370A0046B175 /* CgRPC.framework in Frameworks */,
 				081F7910209A0522003B84C7 /* YuneecDataTransferManager.framework in Frameworks */,
 				081F78DE2099F8AD003B84C7 /* YuneecMFiDataTransfer.framework in Frameworks */,
+				08D3A05D20A2370A0046B175 /* BoringSSL.framework in Frameworks */,
 				088356612099F5BB000417D3 /* MFiAdapter.framework in Frameworks */,
 				081F7912209A0522003B84C7 /* MediaBase.framework in Frameworks */,
 				0883565B2099F5BB000417D3 /* FFMpegDemuxer.framework in Frameworks */,
 				081F78FE2099FF94003B84C7 /* YuneecWifiDataTransfer.framework in Frameworks */,
-				08248B9A209A13FF001D0B22 /* Pods_YuneecWifiDataTransfer.framework in Frameworks */,
 				0883565F2099F5BB000417D3 /* BaseFramework.framework in Frameworks */,
 				081F7914209A0522003B84C7 /* FFMpegDemuxer.framework in Frameworks */,
+				08D3A05B20A2370A0046B175 /* Czlib.framework in Frameworks */,
 				081F7918209A0522003B84C7 /* BaseFramework.framework in Frameworks */,
-				084B0D3B5BCBB014E70587C3 /* Pods_YuneecMFiExample.framework in Frameworks */,
+				61F399981CC2D8826073CCB6 /* Pods_YuneecMFiExample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,10 +250,16 @@
 		2C365EB4207610C500F42184 = {
 			isa = PBXGroup;
 			children = (
+				08D3A05220A2370A0046B175 /* backend.framework */,
+				08D3A05020A2370A0046B175 /* BoringSSL.framework */,
+				08D3A05120A2370A0046B175 /* CgRPC.framework */,
+				08D3A04F20A2370A0046B175 /* Czlib.framework */,
+				08D3A04C20A2370A0046B175 /* Dronecode_SDK_Swift.framework */,
+				08D3A04D20A2370A0046B175 /* gRPC.framework */,
+				08D3A04E20A2370A0046B175 /* RxSwift.framework */,
+				08D3A05320A2370A0046B175 /* SwiftProtobuf.framework */,
+				08D3A05420A2370A0046B175 /* SwiftProtobufPluginLibrary.framework */,
 				08248BDA209A243B001D0B22 /* CocoaAsyncSocket.framework */,
-				08248B99209A13FF001D0B22 /* Pods_YuneecWifiDataTransfer.framework */,
-				08248B94209A13FF001D0B22 /* Pods_YuneecMFiDataTransfer.framework */,
-				08248B91209A13E9001D0B22 /* Pods_MFiAdapter.framework */,
 				081F790A209A01CC003B84C7 /* YuneecWifiDataTransfer.framework */,
 				081F7908209A01B3003B84C7 /* FFMpegDemuxer.framework */,
 				081F7906209A01AF003B84C7 /* FFMpegLowDelayDemuxer.framework */,
@@ -237,8 +279,8 @@
 				2C365ED4207610C500F42184 /* DronecodeSDKSwiftDemoTests */,
 				2C365EBE207610C500F42184 /* Products */,
 				0895E59F2098F2CB00224A30 /* Recovered References */,
-				65CDB9E203EC03249F44BEC5 /* Pods */,
 				7C24E977FB012720175F8DA1 /* Frameworks */,
+				576AFA065813E53F600E3842 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -294,11 +336,11 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		65CDB9E203EC03249F44BEC5 /* Pods */ = {
+		576AFA065813E53F600E3842 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				0A1B33127B432CD871F789A1 /* Pods-YuneecMFiExample.debug.xcconfig */,
-				EA012A38391C9DEA9F22A602 /* Pods-YuneecMFiExample.release.xcconfig */,
+				841FD3A1D3B50BCDDCF2A6AB /* Pods-YuneecMFiExample.debug.xcconfig */,
+				4ED239A37B3125018BB65E69 /* Pods-YuneecMFiExample.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -310,7 +352,7 @@
 				08248BA6209A1565001D0B22 /* Security.framework */,
 				08248BA4209A155E001D0B22 /* Foundation.framework */,
 				08248BA2209A1557001D0B22 /* CFNetwork.framework */,
-				B58AE5A9AEE1A6FBCBD5E122 /* Pods_YuneecMFiExample.framework */,
+				67F5D7E439748F5235ECEA52 /* Pods_YuneecMFiExample.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -322,12 +364,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2C365EDA207610C500F42184 /* Build configuration list for PBXNativeTarget "YuneecMFiExample" */;
 			buildPhases = (
-				F99D8BF4BF31784FEE11035B /* [CP] Check Pods Manifest.lock */,
+				2FDAD828D52224C80255026D /* [CP] Check Pods Manifest.lock */,
 				2C365EB9207610C500F42184 /* Sources */,
 				2C365EBA207610C500F42184 /* Frameworks */,
 				2C365EBB207610C500F42184 /* Resources */,
 				08665B162099F3EE00E77EC5 /* Embed Frameworks */,
-				BC2774D4C95D8A9BC5A4DEDB /* [CP] Embed Pods Frameworks */,
+				DE13F3DD63E5F6A15021FA29 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -417,45 +459,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		BC2774D4C95D8A9BC5A4DEDB /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-YuneecMFiExample/Pods-YuneecMFiExample-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/CocoaAsyncSocket/CocoaAsyncSocket.framework",
-				"${PODS_ROOT}/DroneCore-Swift/backend.framework",
-				"${PODS_ROOT}/DroneCore-Swift/BoringSSL.framework",
-				"${PODS_ROOT}/DroneCore-Swift/CgRPC.framework",
-				"${PODS_ROOT}/DroneCore-Swift/Czlib.framework",
-				"${PODS_ROOT}/DroneCore-Swift/Dronecode_SDK_Swift.framework",
-				"${PODS_ROOT}/DroneCore-Swift/gRPC.framework",
-				"${PODS_ROOT}/DroneCore-Swift/RxSwift.framework",
-				"${PODS_ROOT}/DroneCore-Swift/RxBlocking.framework",
-				"${PODS_ROOT}/DroneCore-Swift/SwiftProtobuf.framework",
-				"${PODS_ROOT}/DroneCore-Swift/SwiftProtobufPluginLibrary.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaAsyncSocket.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/backend.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BoringSSL.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CgRPC.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Czlib.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Dronecode_SDK_Swift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/gRPC.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxBlocking.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftProtobuf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftProtobufPluginLibrary.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-YuneecMFiExample/Pods-YuneecMFiExample-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F99D8BF4BF31784FEE11035B /* [CP] Check Pods Manifest.lock */ = {
+		2FDAD828D52224C80255026D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -471,6 +475,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DE13F3DD63E5F6A15021FA29 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-YuneecMFiExample/Pods-YuneecMFiExample-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/CocoaAsyncSocket/CocoaAsyncSocket.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaAsyncSocket.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-YuneecMFiExample/Pods-YuneecMFiExample-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -642,7 +664,7 @@
 		};
 		2C365EDB207610C500F42184 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0A1B33127B432CD871F789A1 /* Pods-YuneecMFiExample.debug.xcconfig */;
+			baseConfigurationReference = 841FD3A1D3B50BCDDCF2A6AB /* Pods-YuneecMFiExample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -652,6 +674,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/frameworks",
 				);
 				INFOPLIST_FILE = DronecodeSDKSwiftDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path @executable_path/Frameworks";
@@ -667,7 +690,7 @@
 		};
 		2C365EDC207610C500F42184 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EA012A38391C9DEA9F22A602 /* Pods-YuneecMFiExample.release.xcconfig */;
+			baseConfigurationReference = 4ED239A37B3125018BB65E69 /* Pods-YuneecMFiExample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -677,6 +700,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/frameworks",
 				);
 				INFOPLIST_FILE = DronecodeSDKSwiftDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path @executable_path/Frameworks";
