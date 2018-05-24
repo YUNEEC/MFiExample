@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SVY-Tk-qzm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SVY-Tk-qzm">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,7 +14,7 @@
         <!--Map-->
         <scene sceneID="kWy-7e-hNk">
             <objects>
-                <viewController id="F62-mM-U7q" customClass="MapViewController" customModule="DronecodeSDKSwiftDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="F62-mM-U7q" customClass="MapViewController" customModule="YuneecMFiExample" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xqR-O2-rKl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -136,7 +137,7 @@
         <!--Telemetry-->
         <scene sceneID="RNB-95-TvJ">
             <objects>
-                <viewController id="GQQ-gj-UNt" customClass="TelemetryViewController" customModule="DronecodeSDKSwiftDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="GQQ-gj-UNt" customClass="TelemetryViewController" customModule="YuneecMFiExample" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eXn-J0-X2U" userLabel="Main View">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -267,7 +268,7 @@
         <!--Actions-->
         <scene sceneID="Y9y-Gu-WfD">
             <objects>
-                <viewController id="sxF-oW-WnJ" userLabel="Actions" customClass="ActionsViewController" customModule="DronecodeSDKSwiftDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="sxF-oW-WnJ" userLabel="Actions" customClass="ActionsViewController" customModule="YuneecMFiExample" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="D0b-UQ-ara" userLabel="Main View">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -378,7 +379,7 @@
         <!--ST10C-->
         <scene sceneID="3uu-Yk-OLA">
             <objects>
-                <viewController id="udP-fu-UjY" userLabel="ST10C" customClass="ST10CViewController" customModule="DronecodeSDKSwiftDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="udP-fu-UjY" userLabel="ST10C" customClass="ST10CViewController" customModule="YuneecMFiExample" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0AQ-ir-lj8" userLabel="Main View">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -393,17 +394,19 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="highlightedColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="logo-DroneCore-thumb" translatesAutoresizingMaskIntoConstraints="NO" id="jc1-NH-qRS">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-DroneCore-thumb" translatesAutoresizingMaskIntoConstraints="NO" id="Axm-N9-0r2">
                                         <rect key="frame" x="8" y="25" width="80" height="18"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="18" id="JH7-10-kva"/>
-                                            <constraint firstAttribute="width" constant="80" id="avR-QF-8cU"/>
+                                            <constraint firstAttribute="height" constant="18" id="BjV-dQ-zBb"/>
+                                            <constraint firstAttribute="width" constant="80" id="Fsh-sP-heV"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.4406479895" green="0.51737356189999995" blue="0.52941578629999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
+                                    <constraint firstItem="Axm-N9-0r2" firstAttribute="leading" secondItem="vKA-S2-Ied" secondAttribute="leading" constant="8" id="4EH-ga-3C4"/>
                                     <constraint firstAttribute="height" constant="68" id="RQT-3S-VVh"/>
+                                    <constraint firstItem="Axm-N9-0r2" firstAttribute="top" secondItem="vKA-S2-Ied" secondAttribute="top" constant="25" id="kFv-qj-rT8"/>
                                     <constraint firstItem="fqz-VW-SLN" firstAttribute="centerY" secondItem="vKA-S2-Ied" secondAttribute="centerY" id="twB-iy-hhB"/>
                                     <constraint firstItem="fqz-VW-SLN" firstAttribute="centerX" secondItem="vKA-S2-Ied" secondAttribute="centerX" id="we3-dm-jNN"/>
                                 </constraints>
@@ -411,15 +414,31 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Ew-I6-nFM">
                                 <rect key="frame" x="0.0" y="144" width="375" height="378"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="About controller..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="1q2-oD-NG2">
-                                        <rect key="frame" x="67" y="44" width="240" height="320"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="i3m-gI-phw">
+                                        <rect key="frame" x="54" y="25" width="158" height="138"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="h4C-Vq-1IX">
+                                                <rect key="frame" x="0.0" y="0.0" width="158" height="138"/>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="About controller..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="1q2-oD-NG2">
+                                        <rect key="frame" x="10" y="10" width="355" height="138"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="1q2-oD-NG2" secondAttribute="height" multiplier="355:138" id="Tgx-gF-ll8"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="1q2-oD-NG2" secondAttribute="trailing" constant="10" id="92k-gy-DYs"/>
+                                    <constraint firstItem="1q2-oD-NG2" firstAttribute="leading" secondItem="3Ew-I6-nFM" secondAttribute="leading" constant="10" id="HK2-fk-RB6"/>
+                                    <constraint firstItem="1q2-oD-NG2" firstAttribute="top" secondItem="3Ew-I6-nFM" secondAttribute="top" constant="10" id="IGJ-QN-Atq"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -441,7 +460,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7nS-Cx-DnB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1646" y="949"/>
+            <point key="canvasLocation" x="1645.5999999999999" y="948.57571214392806"/>
         </scene>
     </scenes>
     <resources>
