@@ -30,11 +30,11 @@ class BindViewController: UIViewController {
             if error != nil {
                 self.wifiArray.removeAll()
                 DispatchQueue.main.async {
-                    BindViewController.showAlert(error, self)
+                    BindViewController.showAlert(error as? String, viewController: self)
                 }
             } else {
                 self.wifiArray.removeAll()
-                for wifi in wifis {
+                for wifi in wifis! {
                     self.wifiArray.append(wifi)
                 }
                 
@@ -48,10 +48,10 @@ class BindViewController: UIViewController {
     @IBAction func bind(_ sender: UIButton) {
         view.endEditing(true)
         
-        wifiSelected = wifiSSIDText.text
-        wifiPassword = wifiPwdText.text
+        wifiSelected = wifiSSIDText.text!
+        wifiPassword = wifiPwdText.text!
         
-        MFiAdapter.MFiRemoteControllerAdapter.sharedInstance().bindCameraWifi(wifiSelected, password: wifiPassword, block: { (error) in
+        MFiAdapter.MFiRemoteControllerAdapter.sharedInstance().bindCameraWifi(wifiSelected, wifiPassword, { (error) in
             let message = error != nil ? "Error biding camera: \(error!.localizedDescription)" : "Pairing Successful!"
             
             DispatchQueue.main.async {
@@ -73,7 +73,7 @@ class BindViewController: UIViewController {
         wifiList.dataSource = self
         
         // Configure Refresh
-        wifiList.refreshControl = refreshControl
+        // wifiList.refreshControl = refreshControl // unresolved identifier...
         
         // Configure Tableview
         wifiList.layer.borderColor = UIColor.lightGray.cgColor
