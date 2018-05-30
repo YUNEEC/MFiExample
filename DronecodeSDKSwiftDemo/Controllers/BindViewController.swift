@@ -50,15 +50,37 @@ class BindViewController: UIViewController {
         wifiSelected = wifiSSIDText.text!
         wifiPassword = wifiPwdText.text!
         
-        MFiAdapter.MFiRemoteControllerAdapter.sharedInstance().bindCameraWifi(wifiSelected, wifiPassword, { (error) in
-            let message = error != nil ? "Error biding camera: \(error!.localizedDescription)" : "Pairing Successful!"
+        MFiAdapter.MFiRemoteControllerAdapter.sharedInstance().bindCameraWifi(wifiSelected, wifiPassword: wifiPassword) { (error) in
+            let message = error != nil ? "Error binding camera: \(error!.localizedDescription)" : "Pairing Successful!"
             
             DispatchQueue.main.async {
                 BindViewController.showAlert(message, viewController: self)
                 self.wifiPwdText.text = ""
                 self.wifiSSIDText.text = ""
+        }
+      }
+    }
+    
+    @IBAction func getBindStatus(_ sender: UIButton) {
+        MFiAdapter.MFiRemoteControllerAdapter.sharedInstance().getCameraWifiBindStatus { (error, wifiInfo) in
+            if error != nil {
+                DispatchQueue.main.async {
+                    BindViewController.showAlert(error as? String, viewController: self)
+                }
+            } else {
+                print(wifiInfo!.ipAddress);
             }
-        })
+        }
+    }
+    
+    @IBAction func unBind(_ sender: UIButton) {
+        MFiAdapter.MFiRemoteControllerAdapter.sharedInstance().unBindCameraWifi { (error) in
+            let message = error != nil ? "Error unbinding camera" : "UnBinding Successful!"
+            
+            DispatchQueue.main.async {
+                BindViewController.showAlert(message, viewController: self)
+            }
+        }
     }
     
     override func viewDidLoad() {
