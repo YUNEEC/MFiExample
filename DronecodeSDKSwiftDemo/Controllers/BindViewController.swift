@@ -47,7 +47,6 @@ class BindViewController: UIViewController {
     
     @IBAction func bind(_ sender: UIButton) {
         view.endEditing(true)
-        
         wifiSelected = wifiSSIDText.text!
         wifiPassword = wifiPwdText.text!
         
@@ -71,7 +70,8 @@ class BindViewController: UIViewController {
         
         wifiList.delegate = self
         wifiList.dataSource = self
-        
+        wifiSSIDText.placeholder = "Wifi SSID"
+        wifiPwdText.placeholder = "Wifi Password"
         // Configure Refresh
         // wifiList.refreshControl = refreshControl // unresolved identifier...
         
@@ -117,5 +117,9 @@ extension BindViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "wifiName")!
         cell.textLabel?.text = wifiArray[indexPath.row].ssid
         return(cell)
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.wifiSSIDText.text = wifiArray[indexPath.row].ssid
     }
 }
