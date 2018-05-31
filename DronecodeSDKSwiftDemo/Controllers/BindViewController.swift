@@ -68,7 +68,7 @@ class BindViewController: UIViewController {
                     BindViewController.showAlert(error as? String, viewController: self)
                 }
             } else {
-                print(wifiInfo!.ipAddress);
+                BindViewController.showAlert("Binding to: \(wifiInfo!.ssid)" , viewController: self)
             }
         }
     }
