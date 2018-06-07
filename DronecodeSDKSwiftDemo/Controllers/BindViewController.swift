@@ -24,6 +24,32 @@ class BindViewController: UIViewController {
     
     var wifiArray = [YuneecRemoteControllerCameraWifiInfo]()
     
+    @IBAction func scanRC(_ sender: UIButton) {
+        MFiAdapter.MFiRemoteControllerAdapter.sharedInstance().scanAutoPilot { (error, ids) in
+            
+            if error != nil {
+                DispatchQueue.main.async {
+                    BindViewController.showAlert(error as? String, viewController: self)
+                }
+            } else {
+                for id in ids! {
+                    print(id);
+                }
+            }
+        }
+    }
+    
+    @IBAction func bindRC(_ sender: UIButton) {
+        let autoPilotId: String = ""
+        MFiAdapter.MFiRemoteControllerAdapter.sharedInstance().bindAutoPilot(autoPilotId) { (error) in
+            let message = error != nil ? "Error in rc binding: \(error!.localizedDescription)" : "RC Binding Successful!"
+            
+            DispatchQueue.main.async {
+                BindViewController.showAlert(message, viewController: self)
+            }
+        }
+    }
+    
     @IBAction func scanWifi(_ sender: UIButton) {
         MFiAdapter.MFiRemoteControllerAdapter.sharedInstance().scanCameraWifi { (error, wifis) in
             
