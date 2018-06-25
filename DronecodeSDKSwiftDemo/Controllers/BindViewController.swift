@@ -21,6 +21,7 @@ class BindViewController: UIViewController {
     
     var wifiSelected: String = ""
     var wifiPassword: String = ""
+    var autoPilotId: String = ""
     
     var wifiArray = [YuneecRemoteControllerCameraWifiInfo]()
     
@@ -34,16 +35,16 @@ class BindViewController: UIViewController {
             } else {
                 for id in ids! {
                     print(id);
+                    self.autoPilotId = String(format: "%@", id as! CVarArg)
+                    BindViewController.showAlert("Scanned Id is: \(self.autoPilotId)", viewController:self)
                 }
             }
         }
     }
     
     @IBAction func bindRC(_ sender: UIButton) {
-        let autoPilotId: String = ""
-        MFiAdapter.MFiRemoteControllerAdapter.sharedInstance().bindAutoPilot(autoPilotId) { (error) in
-            let message = error != nil ? "Error in rc binding: \(error!.localizedDescription)" : "RC Binding Successful!"
-            
+        MFiAdapter.MFiRemoteControllerAdapter.sharedInstance().bindAutoPilot(self.autoPilotId) { (error) in
+            let message = error != nil ? "Error in rc binding to \(self.autoPilotId) : \(error!.localizedDescription)" : "RC Binding to \(self.autoPilotId) Successful! No Error Returned"
             DispatchQueue.main.async {
                 BindViewController.showAlert(message, viewController: self)
             }
@@ -102,6 +103,15 @@ class BindViewController: UIViewController {
     @IBAction func unBind(_ sender: UIButton) {
         MFiAdapter.MFiRemoteControllerAdapter.sharedInstance().unBindCameraWifi { (error) in
             let message = error != nil ? "Error unbinding camera" : "UnBinding Successful!"
+            DispatchQueue.main.async {
+                BindViewController.showAlert(message, viewController: self)
+            }
+        }
+    }
+    
+    @IBAction func unBindRC(_ sender: UIButton) {
+        MFiAdapter.MFiRemoteControllerAdapter.sharedInstance().unBindRC { (error) in
+            let message = error != nil ? "Error unbinding RC" : "UnBinding Successful!"
             
             DispatchQueue.main.async {
                 BindViewController.showAlert(message, viewController: self)
