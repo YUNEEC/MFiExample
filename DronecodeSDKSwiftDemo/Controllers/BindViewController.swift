@@ -119,6 +119,15 @@ class BindViewController: UIViewController {
         }
     }
     
+    @IBAction func exitBind(_ sender: UIButton) {
+        MFiAdapter.MFiRemoteControllerAdapter.sharedInstance().exitBind { (error) in
+            let message = error != nil ? "Error exiting Bind" : "Exit Bind Successful!"
+            
+            DispatchQueue.main.async {
+                BindViewController.showAlert(message, viewController: self)
+            }
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
