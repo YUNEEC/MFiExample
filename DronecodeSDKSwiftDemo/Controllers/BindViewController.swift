@@ -44,7 +44,7 @@ class BindViewController: UIViewController {
     
     @IBAction func bindRC(_ sender: UIButton) {
         MFiAdapter.MFiRemoteControllerAdapter.sharedInstance().bindAutoPilot(self.autoPilotId) { (error) in
-            let message = error != nil ? "Error in rc binding to \(self.autoPilotId) : \(error!.localizedDescription)" : "RC Binding to \(self.autoPilotId) Successful! No Error Returned"
+            let message = ((error != nil) ? "Error in rc binding to \(self.autoPilotId) : \(error!.localizedDescription)" : "RC Binding to \(self.autoPilotId) Successful! No Error Returned")
             DispatchQueue.main.async {
                 BindViewController.showAlert(message, viewController: self)
             }
@@ -78,7 +78,7 @@ class BindViewController: UIViewController {
         wifiPassword = wifiPwdText.text!
         
         MFiAdapter.MFiRemoteControllerAdapter.sharedInstance().bindCameraWifi(wifiSelected, wifiPassword: wifiPassword) { (error) in
-            let message = error != nil ? "Error binding camera: \(error!.localizedDescription)" : "Pairing Successful!"
+            let message = ((error != nil) ? "Error binding camera: \(error!.localizedDescription)" : "Pairing Successful!")
             
             DispatchQueue.main.async {
                 BindViewController.showAlert(message, viewController: self)
@@ -102,7 +102,7 @@ class BindViewController: UIViewController {
     
     @IBAction func unBind(_ sender: UIButton) {
         MFiAdapter.MFiRemoteControllerAdapter.sharedInstance().unBindCameraWifi { (error) in
-            let message = error != nil ? "Error unbinding camera" : "UnBinding Successful!"
+            let message = ((error != nil) ? "Error unbinding camera: \(error!.localizedDescription)" : "UnBinding Successful!")
             DispatchQueue.main.async {
                 BindViewController.showAlert(message, viewController: self)
             }
@@ -111,8 +111,7 @@ class BindViewController: UIViewController {
     
     @IBAction func unBindRC(_ sender: UIButton) {
         MFiAdapter.MFiRemoteControllerAdapter.sharedInstance().unBindRC { (error) in
-            let message = error != nil ? "Error unbinding RC" : "UnBinding Successful!"
-            
+            let message = ((error != nil) ? "Error unbinding RC: \(error!.localizedDescription)" : "UnBinding Successful!")
             DispatchQueue.main.async {
                 BindViewController.showAlert(message, viewController: self)
             }
@@ -121,7 +120,7 @@ class BindViewController: UIViewController {
     
     @IBAction func exitBind(_ sender: UIButton) {
         MFiAdapter.MFiRemoteControllerAdapter.sharedInstance().exitBind { (error) in
-            let message = error != nil ? "Error exiting Bind" : "Exit Bind Successful!"
+            let message = ((error != nil) ? "Error exiting Bind: \(error!.localizedDescription)" : "Exit Bind Successful!")
             
             DispatchQueue.main.async {
                 BindViewController.showAlert(message, viewController: self)
