@@ -9,6 +9,7 @@ This should be a minimal example app on how to connect wia MFi to the ST10C and 
    git clone git@github.com:YUNEEC/MFiExample.git
    cd MFiExample
    git submodule update --init --recursive
+   git submodule sync --recursive
    ```
 
 
