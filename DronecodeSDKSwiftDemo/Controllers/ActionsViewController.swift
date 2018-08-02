@@ -17,8 +17,8 @@ class ActionsViewController: UIViewController {
     @IBOutlet weak var armButton: UIButton!
     @IBOutlet weak var takeoffButton: UIButton!
     @IBOutlet weak var landButton: UIButton!
+    @IBOutlet weak var takePhotoButton: UIButton!
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -54,6 +54,13 @@ class ActionsViewController: UIViewController {
          .do(onError: { error in ActionsViewController.showAlert("Land failed", viewController:self) },
          onCompleted: { ActionsViewController.showAlert("Land succeeded", viewController:self) })
          _ = myRoutine.subscribe()
+    }
+    
+    @IBAction func takePhotoPressed(_ sender: Any) {
+        let myRoutine = CoreManager.shared().camera.takePhoto()
+            .do(onError: { error in ActionsViewController.showAlert("Take photo failed", viewController:self) },
+                onCompleted: { ActionsViewController.showAlert("Take photo succeeded", viewController:self) })
+        _ = myRoutine.subscribe()
     }
 
     class func showAlert(_ message: String?, viewController: UIViewController?) {
