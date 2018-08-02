@@ -36,7 +36,7 @@ class ActionsViewController: UIViewController {
     
     @IBAction func armPressed(_ sender: Any) {
         let myRoutine = CoreManager.shared().action.arm()
-            .do(onError: { error in ActionsViewController.showAlert("Arming failed : \(error.localizedDescription)", viewController:self) },
+            .do(onError: { error in ActionsViewController.showAlert("Arming failed", viewController:self) },
                 onCompleted: { ActionsViewController.showAlert("Arming succeeded",viewController:self) })
         _ = myRoutine.subscribe()
         
