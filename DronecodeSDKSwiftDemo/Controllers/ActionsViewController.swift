@@ -61,6 +61,21 @@ class ActionsViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         viewController?.present(alert, animated: true) {() -> Void in }
     }
+    
+    @IBAction func takePhotoPressed(_ sender: UIButton) {
+        
+//        let a = CoreManager.shared().camera.setMode(mode: CameraMode.photo)
+//            .do(onError: { error in ActionsViewController.showAlert("Take Photo failed : \(error.localizedDescription)", viewController:self) },
+//                onCompleted: { ActionsViewController.showAlert("Take Photo succeeded",viewController:self) })
+//        _ = a.subscribe()
+        
+        
+        let myRoutine = CoreManager.shared().camera.takePhoto()
+            .do(onError: { error in ActionsViewController.showAlert("Take Photo failed : \(error.localizedDescription)", viewController:self) },
+                onCompleted: { ActionsViewController.showAlert("Take Photo succeeded",viewController:self) })
+        _ = myRoutine.subscribe()
+    }
+    
 
 }
 
