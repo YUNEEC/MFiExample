@@ -5,9 +5,6 @@
       location = "group:MFiAdapter/MFiAdapter.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:/Users/julianoes/src/MFiExample/YuneecMFiExample.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:MFiAdapter/YuneecDataTransfer/YuneecMFiDataTransfer/YuneecMFiDataTransfer.xcodeproj">
    </FileRef>
    <FileRef
