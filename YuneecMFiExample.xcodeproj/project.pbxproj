@@ -43,8 +43,6 @@
 		08D3A06620A2370A0046B175 /* SwiftProtobufPluginLibrary.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 08D3A05420A2370A0046B175 /* SwiftProtobufPluginLibrary.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2C0648C72091DC06002BD970 /* ExampleMission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0648C62091DC06002BD970 /* ExampleMission.swift */; };
 		2C0648CE2091FCC6002BD970 /* DroneState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0648CD2091FCC6002BD970 /* DroneState.swift */; };
-		2C0648D1209214DB002BD970 /* DroneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0648CF209214DB002BD970 /* DroneView.swift */; };
-		2C0648D2209214DB002BD970 /* DroneAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0648D0209214DB002BD970 /* DroneAnnotation.swift */; };
 		2C0A6A5D208F6DB200B3E12F /* TelemetryEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0A6A5C208F6DB200B3E12F /* TelemetryEntry.swift */; };
 		2C0A6A5F208F77E500B3E12F /* TelemetryEntries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0A6A5E208F77E500B3E12F /* TelemetryEntries.swift */; };
 		2C365EC1207610C500F42184 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C365EC0207610C500F42184 /* AppDelegate.swift */; };
@@ -74,6 +72,11 @@
 		32E8718421112B9200761176 /* SwiftGRPC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32E8718321112B9200761176 /* SwiftGRPC.framework */; };
 		32E8718521112B9200761176 /* SwiftGRPC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 32E8718321112B9200761176 /* SwiftGRPC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		61F399981CC2D8826073CCB6 /* Pods_YuneecMFiExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67F5D7E439748F5235ECEA52 /* Pods_YuneecMFiExample.framework */; };
+		A551CC3F211A43C4002D85AD /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A551CC3E211A43C4002D85AD /* CameraViewController.swift */; };
+		A551CC47211A6BE5002D85AD /* CustomPinAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A551CC42211A6BE5002D85AD /* CustomPinAnnotationView.swift */; };
+		A551CC48211A6BE5002D85AD /* CustomPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A551CC43211A6BE5002D85AD /* CustomPointAnnotation.swift */; };
+		A551CC49211A6BE5002D85AD /* DroneAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A551CC45211A6BE5002D85AD /* DroneAnnotation.swift */; };
+		A551CC4A211A6BE5002D85AD /* DroneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A551CC46211A6BE5002D85AD /* DroneView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -148,8 +151,6 @@
 		08D3A05420A2370A0046B175 /* SwiftProtobufPluginLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftProtobufPluginLibrary.framework; path = frameworks/SwiftProtobufPluginLibrary.framework; sourceTree = "<group>"; };
 		2C0648C62091DC06002BD970 /* ExampleMission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleMission.swift; sourceTree = "<group>"; };
 		2C0648CD2091FCC6002BD970 /* DroneState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DroneState.swift; sourceTree = "<group>"; };
-		2C0648CF209214DB002BD970 /* DroneView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DroneView.swift; path = DronecodeSDKSwiftDemo/Views/DroneView.swift; sourceTree = SOURCE_ROOT; };
-		2C0648D0209214DB002BD970 /* DroneAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DroneAnnotation.swift; path = DronecodeSDKSwiftDemo/Views/DroneAnnotation.swift; sourceTree = SOURCE_ROOT; };
 		2C0A6A5C208F6DB200B3E12F /* TelemetryEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelemetryEntry.swift; sourceTree = "<group>"; };
 		2C0A6A5E208F77E500B3E12F /* TelemetryEntries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelemetryEntries.swift; sourceTree = "<group>"; };
 		2C365EBD207610C500F42184 /* YuneecMFiExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YuneecMFiExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -173,6 +174,11 @@
 		4ED239A37B3125018BB65E69 /* Pods-YuneecMFiExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YuneecMFiExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-YuneecMFiExample/Pods-YuneecMFiExample.release.xcconfig"; sourceTree = "<group>"; };
 		67F5D7E439748F5235ECEA52 /* Pods_YuneecMFiExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YuneecMFiExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		841FD3A1D3B50BCDDCF2A6AB /* Pods-YuneecMFiExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YuneecMFiExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YuneecMFiExample/Pods-YuneecMFiExample.debug.xcconfig"; sourceTree = "<group>"; };
+		A551CC3E211A43C4002D85AD /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		A551CC42211A6BE5002D85AD /* CustomPinAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPinAnnotationView.swift; sourceTree = "<group>"; };
+		A551CC43211A6BE5002D85AD /* CustomPointAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPointAnnotation.swift; sourceTree = "<group>"; };
+		A551CC45211A6BE5002D85AD /* DroneAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DroneAnnotation.swift; sourceTree = "<group>"; };
+		A551CC46211A6BE5002D85AD /* DroneView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DroneView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,8 +228,6 @@
 		0895E59F2098F2CB00224A30 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
-				2C0648D0209214DB002BD970 /* DroneAnnotation.swift */,
-				2C0648CF209214DB002BD970 /* DroneView.swift */,
 				08A2BBDB208FD0E0005EBAAC /* FFMpegDemuxer.framework */,
 				08A2BBDD208FD0E9005EBAAC /* FFMpegLowDelayDemuxer.framework */,
 			);
@@ -316,11 +320,13 @@
 		2CDBF022207659D00064C8A5 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				A551CC40211A6BE5002D85AD /* Mapkit */,
 				086D32EE20B84B45006840C1 /* BindViewController.swift */,
 				08626F0A2098F48000C3101E /* ST10CViewController.swift */,
 				2C365EC2207610C500F42184 /* TelemetryViewController.swift */,
 				2CFF7270207750AF0060D31B /* ActionsViewController.swift */,
 				2CDBF020207652340064C8A5 /* MapViewController.swift */,
+				A551CC3E211A43C4002D85AD /* CameraViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -344,6 +350,34 @@
 				67F5D7E439748F5235ECEA52 /* Pods_YuneecMFiExample.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A551CC40211A6BE5002D85AD /* Mapkit */ = {
+			isa = PBXGroup;
+			children = (
+				A551CC41211A6BE5002D85AD /* Pins */,
+				A551CC44211A6BE5002D85AD /* Drone */,
+			);
+			name = Mapkit;
+			path = "../../../Downloads/DronecodeSDK-Swift-master/SampleCode/SwiftSampleCode/DronecodeSDKSwiftDemo/Controllers/Mapkit";
+			sourceTree = "<group>";
+		};
+		A551CC41211A6BE5002D85AD /* Pins */ = {
+			isa = PBXGroup;
+			children = (
+				A551CC42211A6BE5002D85AD /* CustomPinAnnotationView.swift */,
+				A551CC43211A6BE5002D85AD /* CustomPointAnnotation.swift */,
+			);
+			path = Pins;
+			sourceTree = "<group>";
+		};
+		A551CC44211A6BE5002D85AD /* Drone */ = {
+			isa = PBXGroup;
+			children = (
+				A551CC45211A6BE5002D85AD /* DroneAnnotation.swift */,
+				A551CC46211A6BE5002D85AD /* DroneView.swift */,
+			);
+			path = Drone;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -493,15 +527,18 @@
 			files = (
 				086D32EF20B84B45006840C1 /* BindViewController.swift in Sources */,
 				2C0A6A5D208F6DB200B3E12F /* TelemetryEntry.swift in Sources */,
-				2C0648D2209214DB002BD970 /* DroneAnnotation.swift in Sources */,
 				08626F0B2098F48000C3101E /* ST10CViewController.swift in Sources */,
-				2C0648D1209214DB002BD970 /* DroneView.swift in Sources */,
 				2C365EC3207610C500F42184 /* TelemetryViewController.swift in Sources */,
+				A551CC48211A6BE5002D85AD /* CustomPointAnnotation.swift in Sources */,
 				2C0A6A5F208F77E500B3E12F /* TelemetryEntries.swift in Sources */,
 				2CDBF021207652340064C8A5 /* MapViewController.swift in Sources */,
 				2CFF7271207750AF0060D31B /* ActionsViewController.swift in Sources */,
+				A551CC47211A6BE5002D85AD /* CustomPinAnnotationView.swift in Sources */,
 				2C0648C72091DC06002BD970 /* ExampleMission.swift in Sources */,
+				A551CC49211A6BE5002D85AD /* DroneAnnotation.swift in Sources */,
+				A551CC4A211A6BE5002D85AD /* DroneView.swift in Sources */,
 				2C365EC1207610C500F42184 /* AppDelegate.swift in Sources */,
+				A551CC3F211A43C4002D85AD /* CameraViewController.swift in Sources */,
 				2C0648CE2091FCC6002BD970 /* DroneState.swift in Sources */,
 				2CCEB7992089F2510086AA37 /* CoreManager.swift in Sources */,
 			);
