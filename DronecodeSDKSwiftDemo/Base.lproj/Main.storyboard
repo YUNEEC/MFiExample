@@ -51,7 +51,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="599"/>
                             </mapView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NML-k1-PsT">
-                                <rect key="frame" x="0.0" y="595" width="155" height="92"/>
+                                <rect key="frame" x="6" y="595" width="155" height="92"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZlP-xg-X8l">
                                         <rect key="frame" x="0.0" y="0.0" width="158" height="36"/>
@@ -136,7 +136,7 @@
                             <constraint firstItem="6vo-HY-Uw4" firstAttribute="trailing" secondItem="dit-VP-mwP" secondAttribute="trailing" id="D3f-6m-PFe"/>
                             <constraint firstItem="DfI-qP-ql3" firstAttribute="bottom" secondItem="dit-VP-mwP" secondAttribute="bottom" id="GdF-Qr-Xty"/>
                             <constraint firstItem="DF5-F9-wpk" firstAttribute="top" secondItem="DfI-qP-ql3" secondAttribute="top" id="NmL-B0-4zW"/>
-                            <constraint firstItem="NML-k1-PsT" firstAttribute="leading" secondItem="dit-VP-mwP" secondAttribute="leading" id="ajP-iB-fPH"/>
+                            <constraint firstItem="NML-k1-PsT" firstAttribute="leading" secondItem="dit-VP-mwP" secondAttribute="leading" constant="6" id="ajP-iB-fPH"/>
                             <constraint firstItem="DfI-qP-ql3" firstAttribute="bottom" secondItem="6vo-HY-Uw4" secondAttribute="bottom" constant="7" id="bH9-5l-NWq"/>
                             <constraint firstItem="OBs-h6-2pR" firstAttribute="top" secondItem="DF5-F9-wpk" secondAttribute="bottom" constant="20" id="eq5-El-aYP"/>
                             <constraint firstItem="dit-VP-mwP" firstAttribute="top" secondItem="DF5-F9-wpk" secondAttribute="bottom" id="gUU-i0-8BK"/>
@@ -846,9 +846,12 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-DroneCore-thumb" translatesAutoresizingMaskIntoConstraints="NO" id="xd0-II-0ie">
                                         <rect key="frame" x="8" y="25" width="80" height="18"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Camera" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4jQ-P1-3Vj">
-                                        <rect key="frame" x="95" y="13" width="131" height="43"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Camera" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4jQ-P1-3Vj">
+                                        <rect key="frame" x="142" y="13" width="131" height="43"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="131" id="vKt-Ny-Et5"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="highlightedColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -856,90 +859,79 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.4406479895" green="0.51737356189999995" blue="0.52941578629999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
+                                    <constraint firstItem="4jQ-P1-3Vj" firstAttribute="centerX" secondItem="XsE-0p-G5S" secondAttribute="centerX" id="2ed-n2-qyV"/>
+                                    <constraint firstItem="4jQ-P1-3Vj" firstAttribute="centerY" secondItem="xd0-II-0ie" secondAttribute="centerY" id="DCG-zs-hvF"/>
                                     <constraint firstItem="xd0-II-0ie" firstAttribute="top" secondItem="XsE-0p-G5S" secondAttribute="top" constant="25" id="HEl-Oj-MjN"/>
                                     <constraint firstItem="xd0-II-0ie" firstAttribute="leading" secondItem="XsE-0p-G5S" secondAttribute="leading" constant="8" id="Sjq-SX-fgv"/>
-                                    <constraint firstItem="4jQ-P1-3Vj" firstAttribute="centerX" secondItem="XsE-0p-G5S" secondAttribute="centerX" id="UOX-dV-WNR"/>
-                                    <constraint firstItem="4jQ-P1-3Vj" firstAttribute="centerY" secondItem="XsE-0p-G5S" secondAttribute="centerY" id="mHs-IK-p3N"/>
                                     <constraint firstAttribute="height" constant="68" id="zmR-7Y-rgl"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Feedback" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kQ3-cN-QqK">
-                                <rect key="frame" x="39" y="108" width="336" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                <color key="textColor" red="0.56890466370000004" green="0.17311354640000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Status" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8bC-qH-aW1">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8bC-qH-aW1">
                                 <rect key="frame" x="20" y="158" width="374" height="56"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="OoV-OE-0p4"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="ctu-hI-OCR">
-                                <rect key="frame" x="115" y="248" width="184" height="316"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="ctu-hI-OCR">
+                                <rect key="frame" x="115" y="248" width="184" height="376"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="bCu-wl-Uw3">
-                                        <rect key="frame" x="0.0" y="0.0" width="185" height="168"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="bCu-wl-Uw3">
+                                        <rect key="frame" x="0.0" y="0.0" width="184" height="168"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VzG-4S-mkw">
-                                                <rect key="frame" x="0.0" y="0.0" width="184.33333333333334" height="36"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VzG-4S-mkw">
+                                                <rect key="frame" x="0.0" y="0.0" width="184" height="36"/>
                                                 <color key="backgroundColor" red="0.4406479895" green="0.51737356189999995" blue="0.52941578629999997" alpha="0.69571382709999996" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                 <color key="tintColor" red="0.1647058824" green="0.23137254900000001" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <inset key="contentEdgeInsets" minX="7" minY="7" maxX="7" maxY="7"/>
                                                 <state key="normal" title="Set Photo Mode"/>
                                                 <connections>
-                                                    <action selector="armPressed:" destination="sxF-oW-WnJ" eventType="touchUpInside" id="gpk-Uk-sUl"/>
                                                     <action selector="setPhotoMode:" destination="rJB-39-JNr" eventType="touchUpInside" id="7XE-35-JqB"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vMf-ab-orU">
-                                                <rect key="frame" x="0.0" y="44" width="184.33333333333334" height="36"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vMf-ab-orU">
+                                                <rect key="frame" x="0.0" y="44" width="184" height="36"/>
                                                 <color key="backgroundColor" red="0.4406479895" green="0.51737356189999995" blue="0.52941578629999997" alpha="0.69571382709999996" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                 <color key="tintColor" red="0.1647058824" green="0.23137254900000001" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <inset key="contentEdgeInsets" minX="7" minY="7" maxX="7" maxY="7"/>
                                                 <state key="normal" title="Take Photo"/>
                                                 <connections>
-                                                    <action selector="armPressed:" destination="sxF-oW-WnJ" eventType="touchUpInside" id="t2Z-yg-gD1"/>
                                                     <action selector="takePhotoPressed:" destination="rJB-39-JNr" eventType="touchUpInside" id="IWf-rG-8mz"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cq1-7T-BkO">
-                                                <rect key="frame" x="0.0" y="88" width="184.33333333333334" height="36"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cq1-7T-BkO">
+                                                <rect key="frame" x="0.0" y="88" width="184" height="36"/>
                                                 <color key="backgroundColor" red="0.4406479895" green="0.51737356189999995" blue="0.52941578629999997" alpha="0.69571382709999996" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                 <color key="tintColor" red="0.1647058824" green="0.23137254900000001" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <inset key="contentEdgeInsets" minX="7" minY="7" maxX="7" maxY="7"/>
                                                 <state key="normal" title="Start Photo Interval"/>
                                                 <connections>
-                                                    <action selector="armPressed:" destination="sxF-oW-WnJ" eventType="touchUpInside" id="dFe-fC-uvq"/>
                                                     <action selector="startPhotoInterval:" destination="rJB-39-JNr" eventType="touchUpInside" id="g8r-Nd-n0W"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QPb-qf-CXe">
-                                                <rect key="frame" x="0.0" y="132" width="184.33333333333334" height="36"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QPb-qf-CXe">
+                                                <rect key="frame" x="0.0" y="132" width="184" height="36"/>
                                                 <color key="backgroundColor" red="0.4406479895" green="0.51737356189999995" blue="0.52941578629999997" alpha="0.69571382709999996" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                 <color key="tintColor" red="0.1647058824" green="0.23137254900000001" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <inset key="contentEdgeInsets" minX="7" minY="7" maxX="7" maxY="7"/>
                                                 <state key="normal" title="Stop Photo Interval"/>
                                                 <connections>
-                                                    <action selector="armPressed:" destination="sxF-oW-WnJ" eventType="touchUpInside" id="EzQ-or-4gI"/>
                                                     <action selector="stopPhotoInterval:" destination="rJB-39-JNr" eventType="touchUpInside" id="gGq-TC-X1f"/>
                                                 </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="aRV-2X-q42">
-                                        <rect key="frame" x="0.0" y="192" width="185" height="124"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="aRV-2X-q42">
+                                        <rect key="frame" x="0.0" y="192" width="184" height="124"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U14-HE-XHq">
-                                                <rect key="frame" x="0.0" y="0.0" width="184.33333333333334" height="36"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U14-HE-XHq">
+                                                <rect key="frame" x="0.0" y="0.0" width="184" height="36"/>
                                                 <color key="backgroundColor" red="0.4406479895" green="0.51737356189999995" blue="0.52941578629999997" alpha="0.69571382709999996" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="184" id="QT8-4S-rLf"/>
@@ -949,44 +941,70 @@
                                                 <inset key="contentEdgeInsets" minX="7" minY="7" maxX="7" maxY="7"/>
                                                 <state key="normal" title="Set Video Mode"/>
                                                 <connections>
-                                                    <action selector="armPressed:" destination="sxF-oW-WnJ" eventType="touchUpInside" id="PkL-uh-pKy"/>
                                                     <action selector="setVideoMode:" destination="rJB-39-JNr" eventType="touchUpInside" id="dFf-Kz-0Qw"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JTj-rV-syf">
-                                                <rect key="frame" x="0.0" y="44" width="184.33333333333334" height="36"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JTj-rV-syf">
+                                                <rect key="frame" x="0.0" y="44" width="184" height="36"/>
                                                 <color key="backgroundColor" red="0.4406479895" green="0.51737356189999995" blue="0.52941578629999997" alpha="0.69571382709999996" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                 <color key="tintColor" red="0.1647058824" green="0.23137254900000001" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <inset key="contentEdgeInsets" minX="7" minY="7" maxX="7" maxY="7"/>
                                                 <state key="normal" title="Start Video"/>
                                                 <connections>
-                                                    <action selector="armPressed:" destination="sxF-oW-WnJ" eventType="touchUpInside" id="hQV-Le-pOA"/>
                                                     <action selector="startVideo:" destination="rJB-39-JNr" eventType="touchUpInside" id="ocV-Ru-236"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c0W-nV-6K9">
-                                                <rect key="frame" x="0.0" y="88" width="184.33333333333334" height="36"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c0W-nV-6K9">
+                                                <rect key="frame" x="0.0" y="88" width="184" height="36"/>
                                                 <color key="backgroundColor" red="0.4406479895" green="0.51737356189999995" blue="0.52941578629999997" alpha="0.69571382709999996" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                 <color key="tintColor" red="0.1647058824" green="0.23137254900000001" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <inset key="contentEdgeInsets" minX="7" minY="7" maxX="7" maxY="7"/>
                                                 <state key="normal" title="Stop Video"/>
                                                 <connections>
-                                                    <action selector="armPressed:" destination="sxF-oW-WnJ" eventType="touchUpInside" id="ze9-Dk-j2Q"/>
                                                     <action selector="stopVideo:" destination="rJB-39-JNr" eventType="touchUpInside" id="B9a-Ut-v2G"/>
                                                 </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wNd-iu-tud">
+                                        <rect key="frame" x="0.0" y="340" width="184" height="36"/>
+                                        <color key="backgroundColor" red="0.4406479895" green="0.51737356189999995" blue="0.52941578629999997" alpha="0.69571382709999996" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                        <color key="tintColor" red="0.1647058824" green="0.23137254900000001" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <inset key="contentEdgeInsets" minX="7" minY="7" maxX="7" maxY="7"/>
+                                        <state key="normal" title="Set Settings"/>
+                                        <connections>
+                                            <action selector="setSettings:" destination="rJB-39-JNr" eventType="touchUpInside" id="XTy-8Y-dMJ"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feedback" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kQ3-cN-QqK">
+                                <rect key="frame" x="39" y="104" width="336" height="29"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="29" id="maL-l0-Sve"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="336" id="vZW-Dt-RbC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                <color key="textColor" red="0.56890466370000004" green="0.17311354640000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="XsE-0p-G5S" firstAttribute="leading" secondItem="pCx-jg-kvP" secondAttribute="leading" id="0Yb-4O-22H"/>
+                            <constraint firstItem="kQ3-cN-QqK" firstAttribute="centerX" secondItem="pCx-jg-kvP" secondAttribute="centerX" id="1MC-sP-9Eb"/>
+                            <constraint firstItem="8bC-qH-aW1" firstAttribute="top" secondItem="kQ3-cN-QqK" secondAttribute="bottom" constant="25" id="6IJ-fG-vAh"/>
                             <constraint firstItem="pCx-jg-kvP" firstAttribute="trailing" secondItem="XsE-0p-G5S" secondAttribute="trailing" id="Abp-nm-A6c"/>
+                            <constraint firstItem="8bC-qH-aW1" firstAttribute="centerX" secondItem="kQ3-cN-QqK" secondAttribute="centerX" id="GFT-Q7-zku"/>
+                            <constraint firstItem="kQ3-cN-QqK" firstAttribute="centerX" secondItem="ctu-hI-OCR" secondAttribute="centerX" id="hAD-1v-77P"/>
                             <constraint firstItem="XsE-0p-G5S" firstAttribute="top" secondItem="pCx-jg-kvP" secondAttribute="top" id="qHg-s5-nS5"/>
+                            <constraint firstItem="8bC-qH-aW1" firstAttribute="leading" secondItem="BeU-mb-3xH" secondAttribute="leadingMargin" id="uNh-IG-xiD"/>
+                            <constraint firstItem="ctu-hI-OCR" firstAttribute="top" secondItem="8bC-qH-aW1" secondAttribute="bottom" constant="34" id="vep-gr-IA1"/>
+                            <constraint firstItem="kQ3-cN-QqK" firstAttribute="top" secondItem="XsE-0p-G5S" secondAttribute="bottom" constant="16" id="yFW-wv-B5W"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="pCx-jg-kvP"/>
                     </view>
@@ -995,6 +1013,7 @@
                         <outlet property="cameraStatusLabel" destination="8bC-qH-aW1" id="ATb-Ke-83V"/>
                         <outlet property="feedbackLabel" destination="kQ3-cN-QqK" id="Yav-bb-g80"/>
                         <outlet property="setPhotoModeButton" destination="VzG-4S-mkw" id="LOK-gh-oep"/>
+                        <outlet property="setSettingsButton" destination="wNd-iu-tud" id="pkM-pR-Rb5"/>
                         <outlet property="setVideoModeButton" destination="U14-HE-XHq" id="sZ0-AS-vQX"/>
                         <outlet property="startPhotoIntervalButton" destination="Cq1-7T-BkO" id="dqy-nn-dap"/>
                         <outlet property="startVideoButton" destination="JTj-rV-syf" id="DhH-iL-uto"/>

@@ -9,10 +9,13 @@
 import UIKit
 import Dronecode_SDK_Swift
 import MapKit
+import RxSwift
 
 class MapViewController: UIViewController, CLLocationManagerDelegate {
     
     // MARK: - Properties
+    var disposeBag = DisposeBag()
+    
     
     // MARK: IBOutlets -------
     
@@ -109,8 +112,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         let armRoutine = CoreManager.shared().action.arm()
             .do(onError: { error in self.displayFeedback(message:"Arming failed")},
                 onCompleted: { self.startMission() })
-        _ = armRoutine.subscribe()
-        
+        _ = armRoutine.subscribe().disposed(by: disposeBag)
     }
     
     // MARK: - Center Map and Create Flightpath
@@ -155,7 +157,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
             onError: { error in self.displayFeedback(message:"Mission uploaded failed \(error)") },
             onCompleted: { self.displayFeedback(message:"Mission uploaded with success") })
         
-        _ = sendMissionRoutine.subscribe()
+        _ = sendMissionRoutine.subscribe().disposed(by: disposeBag)
         
     }
     
@@ -164,7 +166,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
             onError: { error in self.displayFeedback(message: "Mission started failed \(error)") },
             onCompleted: { self.displayFeedback(message:"Mission started with success") })
         
-        _ = startMissionRoutine.subscribe()
+        _ = startMissionRoutine.subscribe().disposed(by: disposeBag)
     }
     
     // MARK: - Helper methods

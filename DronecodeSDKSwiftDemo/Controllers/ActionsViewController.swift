@@ -8,6 +8,7 @@
 
 import UIKit
 import Dronecode_SDK_Swift
+import RxSwift
 
 let UI_CORNER_RADIUS_BUTTONS = CGFloat(8.0)
 
@@ -27,6 +28,8 @@ class ActionsViewController: UIViewController {
     
     @IBOutlet weak var feedbackLabel: UILabel!
     
+    private let disposeBag = DisposeBag()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -38,17 +41,16 @@ class ActionsViewController: UIViewController {
         feedbackLabel?.layer.borderWidth = 1.0
         
         // set corners for buttons
-        armButton.layer.cornerRadius        = UI_CORNER_RADIUS_BUTTONS
-        takeoffButton.layer.cornerRadius    = UI_CORNER_RADIUS_BUTTONS
-        landButton.layer.cornerRadius       = UI_CORNER_RADIUS_BUTTONS
-        disarmButton.layer.cornerRadius     = UI_CORNER_RADIUS_BUTTONS
-        killButton.layer.cornerRadius       = UI_CORNER_RADIUS_BUTTONS
-        returnToLaunchButton.layer.cornerRadius             = UI_CORNER_RADIUS_BUTTONS
-        transitionToFixedWingButton.layer.cornerRadius      = UI_CORNER_RADIUS_BUTTONS
-        transitionToMulticopterButton.layer.cornerRadius    = UI_CORNER_RADIUS_BUTTONS
-        getTakeoffAltitudeButton.layer.cornerRadius      = UI_CORNER_RADIUS_BUTTONS
-        getMaxSpeedButton.layer.cornerRadius    = UI_CORNER_RADIUS_BUTTONS
-        
+        armButton.layer.cornerRadius = UI_CORNER_RADIUS_BUTTONS
+        takeoffButton.layer.cornerRadius = UI_CORNER_RADIUS_BUTTONS
+        landButton.layer.cornerRadius = UI_CORNER_RADIUS_BUTTONS
+        disarmButton.layer.cornerRadius = UI_CORNER_RADIUS_BUTTONS
+        killButton.layer.cornerRadius = UI_CORNER_RADIUS_BUTTONS
+        returnToLaunchButton.layer.cornerRadius = UI_CORNER_RADIUS_BUTTONS
+        transitionToFixedWingButton.layer.cornerRadius = UI_CORNER_RADIUS_BUTTONS
+        transitionToMulticopterButton.layer.cornerRadius = UI_CORNER_RADIUS_BUTTONS
+        getTakeoffAltitudeButton.layer.cornerRadius = UI_CORNER_RADIUS_BUTTONS
+        getMaxSpeedButton.layer.cornerRadius = UI_CORNER_RADIUS_BUTTONS
     }
 
     override func didReceiveMemoryWarning() {
@@ -58,60 +60,90 @@ class ActionsViewController: UIViewController {
     
     @IBAction func armPressed(_ sender: Any) {
         let myRoutine = CoreManager.shared().action.arm()
-            .do(onError: { error in  self.feedbackLabel.text = "Arming failed : \(error.localizedDescription)" },
-                onCompleted: {  self.feedbackLabel.text = "Arming succeeded"})
+            .do(onError: { error in
+                self.feedbackLabel.text = "Arming failed : \(error.localizedDescription)"
+            }, onCompleted: {
+                self.feedbackLabel.text = "Arming succeeded"
+            })
         _ = myRoutine.subscribe()
-        
+            .disposed(by: disposeBag)
     }
     
     @IBAction func disarmPressed(_ sender: Any) {
         let myRoutine = CoreManager.shared().action.disarm()
-            .do(onError: { error in self.feedbackLabel.text = "Disarming failed : \(error.localizedDescription)"  },
-                onCompleted: { self.feedbackLabel.text = "Disarming succeeded" })
+            .do(onError: { error in
+                self.feedbackLabel.text = "Disarming failed : \(error.localizedDescription)"
+            }, onCompleted: {
+                self.feedbackLabel.text = "Disarming succeeded"
+            })
         _ = myRoutine.subscribe()
-        
+            .disposed(by: disposeBag)
     }
     
     @IBAction func takeoffPressed(_ sender: Any) {
         let myRoutine = CoreManager.shared().action.takeoff()
-            .do(onError: { error in self.feedbackLabel.text = "Takeoff failed" },
-                onCompleted: { self.feedbackLabel.text = "Takeoff succeeded" })
+            .do(onError: { error in
+                self.feedbackLabel.text = "Takeoff failed: \(error.localizedDescription)"
+            }, onCompleted: {
+                self.feedbackLabel.text = "Takeoff succeeded"
+            })
         _ = myRoutine.subscribe()
+            .disposed(by: disposeBag)
     }
     
     @IBAction func landPressed(_ sender: Any) {
         let myRoutine = CoreManager.shared().action.land()
-            .do(onError: { error in self.feedbackLabel.text = "Land failed" },
-                onCompleted: { self.feedbackLabel.text = "Land succeeded" })
+            .do(onError: { error in
+                self.feedbackLabel.text = "Land failed: \(error.localizedDescription)"
+            }, onCompleted: {
+                self.feedbackLabel.text = "Land succeeded"
+            })
         _ = myRoutine.subscribe()
+            .disposed(by: disposeBag)
     }
     
     @IBAction func killPressed(_ sender: Any) {
         let myRoutine = CoreManager.shared().action.kill()
-            .do(onError: { error in self.feedbackLabel.text = "Kill failed"},
-                onCompleted: { self.feedbackLabel.text = "Kill succeeded" })
+            .do(onError: { error in
+                self.feedbackLabel.text = "Kill failed: \(error.localizedDescription)"
+            }, onCompleted: {
+                self.feedbackLabel.text = "Kill succeeded"
+            })
         _ = myRoutine.subscribe()
+            .disposed(by: disposeBag)
     }
     
     @IBAction func returnToLaunchPressed(_ sender: Any) {
         let myRoutine = CoreManager.shared().action.returnToLaunch()
-            .do(onError: { error in self.feedbackLabel.text = "Return to launch failed" },
-                onCompleted: { self.feedbackLabel.text = "Return to launch succeeded"})
+            .do(onError: { error in
+                self.feedbackLabel.text = "Return to launch failed: \(error.localizedDescription)"
+            }, onCompleted: {
+                self.feedbackLabel.text = "Return to launch succeeded"
+            })
         _ = myRoutine.subscribe()
+            .disposed(by: disposeBag)
     }
     
     @IBAction func transitionToFixedWingPressed(_ sender: Any) {
         let myRoutine = CoreManager.shared().action.transitionToFixedWing()
-            .do(onError: { error in self.feedbackLabel.text = "transitionToFixedWing failed"},
-                onCompleted: { self.feedbackLabel.text = "transitionToFixedWing succeeded"})
+            .do(onError: { error in
+                self.feedbackLabel.text = "transitionToFixedWing failed: \(error.localizedDescription)"
+            }, onCompleted: {
+                self.feedbackLabel.text = "transitionToFixedWing succeeded"
+            })
         _ = myRoutine.subscribe()
+            .disposed(by: disposeBag)
     }
     
     @IBAction func transitionToMulticopterPressed(_ sender: Any) {
         let myRoutine = CoreManager.shared().action.transitionToMulticopter()
-            .do(onError: { error in self.feedbackLabel.text = "transitionToMulticopter failed"},
-                onCompleted: { self.feedbackLabel.text = "transitionToMulticopter succeeded"})
+            .do(onError: { error in
+                self.feedbackLabel.text = "transitionToMulticopter failed: \(error.localizedDescription)"
+            }, onCompleted: {
+                self.feedbackLabel.text = "transitionToMulticopter succeeded"
+            })
         _ = myRoutine.subscribe()
+            .disposed(by: disposeBag)
     }
     
     @IBAction func getTakeoffAltitudePressed(_ sender: Any) {
@@ -124,7 +156,7 @@ class ActionsViewController: UIViewController {
             case .error(let error):
                 self.feedbackLabel.text = "failure: getTakeoffAltitude() \(error)"
             }
-        }
+        }.disposed(by: disposeBag)
     }
     
     @IBAction func getMaximumSpeedPressed(_ sender: Any) {
@@ -137,7 +169,7 @@ class ActionsViewController: UIViewController {
             case .error(let error):
                 self.feedbackLabel.text = "failure: getMaximumSpeed() \(error)"
             }
-        }
+        }.disposed(by: disposeBag)
     }
 
     

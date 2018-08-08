@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RxSwift
+import Dronecode_SDK_Swift
 
 class CameraViewController: UIViewController {
     
@@ -19,7 +21,11 @@ class CameraViewController: UIViewController {
     @IBOutlet weak var stopVideoButton: UIButton!
     @IBOutlet weak var feedbackLabel: UILabel!
     @IBOutlet weak var cameraStatusLabel: UILabel!
+    @IBOutlet weak var setSettingsButton: UIButton!
     
+    private let disposeBag = DisposeBag()
+    
+    var globalSetting: (settingID: String?, optionID: String?)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,156 +45,199 @@ class CameraViewController: UIViewController {
          setVideoModeButton.layer.cornerRadius = UI_CORNER_RADIUS_BUTTONS
          startVideoButton.layer.cornerRadius = UI_CORNER_RADIUS_BUTTONS
          stopVideoButton.layer.cornerRadius = UI_CORNER_RADIUS_BUTTONS
+         setSettingsButton.layer.cornerRadius = UI_CORNER_RADIUS_BUTTONS
         
         startObserving()
     }
-    
-    func startObserving() {
-        
-        // Listen to camera mode
-        let cameraModeSubscription = CoreManager.shared().camera.cameraModeObservable
-            .subscribe(
-                onNext:{ [weak self] mode in
-                    print("Changed mode to: \(mode)")
-                },
-                onError: { error in
-                    print("Error cameraModeSubscription: \(error.localizedDescription)")
-            })
-        
-        
-        // Listen to capture info
-        let captureInfoSubscription = CoreManager.shared().camera.captureInfoObservable
-            .subscribe(onNext: { [weak self] info in
-//                    print("Capture info observable: \(info)")
-//                let date = CameraViewController.dateFormatter.string(from: Date(timeIntervalSince1970: TimeInterval(info.timeUTC/1000)))
-//                let time = CameraViewController.timeFormatter.string(from: Date(timeIntervalSince1970: TimeInterval(info.timeUTC)/1000))
-                let infoString = "Captured success: \(info.isSuccess)\nPhoto Index: \(info.index)\nPhoto Time: \(info.timeUTC)"
-                ActionsViewController.showAlert("\(infoString)",viewController:self)
-                }, onError: { error in
-                    print("Error captureInfoSubscription: \(error.localizedDescription)")
-            })
-        
-        
-        // Listen to camera status
-        let cameraStatusSubscription = CoreManager.shared().camera.cameraStatusObservable
-            .subscribe(onNext: { [weak self] status in
-                    let string = " Video On: \(status.videoOn) | Photo Interval On: \(status.photoIntervalOn) | Used Storage: \(status.usedStorageMib) | Available Storage: \(status.availableStorageMib) | Total Storage \(status.totalStorageMib) | Storage Status: \(status.storageStatus.hashValue) "
-                    self?.cameraStatusLabel.text = string
-                }, onError: { error in
-                    print("Error cameraStatusSubscription: \(error.localizedDescription)")
-            })
-        
-        // Listen to current settings
-        let currentSettingsSubscription = CoreManager.shared().camera.currentSettingsObservable
-            .subscribe(onNext: { [weak self] settings in
-                    print("Current settings: \(settings)")
-                }, onError: { error in
-                    print("Error currentSettingsSubscription: \(error.localizedDescription)")
-            })
-        
-        
-        // Listen to possible settings
-        let possibleSettingOptionsSubscription = CoreManager.shared().camera.possibleSettingOptionsObservable
-            .subscribe(onNext: { [weak self] settingOptions in
-                    print("Possible settings: \(settingOptions)")
-                }, onError: { error in
-                    print("Error possibleSettingOptionsSubscription: \(error.localizedDescription)")
-            })
-    }
-    
-    
-    func stopObserving() {
-        
-    }
 
     @IBAction func setPhotoMode(_ sender: UIButton) {
-        let myRoutine = CoreManager.shared().camera.setMode(mode: .photo)
+        setPhotoModeButton.isEnabled = false
+        
+        let _ = CoreManager.shared().camera.setMode(mode: .photo)
             .do(onError: { error in
                 self.feedbackLabel.text = "Set photo mode failed: \(error.localizedDescription)"
+                self.setPhotoModeButton.isEnabled = true
             }, onCompleted: {
                 self.feedbackLabel.text = "Set photo mode succeeded"
+                self.setPhotoModeButton.isEnabled = true
             })
-        _ = myRoutine.subscribe()
+            .subscribe()
+            .disposed(by: disposeBag)
     }
     
     @IBAction func takePhotoPressed(_ sender: Any) {
-        let myRoutine = CoreManager.shared().camera.takePhoto()
-            .do(onError: { error in
-                self.feedbackLabel.text = "Take photo failed: \(error.localizedDescription)"
-            }, onCompleted: {
-                self.feedbackLabel.text = "Take photo succeeded"
+        takePhotoButton.isEnabled = false
+        
+        let _ = CoreManager.shared().camera.takePhoto()
+            .do(onError: { [weak self] error in
+                self?.feedbackLabel.text = "Take photo failed: \(error.localizedDescription)"
+                self?.takePhotoButton.isEnabled = true
+            }, onCompleted: { [weak self] in
+                self?.feedbackLabel.text = "Take photo succeeded"
+                self?.takePhotoButton.isEnabled = true
             })
-        _ = myRoutine.subscribe()
+            .subscribe()
+            .disposed(by: disposeBag)
     }
     
     @IBAction func startPhotoInterval(_ sender: UIButton) {
-        let myRoutine = CoreManager.shared().camera.startPhotoInteval(interval: 5)
+        startPhotoIntervalButton.isEnabled = false
+        
+        let _ = CoreManager.shared().camera.startPhotoInteval(interval: 5)
             .do(onError: { error in
                 self.feedbackLabel.text = "Start photo interval failed: \(error.localizedDescription)"
+                self.startPhotoIntervalButton.isEnabled = true
             }, onCompleted: {
                 self.feedbackLabel.text = "Start photo interval succeeded"
+                self.startPhotoIntervalButton.isEnabled = true
             })
-        _ = myRoutine.subscribe()
+            .subscribe()
+            .disposed(by: disposeBag)
     }
     
     @IBAction func stopPhotoInterval(_ sender: UIButton) {
-        let myRoutine = CoreManager.shared().camera.stopPhotoInterval()
+        stopPhotoIntervalButton.isEnabled = false
+
+        let _ = CoreManager.shared().camera.stopPhotoInterval()
             .do(onError: { error in
                 self.feedbackLabel.text = "Stop photo interval failed: \(error.localizedDescription)"
+                self.stopPhotoIntervalButton.isEnabled = true
             }, onCompleted: {
                 self.feedbackLabel.text = "Stop photo interval succeeded"
+                self.stopPhotoIntervalButton.isEnabled = true
             })
-        _ = myRoutine.subscribe()
+            .subscribe()
+            .disposed(by: disposeBag)
     }
     
     @IBAction func setVideoMode(_ sender: UIButton) {
-        let myRoutine = CoreManager.shared().camera.setMode(mode: .video)
+        setVideoModeButton.isEnabled = false
+        
+        let _ = CoreManager.shared().camera.setMode(mode: .video)
             .do(onError: { error in
                 self.feedbackLabel.text = "Set video mode failed: \(error.localizedDescription)"
+                self.setVideoModeButton.isEnabled = true
             }, onCompleted: {
                 self.feedbackLabel.text = "Set video mode succeeded"
+                self.setVideoModeButton.isEnabled = true
             })
-        _ = myRoutine.subscribe()
+            .subscribe()
+            .disposed(by: disposeBag)
     }
     
     @IBAction func startVideo(_ sender: UIButton) {
-        let myRoutine = CoreManager.shared().camera.startVideo()
+        startVideoButton.isEnabled = false
+        
+        let _ = CoreManager.shared().camera.startVideo()
             .do(onError: { error in
                 self.feedbackLabel.text = "Start video failed: \(error.localizedDescription)"
+                self.startVideoButton.isEnabled = true
             }, onCompleted: {
                 self.feedbackLabel.text = "Start video succeeded"
+                self.startVideoButton.isEnabled = true
             })
-        _ = myRoutine.subscribe()
+            .subscribe()
+            .disposed(by: disposeBag)
     }
     
     @IBAction func stopVideo(_ sender: UIButton) {
-        let myRoutine = CoreManager.shared().camera.stopVideo()
+        stopVideoButton.isEnabled = false
+        
+        let _ = CoreManager.shared().camera.stopVideo()
             .do(onError: { error in
                 self.feedbackLabel.text = "Stop video failed: \(error.localizedDescription)"
+                self.stopVideoButton.isEnabled = true
             }, onCompleted: {
                 self.feedbackLabel.text = "Stop video succeeded"
+                self.stopVideoButton.isEnabled = true
             })
-        _ = myRoutine.subscribe()
+            .subscribe()
+            .disposed(by: disposeBag)
     }
     
-}
-
-extension CameraViewController {
-    fileprivate static let dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .none
-        formatter.locale = Locale.current
-        formatter.timeZone = TimeZone.autoupdatingCurrent
-        return formatter
-    }()
+    @IBAction func setSettings(_ sender: UIButton) {
+        
+        guard let settingID = globalSetting.settingID, let optionID = globalSetting.optionID else {
+            self.feedbackLabel.text = "There are no settings to be set yet."
+            return
+        }
+        
+        setSettingsButton.isEnabled = false
+        
+        let _ = CoreManager.shared().camera.setSetting(setting: Setting(id: settingID, option: Option(id: optionID)))
+            .do(onError: { error in
+                self.feedbackLabel.text = "Set settings failed: \(error.localizedDescription).\nSettingID: \(settingID), optionID: \(optionID)"
+                self.setSettingsButton.isEnabled = true
+            }, onCompleted: {
+                self.feedbackLabel.text = "Set settings succeeded\nSettingID: \(settingID), optionID: \(optionID)"
+                self.setSettingsButton.isEnabled = true
+            })
+            .subscribe()
+            .disposed(by: disposeBag)
+    }
     
-    fileprivate static let timeFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .none
-        formatter.timeStyle = .short
-        formatter.locale = Locale.current
-        formatter.timeZone = TimeZone.autoupdatingCurrent
-        return formatter
-    }()
+    
+    // MARK: - Subscribe to observers.
+    
+    func startObserving() {
+        // Listen to camera mode
+        let _ = CoreManager.shared().camera.cameraModeObservable
+            .subscribe(
+                onNext:{ mode in
+                    NSLog("Changed mode to: \(mode)")
+                }, onError: { error in
+                    NSLog("Error cameraModeSubscription: \(error.localizedDescription)")
+            })
+            .disposed(by: disposeBag)
+        
+        // Listen to capture info
+        let _ = CoreManager.shared().camera.captureInfoObservable
+            .subscribe(onNext: { info in
+                    NSLog("Capture info: \(info)")
+                }, onError: { error in
+                    NSLog("Error captureInfoSubscription: \(error.localizedDescription)")
+            })
+            .disposed(by: disposeBag)
+        
+        // Listen to camera status
+        let _ = CoreManager.shared().camera.cameraStatusObservable
+            .subscribe(onNext: { [weak self] status in
+                let string = " Video On: \(status.videoOn) | Photo Interval On: \(status.photoIntervalOn) | Used Storage: \(status.usedStorageMib) | Available Storage: \(status.availableStorageMib) | Total Storage \(status.totalStorageMib) | Storage Status: \(status.storageStatus.hashValue) "
+                self?.cameraStatusLabel.text = string
+                }, onError: { error in
+                    NSLog("Error cameraStatusSubscription: \(error.localizedDescription)")
+            })
+            .disposed(by: disposeBag)
+
+        // Listen to current settings
+        let _ = CoreManager.shared().camera.currentSettingsObservable
+            .subscribe(onNext: { curretnSettings in
+                    NSLog("Current settings: \(curretnSettings)")
+                }, onError: { error in
+                    NSLog("Error currentSettingsSubscription: \(error.localizedDescription)")
+            })
+            .disposed(by: disposeBag)
+        
+        // Listen to possible settings
+        let _ = CoreManager.shared().camera.possibleSettingOptionsObservable
+            .subscribe(onNext: { [weak self] possibleSettingOptions in
+                
+                    // Save first possible setting to be set in setSettings (just for example purposes)
+                    self?.globalSetting.settingID = possibleSettingOptions.first?.settingId
+                    self?.globalSetting.optionID = possibleSettingOptions.first?.options.first?.id
+                
+                    var possibleSettingOptionsString = ""
+                
+                    possibleSettingOptions.forEach { (setting) in
+                        let optionsArray = setting.options.map { $0.id }
+                        possibleSettingOptionsString += "\nSetting: \(setting.settingId), Options: \(optionsArray)"
+                    }
+                
+                    NSLog("Possible settings: \(possibleSettingOptionsString)")
+                }, onError: { error in
+                    NSLog("Error possibleSettingOptionsSubscription: \(error.localizedDescription)")
+            })
+            .disposed(by: disposeBag)
+
+    }
 }
