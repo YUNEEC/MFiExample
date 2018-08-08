@@ -109,10 +109,14 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         self.displayFeedback(message:"Start Mission Pressed")
         
         // /!\ NEED TO ARM BEFORE START THE MISSION
-        let armRoutine = CoreManager.shared().action.arm()
-            .do(onError: { error in self.displayFeedback(message:"Arming failed")},
-                onCompleted: { self.startMission() })
-        _ = armRoutine.subscribe().disposed(by: disposeBag)
+        let _ = CoreManager.shared().action.arm()
+            .do(onError: { error in
+                self.displayFeedback(message:"Arming failed")
+            }, onCompleted: {
+                self.startMission()
+            })
+            .subscribe()
+            .disposed(by: disposeBag)
     }
     
     // MARK: - Center Map and Create Flightpath
@@ -153,20 +157,27 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     
     func uploadMission(){
         
-        let sendMissionRoutine = CoreManager.shared().mission.uploadMission(missionItems: missionExample.missionItems).do(
-            onError: { error in self.displayFeedback(message:"Mission uploaded failed \(error)") },
-            onCompleted: { self.displayFeedback(message:"Mission uploaded with success") })
-        
-        _ = sendMissionRoutine.subscribe().disposed(by: disposeBag)
+        let _ = CoreManager.shared().mission.uploadMission(missionItems: missionExample.missionItems)
+            .do(onError: { error in
+                self.displayFeedback(message:"Mission uploaded failed \(error)")
+                
+            }, onCompleted: {
+                self.displayFeedback(message:"Mission uploaded with success")
+            })
+            .subscribe()
+            .disposed(by: disposeBag)
         
     }
     
     func startMission(){
-        let startMissionRoutine = CoreManager.shared().mission.startMission().do(
-            onError: { error in self.displayFeedback(message: "Mission started failed \(error)") },
-            onCompleted: { self.displayFeedback(message:"Mission started with success") })
-        
-        _ = startMissionRoutine.subscribe().disposed(by: disposeBag)
+        let startMissionRoutine = CoreManager.shared().mission.startMission()
+            .do(onError: { error in
+                self.displayFeedback(message: "Mission started failed \(error)")
+            }, onCompleted: {
+                self.displayFeedback(message:"Mission started with success")
+            })
+            .subscribe()
+            .disposed(by: disposeBag)
     }
     
     // MARK: - Helper methods

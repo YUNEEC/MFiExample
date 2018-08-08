@@ -59,90 +59,90 @@ class ActionsViewController: UIViewController {
     }
     
     @IBAction func armPressed(_ sender: Any) {
-        let myRoutine = CoreManager.shared().action.arm()
+        let _ = CoreManager.shared().action.arm()
             .do(onError: { error in
                 self.feedbackLabel.text = "Arming failed : \(error.localizedDescription)"
             }, onCompleted: {
                 self.feedbackLabel.text = "Arming succeeded"
             })
-        _ = myRoutine.subscribe()
+            .subscribe()
             .disposed(by: disposeBag)
     }
     
     @IBAction func disarmPressed(_ sender: Any) {
-        let myRoutine = CoreManager.shared().action.disarm()
+        let _ = CoreManager.shared().action.disarm()
             .do(onError: { error in
                 self.feedbackLabel.text = "Disarming failed : \(error.localizedDescription)"
             }, onCompleted: {
                 self.feedbackLabel.text = "Disarming succeeded"
             })
-        _ = myRoutine.subscribe()
+            .subscribe()
             .disposed(by: disposeBag)
     }
     
     @IBAction func takeoffPressed(_ sender: Any) {
-        let myRoutine = CoreManager.shared().action.takeoff()
+        let _ = CoreManager.shared().action.takeoff()
             .do(onError: { error in
                 self.feedbackLabel.text = "Takeoff failed: \(error.localizedDescription)"
             }, onCompleted: {
                 self.feedbackLabel.text = "Takeoff succeeded"
             })
-        _ = myRoutine.subscribe()
+            .subscribe()
             .disposed(by: disposeBag)
     }
     
     @IBAction func landPressed(_ sender: Any) {
-        let myRoutine = CoreManager.shared().action.land()
+        let _ = CoreManager.shared().action.land()
             .do(onError: { error in
                 self.feedbackLabel.text = "Land failed: \(error.localizedDescription)"
             }, onCompleted: {
                 self.feedbackLabel.text = "Land succeeded"
             })
-        _ = myRoutine.subscribe()
+            .subscribe()
             .disposed(by: disposeBag)
     }
     
     @IBAction func killPressed(_ sender: Any) {
-        let myRoutine = CoreManager.shared().action.kill()
+        let _ = CoreManager.shared().action.kill()
             .do(onError: { error in
                 self.feedbackLabel.text = "Kill failed: \(error.localizedDescription)"
             }, onCompleted: {
                 self.feedbackLabel.text = "Kill succeeded"
             })
-        _ = myRoutine.subscribe()
+            .subscribe()
             .disposed(by: disposeBag)
     }
     
     @IBAction func returnToLaunchPressed(_ sender: Any) {
-        let myRoutine = CoreManager.shared().action.returnToLaunch()
+        let _ = CoreManager.shared().action.returnToLaunch()
             .do(onError: { error in
                 self.feedbackLabel.text = "Return to launch failed: \(error.localizedDescription)"
             }, onCompleted: {
                 self.feedbackLabel.text = "Return to launch succeeded"
             })
-        _ = myRoutine.subscribe()
+            .subscribe()
             .disposed(by: disposeBag)
     }
     
     @IBAction func transitionToFixedWingPressed(_ sender: Any) {
-        let myRoutine = CoreManager.shared().action.transitionToFixedWing()
+        let _ = CoreManager.shared().action.transitionToFixedWing()
             .do(onError: { error in
                 self.feedbackLabel.text = "transitionToFixedWing failed: \(error.localizedDescription)"
             }, onCompleted: {
                 self.feedbackLabel.text = "transitionToFixedWing succeeded"
             })
-        _ = myRoutine.subscribe()
+            .subscribe()
             .disposed(by: disposeBag)
     }
     
     @IBAction func transitionToMulticopterPressed(_ sender: Any) {
-        let myRoutine = CoreManager.shared().action.transitionToMulticopter()
+        let _ = CoreManager.shared().action.transitionToMulticopter()
             .do(onError: { error in
                 self.feedbackLabel.text = "transitionToMulticopter failed: \(error.localizedDescription)"
             }, onCompleted: {
                 self.feedbackLabel.text = "transitionToMulticopter succeeded"
             })
-        _ = myRoutine.subscribe()
+            .subscribe()
             .disposed(by: disposeBag)
     }
     
@@ -172,7 +172,6 @@ class ActionsViewController: UIViewController {
         }.disposed(by: disposeBag)
     }
 
-    
     class func showAlert(_ message: String?, viewController: UIViewController?) {
         let alert = UIAlertController(title: message, message: "", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
