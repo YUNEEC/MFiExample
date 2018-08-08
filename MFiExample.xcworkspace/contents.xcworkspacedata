@@ -2,18 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:MFiAdapter/MFiAdapter.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:MFiAdapter/YuneecDataTransfer/YuneecMFiDataTransfer/YuneecMFiDataTransfer.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:MFiAdapter/YuneecDataTransfer/YuneecWifiDataTransfer/YuneecWifiDataTransfer.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:YuneecMFiExample.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:Pods/Pods.xcodeproj">
    </FileRef>
 </Workspace>
