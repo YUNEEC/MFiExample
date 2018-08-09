@@ -215,7 +215,7 @@
                                 <rect key="frame" x="0.0" y="162" width="414" height="525"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" selectionStyle="blue" indentationWidth="10" reuseIdentifier="TelemetryCell" textLabel="P7p-1W-pCy" detailTextLabel="2TS-Gq-66S" rowHeight="47" style="IBUITableViewCellStyleSubtitle" id="lQ1-rS-6wC">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="TelemetryCell" textLabel="P7p-1W-pCy" detailTextLabel="2TS-Gq-66S" rowHeight="47" style="IBUITableViewCellStyleSubtitle" id="lQ1-rS-6wC">
                                         <rect key="frame" x="0.0" y="28" width="414" height="47"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lQ1-rS-6wC" id="4x2-EK-OTK">
@@ -1025,6 +1025,40 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gSJ-pb-7KY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3169.5652173913045" y="955.43478260869574"/>
+        </scene>
+        <!--Camera Settings-->
+        <scene sceneID="kzy-MY-dBb">
+            <objects>
+                <viewController storyboardIdentifier="CameraSettingsViewController" id="VtM-X5-QoO" customClass="CameraSettingsViewController" customModule="YuneecMFiExample" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1eX-xJ-YNQ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="9RR-a8-S72"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Camera Settings" id="9XV-6T-eZ6"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Geg-D0-e1Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3922" y="1657"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="7Oc-MX-LNE">
+            <objects>
+                <navigationController storyboardIdentifier="SettingsNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="FOD-gC-2UB" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="J5v-DM-tVG">
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="VtM-X5-QoO" kind="relationship" relationship="rootViewController" id="lgP-MI-OZR"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Ei-dc-Itp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3183" y="1657"/>
         </scene>
     </scenes>
     <resources>

@@ -77,6 +77,10 @@
 		A551CC48211A6BE5002D85AD /* CustomPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A551CC43211A6BE5002D85AD /* CustomPointAnnotation.swift */; };
 		A551CC49211A6BE5002D85AD /* DroneAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A551CC45211A6BE5002D85AD /* DroneAnnotation.swift */; };
 		A551CC4A211A6BE5002D85AD /* DroneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A551CC46211A6BE5002D85AD /* DroneView.swift */; };
+		A551CC5F211B99D8002D85AD /* Eureka.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A551CC5D211B99C9002D85AD /* Eureka.framework */; };
+		A551CC60211B99D8002D85AD /* Eureka.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A551CC5D211B99C9002D85AD /* Eureka.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A551CC62211B99FB002D85AD /* CameraDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = A551CC61211B99FB002D85AD /* CameraDefaults.swift */; };
+		A551CC64211BA700002D85AD /* CameraSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A551CC63211BA700002D85AD /* CameraSettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,6 +124,7 @@
 				086D32D320B701DE006840C1 /* BaseFramework.framework in Embed Frameworks */,
 				329E33D220EFF21600A57201 /* FFMpegLowDelayDemuxer.framework in Embed Frameworks */,
 				08D3A05C20A2370A0046B175 /* Czlib.framework in Embed Frameworks */,
+				A551CC60211B99D8002D85AD /* Eureka.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -179,6 +184,9 @@
 		A551CC43211A6BE5002D85AD /* CustomPointAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPointAnnotation.swift; sourceTree = "<group>"; };
 		A551CC45211A6BE5002D85AD /* DroneAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DroneAnnotation.swift; sourceTree = "<group>"; };
 		A551CC46211A6BE5002D85AD /* DroneView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DroneView.swift; sourceTree = "<group>"; };
+		A551CC5D211B99C9002D85AD /* Eureka.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Eureka.framework; path = frameworks/Eureka.framework; sourceTree = "<group>"; };
+		A551CC61211B99FB002D85AD /* CameraDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraDefaults.swift; sourceTree = "<group>"; };
+		A551CC63211BA700002D85AD /* CameraSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraSettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +203,7 @@
 				08D3A05920A2370A0046B175 /* RxSwift.framework in Frameworks */,
 				329E33E020EFF28F00A57201 /* CocoaAsyncSocket.framework in Frameworks */,
 				329E33DF20EFF28000A57201 /* CocoaAsyncSocket.framework in Frameworks */,
+				A551CC5F211B99D8002D85AD /* Eureka.framework in Frameworks */,
 				086D32D220B701DE006840C1 /* BaseFramework.framework in Frameworks */,
 				08D3A06120A2370A0046B175 /* backend.framework in Frameworks */,
 				329E33CF20EFF21000A57201 /* FFMpegDemuxer.framework in Frameworks */,
@@ -241,6 +250,7 @@
 				2C0A6A5E208F77E500B3E12F /* TelemetryEntries.swift */,
 				2C0648C62091DC06002BD970 /* ExampleMission.swift */,
 				2C0648CD2091FCC6002BD970 /* DroneState.swift */,
+				A551CC61211B99FB002D85AD /* CameraDefaults.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -248,6 +258,7 @@
 		2C365EB4207610C500F42184 = {
 			isa = PBXGroup;
 			children = (
+				A551CC5D211B99C9002D85AD /* Eureka.framework */,
 				32E8718321112B9200761176 /* SwiftGRPC.framework */,
 				329E33DE20EFF27F00A57201 /* CocoaAsyncSocket.framework */,
 				329E33D320EFF22000A57201 /* MediaBase.framework */,
@@ -327,6 +338,7 @@
 				2CFF7270207750AF0060D31B /* ActionsViewController.swift */,
 				2CDBF020207652340064C8A5 /* MapViewController.swift */,
 				A551CC3E211A43C4002D85AD /* CameraViewController.swift */,
+				A551CC63211BA700002D85AD /* CameraSettingsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -525,6 +537,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A551CC62211B99FB002D85AD /* CameraDefaults.swift in Sources */,
 				086D32EF20B84B45006840C1 /* BindViewController.swift in Sources */,
 				2C0A6A5D208F6DB200B3E12F /* TelemetryEntry.swift in Sources */,
 				08626F0B2098F48000C3101E /* ST10CViewController.swift in Sources */,
@@ -538,6 +551,7 @@
 				A551CC49211A6BE5002D85AD /* DroneAnnotation.swift in Sources */,
 				A551CC4A211A6BE5002D85AD /* DroneView.swift in Sources */,
 				2C365EC1207610C500F42184 /* AppDelegate.swift in Sources */,
+				A551CC64211BA700002D85AD /* CameraSettingsViewController.swift in Sources */,
 				A551CC3F211A43C4002D85AD /* CameraViewController.swift in Sources */,
 				2C0648CE2091FCC6002BD970 /* DroneState.swift in Sources */,
 				2CCEB7992089F2510086AA37 /* CoreManager.swift in Sources */,

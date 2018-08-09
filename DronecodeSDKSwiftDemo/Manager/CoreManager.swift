@@ -30,7 +30,6 @@ class CoreManager {
     // Drone state
     let droneState = DroneState()
     
-    
     private static var sharedCoreManager: CoreManager = {
         let coreManager = CoreManager()
         
