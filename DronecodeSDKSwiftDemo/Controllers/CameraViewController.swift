@@ -220,14 +220,14 @@ class CameraViewController: UIViewController {
             .disposed(by: disposeBag)
         
         // Listen to camera status
-//        let _ = CoreManager.shared().camera.cameraStatusObservable
-//            .subscribe(onNext: { [weak self] status in
-//                let string = " Video On: \(status.videoOn) | Photo Interval On: \(status.photoIntervalOn) | Used Storage: \(status.usedStorageMib) | Available Storage: \(status.availableStorageMib) | Total Storage \(status.totalStorageMib) | Storage Status: \(status.storageStatus.hashValue) "
-//                self?.cameraStatusLabel.text = string
-//                }, onError: { error in
-//                    NSLog("Error cameraStatusSubscription: \(error.localizedDescription)")
-//            })
-//            .disposed(by: disposeBag)
+        let _ = CoreManager.shared().camera.cameraStatusObservable
+            .subscribe(onNext: { [weak self] status in
+                let string = " Video On: \(status.videoOn) | Photo Interval On: \(status.photoIntervalOn) | Used Storage: \(status.usedStorageMib) | Available Storage: \(status.availableStorageMib) | Total Storage \(status.totalStorageMib) | Storage Status: \(status.storageStatus.hashValue) "
+                self?.cameraStatusLabel.text = string
+                }, onError: { error in
+                    NSLog("Error cameraStatusSubscription: \(error.localizedDescription)")
+            })
+            .disposed(by: disposeBag)
 
         // Listen to current settings
         let _ = CoreManager.shared().camera.currentSettingsObservable

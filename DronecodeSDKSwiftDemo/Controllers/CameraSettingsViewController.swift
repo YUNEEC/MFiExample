@@ -110,10 +110,8 @@ class CameraSettingsViewController: FormViewController {
                                 ActionsViewController.showAlert("Error setting \(String(describing: DronecodeCameraSettings(rawValue: setting.settingId)!.stringRepresentation)).", viewController: self)
                                 NSLog("Error: \(error.localizedDescription)")
                             } else {
-//                                DispatchQueue.main.async {
-                                    self.tableView.backgroundView = nil
-                                    self.manifestSection.removeAll()
-//                                }
+                                self.tableView.backgroundView = nil
+                                self.manifestSection.removeAll()
                             }
                         }
                     }
