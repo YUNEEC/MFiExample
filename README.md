@@ -1,6 +1,7 @@
 # MFiExample
 
-This should be a minimal example app on how to connect wia MFi to the ST10C and the H520.
+This is a minimal iOS example app on how to use the Dronecode SDK and connect wia MFi to the ST10C and the H520.
+The app is based on the [Dronecode SDK Swift example app](https://github.com/Dronecode/DronecodeSDK-Swift/tree/master/SampleCode/SwiftSampleCode).
 
 ## Instructions
 
@@ -8,18 +9,14 @@ This should be a minimal example app on how to connect wia MFi to the ST10C and 
    ```
    git clone git@github.com:YUNEEC/MFiExample.git
    cd MFiExample
-   git submodule update --init --recursive
-   git submodule sync --recursive
    ```
 
+2. Get [MFiAdapter](https://github.com/YUNEEC/MFiAdapter/):
+   - Either using `carthage update --platform ios --use-ssh` (if you have access).
+   - Or by downloading the MFiAdapter frameworks from the [H520 update page](https://d3qzlqwby7grio.cloudfront.net/H520/index).
 
-2. Install CocoaPods:
-   ```
-   pod install
-   ```
-3. Open the workspace MFiExample.xcworkspace in XCode 9.2.
+3. Open the workspace MFiExample.xcworkspace in XCode.
 
-4. Try to build the project.
-   If you get errors that CocoaAsyncSocket.framework can't be found, search for
-   it in your home folder and drag it into "Embedded Binaries" of the `YuneecMFiExample`.
-   Select "Copy if needed".
+4. Try to build and run the project.
+
+**Note: The paths saved are for the carthage install way. If you're using the manual download, re-add the frameworks to "Embedded Binaries".**
