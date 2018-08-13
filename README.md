@@ -19,4 +19,4 @@ The app is based on the [Dronecode SDK Swift example app](https://github.com/Dro
 
 4. Try to build and run the project.
 
-**Note: The paths saved are for the carthage install way. If you're using the manual download, re-add the frameworks to "Embedded Binaries".**
+**Note: The paths set in the XCode project are for the carthage install way, so the frameworks need to be in `Carthage/Build/iOS/`. If you're using the manual download, re-add the frameworks to "Embedded Binaries".**
