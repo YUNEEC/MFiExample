@@ -88,7 +88,5 @@ class TelemetryViewController: UIViewController, UITableViewDataSource, UITableV
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
 }
 

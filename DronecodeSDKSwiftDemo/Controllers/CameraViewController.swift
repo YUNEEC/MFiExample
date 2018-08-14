@@ -73,12 +73,12 @@ class CameraViewController: UIViewController {
         takePhotoButton.isEnabled = false
         
         CoreManager.shared().camera.takePhoto()
-            .do(onError: { [weak self] error in
-                self?.feedbackLabel.text = "Take photo failed: \(error.localizedDescription)"
-                self?.takePhotoButton.isEnabled = true
-            }, onCompleted: { [weak self] in
-                self?.feedbackLabel.text = "Take photo succeeded"
-                self?.takePhotoButton.isEnabled = true
+            .do(onError: { error in
+                self.feedbackLabel.text = "Take photo failed: \(error.localizedDescription)"
+                self.takePhotoButton.isEnabled = true
+            }, onCompleted: {
+                self.feedbackLabel.text = "Take photo succeeded"
+                self.takePhotoButton.isEnabled = true
             })
             .subscribe()
             .disposed(by: disposeBag)
@@ -213,9 +213,9 @@ class CameraViewController: UIViewController {
         // Listen to camera status
         // FIXME: Crashes after a while.
         CoreManager.shared().camera.cameraStatusObservable
-            .subscribe(onNext: { [weak self] status in
+            .subscribe(onNext: { status in
                 let string = " Video On: \(status.videoOn) | Photo Interval On: \(status.photoIntervalOn) | Used Storage: \(status.usedStorageMib) | Available Storage: \(status.availableStorageMib) | Total Storage \(status.totalStorageMib) | Storage Status: \(status.storageStatus.hashValue) "
-                self?.cameraStatusLabel.text = string
+                self.cameraStatusLabel.text = string
                 }, onError: { error in
                     NSLog("Error cameraStatusSubscription: \(error.localizedDescription)")
             })
@@ -234,17 +234,7 @@ class CameraViewController: UIViewController {
         // Listen to possible settings
         CoreManager.shared().camera.possibleSettingOptionsObservable
             .subscribe(onNext: { [weak self] possibleSettingOptions in
-                self?.possibleCameraSettingOptions.value = possibleSettingOptions
-                
-                // Anotacao
-                var possibleSettingOptionsString = ""
-                
-                possibleSettingOptions.forEach { (setting) in
-                    let optionsArray = setting.options.map { $0.id }
-                    possibleSettingOptionsString += "\nSetting: \(setting.settingId), Options: \(optionsArray)"
-                }
-                // End Anotacao
-                
+                    self.possibleCameraSettingOptions.value = possibleSettingOptions
                     NSLog("Possible settings: \(possibleSettingOptionsString)")
                 }, onError: { error in
                     NSLog("Error possibleSettingOptionsSubscription: \(error.localizedDescription)")
