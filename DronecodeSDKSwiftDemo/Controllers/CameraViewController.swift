@@ -23,14 +23,13 @@ class CameraViewController: UIViewController {
     @IBOutlet weak var feedbackLabel: UILabel!
     @IBOutlet weak var cameraStatusLabel: UILabel!
     @IBOutlet weak var setSettingsButton: UIButton!
+    @IBOutlet weak var cameraModeLabel: UILabel!
     
     private let disposeBag = DisposeBag()
     
     // Anotacao
     var currentCameraSettings = Variable<[Setting]>([])
     var possibleCameraSettingOptions = Variable<[SettingOptions]>([])
-    
-    var globalSetting: (settingID: String?, optionID: String?)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -161,27 +160,7 @@ class CameraViewController: UIViewController {
     }
     
     @IBAction func setSettings(_ sender: UIButton) {
-        
         openSettings()
-        
-        // Anotacao: Setting first random settings.
-//        guard let settingID = globalSetting.settingID, let optionID = globalSetting.optionID else {
-//            self.feedbackLabel.text = "There are no settings to be set yet."
-//            return
-//        }
-//        
-//        setSettingsButton.isEnabled = false
-//        
-//        let _ = CoreManager.shared().camera.setSetting(setting: Setting(id: settingID, option: Option(id: optionID)))
-//            .do(onError: { error in
-//                self.feedbackLabel.text = "Set settings failed: \(error.localizedDescription).\nSettingID: \(settingID), optionID: \(optionID)"
-//                self.setSettingsButton.isEnabled = true
-//            }, onCompleted: {
-//                self.feedbackLabel.text = "Set settings succeeded\nSettingID: \(settingID), optionID: \(optionID)"
-//                self.setSettingsButton.isEnabled = true
-//            })
-//            .subscribe()
-//            .disposed(by: disposeBag)
     }
     
     // Anotacao
@@ -203,8 +182,21 @@ class CameraViewController: UIViewController {
         // Listen to camera mode
         let _ = CoreManager.shared().camera.cameraModeObservable
             .subscribe(
-                onNext:{ mode in
+                onNext:{ [weak self] mode in
                     NSLog("Changed mode to: \(mode)")
+                    
+                    switch mode {
+                    case .photo:
+                       self?.cameraModeLabel.text = "Photo"
+                       self?.cameraModeLabel.textColor = .white
+                    case .video:
+                        self?.cameraModeLabel.text = "Video"
+                        self?.cameraModeLabel.textColor = UIColor.init(red: 145/255, green: 44/255, blue: 0/255, alpha: 1)
+                    default:
+                        self?.cameraModeLabel.text = "Unknown"
+                        self?.cameraModeLabel.textColor = .lightGray
+                    }
+
                 }, onError: { error in
                     NSLog("Error cameraModeSubscription: \(error.localizedDescription)")
             })
@@ -220,14 +212,14 @@ class CameraViewController: UIViewController {
             .disposed(by: disposeBag)
         
         // Listen to camera status
-        let _ = CoreManager.shared().camera.cameraStatusObservable
-            .subscribe(onNext: { [weak self] status in
-                let string = " Video On: \(status.videoOn) | Photo Interval On: \(status.photoIntervalOn) | Used Storage: \(status.usedStorageMib) | Available Storage: \(status.availableStorageMib) | Total Storage \(status.totalStorageMib) | Storage Status: \(status.storageStatus.hashValue) "
-                self?.cameraStatusLabel.text = string
-                }, onError: { error in
-                    NSLog("Error cameraStatusSubscription: \(error.localizedDescription)")
-            })
-            .disposed(by: disposeBag)
+//        let _ = CoreManager.shared().camera.cameraStatusObservable
+//            .subscribe(onNext: { [weak self] status in
+//                let string = " Video On: \(status.videoOn) | Photo Interval On: \(status.photoIntervalOn) | Used Storage: \(status.usedStorageMib) | Available Storage: \(status.availableStorageMib) | Total Storage \(status.totalStorageMib) | Storage Status: \(status.storageStatus.hashValue) "
+//                self?.cameraStatusLabel.text = string
+//                }, onError: { error in
+//                    NSLog("Error cameraStatusSubscription: \(error.localizedDescription)")
+//            })
+//            .disposed(by: disposeBag)
 
         // Listen to current settings
         let _ = CoreManager.shared().camera.currentSettingsObservable
@@ -242,19 +234,16 @@ class CameraViewController: UIViewController {
         // Listen to possible settings
         let _ = CoreManager.shared().camera.possibleSettingOptionsObservable
             .subscribe(onNext: { [weak self] possibleSettingOptions in
+                self?.possibleCameraSettingOptions.value = possibleSettingOptions
                 
-                    self?.possibleCameraSettingOptions.value = possibleSettingOptions
+                // Anotacao
+                var possibleSettingOptionsString = ""
                 
-                    // Save first possible setting to be set in setSettings (just for example purposes)
-                    self?.globalSetting.settingID = possibleSettingOptions.first?.settingId
-                    self?.globalSetting.optionID = possibleSettingOptions.first?.options.first?.id
-                
-                    var possibleSettingOptionsString = ""
-                
-                    possibleSettingOptions.forEach { (setting) in
-                        let optionsArray = setting.options.map { $0.id }
-                        possibleSettingOptionsString += "\nSetting: \(setting.settingId), Options: \(optionsArray)"
-                    }
+                possibleSettingOptions.forEach { (setting) in
+                    let optionsArray = setting.options.map { $0.id }
+                    possibleSettingOptionsString += "\nSetting: \(setting.settingId), Options: \(optionsArray)"
+                }
+                // End Anotacao
                 
                     NSLog("Possible settings: \(possibleSettingOptionsString)")
                 }, onError: { error in

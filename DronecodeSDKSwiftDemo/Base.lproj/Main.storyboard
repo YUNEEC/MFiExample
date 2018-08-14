@@ -856,6 +856,13 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="highlightedColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Mode" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AD8-0d-LPm">
+                                        <rect key="frame" x="350" y="23" width="56" height="22"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                        <color key="textColor" red="0.13333333333333333" green="0.18823529411764706" blue="0.2627450980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.4406479895" green="0.51737356189999995" blue="0.52941578629999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
@@ -989,7 +996,7 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="336" id="vZW-Dt-RbC"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                <color key="textColor" red="0.56890466370000004" green="0.17311354640000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="textColor" red="0.56862745098039214" green="0.17254901960784313" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -1010,6 +1017,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Camera" image="icon-tab-camera" selectedImage="icon-tab-camera" id="lNM-yJ-6Ij"/>
                     <connections>
+                        <outlet property="cameraModeLabel" destination="AD8-0d-LPm" id="e59-wx-vPr"/>
                         <outlet property="cameraStatusLabel" destination="8bC-qH-aW1" id="ATb-Ke-83V"/>
                         <outlet property="feedbackLabel" destination="kQ3-cN-QqK" id="Yav-bb-g80"/>
                         <outlet property="setPhotoModeButton" destination="VzG-4S-mkw" id="LOK-gh-oep"/>

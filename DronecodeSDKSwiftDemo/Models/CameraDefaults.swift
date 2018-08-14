@@ -27,6 +27,16 @@ let defaultCameraSettings: [(DronecodeCameraSettings, String)] = [(.exposureMode
                                                                   (.photoQuality, DronecodePhotoQuality.high.rawValue),
                                                                   (.distortionCorrection, DronecodeDistortionCorrection.off.rawValue)]
 
+//enum DronecodeCameraMode: String {
+//    case photo
+//    case video
+//    case unknown
+//
+//    var stringRepresentation: String {
+//        case .photo
+//    }
+//}
+
 enum DronecodeCameraSettings: String {
     case colorMode = "CAM_COLORMODE"
     case exposureCompensation = "CAM_EV"
