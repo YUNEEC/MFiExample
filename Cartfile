@@ -1,1 +1,2 @@
 github "YUNEEC/MFiAdapter" "master"
+github "xmartlabs/Eureka" ~> 4.1
