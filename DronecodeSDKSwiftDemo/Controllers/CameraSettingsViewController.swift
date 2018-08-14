@@ -116,7 +116,7 @@ class CameraSettingsViewController: FormViewController {
 //                            self.tableView.tableHeaderView = nil
                             activityView.stopAnimating()
                             if let error = error {
-                                ActionsViewController.showAlert("Error setting \(String(describing: DronecodeCameraSettings(rawValue: setting.settingId)!.stringRepresentation)).", viewController: self)
+                                ActionsViewController.showAlert("Error setting \(String(describing: DronecodeCameraSettings(rawValue: setting.settingId)?.stringRepresentation)).", viewController: self)
                                 NSLog("Error: \(error.localizedDescription)")
                             }
                         }
@@ -141,15 +141,15 @@ class CameraSettingsViewController: FormViewController {
         let option = Option(id: optionID)
         let setting = Setting(id: settingID, option: option)
         
-        let setSettings = CoreManager.shared().camera.setSetting(setting: setting)
+        CoreManager.shared().camera.setSetting(setting: setting)
             .do(onError: { (error: Swift.Error) in
                 callback(error)
             }, onCompleted: {
                 NSLog("Seting \(settingID) with option \(optionID) succeeded!")
                 callback(nil)
             })
-        
-        let _ = setSettings.subscribe()
+            .subscribe()
+            .disposed(by: disposeBag)
     }
     
     

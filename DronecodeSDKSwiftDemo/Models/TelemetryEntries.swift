@@ -28,6 +28,7 @@ enum EntryType : Int {
 class TelemetryEntries {
     
     var entries = [TelemetryEntry]()
+    let disposeBag = DisposeBag()
     
     init() {
         // Prepare entries array : index EntryType value TelemetryEntry
@@ -60,15 +61,16 @@ class TelemetryEntries {
         
         //Listen Connection
         let coreStatus: Observable<UInt64> = CoreManager.shared().core.discoverObservable
-        _ = coreStatus.subscribe(onNext: { uuid in
+        coreStatus.subscribe(onNext: { uuid in
             self.onDiscoverObservable(uuid: uuid)
         }, onError: { error in
             print("Error Discover \(error)")
         })
+        .disposed(by: disposeBag)
         
         //Listen Timeout
         let coreTimeout: Observable<Void> = CoreManager.shared().core.timeoutObservable
-        _ = coreTimeout.subscribe({Void in self.onTimeoutObservable()})
+        coreTimeout.subscribe({Void in self.onTimeoutObservable()}).disposed(by: disposeBag)
         
     }
     
@@ -82,22 +84,22 @@ class TelemetryEntries {
         
         //Listen Health
         let health: Observable<Health> = CoreManager.shared().telemetry.healthObservable
-        _ = health.subscribe(onNext: { health in
+        health.subscribe(onNext: { health in
             //print ("Next health \(health)")
             self.onHealthUpdate(health: health)
         }, onError: { error in
             print("Error Health")
-        })
+        }).disposed(by: disposeBag)
         
         //Listen Position
         let position: Observable<Position> = CoreManager.shared().telemetry.positionObservable
-        _ = position.subscribe(onNext: { position in
+        position.subscribe(onNext: { position in
             //print ("Next Pos \(position)")
             CoreManager.shared().droneState.location2D = CLLocationCoordinate2DMake(position.latitudeDeg,position.longitudeDeg)
             self.onPositionUpdate(position: position)
         }, onError: { error in
             print("Error telemetry")
-        })
+        }).disposed(by: disposeBag)
     }
     
     func onTimeoutObservable()

@@ -109,7 +109,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         self.displayFeedback(message:"Start Mission Pressed")
         
         // /!\ NEED TO ARM BEFORE START THE MISSION
-        let _ = CoreManager.shared().action.arm()
+        CoreManager.shared().action.arm()
             .do(onError: { error in
                 self.displayFeedback(message:"Arming failed")
             }, onCompleted: {
@@ -157,7 +157,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     
     func uploadMission(){
         
-        let _ = CoreManager.shared().mission.uploadMission(missionItems: missionExample.missionItems)
+        CoreManager.shared().mission.uploadMission(missionItems: missionExample.missionItems)
             .do(onError: { error in
                 self.displayFeedback(message:"Mission uploaded failed \(error)")
                 
@@ -170,7 +170,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func startMission(){
-        let startMissionRoutine = CoreManager.shared().mission.startMission()
+        CoreManager.shared().mission.startMission()
             .do(onError: { error in
                 self.displayFeedback(message: "Mission started failed \(error)")
             }, onCompleted: {

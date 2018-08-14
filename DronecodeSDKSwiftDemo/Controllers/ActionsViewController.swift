@@ -148,7 +148,7 @@ class ActionsViewController: UIViewController {
     
     @IBAction func getTakeoffAltitudePressed(_ sender: Any) {
         let myRoutine = CoreManager.shared().action.getTakeoffAltitude()
-        _ = myRoutine.subscribe{ event in
+        myRoutine.subscribe{ event in
             switch event {
             case .success(let altitude):
                 self.feedbackLabel.text = "Takeoff altitude : \(altitude)"
@@ -161,7 +161,7 @@ class ActionsViewController: UIViewController {
     
     @IBAction func getMaximumSpeedPressed(_ sender: Any) {
         let myRoutine = CoreManager.shared().action.getMaximumSpeed()
-        _ = myRoutine.subscribe{ event in
+        myRoutine.subscribe{ event in
             switch event {
             case .success(let maxSpeed):
                 self.feedbackLabel.text = "Maximum speed : \(maxSpeed)"

@@ -57,7 +57,7 @@ class CameraViewController: UIViewController {
     @IBAction func setPhotoMode(_ sender: UIButton) {
         setPhotoModeButton.isEnabled = false
         
-        let _ = CoreManager.shared().camera.setMode(mode: .photo)
+        CoreManager.shared().camera.setMode(mode: .photo)
             .do(onError: { error in
                 self.feedbackLabel.text = "Set photo mode failed: \(error.localizedDescription)"
                 self.setPhotoModeButton.isEnabled = true
@@ -72,7 +72,7 @@ class CameraViewController: UIViewController {
     @IBAction func takePhotoPressed(_ sender: Any) {
         takePhotoButton.isEnabled = false
         
-        let _ = CoreManager.shared().camera.takePhoto()
+        CoreManager.shared().camera.takePhoto()
             .do(onError: { [weak self] error in
                 self?.feedbackLabel.text = "Take photo failed: \(error.localizedDescription)"
                 self?.takePhotoButton.isEnabled = true
@@ -87,7 +87,7 @@ class CameraViewController: UIViewController {
     @IBAction func startPhotoInterval(_ sender: UIButton) {
         startPhotoIntervalButton.isEnabled = false
         
-        let _ = CoreManager.shared().camera.startPhotoInteval(interval: 5)
+        CoreManager.shared().camera.startPhotoInteval(interval: 5)
             .do(onError: { error in
                 self.feedbackLabel.text = "Start photo interval failed: \(error.localizedDescription)"
                 self.startPhotoIntervalButton.isEnabled = true
@@ -102,7 +102,7 @@ class CameraViewController: UIViewController {
     @IBAction func stopPhotoInterval(_ sender: UIButton) {
         stopPhotoIntervalButton.isEnabled = false
 
-        let _ = CoreManager.shared().camera.stopPhotoInterval()
+        CoreManager.shared().camera.stopPhotoInterval()
             .do(onError: { error in
                 self.feedbackLabel.text = "Stop photo interval failed: \(error.localizedDescription)"
                 self.stopPhotoIntervalButton.isEnabled = true
@@ -117,7 +117,7 @@ class CameraViewController: UIViewController {
     @IBAction func setVideoMode(_ sender: UIButton) {
         setVideoModeButton.isEnabled = false
         
-        let _ = CoreManager.shared().camera.setMode(mode: .video)
+        CoreManager.shared().camera.setMode(mode: .video)
             .do(onError: { error in
                 self.feedbackLabel.text = "Set video mode failed: \(error.localizedDescription)"
                 self.setVideoModeButton.isEnabled = true
@@ -132,7 +132,7 @@ class CameraViewController: UIViewController {
     @IBAction func startVideo(_ sender: UIButton) {
         startVideoButton.isEnabled = false
         
-        let _ = CoreManager.shared().camera.startVideo()
+        CoreManager.shared().camera.startVideo()
             .do(onError: { error in
                 self.feedbackLabel.text = "Start video failed: \(error.localizedDescription)"
                 self.startVideoButton.isEnabled = true
@@ -147,7 +147,7 @@ class CameraViewController: UIViewController {
     @IBAction func stopVideo(_ sender: UIButton) {
         stopVideoButton.isEnabled = false
         
-        let _ = CoreManager.shared().camera.stopVideo()
+        CoreManager.shared().camera.stopVideo()
             .do(onError: { error in
                 self.feedbackLabel.text = "Stop video failed: \(error.localizedDescription)"
                 self.stopVideoButton.isEnabled = true

@@ -30,7 +30,10 @@ class CustomPinAnnotationView: MKAnnotationView {
         addSubview(label)
         
         // position related to image
-        self.centerOffset = CGPoint(x: 0.0, y: -((image?.size.height)!)/2)
+        if let imageHeight = image?.size.height {
+            self.centerOffset = CGPoint(x: 0.0, y: -(imageHeight/2))
+        }
+
     }
     
     required init?(coder aDecoder: NSCoder) {
