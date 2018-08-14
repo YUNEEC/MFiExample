@@ -59,7 +59,7 @@ class ActionsViewController: UIViewController {
     }
     
     @IBAction func armPressed(_ sender: Any) {
-        let _ = CoreManager.shared().action.arm()
+        CoreManager.shared().action.arm()
             .do(onError: { error in
                 self.feedbackLabel.text = "Arming failed : \(error.localizedDescription)"
             }, onCompleted: {
@@ -70,7 +70,7 @@ class ActionsViewController: UIViewController {
     }
     
     @IBAction func disarmPressed(_ sender: Any) {
-        let _ = CoreManager.shared().action.disarm()
+        CoreManager.shared().action.disarm()
             .do(onError: { error in
                 self.feedbackLabel.text = "Disarming failed : \(error.localizedDescription)"
             }, onCompleted: {
@@ -81,7 +81,7 @@ class ActionsViewController: UIViewController {
     }
     
     @IBAction func takeoffPressed(_ sender: Any) {
-        let _ = CoreManager.shared().action.takeoff()
+        CoreManager.shared().action.takeoff()
             .do(onError: { error in
                 self.feedbackLabel.text = "Takeoff failed: \(error.localizedDescription)"
             }, onCompleted: {
@@ -92,7 +92,7 @@ class ActionsViewController: UIViewController {
     }
     
     @IBAction func landPressed(_ sender: Any) {
-        let _ = CoreManager.shared().action.land()
+        CoreManager.shared().action.land()
             .do(onError: { error in
                 self.feedbackLabel.text = "Land failed: \(error.localizedDescription)"
             }, onCompleted: {
@@ -103,7 +103,7 @@ class ActionsViewController: UIViewController {
     }
     
     @IBAction func killPressed(_ sender: Any) {
-        let _ = CoreManager.shared().action.kill()
+        CoreManager.shared().action.kill()
             .do(onError: { error in
                 self.feedbackLabel.text = "Kill failed: \(error.localizedDescription)"
             }, onCompleted: {
@@ -114,7 +114,7 @@ class ActionsViewController: UIViewController {
     }
     
     @IBAction func returnToLaunchPressed(_ sender: Any) {
-        let _ = CoreManager.shared().action.returnToLaunch()
+        CoreManager.shared().action.returnToLaunch()
             .do(onError: { error in
                 self.feedbackLabel.text = "Return to launch failed: \(error.localizedDescription)"
             }, onCompleted: {
@@ -125,7 +125,7 @@ class ActionsViewController: UIViewController {
     }
     
     @IBAction func transitionToFixedWingPressed(_ sender: Any) {
-        let _ = CoreManager.shared().action.transitionToFixedWing()
+        CoreManager.shared().action.transitionToFixedWing()
             .do(onError: { error in
                 self.feedbackLabel.text = "transitionToFixedWing failed: \(error.localizedDescription)"
             }, onCompleted: {
@@ -136,7 +136,7 @@ class ActionsViewController: UIViewController {
     }
     
     @IBAction func transitionToMulticopterPressed(_ sender: Any) {
-        let _ = CoreManager.shared().action.transitionToMulticopter()
+        CoreManager.shared().action.transitionToMulticopter()
             .do(onError: { error in
                 self.feedbackLabel.text = "transitionToMulticopter failed: \(error.localizedDescription)"
             }, onCompleted: {

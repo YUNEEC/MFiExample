@@ -163,7 +163,6 @@ class CameraViewController: UIViewController {
         openSettings()
     }
     
-    // Anotacao
     func openSettings() {
         let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let navigationController = storyboard.instantiateViewController(withIdentifier: "SettingsNavigationController") as! UINavigationController
@@ -180,7 +179,7 @@ class CameraViewController: UIViewController {
     
     func startObserving() {
         // Listen to camera mode
-        let _ = CoreManager.shared().camera.cameraModeObservable
+        CoreManager.shared().camera.cameraModeObservable
             .subscribe(
                 onNext:{ [weak self] mode in
                     NSLog("Changed mode to: \(mode)")
@@ -203,7 +202,7 @@ class CameraViewController: UIViewController {
             .disposed(by: disposeBag)
         
         // Listen to capture info
-        let _ = CoreManager.shared().camera.captureInfoObservable
+        CoreManager.shared().camera.captureInfoObservable
             .subscribe(onNext: { info in
                     NSLog("Capture info: \(info)")
                 }, onError: { error in
@@ -212,17 +211,18 @@ class CameraViewController: UIViewController {
             .disposed(by: disposeBag)
         
         // Listen to camera status
-//        let _ = CoreManager.shared().camera.cameraStatusObservable
-//            .subscribe(onNext: { [weak self] status in
-//                let string = " Video On: \(status.videoOn) | Photo Interval On: \(status.photoIntervalOn) | Used Storage: \(status.usedStorageMib) | Available Storage: \(status.availableStorageMib) | Total Storage \(status.totalStorageMib) | Storage Status: \(status.storageStatus.hashValue) "
-//                self?.cameraStatusLabel.text = string
-//                }, onError: { error in
-//                    NSLog("Error cameraStatusSubscription: \(error.localizedDescription)")
-//            })
-//            .disposed(by: disposeBag)
+        // FIXME: Crashes after a while.
+        CoreManager.shared().camera.cameraStatusObservable
+            .subscribe(onNext: { [weak self] status in
+                let string = " Video On: \(status.videoOn) | Photo Interval On: \(status.photoIntervalOn) | Used Storage: \(status.usedStorageMib) | Available Storage: \(status.availableStorageMib) | Total Storage \(status.totalStorageMib) | Storage Status: \(status.storageStatus.hashValue) "
+                self?.cameraStatusLabel.text = string
+                }, onError: { error in
+                    NSLog("Error cameraStatusSubscription: \(error.localizedDescription)")
+            })
+            .disposed(by: disposeBag)
 
         // Listen to current settings
-        let _ = CoreManager.shared().camera.currentSettingsObservable
+        CoreManager.shared().camera.currentSettingsObservable
             .subscribe(onNext: { currentSettings in
                     self.currentCameraSettings.value = currentSettings
                     NSLog("Current settings: \(currentSettings)")
@@ -232,7 +232,7 @@ class CameraViewController: UIViewController {
             .disposed(by: disposeBag)
         
         // Listen to possible settings
-        let _ = CoreManager.shared().camera.possibleSettingOptionsObservable
+        CoreManager.shared().camera.possibleSettingOptionsObservable
             .subscribe(onNext: { [weak self] possibleSettingOptions in
                 self?.possibleCameraSettingOptions.value = possibleSettingOptions
                 

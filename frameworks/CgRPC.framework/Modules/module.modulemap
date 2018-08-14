@@ -1,4 +1,0 @@
-framework module CgRPC {
-    header "cgrpc.h"
-    export *
-}
