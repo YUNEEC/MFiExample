@@ -233,9 +233,9 @@ class CameraViewController: UIViewController {
         
         // Listen to possible settings
         CoreManager.shared().camera.possibleSettingOptionsObservable
-            .subscribe(onNext: { [weak self] possibleSettingOptions in
+            .subscribe(onNext: { possibleSettingOptions in
                     self.possibleCameraSettingOptions.value = possibleSettingOptions
-                    NSLog("Possible settings: \(possibleSettingOptionsString)")
+                    NSLog("Possible settings: \(possibleSettingOptions)")
                 }, onError: { error in
                     NSLog("Error possibleSettingOptionsSubscription: \(error.localizedDescription)")
             })
