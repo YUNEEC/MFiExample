@@ -91,12 +91,7 @@ class CameraSettingsViewController: FormViewController {
                     $0.tag = setting.settingId
                     $0.title = DronecodeCameraSettings(rawValue: setting.settingId)?.stringRepresentation ?? "N/A"
                     $0.options = setting.options.compactMap {  settingsType.init(rawValue: $0.id)?.description  }
-                    let optionID = currentSettings.value.filter { $0.id == setting.settingId }.first?.option.id
-                    if let optionID = optionID, let optionDescription = settingsType.init(rawValue: optionID)?.description {
-                        $0.value = optionDescription
-                    } else {
-                        $0.value = "N/A"
-                    }
+                    $0.value = currentSettings.value.filter { $0.id == setting.settingId }.first?.option.description ?? "N/A"
                     $0.onChange { pushRow in
                         
                         guard let value = pushRow.value, let newSettingValue = settingsType.rawValue(from: value) else {
@@ -113,7 +108,6 @@ class CameraSettingsViewController: FormViewController {
                         
                         self.setSettings(settingID: setting.settingId, optionID: newSettingValue) { (error) in
                             // Hide spinner
-//                            self.tableView.tableHeaderView = nil
                             activityView.stopAnimating()
                             if let error = error {
                                 ActionsViewController.showAlert("Error setting \(String(describing: DronecodeCameraSettings(rawValue: setting.settingId)?.stringRepresentation)).", viewController: self)
