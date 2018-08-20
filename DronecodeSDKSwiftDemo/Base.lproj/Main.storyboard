@@ -999,6 +999,14 @@
                                 <color key="textColor" red="0.56862745098039214" green="0.17254901960784313" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nPJ-Oo-q2s">
+                                <rect key="frame" x="307" y="646" width="97" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                <state key="normal" title="Video Feed"/>
+                                <connections>
+                                    <segue destination="s94-qs-qHo" kind="show" id="BGs-eQ-Pro"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -1034,6 +1042,60 @@
             </objects>
             <point key="canvasLocation" x="3169.5652173913045" y="955.43478260869574"/>
         </scene>
+        <!--Yuneec Preview View Controller-->
+        <scene sceneID="gFT-NH-mg1">
+            <objects>
+                <viewController id="s94-qs-qHo" customClass="YuneecPreviewViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="b69-32-J19">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GbA-DG-Y8b" customClass="YuneecPreviewView">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Connection" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kJu-dd-dFn">
+                                        <rect key="frame" x="20" y="20" width="131" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <color key="textColor" red="0.0" green="0.91372549020000005" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hq8-0G-krH">
+                                        <rect key="frame" x="368" y="16" width="30" height="36"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <state key="normal" title="X">
+                                            <color key="titleColor" red="0.33329838509999998" green="0.99337914250000003" blue="0.33328562969999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="exitButtonAction:" destination="s94-qs-qHo" eventType="touchUpInside" id="6tg-5d-qH5"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="kJu-dd-dFn" firstAttribute="leading" secondItem="GbA-DG-Y8b" secondAttribute="leading" constant="20" id="Tdv-25-Qod"/>
+                                    <constraint firstItem="kJu-dd-dFn" firstAttribute="top" secondItem="GbA-DG-Y8b" secondAttribute="top" constant="20" id="iPU-3I-Bnd"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="GbA-DG-Y8b" firstAttribute="top" secondItem="b69-32-J19" secondAttribute="top" id="9H7-hw-0JM"/>
+                            <constraint firstItem="GbA-DG-Y8b" firstAttribute="bottom" secondItem="fK9-7n-DpZ" secondAttribute="bottom" id="I3R-7v-gs4"/>
+                            <constraint firstItem="GbA-DG-Y8b" firstAttribute="leading" secondItem="b69-32-J19" secondAttribute="leading" id="YrS-e0-k6t"/>
+                            <constraint firstAttribute="trailing" secondItem="GbA-DG-Y8b" secondAttribute="trailing" id="oER-HJ-J3a"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="fK9-7n-DpZ"/>
+                    </view>
+                    <connections>
+                        <outlet property="previewView" destination="GbA-DG-Y8b" id="Jn0-Ij-pk5"/>
+                        <outlet property="stateLabel" destination="kJu-dd-dFn" id="Z4j-Vo-BYU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ogI-Tv-cRX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3909" y="955"/>
+        </scene>
         <!--Camera Settings-->
         <scene sceneID="kzy-MY-dBb">
             <objects>
@@ -1048,7 +1110,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Geg-D0-e1Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3922" y="1657"/>
+            <point key="canvasLocation" x="3910" y="1657"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="7Oc-MX-LNE">
@@ -1066,7 +1128,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Ei-dc-Itp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3183" y="1657"/>
+            <point key="canvasLocation" x="3170" y="1657"/>
         </scene>
     </scenes>
     <resources>

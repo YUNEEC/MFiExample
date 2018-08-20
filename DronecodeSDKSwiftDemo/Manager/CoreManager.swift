@@ -65,7 +65,4 @@ class CoreManager {
             }
             .disposed(by: disposeBag)
     }
-    
-
-    
 }
