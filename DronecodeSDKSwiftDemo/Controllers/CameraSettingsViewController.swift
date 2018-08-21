@@ -92,7 +92,6 @@ class CameraSettingsViewController: FormViewController {
                     $0.title = DronecodeCameraSettings(rawValue: setting.settingId)?.stringRepresentation ?? "N/A"
                     $0.options = setting.options.compactMap {  settingsType.init(rawValue: $0.id)?.description  }
                     $0.value = currentSettings.value.filter { $0.id == setting.settingId }.first?.option.description ?? "N/A"
-//                    $0.value = currentSettings.value.filter { $0.id == setting.settingId }.first?.option.id ?? "N/A"
                     $0.onChange { pushRow in
                         
                         guard let value = pushRow.value, let newSettingValue = settingsType.rawValue(from: value) else {
@@ -128,7 +127,7 @@ class CameraSettingsViewController: FormViewController {
     }
     
     func stopSpinner() {
-//      self.tableView.tableHeaderView = nil
+         self.tableView.tableHeaderView = nil
         activityView.stopAnimating()
     }
     
