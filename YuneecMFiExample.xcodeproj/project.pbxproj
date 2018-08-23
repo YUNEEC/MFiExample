@@ -72,6 +72,10 @@
 		2CCEB7992089F2510086AA37 /* CoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCEB7982089F2510086AA37 /* CoreManager.swift */; };
 		2CDBF021207652340064C8A5 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDBF020207652340064C8A5 /* MapViewController.swift */; };
 		2CFF7271207750AF0060D31B /* ActionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFF7270207750AF0060D31B /* ActionsViewController.swift */; };
+		D82298DF212504F800DCBDBE /* YuneecCameraSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D82298DE212504F800DCBDBE /* YuneecCameraSDK.framework */; };
+		D82298E0212504F800DCBDBE /* YuneecCameraSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D82298DE212504F800DCBDBE /* YuneecCameraSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D82298E42126607C00DCBDBE /* GalleryUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82298E32126607C00DCBDBE /* GalleryUtility.swift */; };
+		D87E71A021216571001D712E /* GalleryViewControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87E719F21216571001D712E /* GalleryViewControl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +108,7 @@
 				08D3A05A20A2370A0046B175 /* RxSwift.framework in Embed Frameworks */,
 				08D3A05820A2370A0046B175 /* gRPC.framework in Embed Frameworks */,
 				08D3A05E20A2370A0046B175 /* BoringSSL.framework in Embed Frameworks */,
+				D82298E0212504F800DCBDBE /* YuneecCameraSDK.framework in Embed Frameworks */,
 				0815DC3F211B266F0064ACB2 /* YuneecRemoteControllerSDK.framework in Embed Frameworks */,
 				086D7A632110856200F7F739 /* RxBlocking.framework in Embed Frameworks */,
 				08D3A06020A2370A0046B175 /* CgRPC.framework in Embed Frameworks */,
@@ -180,6 +185,9 @@
 		2CCEB7982089F2510086AA37 /* CoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreManager.swift; sourceTree = "<group>"; };
 		2CDBF020207652340064C8A5 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		2CFF7270207750AF0060D31B /* ActionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionsViewController.swift; sourceTree = "<group>"; };
+		D82298DE212504F800DCBDBE /* YuneecCameraSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YuneecCameraSDK.framework; path = Carthage/Build/iOS/YuneecCameraSDK.framework; sourceTree = "<group>"; };
+		D82298E32126607C00DCBDBE /* GalleryUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryUtility.swift; sourceTree = "<group>"; };
+		D87E719F21216571001D712E /* GalleryViewControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewControl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +208,7 @@
 				08248BA3209A1557001D0B22 /* CFNetwork.framework in Frameworks */,
 				08D3A05920A2370A0046B175 /* RxSwift.framework in Frameworks */,
 				08D3A06120A2370A0046B175 /* backend.framework in Frameworks */,
+				D82298DF212504F800DCBDBE /* YuneecCameraSDK.framework in Frameworks */,
 				0815DC3E211B266F0064ACB2 /* YuneecRemoteControllerSDK.framework in Frameworks */,
 				08D3A06320A2370A0046B175 /* SwiftProtobuf.framework in Frameworks */,
 				08D3A05F20A2370A0046B175 /* CgRPC.framework in Frameworks */,
@@ -240,6 +249,7 @@
 				2C0A6A5E208F77E500B3E12F /* TelemetryEntries.swift */,
 				2C0648C62091DC06002BD970 /* ExampleMission.swift */,
 				2C0648CD2091FCC6002BD970 /* DroneState.swift */,
+				D82298E32126607C00DCBDBE /* GalleryUtility.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -247,6 +257,7 @@
 		2C365EB4207610C500F42184 = {
 			isa = PBXGroup;
 			children = (
+				D82298DE212504F800DCBDBE /* YuneecCameraSDK.framework */,
 				0815DC34211B266E0064ACB2 /* BaseFramework.framework */,
 				0815DC32211B266D0064ACB2 /* CocoaAsyncSocket.framework */,
 				0815DC31211B266D0064ACB2 /* FFMpegDecoder.framework */,
@@ -338,6 +349,7 @@
 				2C365EC2207610C500F42184 /* TelemetryViewController.swift */,
 				2CFF7270207750AF0060D31B /* ActionsViewController.swift */,
 				2CDBF020207652340064C8A5 /* MapViewController.swift */,
+				D87E719F21216571001D712E /* GalleryViewControl.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -404,6 +416,11 @@
 					2C365EBC207610C500F42184 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					2C365ED0207610C500F42184 = {
 						CreatedOnToolsVersion = 9.2;
@@ -456,6 +473,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D82298E42126607C00DCBDBE /* GalleryUtility.swift in Sources */,
 				0815DC5D211B2E7D0064ACB2 /* DroneView.swift in Sources */,
 				086D32EF20B84B45006840C1 /* BindViewController.swift in Sources */,
 				2C0A6A5D208F6DB200B3E12F /* TelemetryEntry.swift in Sources */,
@@ -467,6 +485,7 @@
 				2C0648C72091DC06002BD970 /* ExampleMission.swift in Sources */,
 				2C365EC1207610C500F42184 /* AppDelegate.swift in Sources */,
 				2C0648CE2091FCC6002BD970 /* DroneState.swift in Sources */,
+				D87E71A021216571001D712E /* GalleryViewControl.swift in Sources */,
 				2CCEB7992089F2510086AA37 /* CoreManager.swift in Sources */,
 				0815DC5C211B2E7D0064ACB2 /* DroneAnnotation.swift in Sources */,
 			);
@@ -665,6 +684,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yuneec.yuneecmfiexample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "DronecodeSDKSwiftDemo-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
