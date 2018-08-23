@@ -16,6 +16,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     // MARK: - Properties
     var disposeBag = DisposeBag()
     
+    // MARK: - Observables
+    var currentMissionProgress = Variable<MissionProgress?>(nil)
     
     // MARK: IBOutlets -------
     
@@ -89,6 +91,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         
         // display mission trace
         self.createMissionTrace(mapView: mapView, listMissionsItems: missionExample.missionItems)
+        
+        startObserving()
     }
     
     override func didReceiveMemoryWarning() {
@@ -154,6 +158,17 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     // MARK: - Missions
+    
+    func startObserving() {
+//        CoreManager.shared().mission.missionProgressObservable
+//            .subscribe(onNext: { missionProgress in
+//                self.currentMissionProgress.value = missionProgress
+//                NSLog("Mission progress: \(missionProgress)")
+//            }, onError: { error in
+//                NSLog("Error currentSettingsSubscription: \(error.localizedDescription)")
+//            })
+//            .disposed(by: disposeBag)
+    }
     
     func uploadMission(){
         

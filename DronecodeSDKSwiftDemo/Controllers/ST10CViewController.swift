@@ -18,20 +18,32 @@ class ST10CViewController: UIViewController {
         super.viewDidLoad()
         mfiStatus.text = "View officially loaded"
         
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(handleConnectionStateNotification(notification:)),
-            name: Notification.Name("MFiConnectionStateNotification"),
-            object: nil)
+//        NotificationCenter.default.addObserver(
+//            self,
+//            selector: #selector(handleConnectionStateNotification(notification:)),
+//            name: Notification.Name("MFiConnectionStateNotification"),
+//            object: nil)        
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBAction func fetchMediaAction(_ sender: UIButton) {
+        fetchMediaList()
+    }
+    
+    func fetchMediaList() {
+        MFiAdapter.MFiCameraAdapter.sharedInstance().requestMediaInfo { [weak self] (array, error) in
+            if error == nil {
+                DispatchQueue.main.async {
+                    self?.mfiStatus.text = String(describing: array)
+                }
+            } else {
+                DispatchQueue.main.async {
+                    self?.mfiStatus.text = String(describing: error)
+                }
+            }
+        }
     }
     
     @objc func handleConnectionStateNotification(notification: NSNotification) {
-        
         mfiStatus.text = String(describing:notification.userInfo)
     }
 }

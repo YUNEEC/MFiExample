@@ -31,13 +31,15 @@
 		A507FAA6212B777200829CBE /* YuneecDecoder.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A507FA5B212B775500829CBE /* YuneecDecoder.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A507FAA9212B777200829CBE /* YuneecPreviewView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A507FA5C212B775500829CBE /* YuneecPreviewView.framework */; };
 		A507FAAA212B777200829CBE /* YuneecPreviewView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A507FA5C212B775500829CBE /* YuneecPreviewView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A507FB06212E1F0400829CBE /* YuneecCameraSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A507FB05212E1F0300829CBE /* YuneecCameraSDK.framework */; };
+		A507FB07212E1F1600829CBE /* YuneecCameraSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A507FB05212E1F0300829CBE /* YuneecCameraSDK.framework */; };
+		A507FB08212E1F1600829CBE /* YuneecCameraSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A507FB05212E1F0300829CBE /* YuneecCameraSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A54AC86C2123623D009E0D03 /* CustomPinAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54AC8672123623D009E0D03 /* CustomPinAnnotationView.swift */; };
 		A54AC86D2123623D009E0D03 /* CustomPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54AC8682123623D009E0D03 /* CustomPointAnnotation.swift */; };
 		A54AC86E2123623D009E0D03 /* DroneAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54AC86A2123623D009E0D03 /* DroneAnnotation.swift */; };
 		A54AC86F2123623D009E0D03 /* DroneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54AC86B2123623D009E0D03 /* DroneView.swift */; };
 		A54AC8722123635E009E0D03 /* CameraSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54AC8702123635E009E0D03 /* CameraSettingsViewController.swift */; };
 		A54AC8732123635E009E0D03 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54AC8712123635E009E0D03 /* CameraViewController.swift */; };
-		A54AC87521236367009E0D03 /* CameraDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54AC87421236367009E0D03 /* CameraDefaults.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				A507FB08212E1F1600829CBE /* YuneecCameraSDK.framework in Embed Frameworks */,
 				A507FAAA212B777200829CBE /* YuneecPreviewView.framework in Embed Frameworks */,
 				A507FAA6212B777200829CBE /* YuneecDecoder.framework in Embed Frameworks */,
 			);
@@ -95,13 +98,13 @@
 		A507F9DD212B4FF100829CBE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A507FA5B212B775500829CBE /* YuneecDecoder.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YuneecDecoder.framework; path = Carthage/Build/iOS/YuneecDecoder.framework; sourceTree = "<group>"; };
 		A507FA5C212B775500829CBE /* YuneecPreviewView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YuneecPreviewView.framework; path = Carthage/Build/iOS/YuneecPreviewView.framework; sourceTree = "<group>"; };
+		A507FB05212E1F0300829CBE /* YuneecCameraSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YuneecCameraSDK.framework; path = Carthage/Build/iOS/YuneecCameraSDK.framework; sourceTree = "<group>"; };
 		A54AC8672123623D009E0D03 /* CustomPinAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPinAnnotationView.swift; sourceTree = "<group>"; };
 		A54AC8682123623D009E0D03 /* CustomPointAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPointAnnotation.swift; sourceTree = "<group>"; };
 		A54AC86A2123623D009E0D03 /* DroneAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DroneAnnotation.swift; sourceTree = "<group>"; };
 		A54AC86B2123623D009E0D03 /* DroneView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DroneView.swift; sourceTree = "<group>"; };
 		A54AC8702123635E009E0D03 /* CameraSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraSettingsViewController.swift; sourceTree = "<group>"; };
 		A54AC8712123635E009E0D03 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
-		A54AC87421236367009E0D03 /* CameraDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraDefaults.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,8 +115,10 @@
 				A507FAA5212B777200829CBE /* YuneecDecoder.framework in Frameworks */,
 				A507F9DE212B4FF100829CBE /* Foundation.framework in Frameworks */,
 				A507FAA9212B777200829CBE /* YuneecPreviewView.framework in Frameworks */,
+				A507FB06212E1F0400829CBE /* YuneecCameraSDK.framework in Frameworks */,
 				A507F9DC212B4FEB00829CBE /* CFNetwork.framework in Frameworks */,
 				A507F9DA212B4FE400829CBE /* Security.framework in Frameworks */,
+				A507FB07212E1F1600829CBE /* YuneecCameraSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,7 +135,6 @@
 		2C0A6A5B208F6D9A00B3E12F /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				A54AC87421236367009E0D03 /* CameraDefaults.swift */,
 				2C0A6A5C208F6DB200B3E12F /* TelemetryEntry.swift */,
 				2C0A6A5E208F77E500B3E12F /* TelemetryEntries.swift */,
 				2C0648C62091DC06002BD970 /* ExampleMission.swift */,
@@ -213,6 +217,7 @@
 		7C24E977FB012720175F8DA1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A507FB05212E1F0300829CBE /* YuneecCameraSDK.framework */,
 				A507FA5B212B775500829CBE /* YuneecDecoder.framework */,
 				A507FA5C212B775500829CBE /* YuneecPreviewView.framework */,
 				A507F9DD212B4FF100829CBE /* Foundation.framework */,
@@ -405,7 +410,6 @@
 				A54AC86F2123623D009E0D03 /* DroneView.swift in Sources */,
 				2CDBF021207652340064C8A5 /* MapViewController.swift in Sources */,
 				2CFF7271207750AF0060D31B /* ActionsViewController.swift in Sources */,
-				A54AC87521236367009E0D03 /* CameraDefaults.swift in Sources */,
 				2C0648C72091DC06002BD970 /* ExampleMission.swift in Sources */,
 				2C365EC1207610C500F42184 /* AppDelegate.swift in Sources */,
 				2C0648CE2091FCC6002BD970 /* DroneState.swift in Sources */,

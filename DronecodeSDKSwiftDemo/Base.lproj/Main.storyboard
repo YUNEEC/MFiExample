@@ -567,6 +567,14 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rDj-cW-aTq">
+                                        <rect key="frame" x="138" y="344" width="138" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <state key="normal" title="Get Media List"/>
+                                        <connections>
+                                            <action selector="fetchMediaAction:" destination="udP-fu-UjY" eventType="touchUpInside" id="jky-dT-0eo"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -595,7 +603,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7nS-Cx-DnB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1645.5999999999999" y="948.57571214392806"/>
+            <point key="canvasLocation" x="1644.9275362318842" y="948.09782608695662"/>
         </scene>
         <!--Bind-->
         <scene sceneID="2BI-Q1-xaZ">
