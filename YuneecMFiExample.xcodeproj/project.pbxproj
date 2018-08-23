@@ -7,6 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		086096E2212ED653002F5840 /* CocoaAsyncSocket.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A54AC95221237430009E0D03 /* CocoaAsyncSocket.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		086096E3212ED653002F5840 /* Eureka.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A54AC95B21237432009E0D03 /* Eureka.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		086096E4212ED653002F5840 /* FFMpegDecoder.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A54AC95321237430009E0D03 /* FFMpegDecoder.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		086096E5212ED653002F5840 /* FFMpegDemuxer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A54AC96321237433009E0D03 /* FFMpegDemuxer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		086096E6212ED653002F5840 /* FFMpegLowDelayDecoder.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A54AC96421237434009E0D03 /* FFMpegLowDelayDecoder.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		086096E7212ED653002F5840 /* FFMpegLowDelayDemuxer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A54AC95021237430009E0D03 /* FFMpegLowDelayDemuxer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		086096E8212ED653002F5840 /* MediaBase.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A54AC95421237430009E0D03 /* MediaBase.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		086096E9212ED653002F5840 /* MFiAdapter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A54AC95C21237432009E0D03 /* MFiAdapter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		086096EA212ED653002F5840 /* YuneecDataTransferManager.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A54AC95E21237432009E0D03 /* YuneecDataTransferManager.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		086096EB212ED653002F5840 /* YuneecMFiDataTransfer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A54AC96121237433009E0D03 /* YuneecMFiDataTransfer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		086096EC212ED653002F5840 /* YuneecRemoteControllerSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A54AC94F21237430009E0D03 /* YuneecRemoteControllerSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		086096ED212ED653002F5840 /* YuneecWifiDataTransfer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A54AC95621237431009E0D03 /* YuneecWifiDataTransfer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		086096EF212ED6C8002F5840 /* RxSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A54AC95721237431009E0D03 /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		086096F0212ED717002F5840 /* SwiftGRPC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A54AC96521237434009E0D03 /* SwiftGRPC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		086096F1212ED717002F5840 /* SwiftProtobuf.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A54AC95D21237432009E0D03 /* SwiftProtobuf.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		086096F2212ED846002F5840 /* BaseFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A54AC95121237430009E0D03 /* BaseFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		086096F3212ED86F002F5840 /* backend.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A54AC95821237431009E0D03 /* backend.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		086096F4212ED892002F5840 /* Dronecode_SDK_Swift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A54AC95A21237432009E0D03 /* Dronecode_SDK_Swift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		086096F5212ED901002F5840 /* CgRPC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A54AC95921237431009E0D03 /* CgRPC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		086096F6212ED960002F5840 /* RxBlocking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A54AC95521237431009E0D03 /* RxBlocking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		08626F0B2098F48000C3101E /* ST10CViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08626F0A2098F48000C3101E /* ST10CViewController.swift */; };
 		086D32EF20B84B45006840C1 /* BindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086D32EE20B84B45006840C1 /* BindViewController.swift */; };
 		2C0648C72091DC06002BD970 /* ExampleMission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0648C62091DC06002BD970 /* ExampleMission.swift */; };
@@ -33,53 +53,26 @@
 		A54AC94D21236671009E0D03 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08248BA4209A155E001D0B22 /* Foundation.framework */; };
 		A54AC94E21236677009E0D03 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08248BA2209A1557001D0B22 /* CFNetwork.framework */; };
 		A54AC97F2123745A009E0D03 /* backend.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A54AC95821237431009E0D03 /* backend.framework */; };
-		A54AC9802123745A009E0D03 /* backend.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A54AC95821237431009E0D03 /* backend.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A54AC9812123745A009E0D03 /* BaseFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A54AC95121237430009E0D03 /* BaseFramework.framework */; };
-		A54AC9822123745A009E0D03 /* BaseFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A54AC95121237430009E0D03 /* BaseFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A54AC9832123745A009E0D03 /* BoringSSL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A54AC96221237433009E0D03 /* BoringSSL.framework */; };
-		A54AC9842123745A009E0D03 /* BoringSSL.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A54AC96221237433009E0D03 /* BoringSSL.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A54AC9852123745A009E0D03 /* CgRPC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A54AC95921237431009E0D03 /* CgRPC.framework */; };
-		A54AC9862123745A009E0D03 /* CgRPC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A54AC95921237431009E0D03 /* CgRPC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A54AC9872123745A009E0D03 /* CocoaAsyncSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A54AC95221237430009E0D03 /* CocoaAsyncSocket.framework */; };
-		A54AC9882123745A009E0D03 /* CocoaAsyncSocket.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A54AC95221237430009E0D03 /* CocoaAsyncSocket.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		A54AC9892123745A009E0D03 /* Czlib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A54AC96021237433009E0D03 /* Czlib.framework */; };
-		A54AC98A2123745A009E0D03 /* Czlib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A54AC96021237433009E0D03 /* Czlib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A54AC98B2123745A009E0D03 /* Dronecode_SDK_Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A54AC95A21237432009E0D03 /* Dronecode_SDK_Swift.framework */; };
-		A54AC98C2123745A009E0D03 /* Dronecode_SDK_Swift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A54AC95A21237432009E0D03 /* Dronecode_SDK_Swift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A54AC98D2123745A009E0D03 /* Eureka.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A54AC95B21237432009E0D03 /* Eureka.framework */; };
-		A54AC98E2123745A009E0D03 /* Eureka.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A54AC95B21237432009E0D03 /* Eureka.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A54AC98F2123745A009E0D03 /* FFMpegDecoder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A54AC95321237430009E0D03 /* FFMpegDecoder.framework */; };
-		A54AC9902123745A009E0D03 /* FFMpegDecoder.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A54AC95321237430009E0D03 /* FFMpegDecoder.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A54AC9912123745A009E0D03 /* FFMpegDemuxer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A54AC96321237433009E0D03 /* FFMpegDemuxer.framework */; };
-		A54AC9922123745B009E0D03 /* FFMpegDemuxer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A54AC96321237433009E0D03 /* FFMpegDemuxer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A54AC9932123745B009E0D03 /* FFMpegLowDelayDecoder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A54AC96421237434009E0D03 /* FFMpegLowDelayDecoder.framework */; };
-		A54AC9942123745B009E0D03 /* FFMpegLowDelayDecoder.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A54AC96421237434009E0D03 /* FFMpegLowDelayDecoder.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A54AC9952123745B009E0D03 /* FFMpegLowDelayDemuxer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A54AC95021237430009E0D03 /* FFMpegLowDelayDemuxer.framework */; };
-		A54AC9962123745B009E0D03 /* FFMpegLowDelayDemuxer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A54AC95021237430009E0D03 /* FFMpegLowDelayDemuxer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		A54AC9972123745B009E0D03 /* gRPC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A54AC95F21237433009E0D03 /* gRPC.framework */; };
-		A54AC9982123745B009E0D03 /* gRPC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A54AC95F21237433009E0D03 /* gRPC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A54AC9992123745B009E0D03 /* MediaBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A54AC95421237430009E0D03 /* MediaBase.framework */; };
-		A54AC99A2123745B009E0D03 /* MediaBase.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A54AC95421237430009E0D03 /* MediaBase.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A54AC99B2123745B009E0D03 /* MFiAdapter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A54AC95C21237432009E0D03 /* MFiAdapter.framework */; };
-		A54AC99C2123745B009E0D03 /* MFiAdapter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A54AC95C21237432009E0D03 /* MFiAdapter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A54AC99D2123745B009E0D03 /* RxBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A54AC95521237431009E0D03 /* RxBlocking.framework */; };
-		A54AC99E2123745B009E0D03 /* RxBlocking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A54AC95521237431009E0D03 /* RxBlocking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A54AC99F2123745B009E0D03 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A54AC95721237431009E0D03 /* RxSwift.framework */; };
-		A54AC9A02123745B009E0D03 /* RxSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A54AC95721237431009E0D03 /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A54AC9A12123745C009E0D03 /* SwiftGRPC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A54AC96521237434009E0D03 /* SwiftGRPC.framework */; };
-		A54AC9A22123745C009E0D03 /* SwiftGRPC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A54AC96521237434009E0D03 /* SwiftGRPC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A54AC9A32123745C009E0D03 /* SwiftProtobuf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A54AC95D21237432009E0D03 /* SwiftProtobuf.framework */; };
-		A54AC9A42123745C009E0D03 /* SwiftProtobuf.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A54AC95D21237432009E0D03 /* SwiftProtobuf.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		A54AC9A52123745C009E0D03 /* SwiftProtobufPluginLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A54AC96621237434009E0D03 /* SwiftProtobufPluginLibrary.framework */; };
-		A54AC9A62123745C009E0D03 /* SwiftProtobufPluginLibrary.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A54AC96621237434009E0D03 /* SwiftProtobufPluginLibrary.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A54AC9A72123745C009E0D03 /* YuneecDataTransferManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A54AC95E21237432009E0D03 /* YuneecDataTransferManager.framework */; };
-		A54AC9A82123745C009E0D03 /* YuneecDataTransferManager.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A54AC95E21237432009E0D03 /* YuneecDataTransferManager.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A54AC9A92123745C009E0D03 /* YuneecMFiDataTransfer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A54AC96121237433009E0D03 /* YuneecMFiDataTransfer.framework */; };
-		A54AC9AA2123745C009E0D03 /* YuneecMFiDataTransfer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A54AC96121237433009E0D03 /* YuneecMFiDataTransfer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A54AC9AB2123745C009E0D03 /* YuneecRemoteControllerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A54AC94F21237430009E0D03 /* YuneecRemoteControllerSDK.framework */; };
-		A54AC9AC2123745C009E0D03 /* YuneecRemoteControllerSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A54AC94F21237430009E0D03 /* YuneecRemoteControllerSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A54AC9AD2123745D009E0D03 /* YuneecWifiDataTransfer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A54AC95621237431009E0D03 /* YuneecWifiDataTransfer.framework */; };
-		A54AC9AE2123745D009E0D03 /* YuneecWifiDataTransfer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A54AC95621237431009E0D03 /* YuneecWifiDataTransfer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,34 +88,30 @@
 /* Begin PBXCopyFilesBuildPhase section */
 		A54AC8D5212364F1009E0D03 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				A54AC9842123745A009E0D03 /* BoringSSL.framework in Embed Frameworks */,
-				A54AC98E2123745A009E0D03 /* Eureka.framework in Embed Frameworks */,
-				A54AC9A42123745C009E0D03 /* SwiftProtobuf.framework in Embed Frameworks */,
-				A54AC9822123745A009E0D03 /* BaseFramework.framework in Embed Frameworks */,
-				A54AC99E2123745B009E0D03 /* RxBlocking.framework in Embed Frameworks */,
-				A54AC9AC2123745C009E0D03 /* YuneecRemoteControllerSDK.framework in Embed Frameworks */,
-				A54AC9882123745A009E0D03 /* CocoaAsyncSocket.framework in Embed Frameworks */,
-				A54AC98A2123745A009E0D03 /* Czlib.framework in Embed Frameworks */,
-				A54AC9982123745B009E0D03 /* gRPC.framework in Embed Frameworks */,
-				A54AC9A02123745B009E0D03 /* RxSwift.framework in Embed Frameworks */,
-				A54AC9AA2123745C009E0D03 /* YuneecMFiDataTransfer.framework in Embed Frameworks */,
-				A54AC9902123745A009E0D03 /* FFMpegDecoder.framework in Embed Frameworks */,
-				A54AC9922123745B009E0D03 /* FFMpegDemuxer.framework in Embed Frameworks */,
-				A54AC99C2123745B009E0D03 /* MFiAdapter.framework in Embed Frameworks */,
-				A54AC9AE2123745D009E0D03 /* YuneecWifiDataTransfer.framework in Embed Frameworks */,
-				A54AC9942123745B009E0D03 /* FFMpegLowDelayDecoder.framework in Embed Frameworks */,
-				A54AC9862123745A009E0D03 /* CgRPC.framework in Embed Frameworks */,
-				A54AC9A62123745C009E0D03 /* SwiftProtobufPluginLibrary.framework in Embed Frameworks */,
-				A54AC9802123745A009E0D03 /* backend.framework in Embed Frameworks */,
-				A54AC9A22123745C009E0D03 /* SwiftGRPC.framework in Embed Frameworks */,
-				A54AC98C2123745A009E0D03 /* Dronecode_SDK_Swift.framework in Embed Frameworks */,
-				A54AC9A82123745C009E0D03 /* YuneecDataTransferManager.framework in Embed Frameworks */,
-				A54AC99A2123745B009E0D03 /* MediaBase.framework in Embed Frameworks */,
-				A54AC9962123745B009E0D03 /* FFMpegLowDelayDemuxer.framework in Embed Frameworks */,
+				086096F6212ED960002F5840 /* RxBlocking.framework in Embed Frameworks */,
+				086096F5212ED901002F5840 /* CgRPC.framework in Embed Frameworks */,
+				086096F4212ED892002F5840 /* Dronecode_SDK_Swift.framework in Embed Frameworks */,
+				086096F3212ED86F002F5840 /* backend.framework in Embed Frameworks */,
+				086096F2212ED846002F5840 /* BaseFramework.framework in Embed Frameworks */,
+				086096F0212ED717002F5840 /* SwiftGRPC.framework in Embed Frameworks */,
+				086096F1212ED717002F5840 /* SwiftProtobuf.framework in Embed Frameworks */,
+				086096EF212ED6C8002F5840 /* RxSwift.framework in Embed Frameworks */,
+				086096E2212ED653002F5840 /* CocoaAsyncSocket.framework in Embed Frameworks */,
+				086096E3212ED653002F5840 /* Eureka.framework in Embed Frameworks */,
+				086096E4212ED653002F5840 /* FFMpegDecoder.framework in Embed Frameworks */,
+				086096E5212ED653002F5840 /* FFMpegDemuxer.framework in Embed Frameworks */,
+				086096E6212ED653002F5840 /* FFMpegLowDelayDecoder.framework in Embed Frameworks */,
+				086096E7212ED653002F5840 /* FFMpegLowDelayDemuxer.framework in Embed Frameworks */,
+				086096E8212ED653002F5840 /* MediaBase.framework in Embed Frameworks */,
+				086096E9212ED653002F5840 /* MFiAdapter.framework in Embed Frameworks */,
+				086096EA212ED653002F5840 /* YuneecDataTransferManager.framework in Embed Frameworks */,
+				086096EB212ED653002F5840 /* YuneecMFiDataTransfer.framework in Embed Frameworks */,
+				086096EC212ED653002F5840 /* YuneecRemoteControllerSDK.framework in Embed Frameworks */,
+				086096ED212ED653002F5840 /* YuneecWifiDataTransfer.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -176,14 +165,11 @@
 		A54AC95C21237432009E0D03 /* MFiAdapter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MFiAdapter.framework; path = Carthage/Build/iOS/MFiAdapter.framework; sourceTree = "<group>"; };
 		A54AC95D21237432009E0D03 /* SwiftProtobuf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftProtobuf.framework; path = Carthage/Build/iOS/SwiftProtobuf.framework; sourceTree = "<group>"; };
 		A54AC95E21237432009E0D03 /* YuneecDataTransferManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YuneecDataTransferManager.framework; path = Carthage/Build/iOS/YuneecDataTransferManager.framework; sourceTree = "<group>"; };
-		A54AC95F21237433009E0D03 /* gRPC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = gRPC.framework; path = Carthage/Build/iOS/gRPC.framework; sourceTree = "<group>"; };
-		A54AC96021237433009E0D03 /* Czlib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Czlib.framework; path = Carthage/Build/iOS/Czlib.framework; sourceTree = "<group>"; };
 		A54AC96121237433009E0D03 /* YuneecMFiDataTransfer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YuneecMFiDataTransfer.framework; path = Carthage/Build/iOS/YuneecMFiDataTransfer.framework; sourceTree = "<group>"; };
 		A54AC96221237433009E0D03 /* BoringSSL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BoringSSL.framework; path = Carthage/Build/iOS/BoringSSL.framework; sourceTree = "<group>"; };
 		A54AC96321237433009E0D03 /* FFMpegDemuxer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FFMpegDemuxer.framework; path = Carthage/Build/iOS/FFMpegDemuxer.framework; sourceTree = "<group>"; };
 		A54AC96421237434009E0D03 /* FFMpegLowDelayDecoder.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FFMpegLowDelayDecoder.framework; path = Carthage/Build/iOS/FFMpegLowDelayDecoder.framework; sourceTree = "<group>"; };
 		A54AC96521237434009E0D03 /* SwiftGRPC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftGRPC.framework; path = Carthage/Build/iOS/SwiftGRPC.framework; sourceTree = "<group>"; };
-		A54AC96621237434009E0D03 /* SwiftProtobufPluginLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftProtobufPluginLibrary.framework; path = Carthage/Build/iOS/SwiftProtobufPluginLibrary.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,8 +187,6 @@
 				A54AC99B2123745B009E0D03 /* MFiAdapter.framework in Frameworks */,
 				A54AC9992123745B009E0D03 /* MediaBase.framework in Frameworks */,
 				A54AC94E21236677009E0D03 /* CFNetwork.framework in Frameworks */,
-				A54AC9A52123745C009E0D03 /* SwiftProtobufPluginLibrary.framework in Frameworks */,
-				A54AC9972123745B009E0D03 /* gRPC.framework in Frameworks */,
 				A54AC9872123745A009E0D03 /* CocoaAsyncSocket.framework in Frameworks */,
 				A54AC9812123745A009E0D03 /* BaseFramework.framework in Frameworks */,
 				A54AC97F2123745A009E0D03 /* backend.framework in Frameworks */,
@@ -212,7 +196,6 @@
 				A54AC9852123745A009E0D03 /* CgRPC.framework in Frameworks */,
 				A54AC99D2123745B009E0D03 /* RxBlocking.framework in Frameworks */,
 				A54AC9A72123745C009E0D03 /* YuneecDataTransferManager.framework in Frameworks */,
-				A54AC9892123745A009E0D03 /* Czlib.framework in Frameworks */,
 				A54AC94D21236671009E0D03 /* Foundation.framework in Frameworks */,
 				A54AC94C21236665009E0D03 /* Security.framework in Frameworks */,
 				A54AC9912123745A009E0D03 /* FFMpegDemuxer.framework in Frameworks */,
@@ -318,21 +301,18 @@
 				A54AC96221237433009E0D03 /* BoringSSL.framework */,
 				A54AC95921237431009E0D03 /* CgRPC.framework */,
 				A54AC95221237430009E0D03 /* CocoaAsyncSocket.framework */,
-				A54AC96021237433009E0D03 /* Czlib.framework */,
 				A54AC95A21237432009E0D03 /* Dronecode_SDK_Swift.framework */,
 				A54AC95B21237432009E0D03 /* Eureka.framework */,
 				A54AC95321237430009E0D03 /* FFMpegDecoder.framework */,
 				A54AC96321237433009E0D03 /* FFMpegDemuxer.framework */,
 				A54AC96421237434009E0D03 /* FFMpegLowDelayDecoder.framework */,
 				A54AC95021237430009E0D03 /* FFMpegLowDelayDemuxer.framework */,
-				A54AC95F21237433009E0D03 /* gRPC.framework */,
 				A54AC95421237430009E0D03 /* MediaBase.framework */,
 				A54AC95C21237432009E0D03 /* MFiAdapter.framework */,
 				A54AC95521237431009E0D03 /* RxBlocking.framework */,
 				A54AC95721237431009E0D03 /* RxSwift.framework */,
 				A54AC96521237434009E0D03 /* SwiftGRPC.framework */,
 				A54AC95D21237432009E0D03 /* SwiftProtobuf.framework */,
-				A54AC96621237434009E0D03 /* SwiftProtobufPluginLibrary.framework */,
 				A54AC95E21237432009E0D03 /* YuneecDataTransferManager.framework */,
 				A54AC96121237433009E0D03 /* YuneecMFiDataTransfer.framework */,
 				A54AC94F21237430009E0D03 /* YuneecRemoteControllerSDK.framework */,
@@ -382,6 +362,7 @@
 				2C365EBA207610C500F42184 /* Frameworks */,
 				2C365EBB207610C500F42184 /* Resources */,
 				A54AC8D5212364F1009E0D03 /* Embed Frameworks */,
+				086096E1212ED5B7002F5840 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -469,6 +450,30 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		086096E1212ED5B7002F5840 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/BoringSSL.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftGRPC.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftProtobuf.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/CgRPC.framework",
+			);
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/BoringSSL.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SwiftGRPC.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SwiftProtobuf.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/CgRPC.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2C365EB9207610C500F42184 /* Sources */ = {
@@ -651,7 +656,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = A8YPB846P8;
+				DEVELOPMENT_TEAM = PYYYV2LXJ2;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -678,7 +683,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = A8YPB846P8;
+				DEVELOPMENT_TEAM = PYYYV2LXJ2;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
