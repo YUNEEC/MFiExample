@@ -23,6 +23,22 @@ class GalleryViewController: UIViewController {
 
     var mediaArray:Array<Any>!
     var utility:GalleryUtility!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.utility = GalleryUtility()
+        self.cameraMediaNum.text = "Camera:" + String(0)
+        self.localMediaNum.text = "Local:" + String(self.utility.getLocalMediaFileCount())
+        self.fileInfo.text = ""
+        self.cancel.isEnabled = false
+        
+        // Setup buttons
+        download.layer.cornerRadius = UI_CORNER_RADIUS_BUTTONS
+        refresh.layer.cornerRadius = UI_CORNER_RADIUS_BUTTONS
+        remove.layer.cornerRadius = UI_CORNER_RADIUS_BUTTONS
+        cancel.layer.cornerRadius = UI_CORNER_RADIUS_BUTTONS
+    }
 
     @IBAction func refresh(_ sender: UIButton) {
         self.waiting.startAnimating()
@@ -38,9 +54,9 @@ class GalleryViewController: UIViewController {
                 self.waiting.stopAnimating()
                 if (error == nil) {
                     self.mediaArray = array
-                    self.cameraMediaNum.text = "camera:" + String(format:"%02d", (array?.count)!)
+                    self.cameraMediaNum.text = "Camera:" + String(format:"%02d", (array?.count)!)
                 } else {
-                    BindViewController.showAlert(error?.localizedDescription, message: "", viewController:self)
+                    BindViewController.showAlert("Error", message: error?.localizedDescription, viewController:self)
                 }
             }
         }
@@ -48,20 +64,20 @@ class GalleryViewController: UIViewController {
 
     @IBAction func download(_ sender: UIButton) {
         if (self.mediaArray == nil) {
-            BindViewController.showAlert("refresh first", message: "", viewController:self)
+            BindViewController.showAlert("Refresh First", message: "", viewController:self)
             return
         }
 
         if (self.mediaArray!.count == 0) {
-            BindViewController.showAlert("no media file", message: "", viewController:self)
+            BindViewController.showAlert("No media file", message: "", viewController:self)
         } else {
             var downloadArray:Array<MFiMediaDownload> = Array()
             let download:MFiMediaDownload = MFiMediaDownload.init()
             for media in self.mediaArray {
                 download.media = media as! YuneecMedia
                 download.filePath = self.utility.getLocalMediaFilePath(fileName: download.media.fileName)
-//                download.isThumbnail = false
-//                download.isPreviewVideo = false
+                download.isThumbnail = false
+                download.isPreviewVideo = false
 
                 if (self.utility.isMediaFileExist(fileName: download.media.fileName) == false) {
                     downloadArray.append(download.copy() as! MFiMediaDownload)
@@ -80,11 +96,11 @@ class GalleryViewController: UIViewController {
             MFiAdapter.MFiCameraAdapter.sharedInstance().downloadMediasArray(downloadArray, progress: { (index, fileName, fileSize, progress) in
                 DispatchQueue.main.async {
                     self.fileInfo.text = "(" + String(Int(index)) + "/" +  String(Int(total)) + ")" + fileName! + "[" + String(format:"%.2f", Float(Float(String(fileSize!))! / 1024 / 1024)) + "M]" + String(Int(progress * 100)) + "%"
-                    self.localMediaNum.text = "local:" + String(self.utility.getLocalMediaFileCount())
+                    self.localMediaNum.text = "Local:" + String(self.utility.getLocalMediaFileCount())
                 }
             }, complete: { (error) in
                 DispatchQueue.main.async {
-                    self.localMediaNum.text = "local:" + String(self.utility.getLocalMediaFileCount())
+                    self.localMediaNum.text = "Local:" + String(self.utility.getLocalMediaFileCount())
                     self.refresh.isEnabled = true
                     self.download.isEnabled = true
                     self.remove.isEnabled = true
@@ -92,7 +108,7 @@ class GalleryViewController: UIViewController {
                     self.fileInfo.isHidden = true
                     self.utility.addAllFileToAlbum()
                     if (error != nil) {
-                        BindViewController.showAlert(error?.localizedDescription, message: "", viewController:self)
+                        BindViewController.showAlert("Error", message: error?.localizedDescription, viewController:self)
                     }
                 }
             })
@@ -105,17 +121,7 @@ class GalleryViewController: UIViewController {
 
     @IBAction func removeLocal(_ sender: UIButton) {
         self.utility.removeAllLocalMediaFile()
-        self.localMediaNum.text = "local:" + String(self.utility.getLocalMediaFileCount())
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        self.utility = GalleryUtility()
-        self.cameraMediaNum.text = "camera:" + String(0)
-        self.localMediaNum.text = "local:" + String(self.utility.getLocalMediaFileCount())
-        self.fileInfo.text = ""
-        self.cancel.isEnabled = false
+        self.localMediaNum.text = "Local:" + String(self.utility.getLocalMediaFileCount())
     }
 }
 
