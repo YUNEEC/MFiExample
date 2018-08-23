@@ -52,9 +52,11 @@ class CameraSettingsViewController: FormViewController {
         form +++ manifestSection
         
         let combinedObservable = Observable.merge([possibleSettingOptions.asObservable().map{ $0 as AnyObject }, currentSettings.asObservable().map{ $0 as AnyObject }])
-        combinedObservable.asObservable().subscribe { (_) in
+        combinedObservable.asObservable()
+            .subscribe { (_) in
                 self.updatePossibleSettingsTable()
-            }.disposed(by: disposeBag)
+            }
+            .disposed(by: disposeBag)
         
         form +++ Section()
     }

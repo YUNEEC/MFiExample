@@ -162,14 +162,15 @@ class ActionsViewController: UIViewController {
     @IBAction func getMaximumSpeedPressed(_ sender: Any) {
         let myRoutine = CoreManager.shared().action.getMaximumSpeed()
         myRoutine.subscribe{ event in
-            switch event {
-            case .success(let maxSpeed):
-                self.feedbackLabel.text = "Maximum speed : \(maxSpeed)"
-                break
-            case .error(let error):
-                self.feedbackLabel.text = "failure: getMaximumSpeed() \(error)"
+                switch event {
+                case .success(let maxSpeed):
+                    self.feedbackLabel.text = "Maximum speed : \(maxSpeed)"
+                    break
+                case .error(let error):
+                    self.feedbackLabel.text = "failure: getMaximumSpeed() \(error)"
+                }
             }
-        }.disposed(by: disposeBag)
+            .disposed(by: disposeBag)
     }
 
     class func showAlert(_ message: String?, viewController: UIViewController?) {
