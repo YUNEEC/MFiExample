@@ -89,6 +89,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         
         // display mission trace
         self.createMissionTrace(mapView: mapView, listMissionsItems: missionExample.missionItems)
+        
+        let missionProgressObservable: Observable<MissionProgress> = CoreManager.shared().mission.missionProgressObservable
+        missionProgressObservable.subscribe(
+            onNext: {missionProgress in print("Got mission progress update")},
+            onError: {error in print("Error mission progress")}
+            ).disposed(by: disposeBag)
     }
     
     override func didReceiveMemoryWarning() {
