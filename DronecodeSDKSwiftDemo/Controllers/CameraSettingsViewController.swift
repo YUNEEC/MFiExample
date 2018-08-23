@@ -57,24 +57,6 @@ class CameraSettingsViewController: FormViewController {
             }.disposed(by: disposeBag)
         
         form +++ Section()
-            
-            <<< ButtonRow() {
-                $0.title = "Restore Default Settings"
-                }
-                .onCellSelection() {
-                    _,_  in
-                    
-                    defaultCameraSettings.forEach { (setting, optionID) in
-                        if (self.currentSettings.value.filter { $0.id == setting.stringValue }.first?.option.id != optionID) {
-                            
-                            self.setSettings(settingID: setting.stringValue , optionID: optionID) { (error) in
-                                if let error = error {
-                                    NSLog("Error setting \(setting.stringValue), option: \(optionID): \(error.localizedDescription)")
-                                }
-                            }
-                        }
-                    }
-        }
     }
     
     func updatePossibleSettingsTable() {
@@ -82,38 +64,31 @@ class CameraSettingsViewController: FormViewController {
         
         possibleSettingOptions.value.forEach { (setting) in
             
-            guard let settingsType = DronecodeCameraSettings(rawValue: setting.settingId)?.settingsType else {
-                NSLog("Type is not implemented yet")
-                return
-            }
-            
             manifestSection <<< PushRow<String>() {
-                    $0.tag = setting.settingId
-                    $0.title = DronecodeCameraSettings(rawValue: setting.settingId)?.stringRepresentation ?? "N/A"
-                    $0.options = setting.options.compactMap {  settingsType.init(rawValue: $0.id)?.description  }
-                    $0.value = currentSettings.value.filter { $0.id == setting.settingId }.first?.option.description ?? "N/A"
-                    $0.onChange { pushRow in
-                        
-                        guard let value = pushRow.value, let newSettingValue = settingsType.rawValue(from: value) else {
-                            NSLog("Error: Settings value not supported")
-                            return
-                        }
-
-                        // Show spinner
-                        let activityView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
-                        activityView.hidesWhenStopped = true
-                        
-                        self.tableView.tableHeaderView = activityView
-                        activityView.startAnimating()
-                        
-                        self.setSettings(settingID: setting.settingId, optionID: newSettingValue) { (error) in
+                $0.tag = setting.settingId
+                $0.title = setting.settingDescription
+                $0.value = currentSettingOption(settingId: setting.settingId)?.description
+                $0.options = setting.options.compactMap {  $0.description  }
+                $0.onChange { [weak self] pushRow in
+                    
+                    // Show spinner
+                    let activityView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+                    activityView.hidesWhenStopped = true
+                    
+                    self?.tableView.tableHeaderView = activityView
+                    activityView.startAnimating()
+                    
+                    if let optionID = (setting.options.filter { $0.description == pushRow.value }.first?.id) {
+                        self?.setSettings(settingID: setting.settingId, optionID: optionID ) { (error) in
+                            
                             // Hide spinner
                             activityView.stopAnimating()
                             if let error = error {
-                                ActionsViewController.showAlert("Error setting \(String(describing: DronecodeCameraSettings(rawValue: setting.settingId)?.stringRepresentation)).", viewController: self)
+                                ActionsViewController.showAlert("Error setting \(String(describing: setting.settingDescription ?? "value")).", viewController: self)
                                 NSLog("Error: \(error.localizedDescription)")
                             }
                         }
+                    }
                     }.onPresent({ (form, selectorController) in
                         selectorController.enableDeselection = false
                     })
@@ -146,8 +121,11 @@ class CameraSettingsViewController: FormViewController {
             .disposed(by: disposeBag)
     }
     
-    
     @IBAction func done() {
         dismiss(animated: true, completion: nil)
+    }
+    
+    private func currentSettingOption(settingId: String) -> Option? {
+        return currentSettings.value.filter { $0.id == settingId }.first?.option
     }
 }
