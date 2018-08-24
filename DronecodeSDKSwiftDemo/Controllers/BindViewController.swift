@@ -12,9 +12,14 @@ import MFiAdapter
 
 class BindViewController: UIViewController {
     
-    
     @IBOutlet weak var scanWifi: UIButton!
     @IBOutlet weak var bind: UIButton!
+    @IBOutlet weak var getBindingStatusButton: UIButton!
+    @IBOutlet weak var unbindCameraButton: UIButton!
+    @IBOutlet weak var unbindRCButton: UIButton!
+    @IBOutlet weak var scanRCButton: UIButton!
+    @IBOutlet weak var bindRCButton: UIButton!
+    @IBOutlet weak var exitBindButton: UIButton!
     @IBOutlet weak var wifiList: UITableView!
     @IBOutlet weak var wifiSSIDText: UITextField!
     @IBOutlet weak var wifiPwdText: UITextField!
@@ -25,18 +30,45 @@ class BindViewController: UIViewController {
     
     var wifiArray = [YuneecRemoteControllerCameraWifiInfo]()
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Keyboard delegates
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWasShown(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeHidden(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
+        wifiList.delegate = self
+        wifiList.dataSource = self
+        wifiSSIDText.placeholder = "Wifi SSID"
+        wifiPwdText.placeholder = "Wifi Password"
+        // Configure Refresh
+        // wifiList.refreshControl = refreshControl // unresolved identifier...
+        
+        // Configure Tableview
+        wifiList.layer.borderColor = UIColor.lightGray.cgColor
+        wifiList.layer.borderWidth = 0.4
+        wifiList.layer.cornerRadius = 5
+        
+        // set corners for buttons
+        scanWifi.layer.cornerRadius = UI_CORNER_RADIUS_BUTTONS
+        bind.layer.cornerRadius = UI_CORNER_RADIUS_BUTTONS
+        getBindingStatusButton.layer.cornerRadius = UI_CORNER_RADIUS_BUTTONS
+        unbindCameraButton.layer.cornerRadius = UI_CORNER_RADIUS_BUTTONS
+        unbindRCButton.layer.cornerRadius = UI_CORNER_RADIUS_BUTTONS
+        scanRCButton.layer.cornerRadius = UI_CORNER_RADIUS_BUTTONS
+        bindRCButton.layer.cornerRadius = UI_CORNER_RADIUS_BUTTONS
+        exitBindButton.layer.cornerRadius = UI_CORNER_RADIUS_BUTTONS
+    }
+    
     @IBAction func scanRC(_ sender: UIButton) {
         MFiAdapter.MFiRemoteControllerAdapter.sharedInstance().scanAutoPilot { (error, ids) in
             
-            if error != nil {
-                DispatchQueue.main.async {
-                    BindViewController.showAlert(error as? String, viewController: self)
-                }
-            } else {
-                for id in ids! {
-                    print(id);
+            if let error = error {
+                    BindViewController.showAlert("Error scanning RC", message: error.localizedDescription, viewController: self)
+            } else if let ids = ids {
+                for id in ids {
                     self.autoPilotId = String(format: "%@", id as! CVarArg)
-                    BindViewController.showAlert("Scanned Id is: \(self.autoPilotId)", viewController:self)
+                    BindViewController.showAlert("RC Scanned", message: "Id is: \(self.autoPilotId)", viewController:self)
                 }
             }
         }
@@ -44,9 +76,10 @@ class BindViewController: UIViewController {
     
     @IBAction func bindRC(_ sender: UIButton) {
         MFiAdapter.MFiRemoteControllerAdapter.sharedInstance().bindAutoPilot(self.autoPilotId) { (error) in
-            let message = ((error != nil) ? "Error in rc binding to \(self.autoPilotId) : \(error!.localizedDescription)" : "RC Binding to \(self.autoPilotId) Successful! No Error Returned")
-            DispatchQueue.main.async {
-                BindViewController.showAlert(message, viewController: self)
+            if let error = error {
+                BindViewController.showAlert("Error in rc binding to \(self.autoPilotId)", message: error.localizedDescription, viewController: self)
+            } else {
+                 BindViewController.showAlert("RC Binding to \(self.autoPilotId) Successful!", message: "No Error Returned", viewController: self)
             }
         }
     }
@@ -54,11 +87,9 @@ class BindViewController: UIViewController {
     @IBAction func scanWifi(_ sender: UIButton) {
         MFiAdapter.MFiRemoteControllerAdapter.sharedInstance().scanCameraWifi { (error, wifis) in
             
-            if error != nil {
+            if let error = error {
                 self.wifiArray.removeAll()
-                DispatchQueue.main.async {
-                    BindViewController.showAlert(error as? String, viewController: self)
-                }
+                BindViewController.showAlert("Error scanning wifi", message: error.localizedDescription, viewController: self)
             } else {
                 self.wifiArray.removeAll()
                 for wifi in wifis! {
@@ -78,87 +109,70 @@ class BindViewController: UIViewController {
         wifiPassword = wifiPwdText.text!
         
         MFiAdapter.MFiRemoteControllerAdapter.sharedInstance().bindCameraWifi(wifiSelected, wifiPassword: wifiPassword) { (error) in
-            let message = ((error != nil) ? "Error binding camera: \(error!.localizedDescription)" : "Pairing Successful!")
+            
+            if let error = error {
+                BindViewController.showAlert("Error binding camera", message: error.localizedDescription, viewController: self)
+            } else {
+                BindViewController.showAlert("Pairing Successful!", message: "", viewController: self)
+            }
             
             DispatchQueue.main.async {
-                BindViewController.showAlert(message, viewController: self)
                 self.wifiPwdText.text = ""
                 self.wifiSSIDText.text = ""
+            }
         }
-      }
     }
     
     @IBAction func getBindStatus(_ sender: UIButton) {
         MFiAdapter.MFiRemoteControllerAdapter.sharedInstance().getCameraWifiBindStatus { (error, wifiInfo) in
-            if error != nil {
-                DispatchQueue.main.async {
-                    BindViewController.showAlert(error as? String, viewController: self)
-                }
-            } else {
-                BindViewController.showAlert("Binding to: \(wifiInfo!.ssid)" , viewController: self)
+            
+            if let error = error {
+                BindViewController.showAlert("Error getting Bind Status", message: error.localizedDescription, viewController: self)
+            } else if let wifiInfo = wifiInfo{
+                BindViewController.showAlert("Binding to", message: "\(wifiInfo.ssid)", viewController: self)
             }
         }
     }
     
     @IBAction func unBind(_ sender: UIButton) {
         MFiAdapter.MFiRemoteControllerAdapter.sharedInstance().unBindCameraWifi { (error) in
-            let message = ((error != nil) ? "Error unbinding camera: \(error!.localizedDescription)" : "UnBinding Successful!")
-            DispatchQueue.main.async {
-                BindViewController.showAlert(message, viewController: self)
+            if let error = error {
+                 BindViewController.showAlert("Error unbinding camera", message: error.localizedDescription, viewController: self)
+            } else {
+                BindViewController.showAlert("UnBinding Successful!", message: "", viewController: self)
             }
         }
     }
     
     @IBAction func unBindRC(_ sender: UIButton) {
         MFiAdapter.MFiRemoteControllerAdapter.sharedInstance().unBindRC { (error) in
-            let message = ((error != nil) ? "Error unbinding RC: \(error!.localizedDescription)" : "UnBinding Successful!")
-            DispatchQueue.main.async {
-                BindViewController.showAlert(message, viewController: self)
+            if let error = error {
+                BindViewController.showAlert("Error unbinding RC", message: error.localizedDescription, viewController: self)
+            } else {
+                BindViewController.showAlert("UnBinding RC Successful", message: "", viewController: self)
             }
         }
     }
     
     @IBAction func exitBind(_ sender: UIButton) {
         MFiAdapter.MFiRemoteControllerAdapter.sharedInstance().exitBind { (error) in
-            let message = ((error != nil) ? "Error exiting Bind: \(error!.localizedDescription)" : "Exit Bind Successful!")
-            
-            DispatchQueue.main.async {
-                BindViewController.showAlert(message, viewController: self)
+            if let error = error {
+                BindViewController.showAlert("Error exiting Bind", message: error.localizedDescription, viewController: self)
+            } else {
+                BindViewController.showAlert("Exit Bind Successful!", message: "", viewController: self)
             }
         }
     }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Keyboard delegates
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWasShown(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeHidden(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        
-        wifiList.delegate = self
-        wifiList.dataSource = self
-        wifiSSIDText.placeholder = "Wifi SSID"
-        wifiPwdText.placeholder = "Wifi Password"
-        // Configure Refresh
-        // wifiList.refreshControl = refreshControl // unresolved identifier...
-        
-        // Configure Tableview
-        wifiList.layer.borderColor = UIColor.lightGray.cgColor
-        wifiList.layer.borderWidth = 0.4
-        wifiList.layer.cornerRadius = 5
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
 }
 
 extension BindViewController {
-    class func showAlert(_ message: String?, viewController: UIViewController?) {
-        let alert = UIAlertController(title: message, message: "", preferredStyle: .alert)
+    class func showAlert(_ title: String?, message: String?, viewController: UIViewController?) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-        viewController?.present(alert, animated: true) {() -> Void in }
+        
+        DispatchQueue.main.async {
+            viewController?.present(alert, animated: true) {() -> Void in }
+        }
     }
 }
 

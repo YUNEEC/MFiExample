@@ -13,6 +13,8 @@ import RxSwift
 
 class CoreManager {
     
+    let disposeBag = DisposeBag()
+    
     // MARK: - Properties
     
     // Telemetry
@@ -29,7 +31,6 @@ class CoreManager {
     
     // Drone state
     let droneState = DroneState()
-    
     
     private static var sharedCoreManager: CoreManager = {
         let coreManager = CoreManager()
@@ -56,11 +57,13 @@ class CoreManager {
     }
     
     public func start() -> Void {
-        _ = core.connect().subscribe(onCompleted: {
-            print("Core connected")
-        }) { (error) in
-            print("Failed connect to core with error: \(error.localizedDescription)")
-        }
+        core.connect()
+            .subscribe(onCompleted: {
+                print("Core connected")
+            }) { (error) in
+                print("Failed connect to core with error: \(error.localizedDescription)")
+            }
+            .disposed(by: disposeBag)
     }
     
 

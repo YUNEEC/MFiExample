@@ -33,7 +33,6 @@ class ST10CViewController: UIViewController {
     @objc func handleConnectionStateNotification(notification: NSNotification) {
         
         mfiStatus.text = String(describing:notification.userInfo)
-        
     }
 }
 
