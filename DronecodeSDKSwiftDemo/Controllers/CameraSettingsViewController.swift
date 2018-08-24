@@ -52,9 +52,11 @@ class CameraSettingsViewController: FormViewController {
         form +++ manifestSection
         
         let combinedObservable = Observable.merge([possibleSettingOptions.asObservable().map{ $0 as AnyObject }, currentSettings.asObservable().map{ $0 as AnyObject }])
-        combinedObservable.asObservable().subscribe { (_) in
+        combinedObservable.asObservable()
+            .subscribe { (_) in
                 self.updatePossibleSettingsTable()
-            }.disposed(by: disposeBag)
+            }
+            .disposed(by: disposeBag)
         
         form +++ Section()
     }
@@ -71,24 +73,24 @@ class CameraSettingsViewController: FormViewController {
                 $0.options = setting.options.compactMap {  $0.description  }
                 $0.onChange { [weak self] pushRow in
                     
-                        // Show spinner
-                        let activityView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
-                        activityView.hidesWhenStopped = true
+                    // Show spinner
+                    let activityView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+                    activityView.hidesWhenStopped = true
                     
-                        self?.tableView.tableHeaderView = activityView
-                        activityView.startAnimating()
+                    self?.tableView.tableHeaderView = activityView
+                    activityView.startAnimating()
                     
-                        if let optionID = (setting.options.filter { $0.description == pushRow.value }.first?.id) {
-                            self?.setSettings(settingID: setting.settingId, optionID: optionID ) { (error) in
-                                
-                                // Hide spinner
-                                activityView.stopAnimating()
-                                if let error = error {
-                                    ActionsViewController.showAlert("Error setting \(String(describing: setting.settingDescription ?? "value")).", viewController: self)
-                                    NSLog("Error: \(error.localizedDescription)")
-                                }
+                    if let optionID = (setting.options.filter { $0.description == pushRow.value }.first?.id) {
+                        self?.setSettings(settingID: setting.settingId, optionID: optionID ) { (error) in
+                            
+                            // Hide spinner
+                            activityView.stopAnimating()
+                            if let error = error {
+                                ActionsViewController.showAlert("Error setting \(String(describing: setting.settingDescription ?? "value")).", viewController: self)
+                                NSLog("Error: \(error.localizedDescription)")
                             }
                         }
+                    }
                     }.onPresent({ (form, selectorController) in
                         selectorController.enableDeselection = false
                     })
@@ -102,7 +104,7 @@ class CameraSettingsViewController: FormViewController {
     }
     
     func stopSpinner() {
-         self.tableView.tableHeaderView = nil
+//      self.tableView.tableHeaderView = nil
         activityView.stopAnimating()
     }
     
@@ -121,7 +123,6 @@ class CameraSettingsViewController: FormViewController {
             .disposed(by: disposeBag)
     }
     
-    
     @IBAction func done() {
         dismiss(animated: true, completion: nil)
     }
@@ -130,5 +131,3 @@ class CameraSettingsViewController: FormViewController {
         return currentSettings.value.filter { $0.id == settingId }.first?.option
     }
 }
-
-

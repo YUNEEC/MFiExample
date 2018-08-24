@@ -62,16 +62,18 @@ class TelemetryEntries {
         //Listen Connection
         let coreStatus: Observable<UInt64> = CoreManager.shared().core.discoverObservable
         coreStatus.subscribe(onNext: { uuid in
-            self.onDiscoverObservable(uuid: uuid)
-        }, onError: { error in
-            print("Error Discover \(error)")
-        })
-        .disposed(by: disposeBag)
+                self.onDiscoverObservable(uuid: uuid)
+            }, onError: { error in
+                print("Error Discover \(error)")
+            })
+            .disposed(by: disposeBag)
         
         //Listen Timeout
         let coreTimeout: Observable<Void> = CoreManager.shared().core.timeoutObservable
-        coreTimeout.subscribe({Void in self.onTimeoutObservable()}).disposed(by: disposeBag)
-        
+        coreTimeout.subscribe({Void in
+                self.onTimeoutObservable()
+            })
+            .disposed(by: disposeBag)
     }
     
     // MARK: -
@@ -85,21 +87,23 @@ class TelemetryEntries {
         //Listen Health
         let health: Observable<Health> = CoreManager.shared().telemetry.healthObservable
         health.subscribe(onNext: { health in
-            //print ("Next health \(health)")
-            self.onHealthUpdate(health: health)
-        }, onError: { error in
-            print("Error Health")
-        }).disposed(by: disposeBag)
+                //print ("Next health \(health)")
+                self.onHealthUpdate(health: health)
+            }, onError: { error in
+                print("Error Health")
+            })
+            .disposed(by: disposeBag)
         
         //Listen Position
         let position: Observable<Position> = CoreManager.shared().telemetry.positionObservable
         position.subscribe(onNext: { position in
-            //print ("Next Pos \(position)")
-            CoreManager.shared().droneState.location2D = CLLocationCoordinate2DMake(position.latitudeDeg,position.longitudeDeg)
-            self.onPositionUpdate(position: position)
-        }, onError: { error in
-            print("Error telemetry")
-        }).disposed(by: disposeBag)
+                //print ("Next Pos \(position)")
+                CoreManager.shared().droneState.location2D = CLLocationCoordinate2DMake(position.latitudeDeg,position.longitudeDeg)
+                self.onPositionUpdate(position: position)
+            }, onError: { error in
+                print("Error telemetry")
+            })
+            .disposed(by: disposeBag)
     }
     
     func onTimeoutObservable()

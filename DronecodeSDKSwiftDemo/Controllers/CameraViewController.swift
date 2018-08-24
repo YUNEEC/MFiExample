@@ -23,6 +23,7 @@ class CameraViewController: UIViewController {
     @IBOutlet weak var feedbackLabel: UILabel!
     @IBOutlet weak var cameraStatusLabel: UILabel!
     @IBOutlet weak var setSettingsButton: UIButton!
+    @IBOutlet weak var videoFeedButton: UIButton!
     @IBOutlet weak var cameraModeLabel: UILabel!
     
     private let disposeBag = DisposeBag()
@@ -49,6 +50,7 @@ class CameraViewController: UIViewController {
          startVideoButton.layer.cornerRadius = UI_CORNER_RADIUS_BUTTONS
          stopVideoButton.layer.cornerRadius = UI_CORNER_RADIUS_BUTTONS
          setSettingsButton.layer.cornerRadius = UI_CORNER_RADIUS_BUTTONS
+         videoFeedButton.layer.cornerRadius = UI_CORNER_RADIUS_BUTTONS
         
         startObserving()
     }
