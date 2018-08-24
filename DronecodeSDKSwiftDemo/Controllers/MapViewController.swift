@@ -10,6 +10,7 @@ import UIKit
 import Dronecode_SDK_Swift
 import MapKit
 import RxSwift
+import RxBlocking
 
 class MapViewController: UIViewController, CLLocationManagerDelegate {
     
@@ -93,17 +94,32 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         let missionProgressObservable: Observable<MissionProgress> = CoreManager.shared().mission.missionProgressObservable
         missionProgressObservable.subscribe(onNext: { missionProgress in
                 print("Got mission progress update")
+                if missionProgress.currentItemIndex == missionProgress.missionCount {
+                    CoreManager.shared().mission.isMissionFinished()
+                        .subscribe(onSuccess: { (success) in
+                            if success {
+                                self.returnToLaunch()
+                            }
+                        }, onError: { (error) in
+                            self.displayFeedback(message: "Error isMissionFinished: \(error.localizedDescription)")
+                        })
+                        .disposed(by: self.disposeBag)
+                }
             }, onError: { error in
                 print("Error mission progress")
             })
             .disposed(by: disposeBag)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func returnToLaunch() {
+        CoreManager.shared().action.returnToLaunch()
+            .subscribe(onCompleted: {
+                self.displayFeedback(message: "RTL")
+            }, onError: { (error) in
+                self.displayFeedback(message: "Error rtl at end of mission: \(error.localizedDescription)")
+            })
+            .disposed(by: disposeBag)
     }
-    
     
     // MARK: - IBActions Mission
     
@@ -164,7 +180,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     // MARK: - Missions
     
     func uploadMission(){
-        
         CoreManager.shared().mission.uploadMission(missionItems: missionExample.missionItems)
             .do(onError: { error in
                 self.displayFeedback(message:"Mission uploaded failed \(error)")
@@ -174,7 +189,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
             })
             .subscribe()
             .disposed(by: disposeBag)
-        
     }
     
     func startMission(){

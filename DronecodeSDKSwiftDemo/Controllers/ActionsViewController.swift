@@ -103,6 +103,8 @@ class ActionsViewController: UIViewController {
     }
     
     @IBAction func killPressed(_ sender: Any) {
+        
+        // Anotacao: This makes the drone fall from the sky. Add a confirm button to the user!
         CoreManager.shared().action.kill()
             .do(onError: { error in
                 self.feedbackLabel.text = "Kill failed: \(error.localizedDescription)"

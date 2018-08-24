@@ -19,31 +19,80 @@ class ExampleMission {
         if missionItems.isEmpty {
             missionItems = [MissionItem]()
             
-            do {
-                let entry = MissionItem(latitudeDeg: 47.398039859999997, longitudeDeg: 8.5455725400000002, relativeAltitudeM: 10.0, speedMPS: 2.0, isFlyThrough: true, gimbalPitchDeg: -60.0, gimbalYawDeg: -90.0, cameraAction: CameraAction.startPhotoInterval)
-                missionItems.append(entry)
-            }
-            do {
-                let entry = MissionItem(latitudeDeg: 47.398039859999997, longitudeDeg: 8.5455725400000002, relativeAltitudeM: 10.0, speedMPS: 2.0, isFlyThrough: true, gimbalPitchDeg: -60.0, gimbalYawDeg: -90.0, cameraAction: CameraAction.startPhotoInterval)
-                missionItems.append(entry)
-            }
-            do {
-                let entry = MissionItem(latitudeDeg: 47.398039859999997, longitudeDeg: 8.5455725400000002, relativeAltitudeM: 10.0, speedMPS: 10.0, isFlyThrough: true, gimbalPitchDeg: -60.0, gimbalYawDeg: -90.0, cameraAction: CameraAction.startPhotoInterval)
-                missionItems.append(entry)
-            }
-            do {
-                let entry = MissionItem(latitudeDeg: 47.398036222362471, longitudeDeg: 8.5450146439425509, relativeAltitudeM: 10.0, speedMPS: 10.0, isFlyThrough: true, gimbalPitchDeg: -30.0, gimbalYawDeg: 0, cameraAction: CameraAction.stopPhotoInterval)
-                missionItems.append(entry)
-            }
-            do {
-                let entry = MissionItem(latitudeDeg: 47.397825620791885, longitudeDeg: 8.5450092830163271, relativeAltitudeM: 10.0, speedMPS: 10.0, isFlyThrough: true, gimbalPitchDeg: -60.0, gimbalYawDeg: -60.0, cameraAction: CameraAction.startVideo)
-                missionItems.append(entry)
-            }
-            do {
-                let entry = MissionItem(latitudeDeg: 47.397832880000003, longitudeDeg: 8.5455939999999995, relativeAltitudeM: 10.0, speedMPS: 10.0, isFlyThrough: true, gimbalPitchDeg: 0.0, gimbalYawDeg: 0.0, cameraAction: CameraAction.stopVideo)
-                missionItems.append(entry)
+//            do {
+//                let entry = MissionItem(latitudeDeg: 47.398039859999997, longitudeDeg: 8.5455725400000002, relativeAltitudeM: 10.0, speedMPS: 2.0, isFlyThrough: true, gimbalPitchDeg: -60.0, gimbalYawDeg: -90.0, cameraAction: CameraAction.startPhotoInterval)
+//                missionItems.append(entry)
+//            }
+//            do {
+//                let entry = MissionItem(latitudeDeg: 47.398039859999997, longitudeDeg: 8.5455725400000002, relativeAltitudeM: 10.0, speedMPS: 2.0, isFlyThrough: true, gimbalPitchDeg: -60.0, gimbalYawDeg: -90.0, cameraAction: CameraAction.startPhotoInterval)
+//                missionItems.append(entry)
+//            }
+//            do {
+//                let entry = MissionItem(latitudeDeg: 47.398039859999997, longitudeDeg: 8.5455725400000002, relativeAltitudeM: 10.0, speedMPS: 10.0, isFlyThrough: true, gimbalPitchDeg: -60.0, gimbalYawDeg: -90.0, cameraAction: CameraAction.startPhotoInterval)
+//                missionItems.append(entry)
+//            }
+//            do {
+//                let entry = MissionItem(latitudeDeg: 47.398036222362471, longitudeDeg: 8.5450146439425509, relativeAltitudeM: 10.0, speedMPS: 10.0, isFlyThrough: true, gimbalPitchDeg: -30.0, gimbalYawDeg: 0, cameraAction: CameraAction.stopPhotoInterval)
+//                missionItems.append(entry)
+//            }
+//            do {
+//                let entry = MissionItem(latitudeDeg: 47.397825620791885, longitudeDeg: 8.5450092830163271, relativeAltitudeM: 10.0, speedMPS: 10.0, isFlyThrough: true, gimbalPitchDeg: -60.0, gimbalYawDeg: -60.0, cameraAction: CameraAction.startVideo)
+//                missionItems.append(entry)
+//            }
+//            do {
+//                let entry = MissionItem(latitudeDeg: 47.397832880000003, longitudeDeg: 8.5455939999999995, relativeAltitudeM: 10.0, speedMPS: 10.0, isFlyThrough: true, gimbalPitchDeg: 0.0, gimbalYawDeg: 0.0, cameraAction: CameraAction.stopVideo)
+//                missionItems.append(entry)
+//            }
+            
+            
+            // Anotacao: Panorama - latitudeDeg: 37.8728883333333, longitudeDeg: -122.303321666667,
+            
+            var gimbalAngle = 0
+            
+            let NUMBER_OF_ROTATIONS = 12
+            let ROTATION_ANGLE = 30
+            
+            for i in 0..<NUMBER_OF_ROTATIONS {
+                
+                var yawAngle = Float(Float(ROTATION_ANGLE) * Float(i))
+
+                if (yawAngle > 180) { //Filter the angle between -180 ~ 0, 0 ~ 180
+                    yawAngle -= 360
+                }
+                
+                do {
+                    let entry = MissionItem(latitudeDeg: 47.397832880000003, longitudeDeg: 8.5455939999999995, relativeAltitudeM: 15.0, speedMPS: 0.5, isFlyThrough: false, gimbalPitchDeg: Float(gimbalAngle), gimbalYawDeg: yawAngle, cameraAction: CameraAction.none)
+                    missionItems.append(entry)
+                }
+                
+
+                for j in 0..<4 {
+                    
+                    do {
+                        let entry = MissionItem(latitudeDeg: 47.397832880000003, longitudeDeg: 8.5455939999999995, relativeAltitudeM: 15.0, speedMPS: 0.5, isFlyThrough: false, gimbalPitchDeg: Float(gimbalAngle), gimbalYawDeg: yawAngle, cameraAction: CameraAction.takePhoto)
+                        missionItems.append(entry)
+                    }
+
+                    if j < 3 {
+                        if i % 2 == 0 {
+                            gimbalAngle -= 22
+                        } else {
+                            gimbalAngle += 22
+                        }
+                    }
+                }
+                
+                if (yawAngle == 0 || yawAngle == 180 || yawAngle == 360) {
+                    do {
+                        let entry = MissionItem(latitudeDeg: 47.397832880000003, longitudeDeg: 8.5455939999999995, relativeAltitudeM: 15.0, speedMPS: 0.5, isFlyThrough: false, gimbalPitchDeg: Float(-90), gimbalYawDeg: yawAngle, cameraAction: CameraAction.takePhoto)
+                        missionItems.append(entry)
+                    }
+                    
+                }
             }
         }
+        
+        print("Anotacao: \(missionItems)")
         
     }
     
