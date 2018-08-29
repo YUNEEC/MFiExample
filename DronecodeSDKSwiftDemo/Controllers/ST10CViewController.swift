@@ -25,24 +25,6 @@ class ST10CViewController: UIViewController {
 //            object: nil)        
     }
     
-    @IBAction func fetchMediaAction(_ sender: UIButton) {
-        fetchMediaList()
-    }
-    
-    func fetchMediaList() {
-        MFiAdapter.MFiCameraAdapter.sharedInstance().requestMediaInfo { [weak self] (array, error) in
-            if error == nil {
-                DispatchQueue.main.async {
-                    self?.mfiStatus.text = String(describing: array)
-                }
-            } else {
-                DispatchQueue.main.async {
-                    self?.mfiStatus.text = String(describing: error)
-                }
-            }
-        }
-    }
-    
     @objc func handleConnectionStateNotification(notification: NSNotification) {
         mfiStatus.text = String(describing:notification.userInfo)
     }
