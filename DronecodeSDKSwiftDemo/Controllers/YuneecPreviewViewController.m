@@ -14,7 +14,6 @@
 #import <YuneecDataTransferManager/YuneecDataTransferConnectionState.h>
 #import <BaseFramework/DeviceUtility.h>
 #import <MFiAdapter/MFiAdapter.h>
-#import "YuneecConnectionStateAdapter.h"
 
 @interface YuneecPreviewViewController () <YuneecCameraStreamDataTransferDelegate,
                                            YuneecDecoderDelegate>
