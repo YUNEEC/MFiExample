@@ -13,8 +13,7 @@
 #import <YuneecPreviewView/YuneecPreviewView.h>
 #import <YuneecDataTransferManager/YuneecDataTransferConnectionState.h>
 #import <BaseFramework/DeviceUtility.h>
-
-#import "YuneecConnectionStateAdapter.h"
+#import <MFiAdapter/MFiAdapter.h>
 
 @interface YuneecPreviewViewController () <YuneecCameraStreamDataTransferDelegate,
                                            YuneecDecoderDelegate>
@@ -30,52 +29,32 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(handleConnectionStateNotification:)
-                                                 name:kConnectionStateNotification
-                                               object:nil];
-
-    [[YuneecConnectionStateAdapter sharedInstance] startMonitorConnectionState];
+    [self startVideo];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:kConnectionStateNotification
-                                                  object:nil];
 }
 - (IBAction)exitButtonAction:(UIButton *)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-
-#pragma mark - notification
-
-- (void)handleConnectionStateNotification:(NSNotification*) notification {
-    NSDictionary *userInfo = notification.userInfo;
-    BOOL connected = [userInfo[@"OBConnectionState"] boolValue];
-    YuneecDataTransferConnectionType connectionType = [userInfo[@"OBConnectionType"] boolValue];
-    if (connected) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if (connectionType == YuneecDataTransferConnectionTypeWifi) {
-                self.stateLabel.text = [NSString stringWithFormat:@"Wi-Fi connected:%@", getCurrentWifiSSID()];
-            }
-            else {
-                self.stateLabel.text = @"MFi connected";
-            }
-        });
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-            BOOL ret = [self.decoder openCodec];
-            if (!ret) {
-                NSLog(@"Open Yuneec Decoder failed");
-            }
-            [self.cameraStreamTransfer openCameraSteamDataTransfer];
-
-
-        });
-
+- (void)startVideo {
+    BOOL isConnected = [[MFiConnectionStateAdapter sharedInstance] connected];
+    if (isConnected) {
+        //NSDictionary *connectionInfo = [[MFiConnectionStateAdapter sharedInstance] getConnectionStatus];
+        if (isConnected) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                    self.stateLabel.text = @"Connected";
+            });
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+                BOOL ret = [self.decoder openCodec];
+                if (!ret) {
+                    NSLog(@"Open Yuneec Decoder failed");
+                }
+                [self.cameraStreamTransfer openCameraSteamDataTransfer];
+            });
+        }
     }
     else {
         dispatch_async(dispatch_get_main_queue(), ^{
