@@ -229,9 +229,11 @@ class TelemetryEntries {
             })
             .disposed(by: disposeBag)
         
+        
         //Listen Flight Mode
         let flightMode: Observable<eDroneCoreFlightMode> = CoreManager.shared().telemetry.flightModeObservable
-        flightMode.subscribe(onNext: { flightMode in
+        flightMode
+            .subscribe(onNext: { flightMode in
                 self.onFlightModeUpdate(flightMode)
             }, onError: { error in
                 print("Error telemetry")

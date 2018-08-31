@@ -18,7 +18,6 @@ class CameraSettingsViewController: FormViewController {
     var currentSettings = Variable<[Setting]>([])
     var possibleSettingOptions = Variable<[SettingOptions]>([])
     
-    // Show spinner
     let activityView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
     
     let disposeBag = DisposeBag()

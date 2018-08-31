@@ -23,8 +23,10 @@ class CameraViewController: UIViewController {
     @IBOutlet weak var feedbackLabel: UILabel!
     @IBOutlet weak var cameraStatusLabel: UILabel!
     @IBOutlet weak var setSettingsButton: UIButton!
-    @IBOutlet weak var videoFeedButton: UIButton!
     @IBOutlet weak var cameraModeLabel: UILabel!
+    @IBOutlet weak var containerView: UIView!
+    
+    var videoFeedViewController: UIViewController?
     
     private let disposeBag = DisposeBag()
     
@@ -50,9 +52,31 @@ class CameraViewController: UIViewController {
          startVideoButton.layer.cornerRadius = UI_CORNER_RADIUS_BUTTONS
          stopVideoButton.layer.cornerRadius = UI_CORNER_RADIUS_BUTTONS
          setSettingsButton.layer.cornerRadius = UI_CORNER_RADIUS_BUTTONS
-         videoFeedButton.layer.cornerRadius = UI_CORNER_RADIUS_BUTTONS
         
         startObserving()
+        
+        embedContainerView()
+    }
+    
+    func embedContainerView() {
+        videoFeedViewController = storyboard?.instantiateViewController(withIdentifier: "VideoFeedViewController")
+        
+        guard let videoFeedViewController = videoFeedViewController else {
+            return
+        }
+        
+        addChildViewController(videoFeedViewController)
+        videoFeedViewController.didMove(toParentViewController: self)
+        
+        if let videoFeedSubview = videoFeedViewController.view {
+            containerView.addSubview(videoFeedSubview)
+            
+            videoFeedSubview.translatesAutoresizingMaskIntoConstraints = false
+            videoFeedSubview.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
+            videoFeedSubview.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true
+            videoFeedSubview.trailingAnchor.constraint(equalTo: containerView.trailingAnchor).isActive = true
+            videoFeedSubview.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
+        }
     }
 
     @IBAction func setPhotoMode(_ sender: UIButton) {

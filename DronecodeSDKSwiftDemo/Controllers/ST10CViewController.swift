@@ -18,11 +18,11 @@ class ST10CViewController: UIViewController {
         super.viewDidLoad()
         mfiStatus.text = "View officially loaded"
         
-//        NotificationCenter.default.addObserver(
-//            self,
-//            selector: #selector(handleConnectionStateNotification(notification:)),
-//            name: Notification.Name("MFiConnectionStateNotification"),
-//            object: nil)        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleConnectionStateNotification(notification:)),
+            name: Notification.Name("MFiConnectionStateNotification"),
+            object: nil)        
     }
     
     @objc func handleConnectionStateNotification(notification: NSNotification) {
