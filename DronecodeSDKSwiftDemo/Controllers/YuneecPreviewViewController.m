@@ -43,7 +43,6 @@
     BOOL isConnected = [[MFiConnectionStateAdapter sharedInstance] connected];
     if (isConnected) {
         //NSDictionary *connectionInfo = [[MFiConnectionStateAdapter sharedInstance] getConnectionStatus];
-        if (isConnected) {
             dispatch_async(dispatch_get_main_queue(), ^{
                     self.stateLabel.text = @"Connected";
             });
@@ -54,7 +53,6 @@
                 }
                 [self.cameraStreamTransfer openCameraSteamDataTransfer];
             });
-        }
     }
     else {
         dispatch_async(dispatch_get_main_queue(), ^{
