@@ -23,6 +23,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var feedbackLabel: UILabel!
     @IBOutlet weak var uploadMissionButton: UIButton!
     @IBOutlet weak var startMissionButton: UIButton!
+    @IBOutlet weak var pauseMissionButton: UIButton!
+    @IBOutlet weak var getCurrentIndexButton: UIButton!
+    @IBOutlet weak var setCurrentIndexButton: UIButton!
+    @IBOutlet weak var downloadMissionButton: UIButton!
+    @IBOutlet weak var getMissionCountButton: UIButton!
+    @IBOutlet weak var isMissionFinishedButton: UIButton!
     
     @IBOutlet weak var createFlightPathButton: UIButton!
     @IBOutlet weak var centerMapOnUsernButton: UIButton!
@@ -63,6 +69,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         startMissionButton.layer.cornerRadius    = UI_CORNER_RADIUS_BUTTONS
         createFlightPathButton.layer.cornerRadius    = UI_CORNER_RADIUS_BUTTONS
         centerMapOnUsernButton.layer.cornerRadius    = UI_CORNER_RADIUS_BUTTONS
+        pauseMissionButton.layer.cornerRadius    = UI_CORNER_RADIUS_BUTTONS
+        getCurrentIndexButton.layer.cornerRadius    = UI_CORNER_RADIUS_BUTTONS
+        setCurrentIndexButton.layer.cornerRadius    = UI_CORNER_RADIUS_BUTTONS
+        downloadMissionButton.layer.cornerRadius    = UI_CORNER_RADIUS_BUTTONS
+        getMissionCountButton.layer.cornerRadius    = UI_CORNER_RADIUS_BUTTONS
+        isMissionFinishedButton.layer.cornerRadius    = UI_CORNER_RADIUS_BUTTONS
         
         // location manager
         locationManager = CLLocationManager()
@@ -93,6 +105,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         let missionProgressObservable: Observable<MissionProgress> = CoreManager.shared().mission.missionProgressObservable
         missionProgressObservable.subscribe(onNext: { missionProgress in
                 print("Got mission progress update")
+                self.displayFeedback(message:"\(missionProgress.currentItemIndex) / \(missionProgress.missionCount)")
             }, onError: { error in
                 print("Error mission progress")
             })
@@ -124,6 +137,94 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
                 self.startMission()
             })
             .subscribe()
+            .disposed(by: disposeBag)
+    }
+    
+    @IBAction func pauseMissionPressed(_ sender: UIButton) {
+        self.displayFeedback(message:"Pause Mission Pressed")
+        
+        if self.pauseMissionButton.titleLabel?.text == "Resume Mission" {
+            CoreManager.shared().mission.startMission()
+                .do(onError: { error in
+                    self.displayFeedback(message: "Resume mission failed \(error)")
+                }, onCompleted: {
+                    self.displayFeedback(message:"Resume mission with success")
+                    self.pauseMissionButton.setTitle("Pause Mission", for: .normal)
+                })
+                .subscribe()
+                .disposed(by: disposeBag)
+        } else {
+            CoreManager.shared().mission.pauseMission()
+                .do(onError: { error in
+                    self.displayFeedback(message:"Pausing Mission failed")
+                }, onCompleted: {
+                    self.displayFeedback(message:"Paused mission with success")
+                    self.pauseMissionButton.setTitle("Resume Mission", for: .normal)
+                })
+                .subscribe()
+                .disposed(by: disposeBag)
+        }
+    }
+    
+    @IBAction func getIndexPressed(_ sender: UIButton) {
+         self.displayFeedback(message:"Get Current Index Pressed")
+        
+        CoreManager.shared().mission.getCurrentMissionItemIndex()
+            .subscribe(onSuccess: { (index) in
+                self.displayFeedback(message:"Current mission index: \(index)")
+            }, onError: { (error) in
+                self.displayFeedback(message: "Get mission index failed \(error)")
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    @IBAction func setIndexPressed(_ sender: UIButton) {
+         self.displayFeedback(message:"Set Current Index Pressed")
+        
+        CoreManager.shared().mission.setCurrentMissionItemIndex(2)
+            .subscribe(onCompleted: {
+                self.displayFeedback(message:"Set mission index to 2.")
+            }, onError: { (error) in
+                self.displayFeedback(message: "Set mission index failed \(error)")
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    @IBAction func downloadMissionPressed(_ sender: UIButton) {
+         self.displayFeedback(message:"Download Mission Pressed")
+        
+        CoreManager.shared().mission.downloadMission()
+            .subscribe(onSuccess: { (mission) in
+                self.displayFeedback(message:"Downloaded mission")
+                print("Mission downloaded: \(mission)")
+            }, onError: { (error) in
+                self.displayFeedback(message: "Download mission failed \(error)")
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    @IBAction func getCountPressed(_ sender: UIButton) {
+         self.displayFeedback(message:"Get Mission Count Pressed")
+        
+        CoreManager.shared().mission.getMissionCount()
+            .subscribe(onSuccess: { (count) in
+                self.displayFeedback(message:"Mission count: \(count)")
+            }, onError: { (error) in
+                self.displayFeedback(message: "Get mission count failed \(error)")
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    @IBAction func isFinishedPressed(_ sender: UIButton) {
+         self.displayFeedback(message:"Is Mission Finished Pressed")
+        
+        
+        CoreManager.shared().mission.isMissionFinished()
+            .subscribe(onSuccess: { (finished) in
+                self.displayFeedback(message:"Is mission finished: \(finished)")
+            }, onError: { (error) in
+                self.displayFeedback(message: "Error checking if mission is finihed \(error)")
+            })
             .disposed(by: disposeBag)
     }
     

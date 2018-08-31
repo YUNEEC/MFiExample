@@ -76,8 +76,8 @@ class GalleryViewController: UIViewController {
             for media in self.mediaArray {
                 download.media = media as! YuneecMedia
                 download.filePath = self.utility.getLocalMediaFilePath(fileName: download.media.fileName)
-                download.isThumbnail = false
-                download.isPreviewVideo = false
+//                download.isThumbnail = false
+//                download.isPreviewVideo = false
 
                 if (self.utility.isMediaFileExist(fileName: download.media.fileName) == false) {
                     downloadArray.append(download.copy() as! MFiMediaDownload)

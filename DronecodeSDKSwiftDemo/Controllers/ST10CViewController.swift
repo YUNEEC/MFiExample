@@ -22,16 +22,10 @@ class ST10CViewController: UIViewController {
             self,
             selector: #selector(handleConnectionStateNotification(notification:)),
             name: Notification.Name("MFiConnectionStateNotification"),
-            object: nil)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+            object: nil)        
     }
     
     @objc func handleConnectionStateNotification(notification: NSNotification) {
-        
         mfiStatus.text = String(describing:notification.userInfo)
     }
 }

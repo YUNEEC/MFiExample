@@ -11,20 +11,6 @@ import Eureka
 import Dronecode_SDK_Swift
 import RxSwift
 
-private func setupEurekaDefaults() {
-    SwitchRow.defaultCellUpdate = { cell, row in
-        cell.textLabel?.textColor = UIColor.black
-    }
-    
-    ButtonRow.defaultCellUpdate = { cell, row in
-        cell.textLabel?.textColor = UIColor.black
-    }
-    
-    LabelRow.defaultCellUpdate = { cell, row in
-        cell.textLabel?.textColor = UIColor.black
-    }
-}
-
 class CameraSettingsViewController: FormViewController {
     
     var manifestSection: Section!
@@ -32,7 +18,6 @@ class CameraSettingsViewController: FormViewController {
     var currentSettings = Variable<[Setting]>([])
     var possibleSettingOptions = Variable<[SettingOptions]>([])
     
-    // Show spinner
     let activityView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
     
     let disposeBag = DisposeBag()
@@ -41,13 +26,10 @@ class CameraSettingsViewController: FormViewController {
         super.viewDidLoad()
         
         activityView.hidesWhenStopped = true
-
-        setupEurekaDefaults()
         
         let done = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(CameraSettingsViewController.done))
         navigationItem.leftBarButtonItem = done
         
-
         manifestSection = Section()
         form +++ manifestSection
         
@@ -73,7 +55,6 @@ class CameraSettingsViewController: FormViewController {
                 $0.options = setting.options.compactMap {  $0.description  }
                 $0.onChange { [weak self] pushRow in
                     
-                    // Show spinner
                     let activityView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
                     activityView.hidesWhenStopped = true
                     
@@ -83,7 +64,6 @@ class CameraSettingsViewController: FormViewController {
                     if let optionID = (setting.options.filter { $0.description == pushRow.value }.first?.id) {
                         self?.setSettings(settingID: setting.settingId, optionID: optionID ) { (error) in
                             
-                            // Hide spinner
                             activityView.stopAnimating()
                             if let error = error {
                                 ActionsViewController.showAlert("Error setting \(String(describing: setting.settingDescription ?? "value")).", viewController: self)
@@ -91,9 +71,9 @@ class CameraSettingsViewController: FormViewController {
                             }
                         }
                     }
-                    }.onPresent({ (form, selectorController) in
-                        selectorController.enableDeselection = false
-                    })
+                }.onPresent({ (from, to) in
+                    to.enableDeselection = false
+                })
             }
         }
     }
@@ -104,7 +84,7 @@ class CameraSettingsViewController: FormViewController {
     }
     
     func stopSpinner() {
-//      self.tableView.tableHeaderView = nil
+      self.tableView.tableHeaderView = nil
         activityView.stopAnimating()
     }
     

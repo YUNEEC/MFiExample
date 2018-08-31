@@ -24,6 +24,9 @@ class CameraViewController: UIViewController {
     @IBOutlet weak var cameraStatusLabel: UILabel!
     @IBOutlet weak var setSettingsButton: UIButton!
     @IBOutlet weak var cameraModeLabel: UILabel!
+    @IBOutlet weak var containerView: UIView!
+    
+    var videoFeedViewController: UIViewController?
     
     private let disposeBag = DisposeBag()
     
@@ -51,6 +54,29 @@ class CameraViewController: UIViewController {
          setSettingsButton.layer.cornerRadius = UI_CORNER_RADIUS_BUTTONS
         
         startObserving()
+        
+        embedContainerView()
+    }
+    
+    func embedContainerView() {
+        videoFeedViewController = storyboard?.instantiateViewController(withIdentifier: "VideoFeedViewController")
+        
+        guard let videoFeedViewController = videoFeedViewController else {
+            return
+        }
+        
+        addChildViewController(videoFeedViewController)
+        videoFeedViewController.didMove(toParentViewController: self)
+        
+        if let videoFeedSubview = videoFeedViewController.view {
+            containerView.addSubview(videoFeedSubview)
+            
+            videoFeedSubview.translatesAutoresizingMaskIntoConstraints = false
+            videoFeedSubview.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
+            videoFeedSubview.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true
+            videoFeedSubview.trailingAnchor.constraint(equalTo: containerView.trailingAnchor).isActive = true
+            videoFeedSubview.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
+        }
     }
 
     @IBAction func setPhotoMode(_ sender: UIButton) {
@@ -211,14 +237,14 @@ class CameraViewController: UIViewController {
         
         // Listen to camera status
         // FIXME: Crashes after a while.
-        CoreManager.shared().camera.cameraStatusObservable
-            .subscribe(onNext: { status in
-                let string = "Video On: \(status.videoOn) | Photo Interval On: \(status.photoIntervalOn) | Used Storage: \(status.usedStorageMib) | Available Storage: \(status.availableStorageMib) | Total Storage \(status.totalStorageMib) | Storage Status: \(status.storageStatus.hashValue)"
-                    self.cameraStatusLabel.text = string
-                }, onError: { error in
-                    NSLog("Error cameraStatusSubscription: \(error.localizedDescription)")
-            })
-            .disposed(by: disposeBag)
+//        CoreManager.shared().camera.cameraStatusObservable
+//            .subscribe(onNext: { status in
+//                let string = "Video On: \(status.videoOn) | Photo Interval On: \(status.photoIntervalOn) | Used Storage: \(status.usedStorageMib) | Available Storage: \(status.availableStorageMib) | Total Storage \(status.totalStorageMib) | Storage Status: \(status.storageStatus.hashValue)"
+//                    self.cameraStatusLabel.text = string
+//                }, onError: { error in
+//                    NSLog("Error cameraStatusSubscription: \(error.localizedDescription)")
+//            })
+//            .disposed(by: disposeBag)
 
         // Listen to current settings
         CoreManager.shared().camera.currentSettingsObservable
