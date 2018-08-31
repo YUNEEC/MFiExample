@@ -123,6 +123,24 @@ class GalleryViewController: UIViewController {
         self.utility.removeAllLocalMediaFile()
         self.localMediaNum.text = "Local:" + String(self.utility.getLocalMediaFileCount())
     }
+    
+    @IBAction func formatStorage(_ sender: UIButton) {
+        MFiAdapter.MFiCameraAdapter.sharedInstance().formatCameraStorage { (error)
+            in
+            if (error != nil) {
+                GalleryViewController.showAlert("Error", message: error?.localizedDescription, viewController:self)
+            }
+        }
+    }
 }
 
+extension GalleryViewController {
+    class func showAlert(_ title: String?, message: String?, viewController: UIViewController?) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        DispatchQueue.main.async {
+            viewController?.present(alert, animated: true) {() -> Void in }
+        }
+    }
+}
 
