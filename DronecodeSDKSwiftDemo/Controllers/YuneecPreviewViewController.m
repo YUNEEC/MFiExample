@@ -41,22 +41,19 @@
 
 - (void)startVideo {
     BOOL isConnected = [[MFiConnectionStateAdapter sharedInstance] connected];
+    //NSDictionary *connectionInfo = [[MFiConnectionStateAdapter sharedInstance] getConnectionStatus];
     if (isConnected) {
-        //NSDictionary *connectionInfo = [[MFiConnectionStateAdapter sharedInstance] getConnectionStatus];
-        if (isConnected) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                    self.stateLabel.text = @"Connected";
-            });
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-                BOOL ret = [self.decoder openCodec];
-                if (!ret) {
-                    NSLog(@"Open Yuneec Decoder failed");
-                }
-                [self.cameraStreamTransfer openCameraSteamDataTransfer];
-            });
-        }
-    }
-    else {
+        dispatch_async(dispatch_get_main_queue(), ^{
+                self.stateLabel.text = @"Connected";
+        });
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+            BOOL ret = [self.decoder openCodec];
+            if (!ret) {
+                NSLog(@"Open Yuneec Decoder failed");
+            }
+            [self.cameraStreamTransfer openCameraSteamDataTransfer];
+        });
+    } else {
         dispatch_async(dispatch_get_main_queue(), ^{
             self.stateLabel.text = @"No Connection";
         });
