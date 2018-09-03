@@ -18,7 +18,7 @@ class CoreManager {
     // MARK: - Properties
     
     // Telemetry
-    var telemetry = Telemetry(address: "localhost", port: 50051)
+    let telemetry = Telemetry(address: "localhost", port: 50051)
     // Action
     let action = Action(address: "localhost", port: 50051)
     // Mission
