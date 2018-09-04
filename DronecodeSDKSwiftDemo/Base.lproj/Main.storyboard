@@ -30,20 +30,11 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="highlightedColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-DroneCore-thumb" translatesAutoresizingMaskIntoConstraints="NO" id="L7D-XD-lrU">
-                                        <rect key="frame" x="8" y="25" width="80" height="18"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="18" id="JMK-BJ-oEW"/>
-                                            <constraint firstAttribute="width" constant="80" id="vIS-xO-QUw"/>
-                                        </constraints>
-                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.4406479895" green="0.51737356189999995" blue="0.52941578629999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstItem="Dkk-GJ-GIs" firstAttribute="centerX" secondItem="DF5-F9-wpk" secondAttribute="centerX" id="31t-60-suZ"/>
                                     <constraint firstAttribute="height" constant="68" id="Gzt-xE-djy"/>
-                                    <constraint firstItem="L7D-XD-lrU" firstAttribute="top" secondItem="DF5-F9-wpk" secondAttribute="top" constant="25" id="aXf-04-AIb"/>
-                                    <constraint firstItem="L7D-XD-lrU" firstAttribute="leading" secondItem="DF5-F9-wpk" secondAttribute="leading" constant="8" id="sLe-sV-hCh"/>
                                     <constraint firstItem="Dkk-GJ-GIs" firstAttribute="centerY" secondItem="DF5-F9-wpk" secondAttribute="centerY" id="snr-dQ-ao3"/>
                                 </constraints>
                             </view>
@@ -176,21 +167,12 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="highlightedColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-DroneCore-thumb" translatesAutoresizingMaskIntoConstraints="NO" id="A5U-dI-AWb">
-                                        <rect key="frame" x="8" y="25" width="80" height="18"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="18" id="1sT-lL-uZD"/>
-                                            <constraint firstAttribute="width" constant="80" id="Jkt-7j-eea"/>
-                                        </constraints>
-                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.4406479895" green="0.51737356189999995" blue="0.52941578629999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstItem="MYf-KL-5Rk" firstAttribute="centerX" secondItem="yWt-rt-joW" secondAttribute="centerX" id="T1S-09-Qgg"/>
-                                    <constraint firstItem="A5U-dI-AWb" firstAttribute="leading" secondItem="yWt-rt-joW" secondAttribute="leading" constant="8" id="bfd-x7-gk9"/>
                                     <constraint firstItem="MYf-KL-5Rk" firstAttribute="centerY" secondItem="yWt-rt-joW" secondAttribute="centerY" id="qnO-Tm-jeL"/>
                                     <constraint firstAttribute="height" constant="68" id="t8b-t0-8ho"/>
-                                    <constraint firstItem="A5U-dI-AWb" firstAttribute="top" secondItem="yWt-rt-joW" secondAttribute="top" constant="25" id="v5i-TQ-U6Z"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cMZ-Af-sTc" userLabel="Connection View">
@@ -310,19 +292,10 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="highlightedColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-DroneCore-thumb" translatesAutoresizingMaskIntoConstraints="NO" id="rgW-f5-3rH">
-                                        <rect key="frame" x="8" y="25" width="80" height="18"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="18" id="WIK-3C-ckQ"/>
-                                            <constraint firstAttribute="width" constant="80" id="xYQ-Cf-3aW"/>
-                                        </constraints>
-                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.4406479895" green="0.51737356189999995" blue="0.52941578629999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstItem="Wqn-97-Igg" firstAttribute="centerY" secondItem="YWd-zv-R9H" secondAttribute="centerY" id="Gsx-yZ-44U"/>
-                                    <constraint firstItem="rgW-f5-3rH" firstAttribute="leading" secondItem="YWd-zv-R9H" secondAttribute="leading" constant="8" id="SYp-rw-kMC"/>
-                                    <constraint firstItem="rgW-f5-3rH" firstAttribute="top" secondItem="YWd-zv-R9H" secondAttribute="top" constant="25" id="bM2-aX-NED"/>
                                     <constraint firstItem="Wqn-97-Igg" firstAttribute="centerX" secondItem="YWd-zv-R9H" secondAttribute="centerX" id="ihZ-0V-hC1"/>
                                     <constraint firstAttribute="height" constant="68" id="ryj-B8-zWJ"/>
                                 </constraints>
@@ -530,19 +503,10 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="highlightedColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-DroneCore-thumb" translatesAutoresizingMaskIntoConstraints="NO" id="Axm-N9-0r2">
-                                        <rect key="frame" x="8" y="25" width="80" height="18"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="18" id="BjV-dQ-zBb"/>
-                                            <constraint firstAttribute="width" constant="80" id="Fsh-sP-heV"/>
-                                        </constraints>
-                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.4406479895" green="0.51737356189999995" blue="0.52941578629999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstItem="Axm-N9-0r2" firstAttribute="leading" secondItem="vKA-S2-Ied" secondAttribute="leading" constant="8" id="4EH-ga-3C4"/>
                                     <constraint firstAttribute="height" constant="68" id="RQT-3S-VVh"/>
-                                    <constraint firstItem="Axm-N9-0r2" firstAttribute="top" secondItem="vKA-S2-Ied" secondAttribute="top" constant="25" id="kFv-qj-rT8"/>
                                     <constraint firstItem="fqz-VW-SLN" firstAttribute="centerY" secondItem="vKA-S2-Ied" secondAttribute="centerY" id="twB-iy-hhB"/>
                                     <constraint firstItem="fqz-VW-SLN" firstAttribute="centerX" secondItem="vKA-S2-Ied" secondAttribute="centerX" id="we3-dm-jNN"/>
                                 </constraints>
@@ -606,12 +570,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="32g-dj-3Z8" userLabel="Title View">
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="32g-dj-3Z8" userLabel="Title View">
                                 <rect key="frame" x="0.0" y="20" width="414" height="69"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-DroneCore-thumb" translatesAutoresizingMaskIntoConstraints="NO" id="HCd-QR-jtz">
-                                        <rect key="frame" x="8" y="25" width="80" height="18"/>
-                                    </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bind" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8HL-Ty-vNQ">
                                         <rect key="frame" x="172.33333333333334" y="13" width="69.666666666666657" height="43"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -622,23 +583,20 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.4406479895" green="0.51737356189999995" blue="0.52941578629999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstItem="HCd-QR-jtz" firstAttribute="centerY" secondItem="8HL-Ty-vNQ" secondAttribute="centerY" id="6WH-ya-MOW"/>
-                                    <constraint firstItem="HCd-QR-jtz" firstAttribute="centerY" secondItem="32g-dj-3Z8" secondAttribute="centerY" id="I6y-Zf-yEa"/>
-                                    <constraint firstItem="HCd-QR-jtz" firstAttribute="leading" secondItem="32g-dj-3Z8" secondAttribute="leadingMargin" id="J0v-F0-zLM"/>
                                     <constraint firstItem="8HL-Ty-vNQ" firstAttribute="top" secondItem="32g-dj-3Z8" secondAttribute="top" constant="13" id="iVB-jL-TeN"/>
                                     <constraint firstItem="8HL-Ty-vNQ" firstAttribute="centerX" secondItem="32g-dj-3Z8" secondAttribute="centerX" id="seD-Mk-NM8"/>
                                 </constraints>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="IHH-Y4-LeP">
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="IHH-Y4-LeP">
                                 <rect key="frame" x="70" y="138" width="274" height="36"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="center" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="WifiSSID" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="O8j-c5-qZr">
+                                    <textField opaque="NO" contentMode="center" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="WifiSSID" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="O8j-c5-qZr">
                                         <rect key="frame" x="0.0" y="0.0" width="89.666666666666671" height="36"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="center" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="WifiPassword" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xDm-gL-279">
+                                    <textField opaque="NO" contentMode="center" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="WifiPassword" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xDm-gL-279">
                                         <rect key="frame" x="99.666666666666657" y="0.0" width="124.33333333333334" height="36"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="36" id="PjD-85-Kcq"/>
@@ -647,7 +605,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L5Q-MR-wfK">
+                                    <button opaque="NO" contentMode="center" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L5Q-MR-wfK">
                                         <rect key="frame" x="234" y="0.0" width="40" height="36"/>
                                         <color key="backgroundColor" red="0.4406479895" green="0.51737356189999995" blue="0.52941578629999997" alpha="0.69571382709999996" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
@@ -666,7 +624,7 @@
                                     <constraint firstAttribute="height" constant="36" id="yhv-u6-Uu0"/>
                                 </constraints>
                             </stackView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vNw-Tp-Wzu">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vNw-Tp-Wzu">
                                 <rect key="frame" x="45" y="186" width="324" height="320"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -774,7 +732,7 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ChI-jN-I60">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ChI-jN-I60">
                                 <rect key="frame" x="104" y="94" width="206" height="29"/>
                                 <color key="backgroundColor" red="0.4406479895" green="0.51737356189999995" blue="0.52941578629999997" alpha="0.69571382709999996" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
@@ -844,11 +802,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XsE-0p-G5S" userLabel="Title View">
                                 <rect key="frame" x="0.0" y="20" width="414" height="68"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-DroneCore-thumb" translatesAutoresizingMaskIntoConstraints="NO" id="xd0-II-0ie">
-                                        <rect key="frame" x="8" y="25" width="80" height="18"/>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Camera" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4jQ-P1-3Vj">
-                                        <rect key="frame" x="142" y="13" width="131" height="43"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Camera" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4jQ-P1-3Vj">
+                                        <rect key="frame" x="142" y="73.666666666666671" width="131" height="43"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="131" id="vKt-Ny-Et5"/>
@@ -868,9 +823,6 @@
                                 <color key="backgroundColor" red="0.4406479895" green="0.51737356189999995" blue="0.52941578629999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstItem="4jQ-P1-3Vj" firstAttribute="centerX" secondItem="XsE-0p-G5S" secondAttribute="centerX" id="2ed-n2-qyV"/>
-                                    <constraint firstItem="4jQ-P1-3Vj" firstAttribute="centerY" secondItem="xd0-II-0ie" secondAttribute="centerY" id="DCG-zs-hvF"/>
-                                    <constraint firstItem="xd0-II-0ie" firstAttribute="top" secondItem="XsE-0p-G5S" secondAttribute="top" constant="25" id="HEl-Oj-MjN"/>
-                                    <constraint firstItem="xd0-II-0ie" firstAttribute="leading" secondItem="XsE-0p-G5S" secondAttribute="leading" constant="8" id="Sjq-SX-fgv"/>
                                     <constraint firstAttribute="height" constant="68" id="zmR-7Y-rgl"/>
                                 </constraints>
                             </view>
@@ -1033,7 +985,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gSJ-pb-7KY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3841" y="949"/>
+            <point key="canvasLocation" x="3840.579710144928" y="948.91304347826099"/>
         </scene>
         <!--Camera Settings-->
         <scene sceneID="kzy-MY-dBb">
@@ -1080,8 +1032,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Kz-m3-DVo" userLabel="Title View">
                                 <rect key="frame" x="0.0" y="20" width="414" height="69"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-DroneCore-thumb" translatesAutoresizingMaskIntoConstraints="NO" id="iOV-ug-Xn8">
-                                        <rect key="frame" x="8" y="25" width="80" height="18"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="logo-DroneCore-thumb" translatesAutoresizingMaskIntoConstraints="NO" id="iOV-ug-Xn8">
+                                        <rect key="frame" x="8" y="-36" width="80" height="18"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gallery" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ES-wg-UG8">
                                         <rect key="frame" x="153" y="13" width="108" height="43"/>
@@ -1216,6 +1168,6 @@
         <image name="icon-tab-gallery" width="25" height="25"/>
         <image name="icon-tab-placeholder-location" width="24" height="24"/>
         <image name="icon-tab-sync" width="25" height="25"/>
-        <image name="logo-DroneCore-thumb" width="80" height="18"/>
+        <image name="logo-DroneCore-thumb" width="628" height="140"/>
     </resources>
 </document>
