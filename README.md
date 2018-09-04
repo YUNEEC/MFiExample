@@ -12,7 +12,7 @@ The app is based on the [Dronecode SDK Swift example app](https://github.com/Dro
    ```
 
 2. Get [MFiAdapter](https://github.com/YUNEEC/MFiAdapter/):
-   - Either using `carthage update --platform ios --use-ssh` (if you have access).
+   - Either using `carthage bootstrap --platform ios --use-ssh` (if you have access).
    - Or by downloading the MFiAdapter frameworks from the [H520 update page](https://d3qzlqwby7grio.cloudfront.net/H520/index).
 
 3. Open the workspace MFiExample.xcworkspace in XCode.
