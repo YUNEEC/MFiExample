@@ -410,11 +410,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tDk-i1-e41">
-                                <rect key="frame" x="20" y="139" width="374" height="353"/>
+                                <rect key="frame" x="20" y="139" width="374" height="438"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="b9W-T3-u21">
-                                        <rect key="frame" x="45" y="34" width="296" height="284"/>
+                                        <rect key="frame" x="39" y="40" width="296" height="378"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="yer-p7-oDc">
@@ -490,7 +490,7 @@
                                                 <directionalEdgeInsets key="directionalLayoutMargins" top="4" leading="4" bottom="4" trailing="4"/>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="RHc-Zi-j8G">
-                                                <rect key="frame" x="148" y="0.0" width="148" height="267"/>
+                                                <rect key="frame" x="148" y="0.0" width="148" height="378"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Transitions" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ii1-8q-c96">
                                                         <rect key="frame" x="4" y="24" width="140" height="17"/>
@@ -553,6 +553,32 @@
                                                             <action selector="getMaximumSpeedPressed:" destination="sxF-oW-WnJ" eventType="touchUpInside" id="1ba-zV-erz"/>
                                                         </connections>
                                                     </button>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="RTL Altitude" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aqN-KB-65O">
+                                                        <rect key="frame" x="4" y="275" width="140" height="17"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZCt-gL-c0c">
+                                                        <rect key="frame" x="4" y="304" width="140" height="29"/>
+                                                        <color key="backgroundColor" red="0.4406479895" green="0.51737356189999995" blue="0.52941578629999997" alpha="0.69571382709999996" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                                        <color key="tintColor" red="0.1647058824" green="0.23137254900000001" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <state key="normal" title="Set RTL Altitude"/>
+                                                        <connections>
+                                                            <action selector="setRTLAltitude:" destination="sxF-oW-WnJ" eventType="touchUpInside" id="jPU-83-6e3"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OdQ-ze-ys2">
+                                                        <rect key="frame" x="4" y="345" width="140" height="29"/>
+                                                        <color key="backgroundColor" red="0.4406479895" green="0.51737356189999995" blue="0.52941578629999997" alpha="0.69571382709999996" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                                        <color key="tintColor" red="0.1647058824" green="0.23137254900000001" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <state key="normal" title="Get RTL Altitude"/>
+                                                        <connections>
+                                                            <action selector="getRTLAltitude:" destination="sxF-oW-WnJ" eventType="touchUpInside" id="nDM-Q8-b7w"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <directionalEdgeInsets key="directionalLayoutMargins" top="4" leading="4" bottom="4" trailing="4"/>
                                             </stackView>
@@ -576,10 +602,12 @@
                         <outlet property="disarmButton" destination="zX5-WX-alt" id="n59-bW-mRo"/>
                         <outlet property="feedbackLabel" destination="QKz-rQ-y20" id="Nhr-Th-No6"/>
                         <outlet property="getMaxSpeedButton" destination="sJv-j1-jhy" id="Jzb-IU-Vjz"/>
+                        <outlet property="getRTLAltitudeButton" destination="OdQ-ze-ys2" id="pcu-dt-uDs"/>
                         <outlet property="getTakeoffAltitudeButton" destination="DqT-vJ-doB" id="0L7-s0-vUX"/>
                         <outlet property="killButton" destination="Ihn-G1-lxp" id="IZg-G6-H2g"/>
                         <outlet property="landButton" destination="Ah7-zu-5MT" id="ufh-QB-IV6"/>
                         <outlet property="returnToLaunchButton" destination="LCh-un-lRR" id="QOc-lh-ikv"/>
+                        <outlet property="setRTLAltitudeButton" destination="ZCt-gL-c0c" id="hyd-M0-Jsq"/>
                         <outlet property="takeoffButton" destination="Wj2-OM-ciY" id="x4h-gg-Q0V"/>
                         <outlet property="transitionToFixedWingButton" destination="BC5-Qp-ZjK" id="9Rf-U2-qMs"/>
                         <outlet property="transitionToMulticopterButton" destination="aAZ-Ln-VUB" id="aYG-W6-V4B"/>
@@ -1344,6 +1372,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="601"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="4Ly-P8-yQb"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9bH-AM-RUl" userLabel="First Responder" sceneMemberID="firstResponder"/>

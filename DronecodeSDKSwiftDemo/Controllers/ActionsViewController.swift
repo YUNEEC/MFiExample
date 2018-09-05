@@ -25,6 +25,8 @@ class ActionsViewController: UIViewController {
     @IBOutlet weak var transitionToMulticopterButton: UIButton!
     @IBOutlet weak var getTakeoffAltitudeButton: UIButton!
     @IBOutlet weak var getMaxSpeedButton: UIButton!
+    @IBOutlet weak var setRTLAltitudeButton: UIButton!
+    @IBOutlet weak var getRTLAltitudeButton: UIButton!
     
     @IBOutlet weak var feedbackLabel: UILabel!
     
@@ -51,6 +53,8 @@ class ActionsViewController: UIViewController {
         transitionToMulticopterButton.layer.cornerRadius = UI_CORNER_RADIUS_BUTTONS
         getTakeoffAltitudeButton.layer.cornerRadius = UI_CORNER_RADIUS_BUTTONS
         getMaxSpeedButton.layer.cornerRadius = UI_CORNER_RADIUS_BUTTONS
+        setRTLAltitudeButton.layer.cornerRadius = UI_CORNER_RADIUS_BUTTONS
+        getRTLAltitudeButton.layer.cornerRadius = UI_CORNER_RADIUS_BUTTONS
     }
 
     override func didReceiveMemoryWarning() {
@@ -172,7 +176,33 @@ class ActionsViewController: UIViewController {
             }
             .disposed(by: disposeBag)
     }
-
+    @IBAction func setRTLAltitude(_ sender: UIButton) {
+        let myRoutine = CoreManager.shared().action.setReturnToLaunchAltitude(altitude: 120) // 400 ft / 120 m
+        myRoutine.subscribe{ event in
+            switch event {
+            case .completed:
+                self.feedbackLabel.text = "RTL altitude."
+                break
+            case .error(let error):
+                self.feedbackLabel.text = "failure: getTakeoffAltitude() \(error)"
+            }
+            }.disposed(by: disposeBag)
+    }
+    
+    @IBAction func getRTLAltitude(_ sender: UIButton) {
+        let myRoutine = CoreManager.shared().action.getReturnToLaunchAltitude()
+        myRoutine.subscribe{ event in
+            switch event {
+            case .success(let altitude):
+                self.feedbackLabel.text = "RTL altitude : \(altitude)"
+                break
+            case .error(let error):
+                self.feedbackLabel.text = "failure: getRTLAltitude() \(error)"
+            }
+            }.disposed(by: disposeBag)
+    }
+    
+    
     class func showAlert(_ message: String?, viewController: UIViewController?) {
         let alert = UIAlertController(title: message, message: "", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))

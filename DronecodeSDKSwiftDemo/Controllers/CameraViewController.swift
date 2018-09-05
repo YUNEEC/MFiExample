@@ -236,15 +236,14 @@ class CameraViewController: UIViewController {
             .disposed(by: disposeBag)
         
         // Listen to camera status
-        // FIXME: Crashes after a while.
-//        CoreManager.shared().camera.cameraStatusObservable
-//            .subscribe(onNext: { status in
-//                let string = "Video On: \(status.videoOn) | Photo Interval On: \(status.photoIntervalOn) | Used Storage: \(status.usedStorageMib) | Available Storage: \(status.availableStorageMib) | Total Storage \(status.totalStorageMib) | Storage Status: \(status.storageStatus.hashValue)"
-//                    self.cameraStatusLabel.text = string
-//                }, onError: { error in
-//                    NSLog("Error cameraStatusSubscription: \(error.localizedDescription)")
-//            })
-//            .disposed(by: disposeBag)
+        CoreManager.shared().camera.cameraStatusObservable
+            .subscribe(onNext: { status in
+                let string = "Video On: \(status.videoOn) | Recording Time: \(status.recordingTimeS) | Photo Interval On: \(status.photoIntervalOn) | Media Folder Name: \(status.mediaFolderName) | Used Storage: \(status.usedStorageMib) | Available Storage: \(status.availableStorageMib) | Total Storage \(status.totalStorageMib) | Storage Status: \(status.storageStatus.hashValue)"
+                    self.cameraStatusLabel.text = string
+                }, onError: { error in
+                    NSLog("Error cameraStatusSubscription: \(error.localizedDescription)")
+            })
+            .disposed(by: disposeBag)
 
         // Listen to current settings
         CoreManager.shared().camera.currentSettingsObservable

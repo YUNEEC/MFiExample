@@ -123,7 +123,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     @IBAction func uploadMissionPressed(_ sender: Any) {
         self.displayFeedback(message:"Upload Mission Pressed")
         
-        self.uploadMission()
+        setRTLAfterMission()
     }
     
     @IBAction func startMissionPressed(_ sender: Any) {
@@ -135,6 +135,18 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
                 self.displayFeedback(message:"Arming failed")
             }, onCompleted: {
                 self.startMission()
+            })
+            .subscribe()
+            .disposed(by: disposeBag)
+    }
+    
+    // Anotacao
+    func setRTLAfterMission() {
+        CoreManager.shared().mission.setReturnToLaunchAfterMission(true)
+            .do(onError: { error in
+                self.displayFeedback(message:"Set RTL failed")
+            }, onCompleted: {
+                self.uploadMission()
             })
             .subscribe()
             .disposed(by: disposeBag)
