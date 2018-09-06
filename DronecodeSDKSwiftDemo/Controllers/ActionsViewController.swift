@@ -59,47 +59,36 @@ class ActionsViewController: UIViewController {
     }
     
     @IBAction func armPressed(_ sender: Any) {
-        CoreManager.shared().action.arm()
-            .do(onError: { error in
-                self.feedbackLabel.text = "Arming failed : \(error.localizedDescription)"
-            }, onCompleted: {
-                self.feedbackLabel.text = "Arming succeeded"
-            })
-            .subscribe()
-            .disposed(by: disposeBag)
+        _ = CoreManager.shared().action.arm().subscribe()
     }
     
     @IBAction func disarmPressed(_ sender: Any) {
-        CoreManager.shared().action.disarm()
-            .do(onError: { error in
-                self.feedbackLabel.text = "Disarming failed : \(error.localizedDescription)"
-            }, onCompleted: {
-                self.feedbackLabel.text = "Disarming succeeded"
-            })
+        _ = CoreManager.shared().action.disarm()
+            .do(onError: { error in self.feedbackLabel.text = "Disarm failed: \(error.localizedDescription)" },
+                onCompleted: { self.feedbackLabel.text = "Disarm succeeded" })
             .subscribe()
-            .disposed(by: disposeBag)
     }
     
     @IBAction func takeoffPressed(_ sender: Any) {
-        CoreManager.shared().action.takeoff()
-            .do(onError: { error in
-                self.feedbackLabel.text = "Takeoff failed: \(error.localizedDescription)"
-            }, onCompleted: {
-                self.feedbackLabel.text = "Takeoff succeeded"
-            })
-            .subscribe()
-            .disposed(by: disposeBag)
+        _ = CoreManager.shared().action.arm()
+            .do(onCompleted: { self.feedbackLabel.text = "Armed" })
+            .andThen(CoreManager.shared().action.takeoff())
+            .do(onCompleted: { self.feedbackLabel.text = "Taking off" })
+            .delay(8, scheduler: ConcurrentDispatchQueueScheduler(qos: .background))
+            .andThen(CoreManager.shared().action.land())
+            .do(onCompleted: { self.feedbackLabel.text = "Landing" })
+            .subscribe(onCompleted: { self.feedbackLabel.text = "Takeoff demo succeeded" },
+                       onError: { error in self.feedbackLabel.text = "Takeoff demo failed" })
     }
     
     @IBAction func landPressed(_ sender: Any) {
-        CoreManager.shared().action.land()
+        _ = CoreManager.shared().action.land()
             .do(onError: { error in
                 self.feedbackLabel.text = "Land failed: \(error.localizedDescription)"
             }, onCompleted: {
                 self.feedbackLabel.text = "Land succeeded"
             })
             .subscribe()
-            .disposed(by: disposeBag)
     }
     
     @IBAction func killPressed(_ sender: Any) {
