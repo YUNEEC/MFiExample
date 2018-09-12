@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SVY-Tk-qzm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SVY-Tk-qzm">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -1276,24 +1276,38 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="CnI-aM-f1c">
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="CnI-aM-f1c">
                                 <rect key="frame" x="19" y="573" width="376" height="36"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uM3-DG-wSk">
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="aCb-dN-hRl">
                                         <rect key="frame" x="0.0" y="0.0" width="184" height="36"/>
-                                        <color key="backgroundColor" red="0.4406479895" green="0.51737356189999995" blue="0.52941578629999997" alpha="0.69571382709999996" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="36" id="JhO-6N-Ytc"/>
-                                            <constraint firstAttribute="width" constant="184" id="JvJ-re-gDl"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                        <color key="tintColor" red="0.1647058824" green="0.23137254900000001" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="Remove Local"/>
-                                        <connections>
-                                            <action selector="removeLocal:" destination="Jqr-Vk-oCX" eventType="touchUpInside" id="bfC-ef-8tb"/>
-                                        </connections>
-                                    </button>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="bWP-Dj-shV">
+                                                <rect key="frame" x="0.0" y="0.0" width="184" height="36"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="eEJ-Cf-ia5">
+                                                        <rect key="frame" x="0.0" y="0.0" width="184" height="36"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uM3-DG-wSk">
+                                                                <rect key="frame" x="0.0" y="0.0" width="184" height="36"/>
+                                                                <color key="backgroundColor" red="0.4406479895" green="0.51737356189999995" blue="0.52941578629999997" alpha="0.69571382709999996" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="36" id="JhO-6N-Ytc"/>
+                                                                    <constraint firstAttribute="width" constant="184" id="JvJ-re-gDl"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                                <color key="tintColor" red="0.1647058824" green="0.23137254900000001" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <state key="normal" title="Remove Local"/>
+                                                                <connections>
+                                                                    <action selector="removeLocal:" destination="Jqr-Vk-oCX" eventType="touchUpInside" id="bfC-ef-8tb"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t1Y-Wo-opW">
                                         <rect key="frame" x="192" y="0.0" width="184" height="36"/>
                                         <color key="backgroundColor" red="0.4406479895" green="0.51737356189999995" blue="0.52941578629999997" alpha="0.69571382709999996" colorSpace="custom" customColorSpace="displayP3"/>
@@ -1310,12 +1324,30 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zx7-FW-uGH">
+                                <rect key="frame" x="115" y="629" width="184" height="36"/>
+                                <color key="backgroundColor" red="0.4406479895" green="0.51737356189999995" blue="0.52941578629999997" alpha="0.69571382709999996" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="184" id="cP0-gU-Eh5"/>
+                                    <constraint firstAttribute="height" constant="36" id="o1e-bm-8pX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <color key="tintColor" red="0.1647058824" green="0.23137254900000001" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Format Storage"/>
+                                <connections>
+                                    <action selector="formatStorage:" destination="Jqr-Vk-oCX" eventType="touchUpInside" id="m2s-ST-o8n"/>
+                                    <action selector="removeLocal:" destination="Jqr-Vk-oCX" eventType="touchUpInside" id="8AG-0d-Zpz"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="9Kz-m3-DVo" secondAttribute="trailing" id="0l5-8q-z42"/>
+                            <constraint firstItem="Zx7-FW-uGH" firstAttribute="leading" secondItem="Gyr-3V-jGb" secondAttribute="leading" constant="115" id="4gC-dx-XUf"/>
+                            <constraint firstItem="Zx7-FW-uGH" firstAttribute="top" secondItem="CnI-aM-f1c" secondAttribute="bottom" constant="20" id="8db-hD-8H2"/>
                             <constraint firstItem="9Kz-m3-DVo" firstAttribute="top" secondItem="Gyr-3V-jGb" secondAttribute="top" id="RP8-LU-LR6"/>
                             <constraint firstItem="9Kz-m3-DVo" firstAttribute="leading" secondItem="YQf-ca-XCk" secondAttribute="leading" id="mGG-az-h5G"/>
+                            <constraint firstItem="Gyr-3V-jGb" firstAttribute="bottom" secondItem="Zx7-FW-uGH" secondAttribute="bottom" constant="22" id="zzw-7C-d1m"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Gyr-3V-jGb"/>
                     </view>
