@@ -130,6 +130,9 @@ class GalleryViewController: UIViewController {
             if (error != nil) {
                 GalleryViewController.showAlert("Error", message: error?.localizedDescription, viewController:self)
             }
+            else {
+                GalleryViewController.showAlert("Format Storage", message: "Successful!", viewController: self)
+            }
         }
     }
 }
