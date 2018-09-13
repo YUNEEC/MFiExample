@@ -40,7 +40,6 @@ Pods/
 #
 Carthage/Checkouts
 Carthage/Build
-Cartfile.resolved
 
 # fastlane
 #
