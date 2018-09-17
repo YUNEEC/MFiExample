@@ -71,6 +71,8 @@ class CameraSettingsViewController: FormViewController {
                             }
                         }
                     }
+                    // The warning "Result of call to 'onPresent' is unused will go away with the next Eureka release.
+                    // See: https://github.com/xmartlabs/Eureka/pull/1605
                 }.onPresent({ (from, to) in
                     to.enableDeselection = false
                 })
