@@ -32,7 +32,7 @@ class TelemetryViewController: UIViewController, UITableViewDataSource, UITableV
         
         // Start System
         CoreManager.shared().start()
-
+        
         // Telemetry entries
         // FIXME: we need this sleep because we can't subscribe in telemetry
         //        before telemetry is initialized.

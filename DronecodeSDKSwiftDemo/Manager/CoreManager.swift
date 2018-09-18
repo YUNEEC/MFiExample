@@ -38,7 +38,8 @@ class CoreManager {
         return coreManager
     }()
     
-    
+    // [05:55:45|Warn ] Command ack not matching our current command: 527 (mavlink_commands.cpp:142)
+
     // Initialization
     
     private init() {
@@ -64,5 +65,14 @@ class CoreManager {
                 print("Failed connect to core with error: \(error.localizedDescription)")
             }
             .disposed(by: disposeBag)
+        
+        core.runningPluginsObservable
+            .subscribe(onNext: { plugin in
+                print("Anotacao: ", plugin)
+            }, onError: { error in
+                print("Anotacao error: \(error)")
+            })
+            .disposed(by: disposeBag)
+    
     }
 }
