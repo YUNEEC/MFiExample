@@ -58,6 +58,16 @@ class BindViewController: UIViewController {
         scanRCButton.layer.cornerRadius = UI_CORNER_RADIUS_BUTTONS
         bindRCButton.layer.cornerRadius = UI_CORNER_RADIUS_BUTTONS
         exitBindButton.layer.cornerRadius = UI_CORNER_RADIUS_BUTTONS
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleConnectionStateNotification(notification:)),
+            name: Notification.Name("RemoteControllerKeyNotification"),
+            object: nil)
+    }
+    
+    @objc func handleConnectionStateNotification(notification: NSNotification) {
+        print("Got RC event");
     }
     
     @IBAction func scanRC(_ sender: UIButton) {
