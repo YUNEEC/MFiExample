@@ -103,8 +103,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         self.createMissionTrace(mapView: mapView, listMissionsItems: missionExample.missionItems)
         
         let missionProgressObservable: Observable<MissionProgress> = CoreManager.shared().mission.missionProgressObservable
-        missionProgressObservable.subscribe(onNext: { missionProgress in
+        missionProgressObservable
+            .share()
+            .subscribe(onNext: { missionProgress in
                 print("Got mission progress update")
+                print("Progress: \(missionProgress.currentItemIndex) / \(missionProgress.missionCount)")
                 self.displayFeedback(message:"\(missionProgress.currentItemIndex) / \(missionProgress.missionCount)")
             }, onError: { error in
                 print("Error mission progress")
@@ -129,15 +132,34 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     @IBAction func startMissionPressed(_ sender: Any) {
         self.displayFeedback(message:"Start Mission Pressed")
         
-        // /!\ NEED TO ARM BEFORE START THE MISSION
-        CoreManager.shared().action.arm()
+        let setRTLAltitudeRoutine = CoreManager.shared().action.setReturnToLaunchAltitude(altitude: 1000)
+            .do(onError: { error in
+                self.displayFeedback(message:"Error setting RTL altitude to 1000")
+            }, onCompleted: {
+                self.displayFeedback(message:"RTL altitude to 1000 success")
+            })
+
+        
+        let armRoutine = CoreManager.shared().action.arm()
             .do(onError: { error in
                 self.displayFeedback(message:"Arming failed")
             }, onCompleted: {
-                self.startMission()
+                 self.displayFeedback(message:"Arming success")
             })
+
+        let startMissionRoutine = CoreManager.shared().mission.startMission()
+            .do(onError: { error in
+                self.displayFeedback(message: "Mission started failed \(error)")
+            }, onCompleted: {
+                self.displayFeedback(message:"Mission started with success")
+            })
+        
+        let missionRoutine = setRTLAltitudeRoutine
+            .andThen(armRoutine)
+            .andThen(startMissionRoutine)
             .subscribe()
-            .disposed(by: disposeBag)
+        missionRoutine.disposed(by: disposeBag)
+        
     }
     
     @IBAction func pauseMissionPressed(_ sender: UIButton) {
@@ -266,15 +288,23 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     
     func uploadMission(){
         
-        CoreManager.shared().mission.uploadMission(missionItems: missionExample.missionItems)
+        let setRTLAfterMissionRoutine = CoreManager.shared().mission.setReturnToLaunchAfterMission(true)
+            .do(onError: { error in
+                self.displayFeedback(message:"Error setting RTL after mission")
+            }, onCompleted: {
+                self.displayFeedback(message:"RTL after mission success")
+            })
+        
+        let uploadMissionRoutine = CoreManager.shared().mission.uploadMission(missionItems: missionExample.missionItems)
             .do(onError: { error in
                 self.displayFeedback(message:"Mission uploaded failed \(error)")
                 
             }, onCompleted: {
                 self.displayFeedback(message:"Mission uploaded with success")
             })
-            .subscribe()
-            .disposed(by: disposeBag)
+
+        let uploadMissionWithRTLRoutine = setRTLAfterMissionRoutine.andThen(uploadMissionRoutine).subscribe()
+        uploadMissionWithRTLRoutine.disposed(by: disposeBag)
         
     }
     
