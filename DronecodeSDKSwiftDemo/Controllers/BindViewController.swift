@@ -67,7 +67,7 @@ class BindViewController: UIViewController {
     }
     
     @objc func handleConnectionStateNotification(notification: NSNotification) {
-        print("Got RC event");
+        BindViewController.showAlert("RC Button Pressed: ", message: notification.userInfo!["eventId"] as? String , viewController: self)
     }
     
     @IBAction func scanRC(_ sender: UIButton) {
