@@ -75,13 +75,13 @@ class GalleryViewController: UIViewController {
             let download:MFiMediaDownload = MFiMediaDownload.init()
             for media in self.mediaArray {
                 download.media = media as! YuneecMedia
-                // Not downloading the videos as the file sizes can be very big. Also iOS does not support 4k video
+                // Not downloading the videos as the file sizes can be very big.
                 if(download.media.mediaType == YuneecMediaType.typeMP4) {
                     continue
                 }
                 download.filePath = self.utility.getLocalMediaFilePath(fileName: download.media.fileName)
-//                download.isThumbnail = false
-//                download.isPreviewVideo = false
+//              download.isThumbnail = false
+//              download.isPreviewVideo = false
 
                 if (self.utility.isMediaFileExist(fileName: download.media.fileName) == false) {
                     downloadArray.append(download.copy() as! MFiMediaDownload)
