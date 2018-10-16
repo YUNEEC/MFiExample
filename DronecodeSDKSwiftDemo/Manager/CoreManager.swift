@@ -45,6 +45,7 @@ class CoreManager {
         core = Core()
         MFiAdapter.MFiConnectionStateAdapter.sharedInstance().startMonitorConnectionState()
         MFiAdapter.MFiRemoteControllerAdapter.sharedInstance().startMonitorRCEvent()
+        MFiAdapter.MFiCameraAdapter.sharedInstance()
     }
     
     deinit {
