@@ -1,4 +1,4 @@
-github "YUNEEC/MFiAdapter" "0.4.1"
+github "YUNEEC/MFiAdapter" "0.4.2"
 binary "https://s3.eu-central-1.amazonaws.com/dronecode-sdk/backend.json" "0.2.8"
 github "Dronecode/DronecodeSDK-Swift" "0.1.2"
 github "ReactiveX/RxSwift" "4.3.1"

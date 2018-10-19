@@ -135,7 +135,8 @@ class TelemetryEntries {
         print("Drone Connected with UUID : \(uuid)")
         entries[EntryType.connection.rawValue].value = "Drone Connected with UUID : \(uuid)"
         entries[EntryType.connection.rawValue].state = 1
-        
+        //Set camera system time to current local time
+        MFiAdapter.MFiCameraAdapter.sharedInstance().setCameraSystemTime()
         //Listen Health
         let health: Observable<Health> = CoreManager.shared().telemetry.healthObservable
         health.subscribe(onNext: { health in
