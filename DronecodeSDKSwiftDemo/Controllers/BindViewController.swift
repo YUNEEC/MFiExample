@@ -68,6 +68,13 @@ class BindViewController: UIViewController {
     
     @objc func handleConnectionStateNotification(notification: NSNotification) {
         BindViewController.showAlert("RC Button Pressed: ", message: notification.userInfo!["eventId"] as? String , viewController: self)
+
+        if (notification.userInfo!["eventValue"] as? Int == 1) {
+            if (notification.userInfo!["eventId"]  as? String == "Camera Button")
+            || (notification.userInfo!["eventId"]  as? String == "Video Button"){
+                CameraUtility.sharedInstance().handleRcButton(key: (notification.userInfo!["eventId"]  as? String)!)
+            }
+         }
     }
     
     @IBAction func scanRC(_ sender: UIButton) {
