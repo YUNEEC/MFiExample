@@ -60,6 +60,7 @@
 		A54AC9AB2123745C009E0D03 /* YuneecRemoteControllerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A54AC94F21237430009E0D03 /* YuneecRemoteControllerSDK.framework */; };
 		A54AC9AD2123745D009E0D03 /* YuneecWifiDataTransfer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A54AC95621237431009E0D03 /* YuneecWifiDataTransfer.framework */; };
 		D82298E42126607C00DCBDBE /* GalleryUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82298E32126607C00DCBDBE /* GalleryUtility.swift */; };
+		D825EEF42182AACF000B1EB7 /* CameraUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = D825EEF32182AACF000B1EB7 /* CameraUtility.swift */; };
 		D87E71A021216571001D712E /* GalleryViewControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87E719F21216571001D712E /* GalleryViewControl.swift */; };
 /* End PBXBuildFile section */
 
@@ -146,6 +147,7 @@
 		A54AC96421237434009E0D03 /* FFMpegLowDelayDecoder.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FFMpegLowDelayDecoder.framework; path = Carthage/Build/iOS/FFMpegLowDelayDecoder.framework; sourceTree = "<group>"; };
 		A54AC96521237434009E0D03 /* SwiftGRPC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftGRPC.framework; path = Carthage/Build/iOS/SwiftGRPC.framework; sourceTree = "<group>"; };
 		D82298E32126607C00DCBDBE /* GalleryUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryUtility.swift; sourceTree = "<group>"; };
+		D825EEF32182AACF000B1EB7 /* CameraUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraUtility.swift; sourceTree = "<group>"; };
 		D87E719F21216571001D712E /* GalleryViewControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewControl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -202,6 +204,7 @@
 				2C0648C62091DC06002BD970 /* ExampleMission.swift */,
 				2C0648CD2091FCC6002BD970 /* DroneState.swift */,
 				D82298E32126607C00DCBDBE /* GalleryUtility.swift */,
+				D825EEF32182AACF000B1EB7 /* CameraUtility.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -511,6 +514,7 @@
 				2C0648CE2091FCC6002BD970 /* DroneState.swift in Sources */,
 				A54AC8722123635E009E0D03 /* CameraSettingsViewController.swift in Sources */,
 				D87E71A021216571001D712E /* GalleryViewControl.swift in Sources */,
+				D825EEF42182AACF000B1EB7 /* CameraUtility.swift in Sources */,
 				2CCEB7992089F2510086AA37 /* CoreManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
