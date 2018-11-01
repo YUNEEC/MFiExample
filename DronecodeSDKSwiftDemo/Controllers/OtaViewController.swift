@@ -26,6 +26,10 @@ class OtaViewController: UIViewController {
     var cameraHash:String = ""
     var gimbalHash:String = ""
     var rcHash:String = ""
+    var currentAutopilotVersion:String = ""
+    var currentCameraVersion:String = ""
+    var currentGimbalVersion:String = ""
+    var currentRcVersion:String = ""
 
     @IBOutlet weak var refresh: UIButton!
     @IBOutlet weak var download: UIButton!
@@ -90,7 +94,7 @@ class OtaViewController: UIViewController {
                 MFiAdapter.MFiOtaAdapter.sharedInstance().getLatestVersion(.autopilot, block: { (version) in
                     DispatchQueue.main.async {
                         self.autopilotVersion = version!
-                        self.autopilotInfo.text = self.autopilotFileName + "(" + self.autopilotVersion + ")"
+                        self.autopilotInfo.text = self.autopilotFileName + "(" + self.currentAutopilotVersion + ")" + "(new:" + self.autopilotVersion + ")"
                         self.refresh.isEnabled = true
                         semaphore.signal()
                     }
@@ -112,10 +116,18 @@ class OtaViewController: UIViewController {
                 DispatchQueue.main.async {
                     self.cameraWait.startAnimating()
                 }
+
+                MFiAdapter.MFiCameraAdapter.sharedInstance().getFirmwareVersion({ (version) in
+                    self.currentCameraVersion = version!
+                    semaphore.signal()
+                })
+
+                semaphore.wait()
+
                 MFiAdapter.MFiOtaAdapter.sharedInstance().getLatestVersion(.cameraE90A, block: { (version) in
                     DispatchQueue.main.async {
                         self.cameraVersion = version!
-                        self.cameraInfo.text = self.cameraFileName + "(" + self.cameraVersion + ")"
+                        self.cameraInfo.text = self.cameraFileName + "(" + self.currentCameraVersion + ")" + "(new:" + self.cameraVersion + ")"
                         self.refresh.isEnabled = true
                         semaphore.signal()
                     }
@@ -137,10 +149,17 @@ class OtaViewController: UIViewController {
                 DispatchQueue.main.async {
                     self.gimbalWait.startAnimating()
                 }
+                MFiAdapter.MFiCameraAdapter.sharedInstance().getGimbalFirmwareVersion({ (version ) in
+                    self.currentGimbalVersion = version!
+                    semaphore.signal()
+                })
+
+                semaphore.wait()
+
                 MFiAdapter.MFiOtaAdapter.sharedInstance().getLatestVersion(.gimbalE90, block: { (version) in
                     DispatchQueue.main.async {
                         self.gimbalVersion = version!
-                        self.gimbalInfo.text = self.gimbalFileName + "(" + self.gimbalVersion + ")"
+                        self.gimbalInfo.text = self.gimbalFileName + "(" + self.currentGimbalVersion + ")" + "(new:" + self.gimbalVersion + ")"
                         self.refresh.isEnabled = true
                         semaphore.signal()
                     }
@@ -162,10 +181,17 @@ class OtaViewController: UIViewController {
                 DispatchQueue.main.async {
                     self.rcWait.startAnimating()
                 }
+                MFiAdapter.MFiRemoteControllerAdapter.sharedInstance().getFirmwareVersionInfo({ (version ) in
+                    self.currentRcVersion = version!
+                    semaphore.signal()
+                })
+
+                semaphore.wait()
+
                 MFiAdapter.MFiOtaAdapter.sharedInstance().getLatestVersion(.rcST10C, block: { (version) in
                     DispatchQueue.main.async {
                         self.rcVersion = version!
-                        self.rcInfo.text = self.rcFileName + "(" + self.rcVersion + ")"
+                        self.rcInfo.text = self.rcFileName + "(" + self.currentRcVersion + ")" + "(new:" + self.rcVersion + ")"
                         self.refresh.isEnabled = true
                         semaphore.signal()
                     }
@@ -203,12 +229,12 @@ class OtaViewController: UIViewController {
                     if (error == nil) {
                         let hash:String = MFiAdapter.MFiOtaAdapter.sharedInstance().sha256(ofPath: autopilotFilePath)
                         if (hash == self.autopilotHash) {
-                            self.autopilotInfo.text = self.autopilotFileName + "(" + self.autopilotVersion + ")" + ":" + "Download successfully and HASH match!"
+                            self.autopilotInfo.text = self.autopilotFileName + "(" + self.currentAutopilotVersion + ")" + "(new:" + self.autopilotVersion + ")" + ":" + "Download successfully and HASH match!"
                         } else {
-                            self.autopilotInfo.text = self.autopilotFileName + "(" + self.autopilotVersion + ")" + ":" + "Download successful, but HASH mismatch!!"
+                            self.autopilotInfo.text = self.autopilotFileName + "(" + self.currentAutopilotVersion + ")" + "(new:" + self.autopilotVersion + ")" + ":" + "Download successful, but HASH mismatch!!"
                         }
                     } else {
-                        self.autopilotInfo.text = self.autopilotFileName + "(" + self.autopilotVersion + ")" + ":" + "error:" + error!.localizedDescription
+                        self.autopilotInfo.text = self.autopilotFileName + "(" + self.currentAutopilotVersion + ")" + "(new:" + self.autopilotVersion + ")" + ":" + "error:" + error!.localizedDescription
                     }
                     self.autopilotWait.stopAnimating()
                 }
@@ -219,19 +245,19 @@ class OtaViewController: UIViewController {
             self.cameraWait.startAnimating()
             MFiAdapter.MFiOtaAdapter.sharedInstance().downloadOtaPackage(.cameraE90A, filePath: cameraFilePath, progressBlock: {(progress) in
                 DispatchQueue.main.async {
-                    self.cameraInfo.text = self.cameraFileName + "(" + self.cameraVersion + ")" + ":" + String(Int(progress * 100)) + "%"
+                    self.cameraInfo.text = self.cameraFileName + "(" + self.currentCameraVersion + ")" + "(new:" + self.cameraVersion + ")" + ":" + String(Int(progress * 100)) + "%"
                 }
             }, completionBlock: { (error) in
                 DispatchQueue.main.async {
                     if (error == nil) {
                         let hash:String = MFiAdapter.MFiOtaAdapter.sharedInstance().sha256(ofPath: cameraFilePath)
                         if (hash == self.cameraHash) {
-                            self.cameraInfo.text = self.cameraFileName + "(" + self.cameraVersion + ")" + ":" + "Download successfully and HASH match!"
+                            self.cameraInfo.text = self.cameraFileName + "(" + self.currentCameraVersion + ")" + "(new:" + self.cameraVersion + ")" + ":" + "Download successfully and HASH match!"
                         } else {
-                            self.cameraInfo.text = self.cameraFileName + "(" + self.cameraVersion + ")" + ":" + "Download successful, but HASH mismatch!!"
+                            self.cameraInfo.text = self.cameraFileName + "(" + self.currentCameraVersion + ")" + "(new:" + self.cameraVersion + ")" + ":" + "Download successful, but HASH mismatch!!"
                         }
                     } else {
-                        self.cameraInfo.text = self.cameraFileName + "(" + self.cameraVersion + ")" + ":" + "error:" + error!.localizedDescription
+                        self.cameraInfo.text = self.cameraFileName + "(" + self.currentCameraVersion + ")" + "(new:" + self.cameraVersion + ")" + ":" + "error:" + error!.localizedDescription
                     }
                     self.cameraWait.stopAnimating()
                 }
@@ -249,12 +275,12 @@ class OtaViewController: UIViewController {
                     if (error == nil) {
                         let hash:String = MFiAdapter.MFiOtaAdapter.sharedInstance().sha256(ofPath: gimbalFilePath)
                         if (hash == self.gimbalHash) {
-                            self.gimbalInfo.text = self.gimbalFileName + "(" + self.gimbalVersion + ")" + ":" + "Download successfully and HASH match!"
+                            self.gimbalInfo.text = self.gimbalFileName + "(" + self.currentGimbalVersion + ")" + "(new:" + self.gimbalVersion + ")" + ":" + "Download successfully and HASH match!"
                         } else {
-                            self.gimbalInfo.text = self.gimbalFileName + "(" + self.gimbalVersion + ")" + ":" + "Download successful, but HASH mismatch!!"
+                            self.gimbalInfo.text = self.gimbalFileName + "(" + self.currentGimbalVersion + ")" + "(new:" + self.gimbalVersion + ")" + ":" + "Download successful, but HASH mismatch!!"
                         }
                     } else {
-                        self.gimbalInfo.text = self.gimbalFileName + "(" + self.gimbalVersion + ")" + ":" + "error:" + error!.localizedDescription
+                        self.gimbalInfo.text = self.gimbalFileName + "(" + self.currentGimbalVersion + ")" + "(new:" + self.gimbalVersion + ")" + ":" + "error:" + error!.localizedDescription
                     }
                     self.gimbalWait.stopAnimating()
                 }
@@ -272,12 +298,12 @@ class OtaViewController: UIViewController {
                     if (error == nil) {
                         let hash:String = MFiAdapter.MFiOtaAdapter.sharedInstance().sha256(ofPath: rcFilePath)
                         if (hash == self.rcHash) {
-                            self.rcInfo.text = self.rcFileName + "(" + self.rcVersion + ")" + ":" + "Download successfully and HASH match!"
+                            self.rcInfo.text = self.rcFileName + "(" + self.currentRcVersion + ")" + "(new:" + self.rcVersion + ")" + ":" + "Download successfully and HASH match!"
                         } else {
-                            self.rcInfo.text = self.rcFileName + "(" + self.rcVersion + ")" + ":" + "Download successful, but HASH mismatch!!"
+                            self.rcInfo.text = self.rcFileName + "(" + self.currentRcVersion + ")" + "(new:" + self.rcVersion + ")" + ":" + "Download successful, but HASH mismatch!!"
                         }
                     } else {
-                        self.rcInfo.text = self.rcFileName + "(" + self.rcVersion + ")" + ":" + "error:" + error!.localizedDescription
+                        self.rcInfo.text = self.rcFileName + "(" + self.currentRcVersion + ")" + "(new:" + self.rcVersion + ")" + ":" + "error:" + error!.localizedDescription
                     }
                     self.rcWait.stopAnimating()
                 }
@@ -298,14 +324,14 @@ class OtaViewController: UIViewController {
             self.autopilotWait.startAnimating()
             MFiAdapter.MFiOtaAdapter.sharedInstance().uploadOtaPackage(autopilotFilePath, progressBlock: {(progress                                                                                                                                                ) in
                 DispatchQueue.main.async {
-                    self.autopilotInfo.text = self.autopilotFileName + "(" + self.autopilotVersion + ")" + ":" + String(Int(progress * 100)) + "%"
+                    self.autopilotInfo.text = self.autopilotFileName + "(" + self.currentAutopilotVersion + ")" + "(new:" + self.autopilotVersion + ")" + ":" + String(Int(progress * 100)) + "%"
                 }
             }, completionBlock: { (error) in
                 DispatchQueue.main.async {
                     if (error == nil) {
-                        self.autopilotInfo.text = self.autopilotFileName + "(" + self.autopilotVersion + ")" + ":" + "upload successful"
+                        self.autopilotInfo.text = self.autopilotFileName + "(" + self.currentAutopilotVersion + ")" + "(new:" + self.autopilotVersion + ")" + ":" + "upload successful"
                     } else {
-                        self.autopilotInfo.text = self.autopilotFileName + "(" + self.autopilotVersion + ")" + "error:" + error!.localizedDescription
+                        self.autopilotInfo.text = self.autopilotFileName + "(" + self.currentAutopilotVersion + ")" + "(new:" + self.autopilotVersion + ")" + "error:" + error!.localizedDescription
                     }
                     self.autopilotWait.stopAnimating()
                 }
@@ -316,14 +342,14 @@ class OtaViewController: UIViewController {
             self.cameraWait.startAnimating()
             MFiAdapter.MFiOtaAdapter.sharedInstance().uploadOtaPackage(cameraFilePath, progressBlock: {(progress                                                                                                                                                ) in
                 DispatchQueue.main.async {
-                    self.cameraInfo.text = self.cameraFileName + "(" + self.cameraVersion + ")" + ":" + String(Int(progress * 100)) + "%"
+                    self.cameraInfo.text = self.cameraFileName + "(" + self.currentCameraVersion + ")" + "(new:" + self.cameraVersion + ")" + ":" + String(Int(progress * 100)) + "%"
                 }
             }, completionBlock: { (error) in
                 DispatchQueue.main.async {
                     if (error == nil) {
-                        self.cameraInfo.text = self.cameraFileName + "(" + self.cameraVersion + ")" + ":" + "upload successful"
+                        self.cameraInfo.text = self.cameraFileName + "(" + self.currentCameraVersion + ")" + "(new:" + self.cameraVersion + ")" + ":" + "upload successful"
                     } else {
-                        self.cameraInfo.text = self.cameraFileName + "(" + self.cameraVersion + ")" + "error:" + error!.localizedDescription
+                        self.cameraInfo.text = self.cameraFileName + "(" + self.currentCameraVersion + ")" + "(new:" + self.cameraVersion + ")" + "error:" + error!.localizedDescription
                     }
                     self.cameraWait.stopAnimating()
                 }
@@ -357,9 +383,9 @@ class OtaViewController: UIViewController {
             }, completionBlock: { (error) in
                 DispatchQueue.main.async {
                     if (error == nil) {
-                        self.rcInfo.text = self.rcFileName + "(" + self.rcVersion + ")" + ":" + "upload successful"
+                        self.rcInfo.text = self.rcFileName + "(" + self.currentRcVersion + ")" + "(new:" + self.rcVersion + ")" + ":" + "upload successful"
                     } else {
-                        self.rcInfo.text = self.rcFileName + "(" + self.rcVersion + ")" + "error:" + error!.localizedDescription
+                        self.rcInfo.text = self.rcFileName + "(" + self.currentRcVersion + ")" + "(new:" + self.rcVersion + ")" + "error:" + error!.localizedDescription
                     }
                     self.rcWait.stopAnimating()
                 }
