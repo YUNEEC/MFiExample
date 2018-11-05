@@ -42,6 +42,21 @@ class TelemetryViewController: UIViewController, UITableViewDataSource, UITableV
         
         timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector:  #selector(updateView), userInfo: nil, repeats: true)
         
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleRcEventNotification(notification:)),
+            name: Notification.Name("RemoteControllerKeyNotification"),
+            object: nil)
+    }
+    
+    @objc func handleRcEventNotification(notification: NSNotification) {
+        TelemetryViewController.showAlert("RC Button Pressed: ", message: notification.userInfo!["eventId"] as? String , viewController: self)
+        if (notification.userInfo!["eventValue"] as? Int == 1) {
+            if (notification.userInfo!["eventId"]  as? String == "Camera Button")
+                || (notification.userInfo!["eventId"]  as? String == "Video Button"){
+                CameraUtility.sharedInstance().handleRcButton(key: (notification.userInfo!["eventId"]  as? String)!)
+            }
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -87,6 +102,16 @@ class TelemetryViewController: UIViewController, UITableViewDataSource, UITableV
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+}
+
+extension TelemetryViewController {
+    class func showAlert(_ title: String?, message: String?, viewController: UIViewController?) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        DispatchQueue.main.async {
+            viewController?.present(alert, animated: true) {() -> Void in }
+        }
     }
 }
 

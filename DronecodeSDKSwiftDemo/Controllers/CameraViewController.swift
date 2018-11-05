@@ -89,6 +89,7 @@ class CameraViewController: UIViewController {
             }, onCompleted: {
                 self.feedbackLabel.text = "Set photo mode succeeded"
                 self.setPhotoModeButton.isEnabled = true
+                CameraUtility.sharedInstance().setCameraMode(mode: "Photo")
             })
             .subscribe()
             .disposed(by: disposeBag)
@@ -149,6 +150,7 @@ class CameraViewController: UIViewController {
             }, onCompleted: {
                 self.feedbackLabel.text = "Set video mode succeeded"
                 self.setVideoModeButton.isEnabled = true
+                CameraUtility.sharedInstance().setCameraMode(mode: "Video")
             })
             .subscribe()
             .disposed(by: disposeBag)
@@ -164,6 +166,7 @@ class CameraViewController: UIViewController {
             }, onCompleted: {
                 self.feedbackLabel.text = "Start video succeeded"
                 self.startVideoButton.isEnabled = true
+                CameraUtility.sharedInstance().setVideoState(state: "Recording")
             })
             .subscribe()
             .disposed(by: disposeBag)
@@ -179,6 +182,7 @@ class CameraViewController: UIViewController {
             }, onCompleted: {
                 self.feedbackLabel.text = "Stop video succeeded"
                 self.stopVideoButton.isEnabled = true
+                CameraUtility.sharedInstance().setVideoState(state: "Ready")
             })
             .subscribe()
             .disposed(by: disposeBag)
