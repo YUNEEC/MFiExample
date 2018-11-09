@@ -163,6 +163,16 @@ class BindViewController: UIViewController {
             }
         }
     }
+    
+    @IBAction func getRcFwVersion(_ sender: UIButton) {
+        MFiAdapter.MFiRemoteControllerAdapter.sharedInstance().getRCFirmwareVersion { (error, version) in
+            if let error = error {
+                BindViewController.showAlert("Error getting RC version", message: error.localizedDescription, viewController: self)
+            } else if let version = version {
+                    BindViewController.showAlert("Firmware Version", message: "\(version)", viewController:self)
+            }
+        }
+    }
 }
 
 extension BindViewController {

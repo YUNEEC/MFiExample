@@ -744,7 +744,7 @@
                                 </constraints>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vNw-Tp-Wzu">
-                                <rect key="frame" x="45" y="186" width="324" height="320"/>
+                                <rect key="frame" x="45" y="186" width="324" height="257"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="wifiName" id="5ro-WQ-BQU">
@@ -805,7 +805,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="k9J-WV-dRV">
-                                <rect key="frame" x="77.666666666666686" y="621" width="260" height="36"/>
+                                <rect key="frame" x="77" y="621" width="260" height="36"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="CdC-Wt-ySe">
                                         <rect key="frame" x="0.0" y="0.0" width="260" height="36"/>
@@ -861,14 +861,27 @@
                                     <action selector="scanWifi:" destination="KUo-Gj-rFI" eventType="touchUpInside" id="sCE-0X-WcO"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mXN-dJ-d6p">
+                                <rect key="frame" x="100" y="467" width="215" height="29"/>
+                                <color key="backgroundColor" red="0.4406479895" green="0.51737356189999995" blue="0.52941578629999997" alpha="0.69571382709999996" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                <color key="tintColor" red="0.1647058824" green="0.23137254900000001" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Get RC Firmware Version"/>
+                                <connections>
+                                    <action selector="getRcFwVersion:" destination="KUo-Gj-rFI" eventType="touchUpInside" id="hc0-6F-iEN"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="k9J-WV-dRV" firstAttribute="centerX" secondItem="ktF-CY-qys" secondAttribute="centerX" id="0s4-8s-ABp"/>
                             <constraint firstItem="IHH-Y4-LeP" firstAttribute="top" secondItem="ChI-jN-I60" secondAttribute="bottom" constant="15" id="1Eu-oR-wm1"/>
                             <constraint firstItem="32g-dj-3Z8" firstAttribute="top" secondItem="GnX-Qm-DlX" secondAttribute="top" id="3Jh-DD-iaN"/>
+                            <constraint firstItem="cR0-Hd-6y9" firstAttribute="top" secondItem="mXN-dJ-d6p" secondAttribute="bottom" constant="27" id="3Xy-g8-aSZ"/>
                             <constraint firstItem="ChI-jN-I60" firstAttribute="leading" secondItem="GnX-Qm-DlX" secondAttribute="leading" constant="104" id="4LG-6K-NkY"/>
+                            <constraint firstItem="mXN-dJ-d6p" firstAttribute="trailing" secondItem="cR0-Hd-6y9" secondAttribute="trailing" id="4wu-Ho-M99"/>
                             <constraint firstItem="k9J-WV-dRV" firstAttribute="top" secondItem="0oQ-7Y-WmT" secondAttribute="bottom" constant="11" id="5is-Qc-bCl"/>
+                            <constraint firstItem="mXN-dJ-d6p" firstAttribute="top" secondItem="vNw-Tp-Wzu" secondAttribute="bottom" constant="24" id="6xX-k4-amJ"/>
                             <constraint firstItem="32g-dj-3Z8" firstAttribute="leading" secondItem="ktF-CY-qys" secondAttribute="leading" id="70e-Fi-2kj"/>
                             <constraint firstItem="IHH-Y4-LeP" firstAttribute="centerX" secondItem="ktF-CY-qys" secondAttribute="centerX" id="8CV-it-ixf"/>
                             <constraint firstItem="0oQ-7Y-WmT" firstAttribute="centerX" secondItem="ktF-CY-qys" secondAttribute="centerX" id="AcE-Iu-0lX"/>
@@ -877,7 +890,6 @@
                             <constraint firstItem="vNw-Tp-Wzu" firstAttribute="centerX" secondItem="cR0-Hd-6y9" secondAttribute="centerX" id="U0r-wg-nvI"/>
                             <constraint firstItem="vNw-Tp-Wzu" firstAttribute="leading" secondItem="GnX-Qm-DlX" secondAttribute="leading" constant="45" id="Vje-X6-YR5"/>
                             <constraint firstItem="cR0-Hd-6y9" firstAttribute="centerX" secondItem="ktF-CY-qys" secondAttribute="centerX" id="aGm-mN-f2y"/>
-                            <constraint firstItem="cR0-Hd-6y9" firstAttribute="top" secondItem="vNw-Tp-Wzu" secondAttribute="bottom" constant="17" id="dMN-1z-p44"/>
                             <constraint firstItem="IHH-Y4-LeP" firstAttribute="centerX" secondItem="ktF-CY-qys" secondAttribute="centerX" id="dhA-H6-dRZ"/>
                             <constraint firstItem="IHH-Y4-LeP" firstAttribute="centerX" secondItem="ktF-CY-qys" secondAttribute="centerX" id="eS1-GJ-Q9S"/>
                             <constraint firstItem="vNw-Tp-Wzu" firstAttribute="centerX" secondItem="ktF-CY-qys" secondAttribute="centerX" id="fjv-mu-LDY"/>
@@ -887,6 +899,7 @@
                             <constraint firstItem="ChI-jN-I60" firstAttribute="centerX" secondItem="ktF-CY-qys" secondAttribute="centerX" id="my4-NO-ojW"/>
                             <constraint firstItem="vNw-Tp-Wzu" firstAttribute="top" secondItem="IHH-Y4-LeP" secondAttribute="bottom" constant="12" id="spw-MN-VBI"/>
                             <constraint firstItem="0oQ-7Y-WmT" firstAttribute="top" secondItem="cR0-Hd-6y9" secondAttribute="bottom" constant="22" id="xPP-EX-a1Q"/>
+                            <constraint firstItem="mXN-dJ-d6p" firstAttribute="leading" secondItem="cR0-Hd-6y9" secondAttribute="leading" id="yqc-BH-LbV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="GnX-Qm-DlX"/>
                     </view>
@@ -908,7 +921,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lzo-hi-PzD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2335.9375" y="947.46093749999989"/>
+            <point key="canvasLocation" x="2334.7826086956525" y="947.28260869565224"/>
         </scene>
         <!--Camera-->
         <scene sceneID="ZaU-jt-cF0">
@@ -1376,6 +1389,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="601"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="6N1-Nz-fzg"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9bH-AM-RUl" userLabel="First Responder" sceneMemberID="firstResponder"/>
