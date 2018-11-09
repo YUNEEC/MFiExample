@@ -27,12 +27,14 @@ enum EntryType : Int {
     case flightMode
     case rcStatus
     case entry_type_max
+    case distance
 }
 
 class TelemetryEntries {
     
     var entries = [TelemetryEntry]()
     let disposeBag = DisposeBag()
+    var homePosition:CLLocation = CLLocation(latitude: 0, longitude: 0)
     
     init() {
         // Prepare entries array : index EntryType value TelemetryEntry
@@ -108,6 +110,11 @@ class TelemetryEntries {
                 let entry = TelemetryEntry()
                 entry.property = "RC Status"
                 entries.insert(entry, at: EntryType.rcStatus.rawValue)
+            }
+            do {
+                let entry = TelemetryEntry()
+                entry.property = "Distance In Meters"
+                entries.insert(entry, at: EntryType.distance.rawValue)
             }
         }
         
@@ -264,6 +271,7 @@ class TelemetryEntries {
         entries[EntryType.altitude.rawValue].value = "\(position.relativeAltitudeM) m, \(position.absoluteAltitudeM) m"
         
         entries[EntryType.latitude_longitude.rawValue].value = "\(position.latitudeDeg) Deg, \(position.longitudeDeg) Deg"
+        onDistanceUpdate()
     }
     
     func onArmedUpdate(_ isArmed: Bool) {
@@ -296,6 +304,8 @@ class TelemetryEntries {
     
     func onHomePositionUpdate(_ position: Position) {
         entries[EntryType.home.rawValue].value = "\(position.latitudeDeg) Deg, \(position.longitudeDeg) Deg"
+        self.homePosition = CLLocation(latitude: position.latitudeDeg, longitude: position.longitudeDeg)
+        onDistanceUpdate()
     }
     
     func onFlightModeUpdate(_ flightMode: eDroneCoreFlightMode) {
@@ -316,6 +326,8 @@ class TelemetryEntries {
         entries[EntryType.rcStatus.rawValue].value = message
     }
 
-
-    
+    func onDistanceUpdate() {
+        let distanceInMeters = homePosition.distance(from:CLLocation(latitude: CoreManager.shared().droneState.location2D.latitude,longitude: CoreManager.shared().droneState.location2D.longitude))
+        entries[EntryType.distance.rawValue].value = "\(distanceInMeters)"
+    }
 }
