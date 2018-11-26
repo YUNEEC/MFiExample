@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 import MFiAdapter
+import Dronecode_SDK_Swift
+import RxSwift
 
 
 class OtaViewController: UIViewController {
@@ -30,6 +32,8 @@ class OtaViewController: UIViewController {
     var currentCameraVersion:String = ""
     var currentGimbalVersion:String = ""
     var currentRcVersion:String = ""
+    
+    private let disposeBag = DisposeBag()
 
     @IBOutlet weak var refresh: UIButton!
     @IBOutlet weak var download: UIButton!
@@ -91,6 +95,26 @@ class OtaViewController: UIViewController {
                 DispatchQueue.main.async {
                     self.autopilotWait.startAnimating()
                 }
+                
+                MFiAdapter.MFiOtaAdapter.sharedInstance().getLatestVersion(.autopilot, block: { (version) in
+                    DispatchQueue.main.async {
+                        let myRoutine = CoreManager.shared().info.getVersion()
+                        myRoutine.subscribe{ event in
+                            switch event {
+                            case .success(let version):
+                                self.currentAutopilotVersion = "v\(version.flightSwMajor).\(version.flightSwMinor).\(version.flightSwPatch)-\(version.flightSwVendorMajor).\(version.flightSwVendorMinor).\(version.flightSwVendorPatch)"
+                                break
+                            case .error(let error):
+                                self.currentAutopilotVersion = "Unknown"
+                                print("failed getting autopilot version: ", error)
+                                break;
+                            }
+                            semaphore.signal()
+                        }.disposed(by: self.disposeBag)
+                    }
+                })
+                semaphore.wait()
+                
                 MFiAdapter.MFiOtaAdapter.sharedInstance().getLatestVersion(.autopilot, block: { (version) in
                     DispatchQueue.main.async {
                         self.autopilotVersion = version!
@@ -99,7 +123,6 @@ class OtaViewController: UIViewController {
                         semaphore.signal()
                     }
                 })
-
                 semaphore.wait()
 
                 MFiAdapter.MFiOtaAdapter.sharedInstance().getLatestHash(.autopilot, block: { (hash) in
@@ -149,6 +172,7 @@ class OtaViewController: UIViewController {
                 DispatchQueue.main.async {
                     self.gimbalWait.startAnimating()
                 }
+                
                 MFiAdapter.MFiCameraAdapter.sharedInstance().getGimbalFirmwareVersion({ (version ) in
                     self.currentGimbalVersion = version!
                     semaphore.signal()
@@ -181,7 +205,7 @@ class OtaViewController: UIViewController {
                 DispatchQueue.main.async {
                     self.rcWait.startAnimating()
                 }
-                MFiAdapter.MFiRemoteControllerAdapter.sharedInstance().getFirmwareVersionInfo({ (version ) in
+            MFiAdapter.MFiRemoteControllerAdapter.sharedInstance().getFirmwareVersionInfo({ (version ) in
                     self.currentRcVersion = version!
                     semaphore.signal()
                 })
