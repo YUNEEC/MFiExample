@@ -175,7 +175,7 @@ class TelemetryEntries {
             .disposed(by: disposeBag)
         
         //Listen Ground Speed
-        let groundSpeed: Observable<GroundSpeedNED> = CoreManager.shared().telemetry.groundSpeedNEDObservable
+        let groundSpeed: Observable<GroundSpeedNed> = CoreManager.shared().telemetry.groundSpeedNEDObservable
         groundSpeed.subscribe(onNext: { groundSpeed in
                 self.onGroundSpeedUpdate(groundSpeed)
             }, onError: { error in
@@ -202,7 +202,7 @@ class TelemetryEntries {
             .disposed(by: disposeBag)
         
         //Listen GPS
-        let gps: Observable<GPSInfo> = CoreManager.shared().telemetry.GPSInfoObservable
+        let gps: Observable<GpsInfo> = CoreManager.shared().telemetry.GpsInfoObservable
         gps.subscribe(onNext: { gps in
                 self.onGPSUpdate(gps)
             }, onError: { error in
@@ -249,7 +249,7 @@ class TelemetryEntries {
             .disposed(by: disposeBag)
         
         //Listen RC Status
-        let rcStatus: Observable<RCStatus> = CoreManager.shared().telemetry.rcStatusObservable
+        let rcStatus: Observable<RcStatus> = CoreManager.shared().telemetry.rcStatusObservable
         rcStatus.subscribe(onNext: { rcStatus in
                 self.onRCStatusUpdate(rcStatus)
             }, onError: { error in
@@ -282,7 +282,7 @@ class TelemetryEntries {
         entries[EntryType.in_air.rawValue].value = inAir ? "Flying" : "Not Flying"
     }
     
-    func onGroundSpeedUpdate(_ groundSpeed: GroundSpeedNED) {
+    func onGroundSpeedUpdate(_ groundSpeed: GroundSpeedNed) {
         entries[EntryType.groundspeed.rawValue].value = "North: \(groundSpeed.velocityNorthMS), East: \(groundSpeed.velocityEastMS), Down: \(groundSpeed.velocityDownMS)"
     }
     
@@ -298,7 +298,7 @@ class TelemetryEntries {
         entries[EntryType.cameraAttitude.rawValue].value = "Pitch: \(attitude.pitchDeg), Roll: \(attitude.rollDeg), Yaw: \(attitude.yawDeg)"
     }
     
-    func onGPSUpdate(_ gps: GPSInfo) {
+    func onGPSUpdate(_ gps: GpsInfo) {
         entries[EntryType.gps.rawValue].value = "Satelites: \(gps.numSatellites)"
     }
     
@@ -312,7 +312,7 @@ class TelemetryEntries {
         entries[EntryType.flightMode.rawValue].value = "\(flightMode)"
     }
     
-    func onRCStatusUpdate(_ rcStatus: RCStatus) {
+    func onRCStatusUpdate(_ rcStatus: RcStatus) {
         var message: String
         
         if rcStatus.isAvailable {
