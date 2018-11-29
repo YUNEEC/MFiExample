@@ -269,5 +269,14 @@ class CameraViewController: UIViewController {
                     NSLog("Error possibleSettingOptionsSubscription: \(error.localizedDescription)")
             })
             .disposed(by: disposeBag)
+
+        // Listen to cable connection
+        let coreStatus: Observable<UInt64> = CoreManager.shared().core.discoverObservable
+        coreStatus.subscribe(onNext: { uuid in
+            self.embedContainerView()
+        }, onError: { error in
+            print("Error Discover \(error)")
+        })
+            .disposed(by: disposeBag)
     }
 }
