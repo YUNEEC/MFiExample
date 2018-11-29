@@ -1,6 +1,6 @@
 binary "https://s3.eu-central-1.amazonaws.com/dronecode-sdk/backend.json" "0.10.0"
 github "AFNetworking/AFNetworking" "3.2.1"
-github "Dronecode/DronecodeSDK-Swift" "0.2.0"
+github "Dronecode/DronecodeSDK-Swift" "0.2.1"
 github "ReactiveX/RxSwift" "4.4.0"
 github "YUNEEC/MFiAdapter" "fcf493bf515d14150f338b2b86a497e0ed890332"
 github "grpc/grpc-swift" "23a0ebdee9613f615f2f2469ed3e700df5856417"
