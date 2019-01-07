@@ -1,3 +1,3 @@
-github "YUNEEC/MFiAdapter" "master"
+github "YUNEEC/Yuneec-MFiAdapter" "master"
 github "xmartlabs/Eureka" == 4.2
 github "Dronecode/DronecodeSDK-Swift" ~> 0.2.1
