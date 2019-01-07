@@ -1,6 +1,6 @@
 # MFiExample
 
-This is a minimal iOS example app on how to use the Dronecode SDK and connect wia MFi to the ST10C and the H520.
+This is a minimal iOS example app on how to use the Dronecode SDK and connect via MFi to the ST10C Remote Controller and the H520.
 The app is based on the [Dronecode SDK Swift example app](https://github.com/Dronecode/DronecodeSDK-Swift-Example). 
 
 ## Instructions
