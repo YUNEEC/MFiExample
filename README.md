@@ -30,11 +30,11 @@ The app is based on the [Dronecode SDK Swift example app](https://github.com/Dro
    
  * Get [MFiAdapter](https://github.com/YUNEEC/Yuneec-MFiAdapter/) 
    - Either using `carthage bootstrap --platform ios --use-ssh`.
-   - Or by downloading the MFiAdapter framework from the [H520 update page] (https://d3qzlqwby7grio.cloudfront.net/H520/index).     
+   - Or by downloading the MFiAdapter framework from the [H520 update page](https://d3qzlqwby7grio.cloudfront.net/H520/index).     
      
  * Get the remaining frameworks
    - Either from [MFiAdapter](https://github.com/YUNEEC/Yuneec-MFiAdapter/) repository.
-   - Or by downloading the frameworks from the [H520 update page] (https://d3qzlqwby7grio.cloudfront.net/H520/index).
+   - Or by downloading the frameworks from the [H520 update page](https://d3qzlqwby7grio.cloudfront.net/H520/index).
 
 3. Open the workspace MFiExample.xcworkspace in XCode.
 
