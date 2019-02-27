@@ -1132,29 +1132,17 @@
             </objects>
             <point key="canvasLocation" x="3763.7681159420295" y="947.28260869565224"/>
         </scene>
-        <!--Yuneec Preview View Controller-->
+        <!--Preview View Controller-->
         <scene sceneID="gFT-NH-mg1">
             <objects>
-                <viewController storyboardIdentifier="VideoFeedViewController" id="s94-qs-qHo" customClass="YuneecPreviewViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VideoFeedViewController" id="s94-qs-qHo" customClass="PreviewViewController" customModule="YuneecMFiExample" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="b69-32-J19">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GbA-DG-Y8b" customClass="YuneecPreviewView">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Connection" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kJu-dd-dFn">
-                                        <rect key="frame" x="20" y="20" width="131" height="24"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <color key="textColor" red="0.0" green="0.91372549020000005" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="kJu-dd-dFn" firstAttribute="leading" secondItem="GbA-DG-Y8b" secondAttribute="leading" constant="20" id="Tdv-25-Qod"/>
-                                    <constraint firstItem="kJu-dd-dFn" firstAttribute="top" secondItem="GbA-DG-Y8b" secondAttribute="top" constant="20" id="iPU-3I-Bnd"/>
-                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1168,7 +1156,6 @@
                     </view>
                     <connections>
                         <outlet property="previewView" destination="GbA-DG-Y8b" id="Jn0-Ij-pk5"/>
-                        <outlet property="stateLabel" destination="kJu-dd-dFn" id="Z4j-Vo-BYU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ogI-Tv-cRX" userLabel="First Responder" sceneMemberID="firstResponder"/>
