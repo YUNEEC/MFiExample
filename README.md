@@ -29,7 +29,7 @@ The app is based on the [Dronecode SDK Swift example app](https://github.com/Dro
    - `YuneecWifiDataTransfer`
    
  * Get [MFiAdapter](https://github.com/YUNEEC/Yuneec-MFiAdapter/) 
-   - Either using `carthage bootstrap --platform ios --use-ssh`.
+   - Either using `carthage update --platform ios --use-ssh`.
    - Or by downloading the MFiAdapter framework from the [H520 update page](https://d3qzlqwby7grio.cloudfront.net/H520/index).     
      
  * Get the remaining frameworks
