@@ -118,19 +118,12 @@ class TelemetryEntries {
             }
         }
         
-        //Listen Connection
-        let coreStatus: Observable<UInt64> = CoreManager.shared().core.discoverObservable
-        coreStatus.subscribe(onNext: { uuid in
-                self.onDiscoverObservable(uuid: uuid)
+        // Anotacao
+        let coreStatus = CoreManager.shared().drone.core.connectionState
+        coreStatus.subscribe(onNext: { connectionState in
+                self.onDiscoverObservable(uuid: connectionState.uuid)
             }, onError: { error in
                 print("Error Discover \(error)")
-            })
-            .disposed(by: disposeBag)
-        
-        //Listen Timeout
-        let coreTimeout: Observable<Void> = CoreManager.shared().core.timeoutObservable
-        coreTimeout.subscribe({Void in
-                self.onTimeoutObservable()
             })
             .disposed(by: disposeBag)
     }
@@ -145,7 +138,7 @@ class TelemetryEntries {
         //Set camera system time to current local time
         MFiAdapter.MFiCameraAdapter.sharedInstance().setCameraSystemTime()
         //Listen Health
-        let health: Observable<Health> = CoreManager.shared().telemetry.healthObservable
+        let health: Observable<Telemetry.Health> = CoreManager.shared().drone.telemetry.health
         health.subscribe(onNext: { health in
                 //print ("Next health \(health)")
                 self.onHealthUpdate(health: health)
@@ -155,7 +148,7 @@ class TelemetryEntries {
             .disposed(by: disposeBag)
         
         //Listen Position
-        let position: Observable<Position> = CoreManager.shared().telemetry.positionObservable
+        let position: Observable<Telemetry.Position> = CoreManager.shared().drone.telemetry.position
         position.subscribe(onNext: { position in
                 //print ("Next Pos \(position)")
                 CoreManager.shared().droneState.location2D = CLLocationCoordinate2DMake(position.latitudeDeg,position.longitudeDeg)
@@ -166,7 +159,7 @@ class TelemetryEntries {
             .disposed(by: disposeBag)
         
         //Listen Armed
-        let armed: Observable<Bool> = CoreManager.shared().telemetry.armedObservable
+        let armed: Observable<Bool> = CoreManager.shared().drone.telemetry.armed
         armed.subscribe(onNext: { bool in
                 self.onArmedUpdate(bool)
             }, onError: { error in
@@ -175,7 +168,7 @@ class TelemetryEntries {
             .disposed(by: disposeBag)
         
         //Listen Ground Speed
-        let groundSpeed: Observable<GroundSpeedNED> = CoreManager.shared().telemetry.groundSpeedNEDObservable
+        let groundSpeed: Observable<Telemetry.SpeedNed> = CoreManager.shared().drone.telemetry.groundSpeedNed
         groundSpeed.subscribe(onNext: { groundSpeed in
                 self.onGroundSpeedUpdate(groundSpeed)
             }, onError: { error in
@@ -184,7 +177,7 @@ class TelemetryEntries {
             .disposed(by: disposeBag)
         
         //Listen Battery
-        let battery: Observable<Battery> = CoreManager.shared().telemetry.batteryObservable
+        let battery: Observable<Telemetry.Battery> = CoreManager.shared().drone.telemetry.battery
         battery.subscribe(onNext: { battery in
                 self.onBatteryUpdate(battery)
             }, onError: { error in
@@ -193,7 +186,7 @@ class TelemetryEntries {
             .disposed(by: disposeBag)
         
         //Listen Attitude
-        let attitude: Observable<EulerAngle> = CoreManager.shared().telemetry.attitudeEulerObservable
+        let attitude: Observable<Telemetry.EulerAngle> = CoreManager.shared().drone.telemetry.attitudeEuler
         attitude.subscribe(onNext: { attitude in
                 self.onAttitudeUpdate(attitude)
             }, onError: { error in
@@ -202,7 +195,7 @@ class TelemetryEntries {
             .disposed(by: disposeBag)
         
         //Listen GPS
-        let gps: Observable<GPSInfo> = CoreManager.shared().telemetry.GPSInfoObservable
+        let gps: Observable<Telemetry.GpsInfo> = CoreManager.shared().drone.telemetry.gpsInfo
         gps.subscribe(onNext: { gps in
                 self.onGPSUpdate(gps)
             }, onError: { error in
@@ -211,7 +204,7 @@ class TelemetryEntries {
             .disposed(by: disposeBag)
         
         //Listen In Air
-        let inAir: Observable<Bool> = CoreManager.shared().telemetry.inAirObservable
+        let inAir: Observable<Bool> = CoreManager.shared().drone.telemetry.inAir
         inAir.subscribe(onNext: { bool in
                 self.onInAirUpdate(bool)
             }, onError: { error in
@@ -220,7 +213,7 @@ class TelemetryEntries {
             .disposed(by: disposeBag)
         
         //Listen Home Position
-        let homePosition: Observable<Position> = CoreManager.shared().telemetry.homePositionObservable
+        let homePosition: Observable<Telemetry.Position> = CoreManager.shared().drone.telemetry.home
         homePosition.subscribe(onNext: { position in
                 self.onHomePositionUpdate(position)
             }, onError: { error in
@@ -229,7 +222,7 @@ class TelemetryEntries {
             .disposed(by: disposeBag)
         
         //Listen Camera Attitude
-        let cameraAttitude: Observable<EulerAngle> = CoreManager.shared().telemetry.cameraAttitudeEulerObservable
+        let cameraAttitude: Observable<Telemetry.EulerAngle> = CoreManager.shared().drone.telemetry.attitudeEuler
         cameraAttitude.subscribe(onNext: { attitude in
                 self.onCameraAttitudeUpdate(attitude)
             }, onError: { error in
@@ -239,7 +232,7 @@ class TelemetryEntries {
         
         
         //Listen Flight Mode
-        let flightMode: Observable<eDroneCoreFlightMode> = CoreManager.shared().telemetry.flightModeObservable
+        let flightMode: Observable<Telemetry.FlightMode> = CoreManager.shared().drone.telemetry.flightMode
         flightMode
             .subscribe(onNext: { flightMode in
                 self.onFlightModeUpdate(flightMode)
@@ -249,7 +242,7 @@ class TelemetryEntries {
             .disposed(by: disposeBag)
         
         //Listen RC Status
-        let rcStatus: Observable<RCStatus> = CoreManager.shared().telemetry.rcStatusObservable
+        let rcStatus: Observable<Telemetry.RcStatus> = CoreManager.shared().drone.telemetry.rcStatus
         rcStatus.subscribe(onNext: { rcStatus in
                 self.onRCStatusUpdate(rcStatus)
             }, onError: { error in
@@ -263,11 +256,11 @@ class TelemetryEntries {
         entries[EntryType.connection.rawValue].state = 0
     }
     
-    func onHealthUpdate(health:Health) {
+    func onHealthUpdate(health: Telemetry.Health) {
         entries[EntryType.health.rawValue].value = "Calibration \(health.isAccelerometerCalibrationOk ? "Ready" : "Not OK"), GPS \(health.isLocalPositionOk ? "Ready" : "Acquiring")"
     }
     
-    func onPositionUpdate(position:Position) {
+    func onPositionUpdate(position: Telemetry.Position) {
         entries[EntryType.altitude.rawValue].value = "\(position.relativeAltitudeM) m, \(position.absoluteAltitudeM) m"
         
         entries[EntryType.latitude_longitude.rawValue].value = "\(position.latitudeDeg) Deg, \(position.longitudeDeg) Deg"
@@ -282,37 +275,37 @@ class TelemetryEntries {
         entries[EntryType.in_air.rawValue].value = inAir ? "Flying" : "Not Flying"
     }
     
-    func onGroundSpeedUpdate(_ groundSpeed: GroundSpeedNED) {
+    func onGroundSpeedUpdate(_ groundSpeed: Telemetry.SpeedNed) {
         entries[EntryType.groundspeed.rawValue].value = "North: \(groundSpeed.velocityNorthMS), East: \(groundSpeed.velocityEastMS), Down: \(groundSpeed.velocityDownMS)"
     }
     
-    func onBatteryUpdate(_ battery: Battery) {
+    func onBatteryUpdate(_ battery: Telemetry.Battery) {
         entries[EntryType.battery.rawValue].value = "Remaining: \(battery.remainingPercent * 100)%, Voltage: \(battery.voltageV)"
     }
     
-    func onAttitudeUpdate(_ attitude: EulerAngle) {
+    func onAttitudeUpdate(_ attitude: Telemetry.EulerAngle) {
         entries[EntryType.attitude.rawValue].value = "Pitch: \(attitude.pitchDeg), Roll: \(attitude.rollDeg), Yaw: \(attitude.yawDeg)"
     }
     
-    func onCameraAttitudeUpdate(_ attitude: EulerAngle) {
+    func onCameraAttitudeUpdate(_ attitude: Telemetry.EulerAngle) {
         entries[EntryType.cameraAttitude.rawValue].value = "Pitch: \(attitude.pitchDeg), Roll: \(attitude.rollDeg), Yaw: \(attitude.yawDeg)"
     }
     
-    func onGPSUpdate(_ gps: GPSInfo) {
+    func onGPSUpdate(_ gps: Telemetry.GpsInfo) {
         entries[EntryType.gps.rawValue].value = "Satelites: \(gps.numSatellites)"
     }
     
-    func onHomePositionUpdate(_ position: Position) {
+    func onHomePositionUpdate(_ position: Telemetry.Position) {
         entries[EntryType.home.rawValue].value = "\(position.latitudeDeg) Deg, \(position.longitudeDeg) Deg"
         self.homePosition = CLLocation(latitude: position.latitudeDeg, longitude: position.longitudeDeg)
         onDistanceUpdate()
     }
     
-    func onFlightModeUpdate(_ flightMode: eDroneCoreFlightMode) {
+    func onFlightModeUpdate(_ flightMode: Telemetry.FlightMode) {
         entries[EntryType.flightMode.rawValue].value = "\(flightMode)"
     }
     
-    func onRCStatusUpdate(_ rcStatus: RCStatus) {
+    func onRCStatusUpdate(_ rcStatus: Telemetry.RcStatus) {
         var message: String
         
         if rcStatus.isAvailable {

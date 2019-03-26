@@ -30,8 +30,8 @@ class CameraViewController: UIViewController {
     
     private let disposeBag = DisposeBag()
     
-    var currentCameraSettings = Variable<[Setting]>([])
-    var possibleCameraSettingOptions = Variable<[SettingOptions]>([])
+    var currentCameraSettings = Variable<[Camera.Setting]>([])
+    var possibleCameraSettingOptions = Variable<[Camera.SettingOptions]>([])
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,7 +82,7 @@ class CameraViewController: UIViewController {
     @IBAction func setPhotoMode(_ sender: UIButton) {
         setPhotoModeButton.isEnabled = false
         
-        CoreManager.shared().camera.setMode(mode: .photo)
+        CoreManager.shared().drone.camera.setMode(cameraMode: .photo)
             .do(onError: { error in
                 self.feedbackLabel.text = "Set photo mode failed: \(error.localizedDescription)"
                 self.setPhotoModeButton.isEnabled = true
@@ -98,7 +98,7 @@ class CameraViewController: UIViewController {
     @IBAction func takePhotoPressed(_ sender: Any) {
         takePhotoButton.isEnabled = false
         
-        CoreManager.shared().camera.takePhoto()
+        CoreManager.shared().drone.camera.takePhoto()
             .do(onError: { error in
                 self.feedbackLabel.text = "Take photo failed: \(error.localizedDescription)"
                 self.takePhotoButton.isEnabled = true
@@ -113,7 +113,7 @@ class CameraViewController: UIViewController {
     @IBAction func startPhotoInterval(_ sender: UIButton) {
         startPhotoIntervalButton.isEnabled = false
         
-        CoreManager.shared().camera.startPhotoInteval(interval: 5)
+        CoreManager.shared().drone.camera.startPhotoInterval(intervalS: 5)
             .do(onError: { error in
                 self.feedbackLabel.text = "Start photo interval failed: \(error.localizedDescription)"
                 self.startPhotoIntervalButton.isEnabled = true
@@ -128,7 +128,7 @@ class CameraViewController: UIViewController {
     @IBAction func stopPhotoInterval(_ sender: UIButton) {
         stopPhotoIntervalButton.isEnabled = false
 
-        CoreManager.shared().camera.stopPhotoInterval()
+        CoreManager.shared().drone.camera.stopPhotoInterval()
             .do(onError: { error in
                 self.feedbackLabel.text = "Stop photo interval failed: \(error.localizedDescription)"
                 self.stopPhotoIntervalButton.isEnabled = true
@@ -143,7 +143,7 @@ class CameraViewController: UIViewController {
     @IBAction func setVideoMode(_ sender: UIButton) {
         setVideoModeButton.isEnabled = false
         
-        CoreManager.shared().camera.setMode(mode: .video)
+        CoreManager.shared().drone.camera.setMode(cameraMode: .video)
             .do(onError: { error in
                 self.feedbackLabel.text = "Set video mode failed: \(error.localizedDescription)"
                 self.setVideoModeButton.isEnabled = true
@@ -159,7 +159,7 @@ class CameraViewController: UIViewController {
     @IBAction func startVideo(_ sender: UIButton) {
         startVideoButton.isEnabled = false
         
-        CoreManager.shared().camera.startVideo()
+        CoreManager.shared().drone.camera.startVideo()
             .do(onError: { error in
                 self.feedbackLabel.text = "Start video failed: \(error.localizedDescription)"
                 self.startVideoButton.isEnabled = true
@@ -175,7 +175,7 @@ class CameraViewController: UIViewController {
     @IBAction func stopVideo(_ sender: UIButton) {
         stopVideoButton.isEnabled = false
         
-        CoreManager.shared().camera.stopVideo()
+        CoreManager.shared().drone.camera.stopVideo()
             .do(onError: { error in
                 self.feedbackLabel.text = "Stop video failed: \(error.localizedDescription)"
                 self.stopVideoButton.isEnabled = true
@@ -208,7 +208,7 @@ class CameraViewController: UIViewController {
     
     func startObserving() {
         // Listen to camera mode
-        CoreManager.shared().camera.cameraModeObservable
+        CoreManager.shared().drone.camera.mode
             .subscribe(
                 onNext:{ [weak self] mode in
                     NSLog("Changed mode to: \(mode)")
@@ -231,7 +231,7 @@ class CameraViewController: UIViewController {
             .disposed(by: disposeBag)
         
         // Listen to capture info
-        CoreManager.shared().camera.captureInfoObservable
+        CoreManager.shared().drone.camera.captureInfo
             .subscribe(onNext: { info in
                     NSLog("Capture info: \(info)")
                 }, onError: { error in
@@ -241,17 +241,17 @@ class CameraViewController: UIViewController {
         
         // Listen to camera status
         // FIXME: Crashes after a while.
-//        CoreManager.shared().camera.cameraStatusObservable
-//            .subscribe(onNext: { status in
-//                let string = "Video On: \(status.videoOn) | Photo Interval On: \(status.photoIntervalOn) | Used Storage: \(status.usedStorageMib) | Available Storage: \(status.availableStorageMib) | Total Storage \(status.totalStorageMib) | Storage Status: \(status.storageStatus.hashValue)"
-//                    self.cameraStatusLabel.text = string
-//                }, onError: { error in
-//                    NSLog("Error cameraStatusSubscription: \(error.localizedDescription)")
-//            })
-//            .disposed(by: disposeBag)
+        CoreManager.shared().drone.camera.cameraStatus
+            .subscribe(onNext: { status in
+                let string = "Video On: \(status.videoOn) | Photo Interval On: \(status.photoIntervalOn) | Used Storage: \(status.usedStorageMib) | Available Storage: \(status.availableStorageMib) | Total Storage \(status.totalStorageMib) | Storage Status: \(status.storageStatus)"
+                    self.cameraStatusLabel.text = string
+                }, onError: { error in
+                    NSLog("Error cameraStatusSubscription: \(error.localizedDescription)")
+            })
+            .disposed(by: disposeBag)
 
         // Listen to current settings
-        CoreManager.shared().camera.currentSettingsObservable
+        CoreManager.shared().drone.camera.currentSettings
             .subscribe(onNext: { currentSettings in
                     self.currentCameraSettings.value = currentSettings
                     NSLog("Current settings: \(currentSettings)")
@@ -261,7 +261,7 @@ class CameraViewController: UIViewController {
             .disposed(by: disposeBag)
         
         // Listen to possible settings
-        CoreManager.shared().camera.possibleSettingOptionsObservable
+        CoreManager.shared().drone.camera.possibleSettingOptions
             .subscribe(onNext: { possibleSettingOptions in
                     self.possibleCameraSettingOptions.value = possibleSettingOptions
                     NSLog("Possible settings: \(possibleSettingOptions)")

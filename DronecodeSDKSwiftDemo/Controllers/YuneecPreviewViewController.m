@@ -147,7 +147,8 @@ static const uint64_t displayInternal = 20;
     [self.previewView displayYUV420pData:buffer
                                    width:rawVideoFrame.width
                                   height:rawVideoFrame.height
-                                pixelFmt:YuneecPreviewPixelFmtTypeI420];
+                                pixelFmt:
+     YuneecPreviewPixelFmtTypeI420];
     free(buffer);
 }
 

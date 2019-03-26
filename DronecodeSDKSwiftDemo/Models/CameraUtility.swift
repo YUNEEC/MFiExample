@@ -11,7 +11,7 @@ import RxSwift
 import Dronecode_SDK_Swift
 
 class CameraUtility {
-    var currentCameraMode:CameraMode = CameraMode.unknown
+    var currentCameraMode: Camera.CameraMode = Camera.CameraMode.unknown
     var currentVideoState:String = "Unknown"
     var getModeDone:Int = 0
 
@@ -30,16 +30,16 @@ class CameraUtility {
 
     }
 
-    func switchToMode(mode: CameraMode) {
+    func switchToMode(mode: Camera.CameraMode) {
         let semaphore = DispatchSemaphore(value: 0)
 
         if (self.currentCameraMode == mode) {
             return
         } else {
-            if ((mode == CameraMode.photo)
-                && (self.currentCameraMode == CameraMode.video)
+            if ((mode == Camera.CameraMode.photo)
+                && (self.currentCameraMode == Camera.CameraMode.video)
                 && (self.currentVideoState == "Recording")) {
-                CoreManager.shared().camera.stopVideo()
+                CoreManager.shared().drone.camera.stopVideo()
                     .do(onError: { error in
                         NSLog("stopRecordingVideo failed:%@",error.localizedDescription);
                         semaphore.signal()
@@ -53,7 +53,7 @@ class CameraUtility {
                 semaphore.wait()
             }
 
-            CoreManager.shared().camera.setMode(mode: mode)
+            CoreManager.shared().drone.camera.setMode(cameraMode: mode)
                 .do(onError: { error in
                     NSLog("set mode failed:%@",error.localizedDescription);
                     semaphore.signal()
@@ -77,13 +77,13 @@ class CameraUtility {
 
         if (key == "Camera Button") {
             queue.async {
-                self.switchToMode(mode: CameraMode.photo)
+                self.switchToMode(mode: Camera.CameraMode.photo)
 
-                if (self.currentCameraMode != CameraMode.photo) {
+                if (self.currentCameraMode != Camera.CameraMode.photo) {
                     return
                 }
 
-                CoreManager.shared().camera.takePhoto()
+                CoreManager.shared().drone.camera.takePhoto()
                     .do(onError: { error in
                         NSLog("takePhoto failed:%@",error.localizedDescription);
                     }, onCompleted: {
@@ -94,14 +94,14 @@ class CameraUtility {
             }
         } else {
             queue.async {
-                self.switchToMode(mode: CameraMode.video)
+                self.switchToMode(mode: Camera.CameraMode.video)
 
-                if (self.currentCameraMode != CameraMode.video) {
+                if (self.currentCameraMode != Camera.CameraMode.video) {
                     return
                 }
 
                 if (self.currentVideoState != "Recording") {
-                    CoreManager.shared().camera.startVideo()
+                    CoreManager.shared().drone.camera.startVideo()
                         .do(onError: { error in
                             NSLog("startRecordingVideo failed:%@",error.localizedDescription);
                         }, onCompleted: {
@@ -110,7 +110,7 @@ class CameraUtility {
                         .subscribe()
                         .disposed(by: self.disposeBag)
                 } else {
-                    CoreManager.shared().camera.stopVideo()
+                    CoreManager.shared().drone.camera.stopVideo()
                         .do(onError: { error in
                             NSLog("stopRecordingVideo failed:%@",error.localizedDescription);
                         }, onCompleted: {
@@ -125,10 +125,10 @@ class CameraUtility {
 
     func setCameraMode(mode: String) {
         if (mode == "Photo") {
-            self.currentCameraMode = CameraMode.photo
+            self.currentCameraMode = Camera.CameraMode.photo
             self.getModeDone = 1
         } else if (mode == "Video") {
-            self.currentCameraMode = CameraMode.video
+            self.currentCameraMode = Camera.CameraMode.video
             self.getModeDone = 1
         }
     }
