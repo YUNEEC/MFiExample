@@ -40,42 +40,7 @@ class CameraSettingsViewController: FormViewController {
             }
             .disposed(by: disposeBag)
         
-        // Anotacao: Test updating values
-//        testUpdatingValues()
-        
         form +++ Section()
-    }
-    
-
-    func testUpdatingValues() {
-
-        let vehicles = ["P4P", "Yuneec"]
-        let cameras = ["P4P": ["X4S", "X5S", "X7"], "Yuneec": ["E90", "CGT"]]
-        
-        let initialValue = vehicles.first!
-  
-        manifestSection <<< PickerRow<String>() {
-            $0.tag = "VehiclesTag"
-            $0.title = "Vehicles"
-            $0.options = vehicles
-            $0.value = initialValue
-            }.onChange({ (row) in
-                let secondRow = self.form.rowBy(tag: "CamerasTag") as! PushRow<String>
-                let value = row.value!
-                secondRow.value = cameras[value]?.first
-                secondRow.options = cameras[value]
-                secondRow.reload()
-            })
-        
-        manifestSection <<< PushRow<String>() {
-            $0.tag = "CamerasTag"
-            $0.title = "Cameras"
-            $0.options = cameras[initialValue]
-            $0.value = cameras[initialValue]!.first
-            $0.selectorTitle = "Choose a Camera"
-            }.onChange({ (row) in
-                print("Selected Camera: \(row.value)")
-            })
     }
     
     func updatePossibleSettingsTable() {
@@ -130,6 +95,8 @@ class CameraSettingsViewController: FormViewController {
         let setting = Camera.Setting(settingID: settingID, settingDescription: "", option: option)
         
         CoreManager.shared().drone.camera.setSetting(setting: setting)
+            .subscribeOn(SerialDispatchQueueScheduler(qos: .background))
+            .observeOn(MainScheduler.instance)
             .do(onError: { (error: Swift.Error) in
                 callback(error)
             }, onCompleted: {

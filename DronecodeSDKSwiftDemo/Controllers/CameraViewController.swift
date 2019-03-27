@@ -83,6 +83,8 @@ class CameraViewController: UIViewController {
         setPhotoModeButton.isEnabled = false
         
         CoreManager.shared().drone.camera.setMode(cameraMode: .photo)
+            .subscribeOn(SerialDispatchQueueScheduler(qos: .background))
+            .observeOn(MainScheduler.instance)
             .do(onError: { error in
                 self.feedbackLabel.text = "Set photo mode failed: \(error.localizedDescription)"
                 self.setPhotoModeButton.isEnabled = true
@@ -99,6 +101,8 @@ class CameraViewController: UIViewController {
         takePhotoButton.isEnabled = false
         
         CoreManager.shared().drone.camera.takePhoto()
+            .subscribeOn(SerialDispatchQueueScheduler(qos: .background))
+            .observeOn(MainScheduler.instance)
             .do(onError: { error in
                 self.feedbackLabel.text = "Take photo failed: \(error.localizedDescription)"
                 self.takePhotoButton.isEnabled = true
@@ -114,6 +118,8 @@ class CameraViewController: UIViewController {
         startPhotoIntervalButton.isEnabled = false
         
         CoreManager.shared().drone.camera.startPhotoInterval(intervalS: 5)
+            .subscribeOn(SerialDispatchQueueScheduler(qos: .background))
+            .observeOn(MainScheduler.instance)
             .do(onError: { error in
                 self.feedbackLabel.text = "Start photo interval failed: \(error.localizedDescription)"
                 self.startPhotoIntervalButton.isEnabled = true
@@ -129,6 +135,8 @@ class CameraViewController: UIViewController {
         stopPhotoIntervalButton.isEnabled = false
 
         CoreManager.shared().drone.camera.stopPhotoInterval()
+            .subscribeOn(SerialDispatchQueueScheduler(qos: .background))
+            .observeOn(MainScheduler.instance)
             .do(onError: { error in
                 self.feedbackLabel.text = "Stop photo interval failed: \(error.localizedDescription)"
                 self.stopPhotoIntervalButton.isEnabled = true
@@ -144,6 +152,8 @@ class CameraViewController: UIViewController {
         setVideoModeButton.isEnabled = false
         
         CoreManager.shared().drone.camera.setMode(cameraMode: .video)
+            .subscribeOn(SerialDispatchQueueScheduler(qos: .background))
+            .observeOn(MainScheduler.instance)
             .do(onError: { error in
                 self.feedbackLabel.text = "Set video mode failed: \(error.localizedDescription)"
                 self.setVideoModeButton.isEnabled = true
@@ -160,6 +170,8 @@ class CameraViewController: UIViewController {
         startVideoButton.isEnabled = false
         
         CoreManager.shared().drone.camera.startVideo()
+            .subscribeOn(SerialDispatchQueueScheduler(qos: .background))
+            .observeOn(MainScheduler.instance)
             .do(onError: { error in
                 self.feedbackLabel.text = "Start video failed: \(error.localizedDescription)"
                 self.startVideoButton.isEnabled = true
@@ -176,6 +188,8 @@ class CameraViewController: UIViewController {
         stopVideoButton.isEnabled = false
         
         CoreManager.shared().drone.camera.stopVideo()
+            .subscribeOn(SerialDispatchQueueScheduler(qos: .background))
+            .observeOn(MainScheduler.instance)
             .do(onError: { error in
                 self.feedbackLabel.text = "Stop video failed: \(error.localizedDescription)"
                 self.stopVideoButton.isEnabled = true
@@ -209,6 +223,8 @@ class CameraViewController: UIViewController {
     func startObserving() {
         // Listen to camera mode
         CoreManager.shared().drone.camera.mode
+            .subscribeOn(SerialDispatchQueueScheduler(qos: .background))
+            .observeOn(MainScheduler.instance)
             .subscribe(
                 onNext:{ [weak self] mode in
                     NSLog("Changed mode to: \(mode)")
@@ -232,6 +248,8 @@ class CameraViewController: UIViewController {
         
         // Listen to capture info
         CoreManager.shared().drone.camera.captureInfo
+            .subscribeOn(SerialDispatchQueueScheduler(qos: .background))
+            .observeOn(MainScheduler.instance)
             .subscribe(onNext: { info in
                     NSLog("Capture info: \(info)")
                 }, onError: { error in
@@ -242,6 +260,8 @@ class CameraViewController: UIViewController {
         // Listen to camera status
         // FIXME: Crashes after a while.
         CoreManager.shared().drone.camera.cameraStatus
+            .subscribeOn(SerialDispatchQueueScheduler(qos: .background))
+            .observeOn(MainScheduler.instance)
             .subscribe(onNext: { status in
                 let string = "Video On: \(status.videoOn) | Photo Interval On: \(status.photoIntervalOn) | Used Storage: \(status.usedStorageMib) | Available Storage: \(status.availableStorageMib) | Total Storage \(status.totalStorageMib) | Storage Status: \(status.storageStatus)"
                     self.cameraStatusLabel.text = string
@@ -252,6 +272,8 @@ class CameraViewController: UIViewController {
 
         // Listen to current settings
         CoreManager.shared().drone.camera.currentSettings
+            .subscribeOn(SerialDispatchQueueScheduler(qos: .background))
+            .observeOn(MainScheduler.instance)
             .subscribe(onNext: { currentSettings in
                     self.currentCameraSettings.value = currentSettings
                     NSLog("Current settings: \(currentSettings)")
@@ -262,6 +284,8 @@ class CameraViewController: UIViewController {
         
         // Listen to possible settings
         CoreManager.shared().drone.camera.possibleSettingOptions
+            .subscribeOn(SerialDispatchQueueScheduler(qos: .background))
+            .observeOn(MainScheduler.instance)
             .subscribe(onNext: { possibleSettingOptions in
                     self.possibleCameraSettingOptions.value = possibleSettingOptions
                     NSLog("Possible settings: \(possibleSettingOptions)")

@@ -131,6 +131,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         
         // /!\ NEED TO ARM BEFORE START THE MISSION
         CoreManager.shared().drone.action.arm()
+            .subscribeOn(SerialDispatchQueueScheduler(qos: .background))
+            .observeOn(MainScheduler.instance)
             .do(onError: { error in
                 self.displayFeedback(message:"Arming failed")
             }, onCompleted: {
@@ -145,6 +147,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         
         if self.pauseMissionButton.titleLabel?.text == "Resume Mission" {
             CoreManager.shared().drone.mission.startMission()
+                .subscribeOn(SerialDispatchQueueScheduler(qos: .background))
+                .observeOn(MainScheduler.instance)
                 .do(onError: { error in
                     self.displayFeedback(message: "Resume mission failed \(error)")
                 }, onCompleted: {
@@ -155,6 +159,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
                 .disposed(by: disposeBag)
         } else {
             CoreManager.shared().drone.mission.pauseMission()
+                .subscribeOn(SerialDispatchQueueScheduler(qos: .background))
+                .observeOn(MainScheduler.instance)
                 .do(onError: { error in
                     self.displayFeedback(message:"Pausing Mission failed")
                 }, onCompleted: {
@@ -170,6 +176,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
          self.displayFeedback(message:"Cancel Mission Upload")
         
         CoreManager.shared().drone.mission.cancelMissionUpload()
+            .subscribeOn(SerialDispatchQueueScheduler(qos: .background))
+            .observeOn(MainScheduler.instance)
             .subscribe(onCompleted: {
                 self.displayFeedback(message:"Cancel Upload Completed")
             }, onError: { (error) in
@@ -182,6 +190,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
          self.displayFeedback(message:"Set Current Index Pressed")
         
         CoreManager.shared().drone.mission.setCurrentMissionItemIndex(index: 2)
+            .subscribeOn(SerialDispatchQueueScheduler(qos: .background))
+            .observeOn(MainScheduler.instance)
             .subscribe(onCompleted: {
                 self.displayFeedback(message:"Set mission index to 2.")
             }, onError: { (error) in
@@ -194,6 +204,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
          self.displayFeedback(message:"Download Mission Pressed")
         
         CoreManager.shared().drone.mission.downloadMission()
+            .subscribeOn(SerialDispatchQueueScheduler(qos: .background))
+            .observeOn(MainScheduler.instance)
             .subscribe(onSuccess: { (mission) in
                 self.displayFeedback(message:"Downloaded mission")
                 print("Mission downloaded: \(mission)")
@@ -221,6 +233,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
          self.displayFeedback(message:"Is Mission Finished Pressed")
         
         CoreManager.shared().drone.mission.setReturnToLaunchAfterMission(enable: true)
+            .subscribeOn(SerialDispatchQueueScheduler(qos: .background))
+            .observeOn(MainScheduler.instance)
             .subscribe(onCompleted: {
                 self.displayFeedback(message:"Set RTL succeded")
             }, onError: { (error) in
@@ -273,24 +287,23 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     
     // MARK: - Missions
     
+    //        CoreManager.shared().drone.mission.uploadMission(missionItems: missionExample.missionItems)
+    //            .do(onError: { error in
+    //                self.displayFeedback(message:"Mission uploaded failed \(error)")
+    //
+    //            }, onCompleted: {
+    //                self.displayFeedback(message:"Mission uploaded with success")
+    //            })
+    //            .subscribeOn(SerialDispatchQueueScheduler(qos: .background))
+    //            .observeOn(MainScheduler.instance)
+    //            .subscribe()
+    //            .disposed(by: disposeBag)
+    //
+    //        guard false else {
+    //            return
+    //        }
+    
     func uploadMission(){
-        
-        CoreManager.shared().drone.mission.uploadMission(missionItems: missionExample.missionItems)
-            .do(onError: { error in
-                self.displayFeedback(message:"Mission uploaded failed \(error)")
-                
-            }, onCompleted: {
-                self.displayFeedback(message:"Mission uploaded with success")
-            })
-            .subscribeOn(SerialDispatchQueueScheduler(qos: .background))
-            .observeOn(MainScheduler.instance)
-            .subscribe()
-            .disposed(by: disposeBag)
-        
-        guard false else {
-            return
-        }
-        
         let cancelMissionUploadRoutine =
             CoreManager.shared().drone.mission.cancelMissionUpload()
                 .do(onError: { (error) in
@@ -318,6 +331,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     
     func startMission(){
         CoreManager.shared().drone.mission.startMission()
+            .subscribeOn(SerialDispatchQueueScheduler(qos: .background))
+            .observeOn(MainScheduler.instance)
             .do(onError: { error in
                 self.displayFeedback(message: "Mission started failed \(error)")
             }, onCompleted: {

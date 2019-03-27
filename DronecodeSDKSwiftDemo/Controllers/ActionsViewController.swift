@@ -60,6 +60,8 @@ class ActionsViewController: UIViewController {
     
     @IBAction func armPressed(_ sender: Any) {
         CoreManager.shared().drone.action.arm()
+            .subscribeOn(SerialDispatchQueueScheduler(qos: .background))
+            .observeOn(MainScheduler.instance)
             .do(onError: { error in
                 self.feedbackLabel.text = "Arming failed : \(error.localizedDescription)"
             }, onCompleted: {
@@ -71,25 +73,21 @@ class ActionsViewController: UIViewController {
     
     @IBAction func disarmPressed(_ sender: Any) {
         CoreManager.shared().drone.action.disarm()
-            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
+            .subscribeOn(SerialDispatchQueueScheduler(qos: .background))
+            .observeOn(MainScheduler.instance)
             .do(onError: { error in
                 self.feedbackLabel.text = "Disarming failed : \(error.localizedDescription)"
             }, onCompleted: {
                 self.feedbackLabel.text = "Disarming succeeded"
-                // Anotacao
-                let threadName = getThreadName()
-                print("[D] received on \(threadName)")
             })
-            .observeOn(MainScheduler.instance)
-            .subscribe({ (event) in
-                let threadName = getThreadName()
-                print("[S] received on \(threadName)")
-            })
+            .subscribe()
             .disposed(by: disposeBag)
     }
     
     @IBAction func takeoffPressed(_ sender: Any) {
         CoreManager.shared().drone.action.takeoff()
+            .subscribeOn(SerialDispatchQueueScheduler(qos: .background))
+            .observeOn(MainScheduler.instance)
             .do(onError: { error in
                 self.feedbackLabel.text = "Takeoff failed: \(error.localizedDescription)"
             }, onCompleted: {
@@ -101,6 +99,8 @@ class ActionsViewController: UIViewController {
     
     @IBAction func landPressed(_ sender: Any) {
         CoreManager.shared().drone.action.land()
+            .subscribeOn(SerialDispatchQueueScheduler(qos: .background))
+            .observeOn(MainScheduler.instance)
             .do(onError: { error in
                 self.feedbackLabel.text = "Land failed: \(error.localizedDescription)"
             }, onCompleted: {
@@ -112,6 +112,8 @@ class ActionsViewController: UIViewController {
     
     @IBAction func killPressed(_ sender: Any) {
         CoreManager.shared().drone.action.kill()
+            .subscribeOn(SerialDispatchQueueScheduler(qos: .background))
+            .observeOn(MainScheduler.instance)
             .do(onError: { error in
                 self.feedbackLabel.text = "Kill failed: \(error.localizedDescription)"
             }, onCompleted: {
@@ -123,6 +125,8 @@ class ActionsViewController: UIViewController {
     
     @IBAction func returnToLaunchPressed(_ sender: Any) {
         CoreManager.shared().drone.action.returnToLaunch()
+            .subscribeOn(SerialDispatchQueueScheduler(qos: .background))
+            .observeOn(MainScheduler.instance)
             .do(onError: { error in
                 self.feedbackLabel.text = "Return to launch failed: \(error.localizedDescription)"
             }, onCompleted: {
@@ -134,6 +138,8 @@ class ActionsViewController: UIViewController {
     
     @IBAction func transitionToFixedWingPressed(_ sender: Any) {
         CoreManager.shared().drone.action.transitionToFixedWing()
+            .subscribeOn(SerialDispatchQueueScheduler(qos: .background))
+            .observeOn(MainScheduler.instance)
             .do(onError: { error in
                 self.feedbackLabel.text = "transitionToFixedWing failed: \(error.localizedDescription)"
             }, onCompleted: {
@@ -145,6 +151,8 @@ class ActionsViewController: UIViewController {
     
     @IBAction func transitionToMulticopterPressed(_ sender: Any) {
         CoreManager.shared().drone.action.transitionToMulticopter()
+            .subscribeOn(SerialDispatchQueueScheduler(qos: .background))
+            .observeOn(MainScheduler.instance)
             .do(onError: { error in
                 self.feedbackLabel.text = "transitionToMulticopter failed: \(error.localizedDescription)"
             }, onCompleted: {
@@ -156,7 +164,10 @@ class ActionsViewController: UIViewController {
     
     @IBAction func getTakeoffAltitudePressed(_ sender: Any) {
         let myRoutine = CoreManager.shared().drone.action.getTakeoffAltitude()
-        myRoutine.subscribe{ event in
+        myRoutine
+            .subscribeOn(SerialDispatchQueueScheduler(qos: .background))
+            .observeOn(MainScheduler.instance)
+            .subscribe{ event in
             switch event {
             case .success(let altitude):
                 self.feedbackLabel.text = "Takeoff altitude : \(altitude)"
@@ -169,7 +180,10 @@ class ActionsViewController: UIViewController {
     
     @IBAction func getMaximumSpeedPressed(_ sender: Any) {
         let myRoutine = CoreManager.shared().drone.action.getMaximumSpeed()
-        myRoutine.subscribe{ event in
+        myRoutine
+            .subscribeOn(SerialDispatchQueueScheduler(qos: .background))
+            .observeOn(MainScheduler.instance)
+            .subscribe{ event in
                 switch event {
                 case .success(let maxSpeed):
                     self.feedbackLabel.text = "Maximum speed : \(maxSpeed)"

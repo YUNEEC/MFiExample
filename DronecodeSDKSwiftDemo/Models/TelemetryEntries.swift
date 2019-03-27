@@ -120,7 +120,10 @@ class TelemetryEntries {
         
         // Anotacao
         let coreStatus = CoreManager.shared().drone.core.connectionState
-        coreStatus.subscribe(onNext: { connectionState in
+        coreStatus
+            .subscribeOn(SerialDispatchQueueScheduler(qos: .background))
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { connectionState in
                 self.onDiscoverObservable(uuid: connectionState.uuid)
             }, onError: { error in
                 print("Error Discover \(error)")
@@ -139,7 +142,10 @@ class TelemetryEntries {
         MFiAdapter.MFiCameraAdapter.sharedInstance().setCameraSystemTime()
         //Listen Health
         let health: Observable<Telemetry.Health> = CoreManager.shared().drone.telemetry.health
-        health.subscribe(onNext: { health in
+        health
+            .subscribeOn(SerialDispatchQueueScheduler(qos: .background))
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { health in
                 //print ("Next health \(health)")
                 self.onHealthUpdate(health: health)
             }, onError: { error in
@@ -149,7 +155,10 @@ class TelemetryEntries {
         
         //Listen Position
         let position: Observable<Telemetry.Position> = CoreManager.shared().drone.telemetry.position
-        position.subscribe(onNext: { position in
+        position
+            .subscribeOn(SerialDispatchQueueScheduler(qos: .background))
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { position in
                 //print ("Next Pos \(position)")
                 CoreManager.shared().droneState.location2D = CLLocationCoordinate2DMake(position.latitudeDeg,position.longitudeDeg)
                 self.onPositionUpdate(position: position)
@@ -160,7 +169,10 @@ class TelemetryEntries {
         
         //Listen Armed
         let armed: Observable<Bool> = CoreManager.shared().drone.telemetry.armed
-        armed.subscribe(onNext: { bool in
+        armed
+            .subscribeOn(SerialDispatchQueueScheduler(qos: .background))
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { bool in
                 self.onArmedUpdate(bool)
             }, onError: { error in
                 print("Error telemetry")
@@ -169,7 +181,10 @@ class TelemetryEntries {
         
         //Listen Ground Speed
         let groundSpeed: Observable<Telemetry.SpeedNed> = CoreManager.shared().drone.telemetry.groundSpeedNed
-        groundSpeed.subscribe(onNext: { groundSpeed in
+        groundSpeed
+            .subscribeOn(SerialDispatchQueueScheduler(qos: .background))
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { groundSpeed in
                 self.onGroundSpeedUpdate(groundSpeed)
             }, onError: { error in
                 print("Error telemetry")
@@ -178,7 +193,10 @@ class TelemetryEntries {
         
         //Listen Battery
         let battery: Observable<Telemetry.Battery> = CoreManager.shared().drone.telemetry.battery
-        battery.subscribe(onNext: { battery in
+        battery
+            .subscribeOn(SerialDispatchQueueScheduler(qos: .background))
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { battery in
                 self.onBatteryUpdate(battery)
             }, onError: { error in
                 print("Error telemetry")
@@ -187,7 +205,10 @@ class TelemetryEntries {
         
         //Listen Attitude
         let attitude: Observable<Telemetry.EulerAngle> = CoreManager.shared().drone.telemetry.attitudeEuler
-        attitude.subscribe(onNext: { attitude in
+        attitude
+            .subscribeOn(SerialDispatchQueueScheduler(qos: .background))
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { attitude in
                 self.onAttitudeUpdate(attitude)
             }, onError: { error in
                 print("Error telemetry")
@@ -196,7 +217,10 @@ class TelemetryEntries {
         
         //Listen GPS
         let gps: Observable<Telemetry.GpsInfo> = CoreManager.shared().drone.telemetry.gpsInfo
-        gps.subscribe(onNext: { gps in
+        gps
+            .subscribeOn(SerialDispatchQueueScheduler(qos: .background))
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { gps in
                 self.onGPSUpdate(gps)
             }, onError: { error in
                 print("Error telemetry")
@@ -205,7 +229,10 @@ class TelemetryEntries {
         
         //Listen In Air
         let inAir: Observable<Bool> = CoreManager.shared().drone.telemetry.inAir
-        inAir.subscribe(onNext: { bool in
+        inAir
+            .subscribeOn(SerialDispatchQueueScheduler(qos: .background))
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { bool in
                 self.onInAirUpdate(bool)
             }, onError: { error in
                 print("Error telemetry")
@@ -214,7 +241,10 @@ class TelemetryEntries {
         
         //Listen Home Position
         let homePosition: Observable<Telemetry.Position> = CoreManager.shared().drone.telemetry.home
-        homePosition.subscribe(onNext: { position in
+        homePosition
+            .subscribeOn(SerialDispatchQueueScheduler(qos: .background))
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { position in
                 self.onHomePositionUpdate(position)
             }, onError: { error in
                 print("Error telemetry")
@@ -223,7 +253,10 @@ class TelemetryEntries {
         
         //Listen Camera Attitude
         let cameraAttitude: Observable<Telemetry.EulerAngle> = CoreManager.shared().drone.telemetry.attitudeEuler
-        cameraAttitude.subscribe(onNext: { attitude in
+        cameraAttitude
+            .subscribeOn(SerialDispatchQueueScheduler(qos: .background))
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { attitude in
                 self.onCameraAttitudeUpdate(attitude)
             }, onError: { error in
                 print("Error telemetry")
@@ -234,6 +267,8 @@ class TelemetryEntries {
         //Listen Flight Mode
         let flightMode: Observable<Telemetry.FlightMode> = CoreManager.shared().drone.telemetry.flightMode
         flightMode
+            .subscribeOn(SerialDispatchQueueScheduler(qos: .background))
+            .observeOn(MainScheduler.instance)
             .subscribe(onNext: { flightMode in
                 self.onFlightModeUpdate(flightMode)
             }, onError: { error in
@@ -243,7 +278,10 @@ class TelemetryEntries {
         
         //Listen RC Status
         let rcStatus: Observable<Telemetry.RcStatus> = CoreManager.shared().drone.telemetry.rcStatus
-        rcStatus.subscribe(onNext: { rcStatus in
+        rcStatus
+            .subscribeOn(SerialDispatchQueueScheduler(qos: .background))
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { rcStatus in
                 self.onRCStatusUpdate(rcStatus)
             }, onError: { error in
                 print("Error telemetry")

@@ -99,7 +99,11 @@ class OtaViewController: UIViewController {
                 MFiAdapter.MFiOtaAdapter.sharedInstance().getLatestVersion(.autopilot, block: { (version) in
                     DispatchQueue.main.async {
                         let myRoutine = CoreManager.shared().drone.info.getVersion()
-                        myRoutine.subscribe{ event in
+                        
+                        myRoutine
+                            .subscribeOn(SerialDispatchQueueScheduler(qos: .background))
+                            .observeOn(MainScheduler.instance)
+                            .subscribe{ event in
                             switch event {
                             case .success(let version):
                                 self.currentAutopilotVersion = "v\(version.flightSwMajor).\(version.flightSwMinor).\(version.flightSwPatch)-\(version.flightSwVendorMajor).\(version.flightSwVendorMinor).\(version.flightSwVendorPatch)"

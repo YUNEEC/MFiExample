@@ -22,6 +22,10 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>This application use this information to show you your location</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>MFiExample needs permission to access your photo library.</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>external-accessory</string>
@@ -30,8 +34,6 @@
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>This application use this information to show you your location</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
@@ -54,7 +56,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-    <key>NSPhotoLibraryUsageDescription</key>
-    <string>MFiExample needs permission to access your photo library.</string>
 </dict>
 </plist>

@@ -17,20 +17,6 @@ class CoreManager {
     
     // MARK: - Properties
     
-//    // Telemetry
-//    let telemetry = Telemetry(address: "localhost", port: 50051)
-//    // Action
-//    let action = Action(address: "localhost", port: 50051)
-//    // Mission
-//    let mission = Mission(address: "localhost", port: 50051)
-//    // Camera
-//    let camera = Camera(address: "localhost", port: 50051)
-//    // Info
-//    let info = Info(address: "localhost", port: 50051)
-//    // Calibration
-//    let calibration = Calibration(address: "localhost", port: 50051)
-    
-    
     // Drone state
     let droneState = DroneState()
     

@@ -40,6 +40,8 @@ class CameraUtility {
                 && (self.currentCameraMode == Camera.CameraMode.video)
                 && (self.currentVideoState == "Recording")) {
                 CoreManager.shared().drone.camera.stopVideo()
+                    .subscribeOn(SerialDispatchQueueScheduler(qos: .background))
+                    .observeOn(MainScheduler.instance)
                     .do(onError: { error in
                         NSLog("stopRecordingVideo failed:%@",error.localizedDescription);
                         semaphore.signal()
@@ -54,6 +56,8 @@ class CameraUtility {
             }
 
             CoreManager.shared().drone.camera.setMode(cameraMode: mode)
+                .subscribeOn(SerialDispatchQueueScheduler(qos: .background))
+                .observeOn(MainScheduler.instance)
                 .do(onError: { error in
                     NSLog("set mode failed:%@",error.localizedDescription);
                     semaphore.signal()
@@ -84,6 +88,8 @@ class CameraUtility {
                 }
 
                 CoreManager.shared().drone.camera.takePhoto()
+                    .subscribeOn(SerialDispatchQueueScheduler(qos: .background))
+                    .observeOn(MainScheduler.instance)
                     .do(onError: { error in
                         NSLog("takePhoto failed:%@",error.localizedDescription);
                     }, onCompleted: {
@@ -102,6 +108,8 @@ class CameraUtility {
 
                 if (self.currentVideoState != "Recording") {
                     CoreManager.shared().drone.camera.startVideo()
+                        .subscribeOn(SerialDispatchQueueScheduler(qos: .background))
+                        .observeOn(MainScheduler.instance)
                         .do(onError: { error in
                             NSLog("startRecordingVideo failed:%@",error.localizedDescription);
                         }, onCompleted: {
@@ -111,6 +119,8 @@ class CameraUtility {
                         .disposed(by: self.disposeBag)
                 } else {
                     CoreManager.shared().drone.camera.stopVideo()
+                        .subscribeOn(SerialDispatchQueueScheduler(qos: .background))
+                        .observeOn(MainScheduler.instance)
                         .do(onError: { error in
                             NSLog("stopRecordingVideo failed:%@",error.localizedDescription);
                         }, onCompleted: {

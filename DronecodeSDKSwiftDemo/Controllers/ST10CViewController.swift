@@ -19,20 +19,16 @@ class ST10CViewController: UIViewController {
     @IBOutlet weak var calibrationLabel: UILabel!
     
     var disposeBag = DisposeBag()
-    
-    
-    var value = 0 // Anotacao
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         mfiStatus.text = "View officially loaded"
         
-//        NotificationCenter.default.addObserver(
-//            self,
-//            selector: #selector(handleConnectionStateNotification(notification:)),
-//            name: Notification.Name("MFiConnectionStateNotification"),
-//            object: nil)
-        connection() // Anotacao
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleConnectionStateNotification(notification:)),
+            name: Notification.Name("MFiConnectionStateNotification"),
+            object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,9 +43,9 @@ class ST10CViewController: UIViewController {
     }
     
     func calibrateAccelerometer() {
-        var dispose = DisposeBag()
-        
        let calibration = CoreManager.shared().drone.calibration.calibrateAccelerometer
+        .subscribeOn(SerialDispatchQueueScheduler(qos: .background))
+        .observeOn(MainScheduler.instance)
             .do(onNext: { (progressData) in
                 let text = "+DC+ Progress: \(progressData.hasProgress), Progress: \(progressData.progress), Has Status Text: \(progressData.hasStatusText), Status Text: \(progressData.statusText)"
                 print(text)
@@ -64,14 +60,11 @@ class ST10CViewController: UIViewController {
                 print("+DC+ Subscribed")
             }) {
                print("+DC+ Disposed")
-        }.share().subscribe()
-        
-//        calibration.share().subscribe().disposed(by: dispose)
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
-            print("+DC+ Entrou")
-            calibration.dispose()
         }
+        .share()
+        .subscribe()
+        
+        calibration.disposed(by: disposeBag)
     }
     
     func calibrateCompass() {
@@ -97,6 +90,8 @@ class ST10CViewController: UIViewController {
     
     func calibrateGyro() {
         CoreManager.shared().drone.calibration.calibrateGyro
+            .subscribeOn(SerialDispatchQueueScheduler(qos: .background))
+            .observeOn(MainScheduler.instance)
             .subscribe(onNext: { (progressData) in
                 let text = "Has Progress: \(progressData.hasProgress), Progress: \(progressData.progress), Has Status Text: \(progressData.hasStatusText), Status Text: \(progressData.statusText)"
                 print(text)
@@ -110,86 +105,4 @@ class ST10CViewController: UIViewController {
             })
         .disposed(by: disposeBag)
     }
-    
-    // Anotacao
-    func connection() {
-//        NotificationCenter.default.rx.notification(Notification.Name("MFiConnectionStateNotification"))
-//            .map { $0 as Any }
-//            .monitorMFiConnection(checkTime: 5.0, scheduler: MainScheduler.instance)
-//            .observeOn(MainScheduler.instance)
-//            .subscribe(onNext: { [weak self] isConnected in
-//                print("Anotacao: Is Connected: \(isConnected)")
-//                self?.calibrationLabel.text = "\(isConnected)"
-//            }, onError: { (error) in
-//                print("Error subscribing to MFi Connection: \(error.localizedDescription)")
-//            })
-//            .disposed(by: disposeBag)
-        
-        
-        
-        NotificationCenter.default.rx.notification(Notification.Name("MFiConnectionStateNotification"))
-            .throttle(2.0, scheduler: MainScheduler.instance)
-            .map ({ (notification) -> Bool in
-                
-                guard let numMessagesReceived = notification.userInfo?["NumMessagesReceived"] as? Int,
-                    let connectionState = notification.userInfo?["MFiConnectionState"] as? Int else
-                {
-                    return false
-                }
-                print(notification)
-//                print("Anotacao: Num of Messages Received: \(numMessagesReceived)")
-                
-                if connectionState == 1 {
-                    if self.value == numMessagesReceived {
-                        return false
-                    } else {
-                        self.value = numMessagesReceived
-                        return true
-                    }
-                }
-                
-                return false
-            })
-            .distinctUntilChanged() // Make sure this doesn't break anything.
-            .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { [weak self] isConnected in
-                print("Anotacao: Is Connected: \(isConnected)")
-                self?.calibrationLabel.text = "\(isConnected)"
-                }, onError: { (error) in
-                    print("Error subscribing to MFi Connection: \(error.localizedDescription)")
-            })
-            .disposed(by: disposeBag)
-    }
-
 }
-
-
-
-//extension RxSwift.ObservableType where E == Any {
-//    func monitorMFiConnection(checkTime: RxTimeInterval, scheduler: SchedulerType) -> Observable<Bool> {
-//        return map { notification in
-//
-//            guard let notification = notification as? Notification,
-//                let numMessagesReceived = notification.userInfo?["NumMessagesReceived"] as? Int,
-//                let connectionState = notification.userInfo?["MFiConnectionState"] as? Int else
-//            {
-//                return false
-//            }
-//
-//            print("Anotacao: Num of Messages Received: \(numMessagesReceived)")
-//
-//            if connectionState == 1 {
-//                if value == numMessagesReceived {
-//                    return false
-//                } else {
-//                    value = numMessagesReceived
-//                    return true
-//                }
-//            }
-//
-//            return false // connectionState == 1
-//            }
-//            .timeout(checkTime, scheduler: scheduler)
-//            .catchErrorJustReturn(false)
-//    }
-//}
