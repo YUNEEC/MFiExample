@@ -118,26 +118,28 @@ class TelemetryEntries {
             }
         }
         
+        onDiscoverObservable() // Anotacao
+    }
+    
+    // MARK: -
+    func onDiscoverObservable()
+    {
+        
         // Anotacao
         let coreStatus = CoreManager.shared().drone.core.connectionState
         coreStatus
-            .subscribeOn(SerialDispatchQueueScheduler(qos: .background))
+            //            .subscribeOn(SerialDispatchQueueScheduler(qos: .background))
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { connectionState in
-                self.onDiscoverObservable(uuid: connectionState.uuid)
+                //UUID of connected drone
+                print("Drone Connected with UUID : \(connectionState.uuid)")
+                self.entries[EntryType.connection.rawValue].value = "Drone Connected with UUID : \(connectionState.uuid)"
+                self.entries[EntryType.connection.rawValue].state = 1
             }, onError: { error in
                 print("Error Discover \(error)")
             })
             .disposed(by: disposeBag)
-    }
-    
-    // MARK: -
-    func onDiscoverObservable(uuid:UInt64)
-    {
-        //UUID of connected drone 
-        print("Drone Connected with UUID : \(uuid)")
-        entries[EntryType.connection.rawValue].value = "Drone Connected with UUID : \(uuid)"
-        entries[EntryType.connection.rawValue].state = 1
+
         //Set camera system time to current local time
         MFiAdapter.MFiCameraAdapter.sharedInstance().setCameraSystemTime()
         //Listen Health

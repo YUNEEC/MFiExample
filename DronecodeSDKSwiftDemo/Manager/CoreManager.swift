@@ -16,7 +16,6 @@ class CoreManager {
     let disposeBag = DisposeBag()
     
     // MARK: - Properties
-    
     // Drone state
     let droneState = DroneState()
     
@@ -33,9 +32,11 @@ class CoreManager {
     // Initialization
     
     private init() {
-        drone = Drone()
-        MFiAdapter.MFiConnectionStateAdapter.sharedInstance().startMonitorConnectionState()
-        MFiAdapter.MFiRemoteControllerAdapter.sharedInstance().startMonitorRCEvent()
+        self.drone = Drone()
+        DispatchQueue.global().async {
+            MFiAdapter.MFiConnectionStateAdapter.sharedInstance().startMonitorConnectionState()
+            MFiAdapter.MFiRemoteControllerAdapter.sharedInstance().startMonitorRCEvent()
+        }
     }
     
     deinit {
@@ -49,7 +50,6 @@ class CoreManager {
     }
     
     public func start() -> Void {
-        
         drone.startMavlink
             .subscribe(onCompleted: {
                 print("+DC+ Mavlink Started.")
@@ -58,15 +58,6 @@ class CoreManager {
             })
             .disposed(by: disposeBag)
         
-        _ = drone.core.connectionState
-            .observeOn(MainScheduler.instance)
-            .distinctUntilChanged()
-            .subscribe(onNext: { (connectionState) in
-               print("Core connected")
-            }, onError: { error in
-               print("+DC+Failed to connect. Error: \(error.localizedDescription)")
-            })
-            .disposed(by: disposeBag)
-        
+        CoreManager.shared().drone.camera.cameraStatus.subscribe().disposed(by: disposeBag)
     }
 }

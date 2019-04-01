@@ -36,9 +36,9 @@ class TelemetryViewController: UIViewController, UITableViewDataSource, UITableV
         // Telemetry entries
         // FIXME: we need this sleep because we can't subscribe in telemetry
         //        before telemetry is initialized.
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             self.telemetry_entries = TelemetryEntries()
-        }
+//        }
         
         timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector:  #selector(updateView), userInfo: nil, repeats: true)
         
