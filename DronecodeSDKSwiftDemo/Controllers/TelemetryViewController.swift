@@ -19,7 +19,7 @@ class TelemetryViewController: UIViewController, UITableViewDataSource, UITableV
     // MARK: - Properties
     private var telemetry_entries: TelemetryEntries?
     private var timer: Timer?
-
+    
     // MARK: -
     override func viewDidLoad() {
         super.viewDidLoad()

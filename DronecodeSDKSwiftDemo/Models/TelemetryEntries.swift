@@ -118,17 +118,16 @@ class TelemetryEntries {
             }
         }
         
-        onDiscoverObservable() // Anotacao
+        onDiscoverObservable()
     }
     
     // MARK: -
     func onDiscoverObservable()
     {
         
-        // Anotacao
         let coreStatus = CoreManager.shared().drone.core.connectionState
         coreStatus
-            //            .subscribeOn(SerialDispatchQueueScheduler(qos: .background))
+            .subscribeOn(SerialDispatchQueueScheduler(qos: .background))
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { connectionState in
                 //UUID of connected drone
