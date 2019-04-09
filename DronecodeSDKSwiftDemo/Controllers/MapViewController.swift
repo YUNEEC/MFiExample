@@ -22,6 +22,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var feedbackLabel: UILabel!
     @IBOutlet weak var uploadMissionButton: UIButton!
+    @IBOutlet weak var toggleRTLButton: UIButton!
     @IBOutlet weak var startMissionButton: UIButton!
     @IBOutlet weak var pauseMissionButton: UIButton!
     @IBOutlet weak var getCurrentIndexButton: UIButton!
@@ -47,6 +48,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     // MARK: Mission -------
     
     private let missionExample:ExampleMission = ExampleMission()
+    private var rtlAfterMissionToggleState = false
     
     // MARK: - View life cycle
     
@@ -124,6 +126,25 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         self.displayFeedback(message:"Upload Mission Pressed")
         
         self.uploadMission()
+    }
+    
+    @IBAction func toggleRTLPressed(_ sender: Any) {
+        CoreManager.shared().mission.setReturnToLaunchAfterMission(rtlAfterMissionToggleState)
+            .subscribe(onCompleted: {
+                if self.rtlAfterMissionToggleState {
+                    self.displayFeedback(message:"Enabled RTL after mission")
+                } else {
+                    self.displayFeedback(message:"Disabled RTL after mission")
+                }
+                self.rtlAfterMissionToggleState = !self.rtlAfterMissionToggleState
+            }, onError: { (error) in
+                if self.rtlAfterMissionToggleState {
+                    self.displayFeedback(message: "Enable RTL after mission failed: \(error)")
+                } else {
+                    self.displayFeedback(message: "Disable RTL after mission failed: \(error)")
+                }
+            })
+            .disposed(by: disposeBag)
     }
     
     @IBAction func startMissionPressed(_ sender: Any) {

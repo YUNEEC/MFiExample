@@ -93,6 +93,7 @@
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6vo-HY-Uw4">
                                 <rect key="frame" x="259" y="388" width="155" height="292"/>
+<<<<<<< HEAD
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="NZe-GO-CFm">
                                         <rect key="frame" x="14" y="6" width="127" height="280"/>
@@ -185,12 +186,113 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
+=======
+>>>>>>> master
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="155" id="pTT-SS-Ycj"/>
                                     <constraint firstAttribute="height" constant="292" id="uwI-1l-eGr"/>
                                 </constraints>
                             </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="NZe-GO-CFm">
+                                <rect key="frame" x="267" y="364" width="127" height="316"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fpM-rc-loG">
+                                        <rect key="frame" x="0.0" y="0.0" width="127" height="28"/>
+                                        <color key="backgroundColor" red="0.4406479895" green="0.51737356189999995" blue="0.52941578629999997" alpha="0.69571382709999996" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                        <color key="tintColor" red="0.1647058824" green="0.23137254900000001" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Upload Mission"/>
+                                        <connections>
+                                            <action selector="uploadMissionPressed:" destination="F62-mM-U7q" eventType="touchUpInside" id="Wih-wR-lZb"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="weM-el-Xck" userLabel="Toggle RTL after mission">
+                                        <rect key="frame" x="0.0" y="36" width="127" height="28"/>
+                                        <color key="backgroundColor" red="0.4406479895" green="0.51737356189999995" blue="0.52941578629999997" alpha="0.69571382709999996" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                        <color key="tintColor" red="0.1647058824" green="0.23137254900000001" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="RTL after mission"/>
+                                        <connections>
+                                            <action selector="toggleRTLPressed:" destination="F62-mM-U7q" eventType="touchUpInside" id="R25-er-ZRo"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="11T-bs-NHK">
+                                        <rect key="frame" x="0.0" y="72" width="127" height="28"/>
+                                        <color key="backgroundColor" red="0.4406479895" green="0.51737356189999995" blue="0.52941578629999997" alpha="0.69571382709999996" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                        <color key="tintColor" red="0.1647058824" green="0.23137254900000001" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Start Mission"/>
+                                        <connections>
+                                            <action selector="startMissionPressed:" destination="F62-mM-U7q" eventType="touchUpInside" id="a2a-AU-3fT"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p4M-lt-BDQ">
+                                        <rect key="frame" x="0.0" y="108" width="127" height="28"/>
+                                        <color key="backgroundColor" red="0.4406479895" green="0.51737356189999995" blue="0.52941578629999997" alpha="0.69571382709999996" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                        <color key="tintColor" red="0.1647058824" green="0.23137254900000001" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Pause Mission"/>
+                                        <connections>
+                                            <action selector="pauseMissionPressed:" destination="F62-mM-U7q" eventType="touchUpInside" id="chh-yO-Xc9"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hfG-co-rhE">
+                                        <rect key="frame" x="0.0" y="144" width="127" height="28"/>
+                                        <color key="backgroundColor" red="0.4406479895" green="0.51737356189999995" blue="0.52941578629999997" alpha="0.69571382709999996" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                        <color key="tintColor" red="0.1647058824" green="0.23137254900000001" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Get Index"/>
+                                        <connections>
+                                            <action selector="getIndexPressed:" destination="F62-mM-U7q" eventType="touchUpInside" id="Mdw-34-Eui"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="55w-XT-XKs">
+                                        <rect key="frame" x="0.0" y="180" width="127" height="28"/>
+                                        <color key="backgroundColor" red="0.4406479895" green="0.51737356189999995" blue="0.52941578629999997" alpha="0.69571382709999996" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                        <color key="tintColor" red="0.1647058824" green="0.23137254900000001" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Set Index"/>
+                                        <connections>
+                                            <action selector="setIndexPressed:" destination="F62-mM-U7q" eventType="touchUpInside" id="4fz-UI-2lk"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dz0-QC-xav">
+                                        <rect key="frame" x="0.0" y="216" width="127" height="28"/>
+                                        <color key="backgroundColor" red="0.4406479895" green="0.51737356189999995" blue="0.52941578629999997" alpha="0.69571382709999996" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="28" id="ZIw-FN-A0r"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                        <color key="tintColor" red="0.1647058824" green="0.23137254900000001" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
+                                        <state key="normal" title="Download Mission"/>
+                                        <connections>
+                                            <action selector="downloadMissionPressed:" destination="F62-mM-U7q" eventType="touchUpInside" id="3n9-0b-q2y"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zwk-jn-efQ">
+                                        <rect key="frame" x="0.0" y="252" width="127" height="28"/>
+                                        <color key="backgroundColor" red="0.4406479895" green="0.51737356189999995" blue="0.52941578629999997" alpha="0.69571382709999996" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                        <color key="tintColor" red="0.1647058824" green="0.23137254900000001" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Get Count"/>
+                                        <connections>
+                                            <action selector="getCountPressed:" destination="F62-mM-U7q" eventType="touchUpInside" id="tfC-Lh-VR1"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5cD-59-5zV">
+                                        <rect key="frame" x="0.0" y="288" width="127" height="28"/>
+                                        <color key="backgroundColor" red="0.4406479895" green="0.51737356189999995" blue="0.52941578629999997" alpha="0.69571382709999996" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                        <color key="tintColor" red="0.1647058824" green="0.23137254900000001" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Is Finished"/>
+                                        <connections>
+                                            <action selector="isFinishedPressed:" destination="F62-mM-U7q" eventType="touchUpInside" id="wdE-H8-vJa"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -201,7 +303,9 @@
                             <constraint firstItem="dit-VP-mwP" firstAttribute="leading" secondItem="DfI-qP-ql3" secondAttribute="leading" id="Cf4-Tc-Jrl"/>
                             <constraint firstItem="6vo-HY-Uw4" firstAttribute="trailing" secondItem="dit-VP-mwP" secondAttribute="trailing" id="D3f-6m-PFe"/>
                             <constraint firstItem="DfI-qP-ql3" firstAttribute="bottom" secondItem="dit-VP-mwP" secondAttribute="bottom" id="GdF-Qr-Xty"/>
+                            <constraint firstItem="NZe-GO-CFm" firstAttribute="trailing" secondItem="xqR-O2-rKl" secondAttribute="trailingMargin" id="Hq3-Et-UdL"/>
                             <constraint firstItem="DF5-F9-wpk" firstAttribute="top" secondItem="DfI-qP-ql3" secondAttribute="top" id="NmL-B0-4zW"/>
+                            <constraint firstItem="NZe-GO-CFm" firstAttribute="bottom" secondItem="6vo-HY-Uw4" secondAttribute="bottom" id="Nsk-SU-y6n"/>
                             <constraint firstItem="NML-k1-PsT" firstAttribute="leading" secondItem="dit-VP-mwP" secondAttribute="leading" constant="6" id="ajP-iB-fPH"/>
                             <constraint firstItem="DfI-qP-ql3" firstAttribute="bottom" secondItem="6vo-HY-Uw4" secondAttribute="bottom" constant="7" id="bH9-5l-NWq"/>
                             <constraint firstItem="OBs-h6-2pR" firstAttribute="top" secondItem="DF5-F9-wpk" secondAttribute="bottom" constant="20" id="eq5-El-aYP"/>
@@ -223,6 +327,7 @@
                         <outlet property="pauseMissionButton" destination="p4M-lt-BDQ" id="LkP-SY-PyJ"/>
                         <outlet property="setCurrentIndexButton" destination="55w-XT-XKs" id="RvR-qs-WaA"/>
                         <outlet property="startMissionButton" destination="11T-bs-NHK" id="qBM-hq-rqS"/>
+                        <outlet property="toggleRTLButton" destination="weM-el-Xck" id="Krc-cF-X1s"/>
                         <outlet property="uploadMissionButton" destination="fpM-rc-loG" id="8AG-8s-mJV"/>
                     </connections>
                 </viewController>
@@ -1125,29 +1230,17 @@
             </objects>
             <point key="canvasLocation" x="3763.7681159420295" y="947.28260869565224"/>
         </scene>
-        <!--Yuneec Preview View Controller-->
+        <!--Preview View Controller-->
         <scene sceneID="gFT-NH-mg1">
             <objects>
-                <viewController storyboardIdentifier="VideoFeedViewController" id="s94-qs-qHo" customClass="YuneecPreviewViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VideoFeedViewController" id="s94-qs-qHo" customClass="PreviewViewController" customModule="YuneecMFiExample" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="b69-32-J19">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GbA-DG-Y8b" customClass="YuneecPreviewView">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Connection" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kJu-dd-dFn">
-                                        <rect key="frame" x="20" y="20" width="131" height="24"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <color key="textColor" red="0.0" green="0.91372549020000005" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="kJu-dd-dFn" firstAttribute="leading" secondItem="GbA-DG-Y8b" secondAttribute="leading" constant="20" id="Tdv-25-Qod"/>
-                                    <constraint firstItem="kJu-dd-dFn" firstAttribute="top" secondItem="GbA-DG-Y8b" secondAttribute="top" constant="20" id="iPU-3I-Bnd"/>
-                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1161,7 +1254,6 @@
                     </view>
                     <connections>
                         <outlet property="previewView" destination="GbA-DG-Y8b" id="Jn0-Ij-pk5"/>
-                        <outlet property="stateLabel" destination="kJu-dd-dFn" id="Z4j-Vo-BYU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ogI-Tv-cRX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1379,7 +1471,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="601"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+<<<<<<< HEAD
                         <viewLayoutGuide key="safeArea" id="HPC-XM-IAO"/>
+=======
+                        <viewLayoutGuide key="safeArea" id="B4H-tY-hIf"/>
+>>>>>>> master
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9bH-AM-RUl" userLabel="First Responder" sceneMemberID="firstResponder"/>

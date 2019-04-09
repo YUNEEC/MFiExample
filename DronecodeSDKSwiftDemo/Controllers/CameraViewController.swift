@@ -60,7 +60,6 @@ class CameraViewController: UIViewController {
     
     func embedContainerView() {
         videoFeedViewController = storyboard?.instantiateViewController(withIdentifier: "VideoFeedViewController")
-        
         guard let videoFeedViewController = videoFeedViewController else {
             return
         }
@@ -70,15 +69,16 @@ class CameraViewController: UIViewController {
         
         if let videoFeedSubview = videoFeedViewController.view {
             containerView.addSubview(videoFeedSubview)
-            
+
             videoFeedSubview.translatesAutoresizingMaskIntoConstraints = false
             videoFeedSubview.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
             videoFeedSubview.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true
             videoFeedSubview.trailingAnchor.constraint(equalTo: containerView.trailingAnchor).isActive = true
+
             videoFeedSubview.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
         }
     }
-
+    
     @IBAction func setPhotoMode(_ sender: UIButton) {
         setPhotoModeButton.isEnabled = false
         
@@ -258,6 +258,7 @@ class CameraViewController: UIViewController {
             .disposed(by: disposeBag)
         
         // Listen to camera status
+<<<<<<< HEAD
         // FIXME: Crashes after a while.
         CoreManager.shared().drone.camera.cameraStatus
             .subscribeOn(SerialDispatchQueueScheduler(qos: .background))
@@ -266,6 +267,13 @@ class CameraViewController: UIViewController {
                 let string = "Video On: \(status.videoOn) | Photo Interval On: \(status.photoIntervalOn) | Used Storage: \(status.usedStorageMib) | Available Storage: \(status.availableStorageMib) | Total Storage \(status.totalStorageMib) | Storage Status: \(status.storageStatus)"
                     self.cameraStatusLabel.text = string
                 }, onError: { error in
+=======
+        CoreManager.shared().camera.cameraStatusObservable
+            .subscribe(onNext: { status in
+                let string = "Video On: \(status.videoOn) | Photo Interval On: \(status.photoIntervalOn) | Used Storage: \(status.usedStorageMib) | Available Storage: \(status.availableStorageMib) | Total Storage \(status.totalStorageMib) | Storage Status: \(status.storageStatus.hashValue)"
+                    self.cameraStatusLabel.text = string
+               }, onError: { error in
+>>>>>>> master
                     NSLog("Error cameraStatusSubscription: \(error.localizedDescription)")
             })
             .disposed(by: disposeBag)
@@ -292,6 +300,15 @@ class CameraViewController: UIViewController {
                 }, onError: { error in
                     NSLog("Error possibleSettingOptionsSubscription: \(error.localizedDescription)")
             })
+            .disposed(by: disposeBag)
+
+        // Listen to cable connection
+        let coreStatus: Observable<UInt64> = CoreManager.shared().core.discoverObservable
+        coreStatus.subscribe(onNext: { uuid in
+            // TODO: start video on cable connection
+        }, onError: { error in
+            print("Error Discover \(error)")
+        })
             .disposed(by: disposeBag)
     }
 }

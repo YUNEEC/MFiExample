@@ -181,11 +181,16 @@ class TelemetryEntries {
             .disposed(by: disposeBag)
         
         //Listen Ground Speed
+<<<<<<< HEAD
         let groundSpeed: Observable<Telemetry.SpeedNed> = CoreManager.shared().drone.telemetry.groundSpeedNed
         groundSpeed
             .subscribeOn(SerialDispatchQueueScheduler(qos: .background))
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { groundSpeed in
+=======
+        let groundSpeed: Observable<GroundSpeedNed> = CoreManager.shared().telemetry.groundSpeedNEDObservable
+        groundSpeed.subscribe(onNext: { groundSpeed in
+>>>>>>> master
                 self.onGroundSpeedUpdate(groundSpeed)
             }, onError: { error in
                 print("Error telemetry")
@@ -217,11 +222,16 @@ class TelemetryEntries {
             .disposed(by: disposeBag)
         
         //Listen GPS
+<<<<<<< HEAD
         let gps: Observable<Telemetry.GpsInfo> = CoreManager.shared().drone.telemetry.gpsInfo
         gps
             .subscribeOn(SerialDispatchQueueScheduler(qos: .background))
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { gps in
+=======
+        let gps: Observable<GpsInfo> = CoreManager.shared().telemetry.GpsInfoObservable
+        gps.subscribe(onNext: { gps in
+>>>>>>> master
                 self.onGPSUpdate(gps)
             }, onError: { error in
                 print("Error telemetry")
@@ -278,11 +288,16 @@ class TelemetryEntries {
             .disposed(by: disposeBag)
         
         //Listen RC Status
+<<<<<<< HEAD
         let rcStatus: Observable<Telemetry.RcStatus> = CoreManager.shared().drone.telemetry.rcStatus
         rcStatus
             .subscribeOn(SerialDispatchQueueScheduler(qos: .background))
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { rcStatus in
+=======
+        let rcStatus: Observable<RcStatus> = CoreManager.shared().telemetry.rcStatusObservable
+        rcStatus.subscribe(onNext: { rcStatus in
+>>>>>>> master
                 self.onRCStatusUpdate(rcStatus)
             }, onError: { error in
                 print("Error telemetry")
@@ -314,7 +329,11 @@ class TelemetryEntries {
         entries[EntryType.in_air.rawValue].value = inAir ? "Flying" : "Not Flying"
     }
     
+<<<<<<< HEAD
     func onGroundSpeedUpdate(_ groundSpeed: Telemetry.SpeedNed) {
+=======
+    func onGroundSpeedUpdate(_ groundSpeed: GroundSpeedNed) {
+>>>>>>> master
         entries[EntryType.groundspeed.rawValue].value = "North: \(groundSpeed.velocityNorthMS), East: \(groundSpeed.velocityEastMS), Down: \(groundSpeed.velocityDownMS)"
     }
     
@@ -330,7 +349,11 @@ class TelemetryEntries {
         entries[EntryType.cameraAttitude.rawValue].value = "Pitch: \(attitude.pitchDeg), Roll: \(attitude.rollDeg), Yaw: \(attitude.yawDeg)"
     }
     
+<<<<<<< HEAD
     func onGPSUpdate(_ gps: Telemetry.GpsInfo) {
+=======
+    func onGPSUpdate(_ gps: GpsInfo) {
+>>>>>>> master
         entries[EntryType.gps.rawValue].value = "Satelites: \(gps.numSatellites)"
     }
     
@@ -344,7 +367,11 @@ class TelemetryEntries {
         entries[EntryType.flightMode.rawValue].value = "\(flightMode)"
     }
     
+<<<<<<< HEAD
     func onRCStatusUpdate(_ rcStatus: Telemetry.RcStatus) {
+=======
+    func onRCStatusUpdate(_ rcStatus: RcStatus) {
+>>>>>>> master
         var message: String
         
         if rcStatus.isAvailable {
