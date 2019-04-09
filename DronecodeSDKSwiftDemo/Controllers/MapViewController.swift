@@ -241,14 +241,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
                 self.displayFeedback(message:"Set RTL failed \(error)")
             })
             .disposed(by: disposeBag)
-        
-//        CoreManager.shared().drone.mission.isMissionFinished()
-//            .subscribe(onSuccess: { (finished) in
-//                self.displayFeedback(message:"Is mission finished: \(finished)")
-//            }, onError: { (error) in
-//                self.displayFeedback(message: "Error checking if mission is finihed \(error)")
-//            })
-//            .disposed(by: disposeBag)
     }
     
     // MARK: - Center Map and Create Flightpath
@@ -286,23 +278,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     // MARK: - Missions
-    
-    //        CoreManager.shared().drone.mission.uploadMission(missionItems: missionExample.missionItems)
-    //            .do(onError: { error in
-    //                self.displayFeedback(message:"Mission uploaded failed \(error)")
-    //
-    //            }, onCompleted: {
-    //                self.displayFeedback(message:"Mission uploaded with success")
-    //            })
-    //            .subscribeOn(SerialDispatchQueueScheduler(qos: .background))
-    //            .observeOn(MainScheduler.instance)
-    //            .subscribe()
-    //            .disposed(by: disposeBag)
-    //
-    //        guard false else {
-    //            return
-    //        }
-    
+        
     func uploadMission(){
         let cancelMissionUploadRoutine =
             CoreManager.shared().drone.mission.cancelMissionUpload()

@@ -74,7 +74,7 @@ class GalleryViewController: UIViewController {
             var downloadArray:Array<MFiMediaDownload> = Array()
             let download:MFiMediaDownload = MFiMediaDownload.init()
             for media in self.mediaArray {
-                download.media = media as! YuneecMedia
+                download.media = media as? YuneecMedia
                 // Not downloading the videos as the file sizes can be very big.
                 if(download.media.mediaType == YuneecMediaType.typeMP4) {
                     continue

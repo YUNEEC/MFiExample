@@ -66,7 +66,7 @@ class CameraSettingsViewController: FormViewController {
                             
                             activityView.stopAnimating()
                             if let error = error {
-                                ActionsViewController.showAlert("Error setting \(String(describing: setting.settingDescription ?? "value")).", viewController: self)
+                                ActionsViewController.showAlert("Error setting \(String(describing: setting.settingDescription )).", viewController: self)
                                 NSLog("Error: \(error.localizedDescription)")
                             }
                         }
