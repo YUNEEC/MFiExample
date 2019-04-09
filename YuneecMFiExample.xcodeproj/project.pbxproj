@@ -22,7 +22,6 @@
 		2CCEB7992089F2510086AA37 /* CoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCEB7982089F2510086AA37 /* CoreManager.swift */; };
 		2CDBF021207652340064C8A5 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDBF020207652340064C8A5 /* MapViewController.swift */; };
 		2CFF7271207750AF0060D31B /* ActionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFF7270207750AF0060D31B /* ActionsViewController.swift */; };
-		A507F9D52127886900829CBE /* YuneecPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A507F9D32127886900829CBE /* YuneecPreviewViewController.m */; };
 		A507F9DA212B4FE400829CBE /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A507F9D9212B4FE400829CBE /* Security.framework */; };
 		A507F9DC212B4FEB00829CBE /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A507F9DB212B4FEB00829CBE /* CFNetwork.framework */; };
 		A507F9DE212B4FF100829CBE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A507F9DD212B4FF100829CBE /* Foundation.framework */; };
@@ -116,8 +115,6 @@
 		2CCEB7982089F2510086AA37 /* CoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreManager.swift; sourceTree = "<group>"; };
 		2CDBF020207652340064C8A5 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		2CFF7270207750AF0060D31B /* ActionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionsViewController.swift; sourceTree = "<group>"; };
-		A507F9D32127886900829CBE /* YuneecPreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YuneecPreviewViewController.m; sourceTree = "<group>"; };
-		A507F9D42127886900829CBE /* YuneecPreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YuneecPreviewViewController.h; sourceTree = "<group>"; };
 		A507F9D9212B4FE400829CBE /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		A507F9DB212B4FEB00829CBE /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		A507F9DD212B4FF100829CBE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -274,8 +271,6 @@
 			isa = PBXGroup;
 			children = (
 				A54AC8652123623D009E0D03 /* Mapkit */,
-				A507F9D42127886900829CBE /* YuneecPreviewViewController.h */,
-				A507F9D32127886900829CBE /* YuneecPreviewViewController.m */,
 				A54AC8702123635E009E0D03 /* CameraSettingsViewController.swift */,
 				A54AC8712123635E009E0D03 /* CameraViewController.swift */,
 				086D32EE20B84B45006840C1 /* BindViewController.swift */,
@@ -513,7 +508,6 @@
 				D82298E42126607C00DCBDBE /* GalleryUtility.swift in Sources */,
 				086D32EF20B84B45006840C1 /* BindViewController.swift in Sources */,
 				2C0A6A5D208F6DB200B3E12F /* TelemetryEntry.swift in Sources */,
-				A507F9D52127886900829CBE /* YuneecPreviewViewController.m in Sources */,
 				08626F0B2098F48000C3101E /* ST10CViewController.swift in Sources */,
 				2C365EC3207610C500F42184 /* TelemetryViewController.swift in Sources */,
 				2C0A6A5F208F77E500B3E12F /* TelemetryEntries.swift in Sources */,
