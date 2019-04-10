@@ -65,29 +65,39 @@ class ExampleMission {
         //width and height for a single U mission : in meters
         let width: Double = 40
         let height: Double = 20
-
+        let relativeAltitudeM: Float = 20.0
+        
         // first location of the mission is equal to location in param at 80 meters of altitude
         let location1: CLLocation = location
         do {
-            let entry = Mission.MissionItem(latitudeDeg: location1.coordinate.latitude, longitudeDeg:  location1.coordinate.longitude, relativeAltitudeM: 80.0, speedMS: 2.0, isFlyThrough: true, gimbalPitchDeg: -60.0, gimbalYawDeg: -90.0, cameraAction: Mission.MissionItem.CameraAction.takePhoto, loiterTimeS: Float.nan, cameraPhotoIntervalS: 0)
+            let entry = Mission.MissionItem(latitudeDeg: location1.coordinate.latitude, longitudeDeg:  location1.coordinate.longitude, relativeAltitudeM: relativeAltitudeM, speedMS: 4.0, isFlyThrough: false, gimbalPitchDeg: -60.0, gimbalYawDeg: -90.0, cameraAction: Mission.MissionItem.CameraAction.takePhoto, loiterTimeS: 1, cameraPhotoIntervalS: 0)
             missionItems.append(entry)
         }
         // second location : first location at "width" meters in west direction
         let location2 = self.computeLocation(locationInit: location1, withRadius: width, withBearing: 270)
         do {
-            let entry = Mission.MissionItem(latitudeDeg: location2.coordinate.latitude, longitudeDeg: location2.coordinate.longitude, relativeAltitudeM: 80.0, speedMS: 2.0, isFlyThrough: true, gimbalPitchDeg: -60.0, gimbalYawDeg: -90.0, cameraAction: Mission.MissionItem.CameraAction.takePhoto, loiterTimeS: Float.nan, cameraPhotoIntervalS: 0)
+            let entry = Mission.MissionItem(latitudeDeg: location2.coordinate.latitude, longitudeDeg: location2.coordinate.longitude, relativeAltitudeM: relativeAltitudeM, speedMS: 4.0, isFlyThrough: false, gimbalPitchDeg: -60.0, gimbalYawDeg: -90.0, cameraAction: Mission.MissionItem.CameraAction.takePhoto, loiterTimeS: 1, cameraPhotoIntervalS: 0)
             missionItems.append(entry)
         }
+        
+        // second location : first location at "width" meters in west direction
+        let location2_1 = self.computeLocation(locationInit: location2, withRadius: height/2, withBearing: 170)
+        do {
+            let entry = Mission.MissionItem(latitudeDeg: location2_1.coordinate.latitude, longitudeDeg: location2_1.coordinate.longitude, relativeAltitudeM: relativeAltitudeM, speedMS: 4.0, isFlyThrough: false, gimbalPitchDeg: -60.0, gimbalYawDeg: -90.0, cameraAction: Mission.MissionItem.CameraAction.takePhoto, loiterTimeS: 1, cameraPhotoIntervalS: 0)
+            missionItems.append(entry)
+        }
+        
         // third location : second location at "height" meters in south direction
         let location3 = self.computeLocation(locationInit: location2, withRadius: height, withBearing: 180)
         do {
-            let entry = Mission.MissionItem(latitudeDeg: location3.coordinate.latitude, longitudeDeg: location3.coordinate.longitude, relativeAltitudeM: 80.0, speedMS: 2.0, isFlyThrough: true, gimbalPitchDeg: -60.0, gimbalYawDeg: -90.0, cameraAction: Mission.MissionItem.CameraAction.takePhoto, loiterTimeS: Float.nan, cameraPhotoIntervalS: 0)
+            let entry = Mission.MissionItem(latitudeDeg: location3.coordinate.latitude, longitudeDeg: location3.coordinate.longitude, relativeAltitudeM: relativeAltitudeM, speedMS: 4.0, isFlyThrough: false, gimbalPitchDeg: -60.0, gimbalYawDeg: -90.0, cameraAction: Mission.MissionItem.CameraAction.takePhoto, loiterTimeS: 1, cameraPhotoIntervalS: 0)
             missionItems.append(entry)
         }
+        
         // fourth location : third location at "width" meters in east direction
         let location4 = self.computeLocation(locationInit: location3, withRadius: width, withBearing: 90)
         do {
-            let entry = Mission.MissionItem(latitudeDeg: location4.coordinate.latitude, longitudeDeg: location4.coordinate.longitude, relativeAltitudeM: 80.0, speedMS: 10.0, isFlyThrough: true, gimbalPitchDeg: -30.0, gimbalYawDeg: 0, cameraAction: Mission.MissionItem.CameraAction.takePhoto, loiterTimeS: Float.nan, cameraPhotoIntervalS: 0)
+            let entry = Mission.MissionItem(latitudeDeg: location4.coordinate.latitude, longitudeDeg: location4.coordinate.longitude, relativeAltitudeM: relativeAltitudeM, speedMS: 10.0, isFlyThrough: false, gimbalPitchDeg: -30.0, gimbalYawDeg: 0, cameraAction: Mission.MissionItem.CameraAction.takePhoto, loiterTimeS: 1, cameraPhotoIntervalS: 0)
             missionItems.append(entry)
         }
     }
