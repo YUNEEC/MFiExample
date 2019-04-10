@@ -323,6 +323,7 @@ class TelemetryEntries {
     }
     
     func onAttitudeUpdate(_ attitude: Telemetry.EulerAngle) {
+        CoreManager.shared().droneState.headingDeg = Double(attitude.yawDeg)
         entries[EntryType.attitude.rawValue].value = "Pitch: \(attitude.pitchDeg), Roll: \(attitude.rollDeg), Yaw: \(attitude.yawDeg)"
     }
     

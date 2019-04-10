@@ -11,6 +11,18 @@ import MapKit
 
 class DroneView: MKAnnotationView {
     
+    override init(annotation: MKAnnotation?, reuseIdentifier: String?) {
+        super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
+        
+        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { (_) in
+            self.transform = CGAffineTransform(rotationAngle: CGFloat(CoreManager.shared().droneState.headingDeg * .pi / 180) )
+        }
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override var annotation: MKAnnotation? {
         
         willSet {

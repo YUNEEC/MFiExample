@@ -12,8 +12,10 @@ import MapKit
 class DroneState: NSObject{
     
     var location2D: CLLocationCoordinate2D
+    var headingDeg: Double
     
     override init(){
         self.location2D = CLLocationCoordinate2DMake(0, 0);
+        self.headingDeg = 0.0
     }
 }
