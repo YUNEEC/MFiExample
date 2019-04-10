@@ -62,6 +62,7 @@
 		D80CB33421749984005B52AD /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D80CB33321749984005B52AD /* AFNetworking.framework */; };
 		D82298E42126607C00DCBDBE /* GalleryUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82298E32126607C00DCBDBE /* GalleryUtility.swift */; };
 		D825EEF42182AACF000B1EB7 /* CameraUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = D825EEF32182AACF000B1EB7 /* CameraUtility.swift */; };
+		D8773284225ED0E5002BDE29 /* YuneecMediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8773283225ED0E5002BDE29 /* YuneecMediaPlayer.framework */; };
 		D87E71A021216571001D712E /* GalleryViewControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87E719F21216571001D712E /* GalleryViewControl.swift */; };
 		D8F947A621749B4000D8166F /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D80CB33321749984005B52AD /* AFNetworking.framework */; };
 		D8F947A721749B4000D8166F /* AFNetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D80CB33321749984005B52AD /* AFNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -118,23 +119,23 @@
 		A507F9D9212B4FE400829CBE /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		A507F9DB212B4FEB00829CBE /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		A507F9DD212B4FF100829CBE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		A507FA5B212B775500829CBE /* YuneecDecoder.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YuneecDecoder.framework; path = Carthage/Build/iOS/YuneecDecoder.framework; sourceTree = "<group>"; };
-		A507FA5C212B775500829CBE /* YuneecPreviewView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YuneecPreviewView.framework; path = Carthage/Build/iOS/YuneecPreviewView.framework; sourceTree = "<group>"; };
-		A507FB09212F551B00829CBE /* YuneecCameraSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YuneecCameraSDK.framework; path = Carthage/Build/iOS/YuneecCameraSDK.framework; sourceTree = "<group>"; };
+		A507FA5B212B775500829CBE /* YuneecDecoder.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YuneecDecoder.framework; path = "Carthage/Checkouts/Yuneec-MFiAdapter/YuneecDecoder.framework"; sourceTree = "<group>"; };
+		A507FA5C212B775500829CBE /* YuneecPreviewView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YuneecPreviewView.framework; path = "Carthage/Checkouts/Yuneec-MFiAdapter/YuneecPreviewView.framework"; sourceTree = "<group>"; };
+		A507FB09212F551B00829CBE /* YuneecCameraSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YuneecCameraSDK.framework; path = "Carthage/Checkouts/Yuneec-MFiAdapter/YuneecCameraSDK.framework"; sourceTree = "<group>"; };
 		A54AC8672123623D009E0D03 /* CustomPinAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPinAnnotationView.swift; sourceTree = "<group>"; };
 		A54AC8682123623D009E0D03 /* CustomPointAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPointAnnotation.swift; sourceTree = "<group>"; };
 		A54AC86A2123623D009E0D03 /* DroneAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DroneAnnotation.swift; sourceTree = "<group>"; };
 		A54AC86B2123623D009E0D03 /* DroneView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DroneView.swift; sourceTree = "<group>"; };
 		A54AC8702123635E009E0D03 /* CameraSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraSettingsViewController.swift; sourceTree = "<group>"; };
 		A54AC8712123635E009E0D03 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
-		A54AC94F21237430009E0D03 /* YuneecRemoteControllerSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YuneecRemoteControllerSDK.framework; path = Carthage/Build/iOS/YuneecRemoteControllerSDK.framework; sourceTree = "<group>"; };
-		A54AC95021237430009E0D03 /* FFMpegLowDelayDemuxer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FFMpegLowDelayDemuxer.framework; path = Carthage/Build/iOS/FFMpegLowDelayDemuxer.framework; sourceTree = "<group>"; };
-		A54AC95121237430009E0D03 /* BaseFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BaseFramework.framework; path = Carthage/Build/iOS/BaseFramework.framework; sourceTree = "<group>"; };
+		A54AC94F21237430009E0D03 /* YuneecRemoteControllerSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YuneecRemoteControllerSDK.framework; path = "Carthage/Checkouts/Yuneec-MFiAdapter/YuneecRemoteControllerSDK.framework"; sourceTree = "<group>"; };
+		A54AC95021237430009E0D03 /* FFMpegLowDelayDemuxer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FFMpegLowDelayDemuxer.framework; path = "Carthage/Checkouts/Yuneec-MFiAdapter/FFMpegLowDelayDemuxer.framework"; sourceTree = "<group>"; };
+		A54AC95121237430009E0D03 /* BaseFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BaseFramework.framework; path = "Carthage/Checkouts/Yuneec-MFiAdapter/BaseFramework.framework"; sourceTree = "<group>"; };
 		A54AC95221237430009E0D03 /* CocoaAsyncSocket.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaAsyncSocket.framework; path = Carthage/Build/iOS/CocoaAsyncSocket.framework; sourceTree = "<group>"; };
-		A54AC95321237430009E0D03 /* FFMpegDecoder.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FFMpegDecoder.framework; path = Carthage/Build/iOS/FFMpegDecoder.framework; sourceTree = "<group>"; };
-		A54AC95421237430009E0D03 /* MediaBase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaBase.framework; path = Carthage/Build/iOS/MediaBase.framework; sourceTree = "<group>"; };
+		A54AC95321237430009E0D03 /* FFMpegDecoder.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FFMpegDecoder.framework; path = "Carthage/Checkouts/Yuneec-MFiAdapter/FFMpegDecoder.framework"; sourceTree = "<group>"; };
+		A54AC95421237430009E0D03 /* MediaBase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaBase.framework; path = "Carthage/Checkouts/Yuneec-MFiAdapter/MediaBase.framework"; sourceTree = "<group>"; };
 		A54AC95521237431009E0D03 /* RxBlocking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxBlocking.framework; path = Carthage/Build/iOS/RxBlocking.framework; sourceTree = "<group>"; };
-		A54AC95621237431009E0D03 /* YuneecWifiDataTransfer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YuneecWifiDataTransfer.framework; path = Carthage/Build/iOS/YuneecWifiDataTransfer.framework; sourceTree = "<group>"; };
+		A54AC95621237431009E0D03 /* YuneecWifiDataTransfer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YuneecWifiDataTransfer.framework; path = "Carthage/Checkouts/Yuneec-MFiAdapter/YuneecWifiDataTransfer.framework"; sourceTree = "<group>"; };
 		A54AC95721237431009E0D03 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		A54AC95821237431009E0D03 /* backend.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = backend.framework; path = Carthage/Build/iOS/backend.framework; sourceTree = "<group>"; };
 		A54AC95921237431009E0D03 /* CgRPC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CgRPC.framework; path = Carthage/Build/iOS/CgRPC.framework; sourceTree = "<group>"; };
@@ -142,16 +143,17 @@
 		A54AC95B21237432009E0D03 /* Eureka.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Eureka.framework; path = Carthage/Build/iOS/Eureka.framework; sourceTree = "<group>"; };
 		A54AC95C21237432009E0D03 /* MFiAdapter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MFiAdapter.framework; path = Carthage/Build/iOS/MFiAdapter.framework; sourceTree = "<group>"; };
 		A54AC95D21237432009E0D03 /* SwiftProtobuf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftProtobuf.framework; path = Carthage/Build/iOS/SwiftProtobuf.framework; sourceTree = "<group>"; };
-		A54AC95E21237432009E0D03 /* YuneecDataTransferManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YuneecDataTransferManager.framework; path = Carthage/Build/iOS/YuneecDataTransferManager.framework; sourceTree = "<group>"; };
-		A54AC96121237433009E0D03 /* YuneecMFiDataTransfer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YuneecMFiDataTransfer.framework; path = Carthage/Build/iOS/YuneecMFiDataTransfer.framework; sourceTree = "<group>"; };
+		A54AC95E21237432009E0D03 /* YuneecDataTransferManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YuneecDataTransferManager.framework; path = "Carthage/Checkouts/Yuneec-MFiAdapter/YuneecDataTransferManager.framework"; sourceTree = "<group>"; };
+		A54AC96121237433009E0D03 /* YuneecMFiDataTransfer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YuneecMFiDataTransfer.framework; path = "Carthage/Checkouts/Yuneec-MFiAdapter/YuneecMFiDataTransfer.framework"; sourceTree = "<group>"; };
 		A54AC96221237433009E0D03 /* BoringSSL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BoringSSL.framework; path = Carthage/Build/iOS/BoringSSL.framework; sourceTree = "<group>"; };
-		A54AC96321237433009E0D03 /* FFMpegDemuxer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FFMpegDemuxer.framework; path = Carthage/Build/iOS/FFMpegDemuxer.framework; sourceTree = "<group>"; };
-		A54AC96421237434009E0D03 /* FFMpegLowDelayDecoder.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FFMpegLowDelayDecoder.framework; path = Carthage/Build/iOS/FFMpegLowDelayDecoder.framework; sourceTree = "<group>"; };
+		A54AC96321237433009E0D03 /* FFMpegDemuxer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FFMpegDemuxer.framework; path = "Carthage/Checkouts/Yuneec-MFiAdapter/FFMpegDemuxer.framework"; sourceTree = "<group>"; };
+		A54AC96421237434009E0D03 /* FFMpegLowDelayDecoder.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FFMpegLowDelayDecoder.framework; path = "Carthage/Checkouts/Yuneec-MFiAdapter/FFMpegLowDelayDecoder.framework"; sourceTree = "<group>"; };
 		A54AC96521237434009E0D03 /* SwiftGRPC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftGRPC.framework; path = Carthage/Build/iOS/SwiftGRPC.framework; sourceTree = "<group>"; };
 		D8053E982159E4E40046596C /* OtaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtaViewController.swift; sourceTree = "<group>"; };
 		D80CB33321749984005B52AD /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFNetworking.framework; path = Carthage/Build/iOS/AFNetworking.framework; sourceTree = "<group>"; };
 		D82298E32126607C00DCBDBE /* GalleryUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryUtility.swift; sourceTree = "<group>"; };
 		D825EEF32182AACF000B1EB7 /* CameraUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraUtility.swift; sourceTree = "<group>"; };
+		D8773283225ED0E5002BDE29 /* YuneecMediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YuneecMediaPlayer.framework; path = "Carthage/Checkouts/Yuneec-MFiAdapter/YuneecMediaPlayer.framework"; sourceTree = "<group>"; };
 		D87E719F21216571001D712E /* GalleryViewControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewControl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -160,6 +162,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8773284225ED0E5002BDE29 /* YuneecMediaPlayer.framework in Frameworks */,
 				D80CB33421749984005B52AD /* AFNetworking.framework in Frameworks */,
 				A507FAA5212B777200829CBE /* YuneecDecoder.framework in Frameworks */,
 				A507F9DE212B4FF100829CBE /* Foundation.framework in Frameworks */,
@@ -287,6 +290,7 @@
 		7C24E977FB012720175F8DA1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D8773283225ED0E5002BDE29 /* YuneecMediaPlayer.framework */,
 				D80CB33321749984005B52AD /* AFNetworking.framework */,
 				A507FA5B212B775500829CBE /* YuneecDecoder.framework */,
 				A507FA5C212B775500829CBE /* YuneecPreviewView.framework */,
@@ -460,29 +464,30 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/BoringSSL.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/backend.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/BaseFramework.framework",
+				"$(SRCROOT)/Carthage/Checkouts/Yuneec-MFiAdapter/BaseFramework.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/CgRPC.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/CocoaAsyncSocket.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Dronecode_SDK_Swift.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/FFMpegDecoder.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/FFMpegDemuxer.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/FFMpegLowDelayDecoder.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/FFMpegLowDelayDemuxer.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/MediaBase.framework",
+				"$(SRCROOT)/Carthage/Checkouts/Yuneec-MFiAdapter/FFMpegDecoder.framework",
+				"$(SRCROOT)/Carthage/Checkouts/Yuneec-MFiAdapter/FFMpegDemuxer.framework",
+				"$(SRCROOT)/Carthage/Checkouts/Yuneec-MFiAdapter/FFMpegLowDelayDecoder.framework",
+				"$(SRCROOT)/Carthage/Checkouts/Yuneec-MFiAdapter/FFMpegLowDelayDemuxer.framework",
+				"$(SRCROOT)/Carthage/Checkouts/Yuneec-MFiAdapter/MediaBase.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/MFiAdapter.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxBlocking.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftGRPC.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftProtobuf.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/YuneecDataTransferManager.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/YuneecMFiDataTransfer.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/YuneecRemoteControllerSDK.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/YuneecWifiDataTransfer.framework",
+				"$(SRCROOT)/Carthage/Checkouts/Yuneec-MFiAdapter/YuneecDataTransferManager.framework",
+				"$(SRCROOT)/Carthage/Checkouts/Yuneec-MFiAdapter/YuneecMFiDataTransfer.framework",
+				"$(SRCROOT)/Carthage/Checkouts/Yuneec-MFiAdapter/YuneecRemoteControllerSDK.framework",
+				"$(SRCROOT)/Carthage/Checkouts/Yuneec-MFiAdapter/YuneecWifiDataTransfer.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Eureka.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/YuneecDecoder.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/YuneecPreviewView.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/YuneecCameraSDK.framework",
+				"$(SRCROOT)/Carthage/Checkouts/Yuneec-MFiAdapter/YuneecDecoder.framework",
+				"$(SRCROOT)/Carthage/Checkouts/Yuneec-MFiAdapter/YuneecPreviewView.framework",
+				"$(SRCROOT)/Carthage/Checkouts/Yuneec-MFiAdapter/YuneecCameraSDK.framework",
+				"$(SRCROOT)/Carthage/Checkouts/Yuneec-MFiAdapter/YuneecMediaPlayer.framework",
 			);
 			outputPaths = (
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/BoringSSL.framework",
@@ -492,7 +497,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -688,6 +693,7 @@
 					"$(PROJECT_DIR)/frameworks",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 					"$(PROJECT_DIR)/MFiFrameworks",
+					"$(PROJECT_DIR)/Carthage/Checkouts/Yuneec-MFiAdapter",
 				);
 				INFOPLIST_FILE = DronecodeSDKSwiftDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path @executable_path/Frameworks";
@@ -715,6 +721,7 @@
 					"$(PROJECT_DIR)/frameworks",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 					"$(PROJECT_DIR)/MFiFrameworks",
+					"$(PROJECT_DIR)/Carthage/Checkouts/Yuneec-MFiAdapter",
 				);
 				INFOPLIST_FILE = DronecodeSDKSwiftDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path @executable_path/Frameworks";
