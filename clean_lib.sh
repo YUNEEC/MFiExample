@@ -14,3 +14,12 @@ do
     rm ${framework}_armv7
     rm ${framework}_arm64
 done
+
+framework_list="AFNetworking CocoaAsyncSocket Dronecode_SDK_Swift Eureka RxSwift CgRPC BoringSSL RxAtomic RxBlocking RxCocoa RxTest SwiftGRPC SwiftProtobuf backend"
+for framework in $framework_list
+do
+    src=./Carthage/Build/iOS/${framework}.framework/$framework
+
+    lipo -remove i386 "$src" -output "$src"
+    lipo -remove x86_64 "$src" -output "$src"
+done
