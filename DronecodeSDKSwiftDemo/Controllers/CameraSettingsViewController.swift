@@ -8,15 +8,15 @@
 
 import UIKit
 import Eureka
-import Dronecode_SDK_Swift
+import MAVSDK_Swift
 import RxSwift
 
 class CameraSettingsViewController: FormViewController {
     
     var manifestSection: Section!
     
-    var currentSettings = Variable<[Setting]>([])
-    var possibleSettingOptions = Variable<[SettingOptions]>([])
+    var currentSettings = Variable<[Camera.Setting]>([])
+    var possibleSettingOptions = Variable<[Camera.SettingOptions]>([])
     
     let activityView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
     
@@ -49,10 +49,10 @@ class CameraSettingsViewController: FormViewController {
         possibleSettingOptions.value.forEach { (setting) in
             
             manifestSection <<< PushRow<String>() {
-                $0.tag = setting.settingId
+                $0.tag = setting.settingID
                 $0.title = setting.settingDescription
-                $0.value = currentSettingOption(settingId: setting.settingId)?.description
-                $0.options = setting.options.compactMap {  $0.description  }
+                $0.value = currentSettingOption(settingId: setting.settingID)?.optionDescription
+                $0.options = setting.options.compactMap {  $0.optionDescription  }
                 $0.onChange { [weak self] pushRow in
                     
                     let activityView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
@@ -61,21 +61,21 @@ class CameraSettingsViewController: FormViewController {
                     self?.tableView.tableHeaderView = activityView
                     activityView.startAnimating()
                     
-                    if let optionID = (setting.options.filter { $0.description == pushRow.value }.first?.id) {
-                        self?.setSettings(settingID: setting.settingId, optionID: optionID ) { (error) in
+                    if let optionID = (setting.options.filter { $0.optionDescription == pushRow.value }.first?.optionID) {
+                        self?.setSettings(settingID: setting.settingID, optionID: optionID ) { (error) in
                             
                             activityView.stopAnimating()
                             if let error = error {
-                                ActionsViewController.showAlert("Error setting \(String(describing: setting.settingDescription ?? "value")).", viewController: self)
+                                ActionsViewController.showAlert("Error setting \(String(describing: setting.settingDescription )).", viewController: self)
                                 NSLog("Error: \(error.localizedDescription)")
                             }
                         }
                     }
                     // The warning "Result of call to 'onPresent' is unused will go away with the next Eureka release.
                     // See: https://github.com/xmartlabs/Eureka/pull/1605
-                }.onPresent({ (from, to) in
-                    to.enableDeselection = false
-                })
+                    }.onPresent({ (from, to) in
+                        to.enableDeselection = false
+                    })
             }
         }
     }
@@ -91,10 +91,10 @@ class CameraSettingsViewController: FormViewController {
     }
     
     func setSettings(settingID: String, optionID: String, callback: @escaping (Swift.Error?) -> ()) {
-        let option = Option(id: optionID)
-        let setting = Setting(id: settingID, option: option)
+        let option = Camera.Option(optionID: optionID, optionDescription: "")
+        let setting = Camera.Setting(settingID: settingID, settingDescription: "", option: option)
         
-        CoreManager.shared().camera.setSetting(setting: setting)
+        CoreManager.shared().drone.camera.setSetting(setting: setting)
             .do(onError: { (error: Swift.Error) in
                 callback(error)
             }, onCompleted: {
@@ -109,7 +109,7 @@ class CameraSettingsViewController: FormViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    private func currentSettingOption(settingId: String) -> Option? {
-        return currentSettings.value.filter { $0.id == settingId }.first?.option
+    private func currentSettingOption(settingId: String) -> Camera.Option? {
+        return currentSettings.value.filter { $0.settingID == settingId }.first?.option
     }
 }

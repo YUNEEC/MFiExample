@@ -1,3 +1,3 @@
-github "YUNEEC/Yuneec-MFiAdapter" "master"
-github "xmartlabs/Eureka" == 4.2
-github "Dronecode/DronecodeSDK-Swift" "97da1e6e7bb4cc3a61764da89b868e0c814601be"
+##github "YUNEEC/MFiAdapter" "master"
+##github "xmartlabs/Eureka" == 4.2
+github "mavlink/MAVSDK-Swift" == 0.6.0

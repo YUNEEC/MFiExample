@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import DronecodeSDKSwiftDemo
+@testable import YuneecMFiExample
 
 class DronecodeSDKSwiftDemoTests: XCTestCase {
     

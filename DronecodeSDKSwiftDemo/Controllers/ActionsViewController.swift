@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Dronecode_SDK_Swift
+import MAVSDK_Swift
 import RxSwift
 
 let UI_CORNER_RADIUS_BUTTONS = CGFloat(8.0)
@@ -59,7 +59,7 @@ class ActionsViewController: UIViewController {
     }
     
     @IBAction func armPressed(_ sender: Any) {
-        CoreManager.shared().action.arm()
+        CoreManager.shared().drone.action.arm()
             .do(onError: { error in
                 self.feedbackLabel.text = "Arming failed : \(error.localizedDescription)"
             }, onCompleted: {
@@ -70,7 +70,7 @@ class ActionsViewController: UIViewController {
     }
     
     @IBAction func disarmPressed(_ sender: Any) {
-        CoreManager.shared().action.disarm()
+        CoreManager.shared().drone.action.disarm()
             .do(onError: { error in
                 self.feedbackLabel.text = "Disarming failed : \(error.localizedDescription)"
             }, onCompleted: {
@@ -81,7 +81,7 @@ class ActionsViewController: UIViewController {
     }
     
     @IBAction func takeoffPressed(_ sender: Any) {
-        CoreManager.shared().action.takeoff()
+        CoreManager.shared().drone.action.takeoff()
             .do(onError: { error in
                 self.feedbackLabel.text = "Takeoff failed: \(error.localizedDescription)"
             }, onCompleted: {
@@ -92,7 +92,7 @@ class ActionsViewController: UIViewController {
     }
     
     @IBAction func landPressed(_ sender: Any) {
-        CoreManager.shared().action.land()
+        CoreManager.shared().drone.action.land()
             .do(onError: { error in
                 self.feedbackLabel.text = "Land failed: \(error.localizedDescription)"
             }, onCompleted: {
@@ -103,7 +103,7 @@ class ActionsViewController: UIViewController {
     }
     
     @IBAction func killPressed(_ sender: Any) {
-        CoreManager.shared().action.kill()
+        CoreManager.shared().drone.action.kill()
             .do(onError: { error in
                 self.feedbackLabel.text = "Kill failed: \(error.localizedDescription)"
             }, onCompleted: {
@@ -114,7 +114,7 @@ class ActionsViewController: UIViewController {
     }
     
     @IBAction func returnToLaunchPressed(_ sender: Any) {
-        CoreManager.shared().action.returnToLaunch()
+        CoreManager.shared().drone.action.returnToLaunch()
             .do(onError: { error in
                 self.feedbackLabel.text = "Return to launch failed: \(error.localizedDescription)"
             }, onCompleted: {
@@ -125,7 +125,7 @@ class ActionsViewController: UIViewController {
     }
     
     @IBAction func transitionToFixedWingPressed(_ sender: Any) {
-        CoreManager.shared().action.transitionToFixedWing()
+        CoreManager.shared().drone.action.transitionToFixedWing()
             .do(onError: { error in
                 self.feedbackLabel.text = "transitionToFixedWing failed: \(error.localizedDescription)"
             }, onCompleted: {
@@ -136,7 +136,7 @@ class ActionsViewController: UIViewController {
     }
     
     @IBAction func transitionToMulticopterPressed(_ sender: Any) {
-        CoreManager.shared().action.transitionToMulticopter()
+        CoreManager.shared().drone.action.transitionToMulticopter()
             .do(onError: { error in
                 self.feedbackLabel.text = "transitionToMulticopter failed: \(error.localizedDescription)"
             }, onCompleted: {
@@ -147,7 +147,7 @@ class ActionsViewController: UIViewController {
     }
     
     @IBAction func getTakeoffAltitudePressed(_ sender: Any) {
-        let myRoutine = CoreManager.shared().action.getTakeoffAltitude()
+        let myRoutine = CoreManager.shared().drone.action.getTakeoffAltitude()
         myRoutine.subscribe{ event in
             switch event {
             case .success(let altitude):
@@ -160,7 +160,7 @@ class ActionsViewController: UIViewController {
     }
     
     @IBAction func getMaximumSpeedPressed(_ sender: Any) {
-        let myRoutine = CoreManager.shared().action.getMaximumSpeed()
+        let myRoutine = CoreManager.shared().drone.action.getMaximumSpeed()
         myRoutine.subscribe{ event in
                 switch event {
                 case .success(let maxSpeed):

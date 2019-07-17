@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import Dronecode_SDK_Swift
+import MAVSDK_Swift
 import MFiAdapter
 import RxSwift
 
@@ -17,19 +17,19 @@ class CoreManager {
     
     // MARK: - Properties
     
-    // Telemetry
-    let telemetry = Telemetry(address: "localhost", port: 50051)
-    // Action
-    let action = Action(address: "localhost", port: 50051)
-    // Mission
-    let mission = Mission(address: "localhost", port: 50051)
-    // Camera
-    let camera = Camera(address: "localhost", port: 50051)
-    // Info
-    let info = Info(address: "localhost", port: 50051)
+//    // Telemetry
+//    let telemetry = Telemetry(address: "localhost", port: 50051)
+//    // Action
+//    let action = Action(address: "localhost", port: 50051)
+//    // Mission
+//    let mission = Mission(address: "localhost", port: 50051)
+//    // Camera
+//    let camera = Camera(address: "localhost", port: 50051)
+//    // Info
+//    let info = Info(address: "localhost", port: 50051)
     
     // Core System
-    let core: Core
+    let drone: Drone
     
     // Drone state
     let droneState = DroneState()
@@ -44,9 +44,11 @@ class CoreManager {
     // Initialization
     
     private init() {
-        core = Core()
-        MFiAdapter.MFiConnectionStateAdapter.sharedInstance().startMonitorConnectionState()
-        MFiAdapter.MFiRemoteControllerAdapter.sharedInstance().startMonitorRCEvent()
+        self.drone = Drone()
+        DispatchQueue.global().async {
+            MFiAdapter.MFiConnectionStateAdapter.sharedInstance().startMonitorConnectionState()
+            MFiAdapter.MFiRemoteControllerAdapter.sharedInstance().startMonitorRCEvent()
+        }
     }
     
     deinit {
@@ -60,12 +62,20 @@ class CoreManager {
     }
     
     public func start() -> Void {
-        core.connect()
+//        core.connect()
+//            .subscribe(onCompleted: {
+//                print("Core connected")
+//            }) { (error) in
+//                print("Failed connect to core with error: \(error.localizedDescription)")
+//            }
+//            .disposed(by: disposeBag)
+        drone.startMavlink
             .subscribe(onCompleted: {
-                print("Core connected")
-            }) { (error) in
-                print("Failed connect to core with error: \(error.localizedDescription)")
-            }
+                print("+DC+ Mavlink Started.")
+            }, onError: { (error) in
+                print("Error starting Mavlink: \(error)")
+            })
             .disposed(by: disposeBag)
+        
     }
 }
