@@ -84,6 +84,7 @@ class CameraViewController: UIViewController {
         setPhotoModeButton.isEnabled = false
         
         CoreManager.shared().drone.camera.setMode(cameraMode: .photo)
+            .observeOn(MainScheduler.instance)
             .do(onError: { error in
                 self.feedbackLabel.text = "Set photo mode failed: \(error.localizedDescription)"
                 self.setPhotoModeButton.isEnabled = true
@@ -100,6 +101,7 @@ class CameraViewController: UIViewController {
         takePhotoButton.isEnabled = false
         
         CoreManager.shared().drone.camera.takePhoto()
+            .observeOn(MainScheduler.instance)
             .do(onError: { error in
                 self.feedbackLabel.text = "Take photo failed: \(error.localizedDescription)"
                 self.takePhotoButton.isEnabled = true
@@ -115,6 +117,7 @@ class CameraViewController: UIViewController {
         startPhotoIntervalButton.isEnabled = false
         
         CoreManager.shared().drone.camera.startPhotoInterval(intervalS: 5)
+            .observeOn(MainScheduler.instance)
             .do(onError: { error in
                 self.feedbackLabel.text = "Start photo interval failed: \(error.localizedDescription)"
                 self.startPhotoIntervalButton.isEnabled = true
@@ -130,6 +133,7 @@ class CameraViewController: UIViewController {
         stopPhotoIntervalButton.isEnabled = false
 
         CoreManager.shared().drone.camera.stopPhotoInterval()
+            .observeOn(MainScheduler.instance)
             .do(onError: { error in
                 self.feedbackLabel.text = "Stop photo interval failed: \(error.localizedDescription)"
                 self.stopPhotoIntervalButton.isEnabled = true
@@ -145,6 +149,7 @@ class CameraViewController: UIViewController {
         setVideoModeButton.isEnabled = false
         
         CoreManager.shared().drone.camera.setMode(cameraMode: .video)
+            .observeOn(MainScheduler.instance)
             .do(onError: { error in
                 self.feedbackLabel.text = "Set video mode failed: \(error.localizedDescription)"
                 self.setVideoModeButton.isEnabled = true
@@ -161,6 +166,7 @@ class CameraViewController: UIViewController {
         startVideoButton.isEnabled = false
         
         CoreManager.shared().drone.camera.startVideo()
+            .observeOn(MainScheduler.instance)
             .do(onError: { error in
                 self.feedbackLabel.text = "Start video failed: \(error.localizedDescription)"
                 self.startVideoButton.isEnabled = true
@@ -177,6 +183,7 @@ class CameraViewController: UIViewController {
         stopVideoButton.isEnabled = false
         
         CoreManager.shared().drone.camera.stopVideo()
+            .observeOn(MainScheduler.instance)
             .do(onError: { error in
                 self.feedbackLabel.text = "Stop video failed: \(error.localizedDescription)"
                 self.stopVideoButton.isEnabled = true
@@ -210,6 +217,7 @@ class CameraViewController: UIViewController {
     func startObserving() {
         // Listen to camera mode
         CoreManager.shared().drone.camera.mode
+            .observeOn(MainScheduler.instance)
             .subscribe(
                 onNext:{ [weak self] mode in
                     NSLog("Changed mode to: \(mode)")
@@ -253,6 +261,7 @@ class CameraViewController: UIViewController {
 
         // Listen to current settings
         CoreManager.shared().drone.camera.currentSettings
+            .observeOn(MainScheduler.instance)
             .subscribe(onNext: { currentSettings in
                     self.currentCameraSettings.accept(currentSettings)
                     NSLog("Current settings: \(currentSettings)")
@@ -263,6 +272,7 @@ class CameraViewController: UIViewController {
         
         // Listen to possible settings
         CoreManager.shared().drone.camera.possibleSettingOptions
+            .observeOn(MainScheduler.instance)
             .subscribe(onNext: { possibleSettingOptions in
                     self.possibleCameraSettingOptions.accept(possibleSettingOptions)
                     NSLog("Possible settings: \(possibleSettingOptions)")

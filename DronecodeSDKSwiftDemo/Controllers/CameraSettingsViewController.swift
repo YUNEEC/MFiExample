@@ -36,6 +36,7 @@ class CameraSettingsViewController: FormViewController {
         
         let combinedObservable = Observable.merge([possibleSettingOptions.asObservable().map{ $0 as AnyObject }, currentSettings.asObservable().map{ $0 as AnyObject }])
         combinedObservable.asObservable()
+            .observeOn(MainScheduler.instance)
             .subscribe { (_) in
                 self.updatePossibleSettingsTable()
             }

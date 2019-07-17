@@ -105,7 +105,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         self.createMissionTrace(mapView: mapView, listMissionsItems: missionExample.missionItems)
         
         let missionProgressObservable: Observable<Mission.MissionProgress> = CoreManager.shared().drone.mission.missionProgress
-        missionProgressObservable.subscribe(onNext: { missionProgress in
+        missionProgressObservable
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { missionProgress in
                 print("Got mission progress update")
                 self.displayFeedback(message:"\(missionProgress.currentItemIndex) / \(missionProgress.missionCount)")
             }, onError: { error in
@@ -130,6 +132,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBAction func toggleRTLPressed(_ sender: Any) {
         CoreManager.shared().drone.mission.setReturnToLaunchAfterMission(enable: rtlAfterMissionToggleState)
+            .observeOn(MainScheduler.instance)
             .subscribe(onCompleted: {
                 if self.rtlAfterMissionToggleState {
                     self.displayFeedback(message:"Enabled RTL after mission")
@@ -152,6 +155,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         
         // /!\ NEED TO ARM BEFORE START THE MISSION
         CoreManager.shared().drone.action.arm()
+            .observeOn(MainScheduler.instance)
             .do(onError: { error in
                 self.displayFeedback(message:"Arming failed")
             }, onCompleted: {
@@ -166,6 +170,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         
         if self.pauseMissionButton.titleLabel?.text == "Resume Mission" {
             CoreManager.shared().drone.mission.startMission()
+                .observeOn(MainScheduler.instance)
                 .do(onError: { error in
                     self.displayFeedback(message: "Resume mission failed \(error)")
                 }, onCompleted: {
@@ -176,6 +181,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
                 .disposed(by: disposeBag)
         } else {
             CoreManager.shared().drone.mission.pauseMission()
+                .observeOn(MainScheduler.instance)
                 .do(onError: { error in
                     self.displayFeedback(message:"Pausing Mission failed")
                 }, onCompleted: {
@@ -204,6 +210,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
          self.displayFeedback(message:"Set Current Index Pressed")
         
         CoreManager.shared().drone.mission.setCurrentMissionItemIndex(index: 2)
+            .observeOn(MainScheduler.instance)
             .subscribe(onCompleted: {
                 self.displayFeedback(message:"Set mission index to 2.")
             }, onError: { (error) in
@@ -216,6 +223,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
          self.displayFeedback(message:"Download Mission Pressed")
         
         CoreManager.shared().drone.mission.downloadMission()
+            .observeOn(MainScheduler.instance)
             .subscribe(onSuccess: { (mission) in
                 self.displayFeedback(message:"Downloaded mission")
                 print("Mission downloaded: \(mission)")
@@ -243,6 +251,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         
         
         CoreManager.shared().drone.mission.isMissionFinished()
+            .observeOn(MainScheduler.instance)
             .subscribe(onSuccess: { (finished) in
                 self.displayFeedback(message:"Is mission finished: \(finished)")
             }, onError: { (error) in
@@ -290,6 +299,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     func uploadMission(){
         
         CoreManager.shared().drone.mission.uploadMission(missionItems: missionExample.missionItems)
+            .observeOn(MainScheduler.instance)
             .do(onError: { error in
                 self.displayFeedback(message:"Mission uploaded failed \(error)")
                 
@@ -303,6 +313,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     
     func startMission(){
         CoreManager.shared().drone.mission.startMission()
+            .observeOn(MainScheduler.instance)
             .do(onError: { error in
                 self.displayFeedback(message: "Mission started failed \(error)")
             }, onCompleted: {
