@@ -10,6 +10,7 @@ import UIKit
 import RxSwift
 import MAVSDK_Swift
 import Eureka
+import RxCocoa
 
 class CameraViewController: UIViewController {
     
@@ -30,8 +31,8 @@ class CameraViewController: UIViewController {
     
     private let disposeBag = DisposeBag()
     
-    var currentCameraSettings = Variable<[Camera.Setting]>([])
-    var possibleCameraSettingOptions = Variable<[Camera.SettingOptions]>([])
+    var currentCameraSettings = BehaviorRelay<[Camera.Setting]>(value: [])
+    var possibleCameraSettingOptions = BehaviorRelay<[Camera.SettingOptions]>(value: [])
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -253,7 +254,7 @@ class CameraViewController: UIViewController {
         // Listen to current settings
         CoreManager.shared().drone.camera.currentSettings
             .subscribe(onNext: { currentSettings in
-                    self.currentCameraSettings.value = currentSettings
+                    self.currentCameraSettings.accept(currentSettings)
                     NSLog("Current settings: \(currentSettings)")
                 }, onError: { error in
                     NSLog("Error currentSettingsSubscription: \(error.localizedDescription)")
@@ -263,7 +264,7 @@ class CameraViewController: UIViewController {
         // Listen to possible settings
         CoreManager.shared().drone.camera.possibleSettingOptions
             .subscribe(onNext: { possibleSettingOptions in
-                    self.possibleCameraSettingOptions.value = possibleSettingOptions
+                    self.possibleCameraSettingOptions.accept(possibleSettingOptions)
                     NSLog("Possible settings: \(possibleSettingOptions)")
                 }, onError: { error in
                     NSLog("Error possibleSettingOptionsSubscription: \(error.localizedDescription)")

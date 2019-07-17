@@ -363,7 +363,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     // MARK: - Location manager
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         defer { currentLocation = locations.last }
-        
+        ()
         /*if currentLocation == nil {
          // Zoom to user location
          if let userLocation = locations.last {

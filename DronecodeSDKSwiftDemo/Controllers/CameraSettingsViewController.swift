@@ -10,13 +10,14 @@ import UIKit
 import Eureka
 import MAVSDK_Swift
 import RxSwift
+import RxCocoa
 
 class CameraSettingsViewController: FormViewController {
     
     var manifestSection: Section!
     
-    var currentSettings = Variable<[Camera.Setting]>([])
-    var possibleSettingOptions = Variable<[Camera.SettingOptions]>([])
+    var currentSettings = BehaviorRelay<[Camera.Setting]>(value: [])
+    var possibleSettingOptions = BehaviorRelay<[Camera.SettingOptions]>(value: [])
     
     let activityView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
     
