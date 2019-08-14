@@ -129,7 +129,7 @@ class BindViewController: UIViewController {
             if let error = error {
                 BindViewController.showAlert("Error getting Bind Status", message: error.localizedDescription, viewController: self)
             } else if let wifiInfo = wifiInfo{
-                BindViewController.showAlert("Binding to", message: "\(wifiInfo.ssid)", viewController: self)
+                BindViewController.showAlert("Binding to", message: "\(String(describing: wifiInfo.ssid))", viewController: self)
             }
         }
     }

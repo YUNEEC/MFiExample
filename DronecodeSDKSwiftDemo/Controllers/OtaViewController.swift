@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 import MFiAdapter
-import Dronecode_SDK_Swift
+import MAVSDK_Swift
 import RxSwift
 
 
@@ -98,7 +98,7 @@ class OtaViewController: UIViewController {
                 
                 MFiAdapter.MFiOtaAdapter.sharedInstance().getLatestVersion(.autopilot, block: { (version) in
                     DispatchQueue.main.async {
-                        let myRoutine = CoreManager.shared().info.getVersion()
+                        let myRoutine = CoreManager.shared().drone.info.getVersion()
                         myRoutine.subscribe{ event in
                             switch event {
                             case .success(let version):

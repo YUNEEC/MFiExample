@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Dronecode_SDK_Swift
+import MAVSDK_Swift
 import RxSwift
 
 class TelemetryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
