@@ -698,7 +698,7 @@
 				);
 				INFOPLIST_FILE = DronecodeSDKSwiftDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yuneec.yuneecmfiexample;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yuneec.yuneecmfiexample.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -724,7 +724,7 @@
 				);
 				INFOPLIST_FILE = DronecodeSDKSwiftDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yuneec.yuneecmfiexample;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yuneec.yuneecmfiexample.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

@@ -15,7 +15,7 @@ do
     rm ${framework}_arm64
 done
 
-framework_list="AFNetworking CocoaAsyncSocket Dronecode_SDK_Swift Eureka RxSwift CgRPC BoringSSL RxAtomic RxBlocking RxCocoa RxTest SwiftGRPC SwiftProtobuf backend"
+framework_list="AFNetworking CocoaAsyncSocket MAVSDK_Swift Eureka RxSwift CgRPC BoringSSL RxAtomic RxBlocking RxCocoa RxTest SwiftGRPC SwiftProtobuf backend"
 for framework in $framework_list
 do
     src=./Carthage/Build/iOS/${framework}.framework/$framework
