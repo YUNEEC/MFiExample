@@ -29,7 +29,22 @@ class TelemetryViewController: UIViewController, UITableViewDataSource, UITableV
         //TableView set datasource and delegate
         self.telemetryTableView.delegate = self
         self.telemetryTableView.dataSource = self
-        
+
+        /**
+         * For MFi application, when connect USB cable, the iOS system will auto launch the process.
+         * If have multiple app with same external accessory protocols (com.yuneec.controller),
+         * then the system will launch multi process,
+         * this operation will cause have multi grpc client and server and cause telemetry data freeze.
+         * And can also make mavsdk bind udp port 14550 failed.
+         * So when found the iOS system start the process when connect the USB cable, just kill the process.
+         * When the app is launched by uses, this code will do nothing.
+         *
+        */
+        if (UIApplication.shared.applicationState == UIApplicationState.background) {
+            print("application is running backend")
+            exit(-10)
+        }
+
         // Start System
         CoreManager.shared().start()
 
